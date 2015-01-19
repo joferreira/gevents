@@ -1,4 +1,4 @@
-<!-- PAGE SCHEDULE -->
+<!-- SCHEDULE -->
 <section class="page-section light" id="schedule">
 	<div class="container">
 		<div class="row">
@@ -1838,4 +1838,4 @@
 
 	</div>
 </section>
-<!-- /PAGE SCHEDULE -->
+<!-- /SCHEDULE -->
