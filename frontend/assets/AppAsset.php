@@ -23,7 +23,6 @@ class AppAsset extends AssetBundle
         'css/theme-red-1.css',
         'css/custom.css',
         'js/theme-config.css',
-        'plugins/bootstrap/css/bootstrap.min.css',
         'plugins/fontawesome/css/font-awesome.min.css',
         'plugins/bootstrap-select/bootstrap-select.min.css',
         'plugins/owlcarousel2/assets/owl.carousel.min.css',
@@ -41,6 +40,7 @@ class AppAsset extends AssetBundle
         'plugins/placeholdem.min.js',
         'plugins/jquery.smoothscroll.min.js',
         'plugins/jquery.easing.min.js',
+        'plugins/smooth-scrollbar.min.js',
         'plugins/owlcarousel2/owl.carousel.min.js',
         'plugins/waypoints/waypoints.min.js',
         'plugins/countdown/jquery.plugin.min.js',
@@ -57,6 +57,3 @@ class AppAsset extends AssetBundle
         'yii\bootstrap\BootstrapAsset',
     ];
 }
-
-
-

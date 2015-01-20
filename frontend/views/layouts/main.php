@@ -119,6 +119,7 @@ AppAsset::register($this);
             theme.initPartnerSlider();
             theme.initTestimonials();
             theme.initGoogleMap();
+            theme.initEventCarousel();
         });
         jQuery(window).load(function () {
             theme.initAnimation();
