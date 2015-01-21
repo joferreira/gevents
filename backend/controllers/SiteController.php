@@ -60,6 +60,8 @@ class SiteController extends Controller
 
     public function actionLogin()
     {
+        return $this->render('index');
+        /*
         if (!\Yii::$app->user->isGuest) {
             return $this->goHome();
         }
@@ -71,7 +73,7 @@ class SiteController extends Controller
             return $this->render('login', [
                 'model' => $model,
             ]);
-        }
+        }*/
     }
 
     public function actionLogout()

@@ -19,10 +19,6 @@ class AppAsset extends AssetBundle
     public $basePath = '@webroot';
     public $baseUrl = '@web';
     public $css = [
-        'css/theme.css',
-        'css/theme-red-1.css',
-        'css/custom.css',
-        'js/theme-config.css',
         'plugins/fontawesome/css/font-awesome.min.css',
         'plugins/bootstrap-select/bootstrap-select.min.css',
         'plugins/owlcarousel2/assets/owl.carousel.min.css',
@@ -30,6 +26,10 @@ class AppAsset extends AssetBundle
         'plugins/prettyphoto/css/prettyPhoto.css',
         'plugins/animate/animate.min.css',
         'plugins/countdown/jquery.countdown.css',
+        'css/theme.css',
+        'css/theme-red-1.css',
+        'css/custom.css',
+        'js/theme-config.css',
     ];
     public $js = [
         'plugins/modernizr.custom.js',

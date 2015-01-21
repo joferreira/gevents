@@ -1,8 +1,8 @@
 <!-- EVENT GRID -->
-<div class="row ">
+<div class="container">
 
 	<!-- Content -->
-	<section id="content-grid" class="content col-sm-12">
+	<section id="content-grid" class=" content col-sm-12">
 
 		<div class="row row-event row-event-grid">
 

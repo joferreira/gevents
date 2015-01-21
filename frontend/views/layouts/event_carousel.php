@@ -1,9 +1,6 @@
-<br/>
 <!-- EVENT CAROUSEL -->
-<div class="row">
-
 	<!-- Content -->
-	<section id="content" class="content col-sm-12 ">
+	<section id="content" class="page-section content col-sm-12 ">
 
 		<!--  -->
 		<div class="row-event event-carousel">
@@ -184,6 +181,4 @@
 	</section>
 	<!-- Content -->
 
-</div>
 <!-- /EVENT CAROUSEL -->
-<br/>

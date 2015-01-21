@@ -15,15 +15,31 @@ use yii\web\AssetBundle;
  */
 class AppAsset extends AssetBundle
 {
-    public $basePath = '@webroot';
-    public $baseUrl = '@web';
-    public $css = [
-        'css/site.css',
-    ];
-    public $js = [
-    ];
-    public $depends = [
-        'yii\web\YiiAsset',
-        'yii\bootstrap\BootstrapAsset',
-    ];
+	public $basePath = '@webroot';
+	public $baseUrl = '@web';
+	public $css = [
+		'css/site.css',
+		'plugins/bootstrap/dist/css/bootstrap.min.css',
+		'plugins/metisMenu/dist/metisMenu.min.css',
+		'css/timeline.css',
+		'css/sb-admin-2.css',
+		'plugins/morrisjs/morris.css',
+		'plugins/font-awesome/css/font-awesome.min.css'
+	];
+	public $js = [
+		'plugins/jquery/dist/jquery.min.js',
+		'plugins/bootstrap/dist/js/bootstrap.min.js',
+		'plugins/metisMenu/dist/metisMenu.min.js',
+		'plugins/raphael/raphael-min.js',
+		'plugins/morrisjs/morris.min.js',
+		'js/morris-data.js',
+		'js/sb-admin-2.js'
+	];
+	public $depends = [
+		'yii\web\YiiAsset',
+		'yii\bootstrap\BootstrapAsset',
+	];
 }
+
+
+	
