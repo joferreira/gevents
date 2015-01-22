@@ -27,7 +27,7 @@
 					<li><a href="#speakers">Speakers</a></li>
 					<li><a href="#price">Price</a></li>
 					<li><a href="#location">Location</a></li>
-					<li><a href="blog.html">Blog</a></li>
+					<li><a href="#register">Login</a></li>
 				</ul>
 			</nav>
 			<!-- /Navigation -->

@@ -51,7 +51,11 @@ AppAsset::register($this);
             NavBar::end();
             */
         ?>
-        <?php echo $this->render('menu'); ?>
+        <?php
+        if (!\Yii::$app->user->isGuest) {
+            echo $this->render('menu');
+        }
+          ?>
         <div id="wrapper">
         <?/*= Breadcrumbs::widget([
             'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],

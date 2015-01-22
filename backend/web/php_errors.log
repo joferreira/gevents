@@ -1,0 +1,1 @@
+[22-Jan-2015 09:21:22 America/Sao_Paulo] PHP Parse error:  syntax error, unexpected ''layout'' (T_CONSTANT_ENCAPSED_STRING), expecting ']' in C:\Apache24\htdocs\gevents\backend\views\site\login.php on line 20
