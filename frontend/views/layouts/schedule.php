@@ -43,7 +43,7 @@
 									<div class="media">
 										<!-- -->
 										<div class="post-media pull-left">
-											<img src="assets/img/preview/avatar-v2-1.jpg" alt="" class="media-object" />
+											<img src="img/preview/avatar-v2-1.jpg" alt="" class="media-object" />
 										</div>
 										<!-- -->
 										<div class="media-body">
@@ -82,7 +82,7 @@
 									<div class="media">
 										<!-- -->
 										<div class="post-media pull-left">
-											<img src="assets/img/preview/avatar-v2-2.jpg" alt="" class="media-object" />
+											<img src="img/preview/avatar-v2-2.jpg" alt="" class="media-object" />
 										</div>
 										<!-- -->
 										<div class="media-body">
@@ -121,7 +121,7 @@
 									<div class="media">
 										<!-- -->
 										<div class="post-media pull-left">
-											<img src="assets/img/preview/avatar-v2-3.jpg" alt="" class="media-object" />
+											<img src="img/preview/avatar-v2-3.jpg" alt="" class="media-object" />
 										</div>
 										<!-- -->
 										<div class="media-body">
@@ -160,7 +160,7 @@
 									<div class="media">
 										<!-- -->
 										<div class="post-media pull-left">
-											<img src="assets/img/preview/avatar-v2-4.jpg" alt="" class="media-object" />
+											<img src="img/preview/avatar-v2-4.jpg" alt="" class="media-object" />
 										</div>
 										<!-- -->
 										<div class="media-body">
@@ -204,7 +204,7 @@
 									<div class="media">
 										<!-- -->
 										<div class="post-media pull-left">
-											<img src="assets/img/preview/avatar-v2-2.jpg" alt="" class="media-object" />
+											<img src="img/preview/avatar-v2-2.jpg" alt="" class="media-object" />
 										</div>
 										<!-- -->
 										<div class="media-body">
@@ -243,7 +243,7 @@
 									<div class="media">
 										<!-- -->
 										<div class="post-media pull-left">
-											<img src="assets/img/preview/avatar-v2-3.jpg" alt="" class="media-object" />
+											<img src="img/preview/avatar-v2-3.jpg" alt="" class="media-object" />
 										</div>
 										<!-- -->
 										<div class="media-body">
@@ -282,7 +282,7 @@
 									<div class="media">
 										<!-- -->
 										<div class="post-media pull-left">
-											<img src="assets/img/preview/avatar-v2-4.jpg" alt="" class="media-object" />
+											<img src="img/preview/avatar-v2-4.jpg" alt="" class="media-object" />
 										</div>
 										<!-- -->
 										<div class="media-body">
@@ -326,7 +326,7 @@
 									<div class="media">
 										<!-- -->
 										<div class="post-media pull-left">
-											<img src="assets/img/preview/avatar-v2-3.jpg" alt="" class="media-object" />
+											<img src="img/preview/avatar-v2-3.jpg" alt="" class="media-object" />
 										</div>
 										<!-- -->
 										<div class="media-body">
@@ -365,7 +365,7 @@
 									<div class="media">
 										<!-- -->
 										<div class="post-media pull-left">
-											<img src="assets/img/preview/avatar-v2-4.jpg" alt="" class="media-object" />
+											<img src="img/preview/avatar-v2-4.jpg" alt="" class="media-object" />
 										</div>
 										<!-- -->
 										<div class="media-body">
@@ -409,7 +409,7 @@
 									<div class="media">
 										<!-- -->
 										<div class="post-media pull-left">
-											<img src="assets/img/preview/avatar-v2-2.jpg" alt="" class="media-object" />
+											<img src="img/preview/avatar-v2-2.jpg" alt="" class="media-object" />
 										</div>
 										<!-- -->
 										<div class="media-body">
@@ -448,7 +448,7 @@
 									<div class="media">
 										<!-- -->
 										<div class="post-media pull-left">
-											<img src="assets/img/preview/avatar-v2-3.jpg" alt="" class="media-object" />
+											<img src="img/preview/avatar-v2-3.jpg" alt="" class="media-object" />
 										</div>
 										<!-- -->
 										<div class="media-body">
@@ -505,7 +505,7 @@
 									<div class="media">
 										<!-- -->
 										<div class="post-media pull-left">
-											<img src="assets/img/preview/avatar-v2-2.jpg" alt="" class="media-object" />
+											<img src="img/preview/avatar-v2-2.jpg" alt="" class="media-object" />
 										</div>
 										<!-- -->
 										<div class="media-body">
@@ -544,7 +544,7 @@
 									<div class="media">
 										<!-- -->
 										<div class="post-media pull-left">
-											<img src="assets/img/preview/avatar-v2-1.jpg" alt="" class="media-object" />
+											<img src="img/preview/avatar-v2-1.jpg" alt="" class="media-object" />
 										</div>
 										<!-- -->
 										<div class="media-body">
@@ -583,7 +583,7 @@
 									<div class="media">
 										<!-- -->
 										<div class="post-media pull-left">
-											<img src="assets/img/preview/avatar-v2-3.jpg" alt="" class="media-object" />
+											<img src="img/preview/avatar-v2-3.jpg" alt="" class="media-object" />
 										</div>
 										<!-- -->
 										<div class="media-body">
@@ -622,7 +622,7 @@
 									<div class="media">
 										<!-- -->
 										<div class="post-media pull-left">
-											<img src="assets/img/preview/avatar-v2-4.jpg" alt="" class="media-object" />
+											<img src="img/preview/avatar-v2-4.jpg" alt="" class="media-object" />
 										</div>
 										<!-- -->
 										<div class="media-body">
@@ -666,7 +666,7 @@
 									<div class="media">
 										<!-- -->
 										<div class="post-media pull-left">
-											<img src="assets/img/preview/avatar-v2-2.jpg" alt="" class="media-object" />
+											<img src="img/preview/avatar-v2-2.jpg" alt="" class="media-object" />
 										</div>
 										<!-- -->
 										<div class="media-body">
@@ -705,7 +705,7 @@
 									<div class="media">
 										<!-- -->
 										<div class="post-media pull-left">
-											<img src="assets/img/preview/avatar-v2-3.jpg" alt="" class="media-object" />
+											<img src="img/preview/avatar-v2-3.jpg" alt="" class="media-object" />
 										</div>
 										<!-- -->
 										<div class="media-body">
@@ -744,7 +744,7 @@
 									<div class="media">
 										<!-- -->
 										<div class="post-media pull-left">
-											<img src="assets/img/preview/avatar-v2-4.jpg" alt="" class="media-object" />
+											<img src="img/preview/avatar-v2-4.jpg" alt="" class="media-object" />
 										</div>
 										<!-- -->
 										<div class="media-body">
@@ -788,7 +788,7 @@
 									<div class="media">
 										<!-- -->
 										<div class="post-media pull-left">
-											<img src="assets/img/preview/avatar-v2-3.jpg" alt="" class="media-object" />
+											<img src="img/preview/avatar-v2-3.jpg" alt="" class="media-object" />
 										</div>
 										<!-- -->
 										<div class="media-body">
@@ -827,7 +827,7 @@
 									<div class="media">
 										<!-- -->
 										<div class="post-media pull-left">
-											<img src="assets/img/preview/avatar-v2-4.jpg" alt="" class="media-object" />
+											<img src="img/preview/avatar-v2-4.jpg" alt="" class="media-object" />
 										</div>
 										<!-- -->
 										<div class="media-body">
@@ -871,7 +871,7 @@
 									<div class="media">
 										<!-- -->
 										<div class="post-media pull-left">
-											<img src="assets/img/preview/avatar-v2-2.jpg" alt="" class="media-object" />
+											<img src="img/preview/avatar-v2-2.jpg" alt="" class="media-object" />
 										</div>
 										<!-- -->
 										<div class="media-body">
@@ -910,7 +910,7 @@
 									<div class="media">
 										<!-- -->
 										<div class="post-media pull-left">
-											<img src="assets/img/preview/avatar-v2-3.jpg" alt="" class="media-object" />
+											<img src="img/preview/avatar-v2-3.jpg" alt="" class="media-object" />
 										</div>
 										<!-- -->
 										<div class="media-body">
@@ -967,7 +967,7 @@
 									<div class="media">
 										<!-- -->
 										<div class="post-media pull-left">
-											<img src="assets/img/preview/avatar-v2-2.jpg" alt="" class="media-object" />
+											<img src="img/preview/avatar-v2-2.jpg" alt="" class="media-object" />
 										</div>
 										<!-- -->
 										<div class="media-body">
@@ -1006,7 +1006,7 @@
 									<div class="media">
 										<!-- -->
 										<div class="post-media pull-left">
-											<img src="assets/img/preview/avatar-v2-3.jpg" alt="" class="media-object" />
+											<img src="img/preview/avatar-v2-3.jpg" alt="" class="media-object" />
 										</div>
 										<!-- -->
 										<div class="media-body">
@@ -1045,7 +1045,7 @@
 									<div class="media">
 										<!-- -->
 										<div class="post-media pull-left">
-											<img src="assets/img/preview/avatar-v2-4.jpg" alt="" class="media-object" />
+											<img src="img/preview/avatar-v2-4.jpg" alt="" class="media-object" />
 										</div>
 										<!-- -->
 										<div class="media-body">
@@ -1089,7 +1089,7 @@
 									<div class="media">
 										<!-- -->
 										<div class="post-media pull-left">
-											<img src="assets/img/preview/avatar-v2-3.jpg" alt="" class="media-object" />
+											<img src="img/preview/avatar-v2-3.jpg" alt="" class="media-object" />
 										</div>
 										<!-- -->
 										<div class="media-body">
@@ -1128,7 +1128,7 @@
 									<div class="media">
 										<!-- -->
 										<div class="post-media pull-left">
-											<img src="assets/img/preview/avatar-v2-4.jpg" alt="" class="media-object" />
+											<img src="img/preview/avatar-v2-4.jpg" alt="" class="media-object" />
 										</div>
 										<!-- -->
 										<div class="media-body">
@@ -1172,7 +1172,7 @@
 									<div class="media">
 										<!-- -->
 										<div class="post-media pull-left">
-											<img src="assets/img/preview/avatar-v2-2.jpg" alt="" class="media-object" />
+											<img src="img/preview/avatar-v2-2.jpg" alt="" class="media-object" />
 										</div>
 										<!-- -->
 										<div class="media-body">
@@ -1211,7 +1211,7 @@
 									<div class="media">
 										<!-- -->
 										<div class="post-media pull-left">
-											<img src="assets/img/preview/avatar-v2-3.jpg" alt="" class="media-object" />
+											<img src="img/preview/avatar-v2-3.jpg" alt="" class="media-object" />
 										</div>
 										<!-- -->
 										<div class="media-body">
@@ -1254,7 +1254,7 @@
 								<div class="media">
 									<!-- -->
 									<div class="post-media pull-left">
-										<img src="assets/img/preview/avatar-v2-1.jpg" alt="" class="media-object" />
+										<img src="img/preview/avatar-v2-1.jpg" alt="" class="media-object" />
 									</div>
 									<!-- -->
 									<div class="media-body">
@@ -1293,7 +1293,7 @@
 								<div class="media">
 									<!-- -->
 									<div class="post-media pull-left">
-										<img src="assets/img/preview/avatar-v2-2.jpg" alt="" class="media-object" />
+										<img src="img/preview/avatar-v2-2.jpg" alt="" class="media-object" />
 									</div>
 									<!-- -->
 									<div class="media-body">
@@ -1332,7 +1332,7 @@
 								<div class="media">
 									<!-- -->
 									<div class="post-media pull-left">
-										<img src="assets/img/preview/avatar-v2-3.jpg" alt="" class="media-object" />
+										<img src="img/preview/avatar-v2-3.jpg" alt="" class="media-object" />
 									</div>
 									<!-- -->
 									<div class="media-body">
@@ -1371,7 +1371,7 @@
 								<div class="media">
 									<!-- -->
 									<div class="post-media pull-left">
-										<img src="assets/img/preview/avatar-v2-4.jpg" alt="" class="media-object" />
+										<img src="img/preview/avatar-v2-4.jpg" alt="" class="media-object" />
 									</div>
 									<!-- -->
 									<div class="media-body">
@@ -1427,7 +1427,7 @@
 									<div class="media">
 										<!-- -->
 										<div class="post-media pull-left">
-											<img src="assets/img/preview/avatar-v2-2.jpg" alt="" class="media-object" />
+											<img src="img/preview/avatar-v2-2.jpg" alt="" class="media-object" />
 										</div>
 										<!-- -->
 										<div class="media-body">
@@ -1466,7 +1466,7 @@
 									<div class="media">
 										<!-- -->
 										<div class="post-media pull-left">
-											<img src="assets/img/preview/avatar-v2-3.jpg" alt="" class="media-object" />
+											<img src="img/preview/avatar-v2-3.jpg" alt="" class="media-object" />
 										</div>
 										<!-- -->
 										<div class="media-body">
@@ -1510,7 +1510,7 @@
 									<div class="media">
 										<!-- -->
 										<div class="post-media pull-left">
-											<img src="assets/img/preview/avatar-v2-3.jpg" alt="" class="media-object" />
+											<img src="img/preview/avatar-v2-3.jpg" alt="" class="media-object" />
 										</div>
 										<!-- -->
 										<div class="media-body">
@@ -1549,7 +1549,7 @@
 									<div class="media">
 										<!-- -->
 										<div class="post-media pull-left">
-											<img src="assets/img/preview/avatar-v2-4.jpg" alt="" class="media-object" />
+											<img src="img/preview/avatar-v2-4.jpg" alt="" class="media-object" />
 										</div>
 										<!-- -->
 										<div class="media-body">
@@ -1593,7 +1593,7 @@
 									<div class="media">
 										<!-- -->
 										<div class="post-media pull-left">
-											<img src="assets/img/preview/avatar-v2-2.jpg" alt="" class="media-object" />
+											<img src="img/preview/avatar-v2-2.jpg" alt="" class="media-object" />
 										</div>
 										<!-- -->
 										<div class="media-body">
@@ -1632,7 +1632,7 @@
 									<div class="media">
 										<!-- -->
 										<div class="post-media pull-left">
-											<img src="assets/img/preview/avatar-v2-3.jpg" alt="" class="media-object" />
+											<img src="img/preview/avatar-v2-3.jpg" alt="" class="media-object" />
 										</div>
 										<!-- -->
 										<div class="media-body">
@@ -1676,7 +1676,7 @@
 									<div class="media">
 										<!-- -->
 										<div class="post-media pull-left">
-											<img src="assets/img/preview/avatar-v2-1.jpg" alt="" class="media-object" />
+											<img src="img/preview/avatar-v2-1.jpg" alt="" class="media-object" />
 										</div>
 										<!-- -->
 										<div class="media-body">
@@ -1715,7 +1715,7 @@
 									<div class="media">
 										<!-- -->
 										<div class="post-media pull-left">
-											<img src="assets/img/preview/avatar-v2-2.jpg" alt="" class="media-object" />
+											<img src="img/preview/avatar-v2-2.jpg" alt="" class="media-object" />
 										</div>
 										<!-- -->
 										<div class="media-body">
@@ -1754,7 +1754,7 @@
 									<div class="media">
 										<!-- -->
 										<div class="post-media pull-left">
-											<img src="assets/img/preview/avatar-v2-3.jpg" alt="" class="media-object" />
+											<img src="img/preview/avatar-v2-3.jpg" alt="" class="media-object" />
 										</div>
 										<!-- -->
 										<div class="media-body">
@@ -1793,7 +1793,7 @@
 									<div class="media">
 										<!-- -->
 										<div class="post-media pull-left">
-											<img src="assets/img/preview/avatar-v2-4.jpg" alt="" class="media-object" />
+											<img src="img/preview/avatar-v2-4.jpg" alt="" class="media-object" />
 										</div>
 										<!-- -->
 										<div class="media-body">

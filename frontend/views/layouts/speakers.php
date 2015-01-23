@@ -16,7 +16,7 @@
 						<div class="hex-deg">
 							<div class="hex-inner">
 								<div class="media">
-									<img src="assets/img/preview/speaker-1.jpg" alt="">
+									<img src="img/preview/speaker-1.jpg" alt="">
 									<div class="caption hovered">
 										<div class="caption-wrapper div-table">
 											<div class="caption-inner div-cell">
@@ -55,7 +55,7 @@
 								<div class="hex-deg">
 									<div class="hex-inner">
 										<div class="media">
-											<img src="assets/img/preview/speaker-2.jpg" alt="">
+											<img src="img/preview/speaker-2.jpg" alt="">
 											<div class="caption hovered">
 												<div class="caption-wrapper div-table">
 													<div class="caption-inner div-cell">
@@ -94,7 +94,7 @@
 								<div class="hex-deg">
 									<div class="hex-inner">
 										<div class="media">
-											<img src="assets/img/preview/speaker-3.jpg" alt="">
+											<img src="img/preview/speaker-3.jpg" alt="">
 											<div class="caption hovered">
 												<div class="caption-wrapper div-table">
 													<div class="caption-inner div-cell">
@@ -133,7 +133,7 @@
 								<div class="hex-deg">
 									<div class="hex-inner">
 										<div class="media">
-											<img src="assets/img/preview/speaker-4.jpg" alt="">
+											<img src="img/preview/speaker-4.jpg" alt="">
 											<div class="caption hovered">
 												<div class="caption-wrapper div-table">
 													<div class="caption-inner div-cell">

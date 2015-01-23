@@ -304,7 +304,7 @@ var theme = function () {
         initGoogleMap: function() {
             var map;
             var marker;
-            var image = 'assets/img/icon-google-map.png'; // marker icon
+            var image = 'img/icon-google-map.png'; // marker icon
             function initialize() {
                 var mapOptions = {
                     scrollwheel: false,

@@ -2,7 +2,7 @@
 	<div class="container">
 		<h1 class="section-title">
 			<span data-animation="flipInY" data-animation-delay="300" class="icon-inner"><span class="fa-stack"><i class="fa rhex fa-stack-2x"></i><i class="fa fa-comments fa-stack-1x"></i></span></span>
-			<span data-animation="fadeInRight" data-animation-delay="500" class="title-inner">Testimonials <small> / See What People Say About Us</small></span>
+			<span data-animation="fadeInRight" data-animation-delay="500" class="title-inner">Depoimentos <small> / Veja o que as pessoas dizem sobre nós</small></span>
 		</h1>
 
 		<!-- Testimonials -->
@@ -15,7 +15,7 @@
 							<div class="hex-deg">
 								<div class="hex-deg">
 									<div class="hex-inner">
-										<img class="img-responsive" src="assets/img/preview/avatar-1.jpg" alt=""/>
+										<img class="img-responsive" src="img/preview/avatar-1.jpg" alt=""/>
 									</div>
 								</div>
 							</div>
@@ -38,7 +38,7 @@
 							<div class="hex-deg">
 								<div class="hex-deg">
 									<div class="hex-inner">
-										<img class="img-responsive" src="assets/img/preview/avatar-2.jpg" alt=""/>
+										<img class="img-responsive" src="img/preview/avatar-2.jpg" alt=""/>
 									</div>
 								</div>
 							</div>
@@ -61,7 +61,7 @@
 							<div class="hex-deg">
 								<div class="hex-deg">
 									<div class="hex-inner">
-										<img class="img-responsive" src="assets/img/preview/avatar-3.jpg" alt=""/>
+										<img class="img-responsive" src="img/preview/avatar-3.jpg" alt=""/>
 									</div>
 								</div>
 							</div>

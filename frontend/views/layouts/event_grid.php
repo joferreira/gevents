@@ -13,7 +13,7 @@
 							<span class="month">Nov</span>
 							<span class="day">29</span>
 						</div>
-						<img src="assets/img/preview/latest-1.jpg" alt="">
+						<img src="img/preview/latest-1.jpg" alt="">
 						<div class="caption hovered">
 							<div class="caption-wrapper div-table">
 								<div class="caption-inner div-cell">
@@ -38,7 +38,7 @@
 							<span class="month">Nov</span>
 							<span class="day">29</span>
 						</div>
-						<img src="assets/img/preview/latest-2.jpg" alt="">
+						<img src="img/preview/latest-2.jpg" alt="">
 						<div class="caption hovered">
 							<div class="caption-wrapper div-table">
 								<div class="caption-inner div-cell">
@@ -63,7 +63,7 @@
 							<span class="month">Nov</span>
 							<span class="day">29</span>
 						</div>
-						<img src="assets/img/preview/latest-3.jpg" alt="">
+						<img src="img/preview/latest-3.jpg" alt="">
 						<div class="caption hovered">
 							<div class="caption-wrapper div-table">
 								<div class="caption-inner div-cell">
@@ -88,7 +88,7 @@
 							<span class="month">Nov</span>
 							<span class="day">29</span>
 						</div>
-						<img src="assets/img/preview/latest-4.jpg" alt="">
+						<img src="img/preview/latest-4.jpg" alt="">
 						<div class="caption hovered">
 							<div class="caption-wrapper div-table">
 								<div class="caption-inner div-cell">
@@ -113,7 +113,7 @@
 							<span class="month">Nov</span>
 							<span class="day">29</span>
 						</div>
-						<img src="assets/img/preview/latest-5.jpg" alt="">
+						<img src="img/preview/latest-5.jpg" alt="">
 						<div class="caption hovered">
 							<div class="caption-wrapper div-table">
 								<div class="caption-inner div-cell">
@@ -138,7 +138,7 @@
 							<span class="month">Nov</span>
 							<span class="day">29</span>
 						</div>
-						<img src="assets/img/preview/latest-6.jpg" alt="">
+						<img src="img/preview/latest-6.jpg" alt="">
 						<div class="caption hovered">
 							<div class="caption-wrapper div-table">
 								<div class="caption-inner div-cell">
@@ -163,7 +163,7 @@
 							<span class="month">Nov</span>
 							<span class="day">29</span>
 						</div>
-						<img src="assets/img/preview/latest-7.jpg" alt="">
+						<img src="img/preview/latest-7.jpg" alt="">
 						<div class="caption hovered">
 							<div class="caption-wrapper div-table">
 								<div class="caption-inner div-cell">
@@ -188,7 +188,7 @@
 							<span class="month">Nov</span>
 							<span class="day">29</span>
 						</div>
-						<img src="assets/img/preview/latest-8.jpg" alt="">
+						<img src="img/preview/latest-8.jpg" alt="">
 						<div class="caption hovered">
 							<div class="caption-wrapper div-table">
 								<div class="caption-inner div-cell">

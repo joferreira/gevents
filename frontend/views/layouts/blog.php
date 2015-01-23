@@ -14,7 +14,7 @@
 						<div class="post-type">
 							<i class="fa fa-video-camera"></i>
 						</div>
-						<img src="assets/img/preview/recent-post-1.jpg" alt=""/>
+						<img src="img/preview/recent-post-1.jpg" alt=""/>
 					</div>
 					<div class="post-header">
 						<h2 class="post-title"><a href="#">Standart Blog Post Header Here</a></h2>
@@ -50,7 +50,7 @@
 						<div class="post-type">
 							<i class="fa fa-photo"></i>
 						</div>
-						<img src="assets/img/preview/recent-post-2.jpg" alt=""/>
+						<img src="img/preview/recent-post-2.jpg" alt=""/>
 					</div>
 					<div class="post-header">
 						<h2 class="post-title"><a href="#">Standart Blog Post Header Here</a></h2>
@@ -86,7 +86,7 @@
 						<div class="post-type">
 							<i class="fa fa-music"></i>
 						</div>
-						<img src="assets/img/preview/recent-post-3.jpg" alt=""/>
+						<img src="img/preview/recent-post-3.jpg" alt=""/>
 					</div>
 					<div class="post-header">
 						<h2 class="post-title"><a href="#">Standart Blog Post Header Here</a></h2>

@@ -3,7 +3,7 @@
 	<div class="container">
 		<h1 class="section-title clearfix">
 			<span data-animation="flipInY" data-animation-delay="300" class="icon-inner"><span class="fa-stack"><i class="fa rhex fa-stack-2x"></i><i class="fa fa-user fa-stack-1x"></i></span></span>
-			<span data-animation="fadeInRight" data-animation-delay="500" class="title-inner">Event Price list <small> / perfect price for event</small></span>
+			<span data-animation="fadeInRight" data-animation-delay="500" class="title-inner">Planos<small> / perfeito para o evento</small></span>
 		</h1>
 		<div class="row price-tables">
 			<div class="col-xsp-6 col-sm-6 col-md-6 col-lg-4">
