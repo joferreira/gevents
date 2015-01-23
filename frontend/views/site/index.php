@@ -5,6 +5,7 @@ $this->title = 'Event';
 <!-- Content area -->
 <?= $this->render('/layouts/slider'); ?>
 <?= $this->render('/layouts/event_carousel'); ?>
+<?= $this->render('/layouts/how_it_works'); ?>
 <?= $this->render('/layouts/event_grid'); ?>
 <?= $this->render('/layouts/about'); ?>
 <?= $this->render('/layouts/donation'); ?>
