@@ -212,8 +212,10 @@ var theme = function () {
         // CountDown
         initCountDown: function () {
             var austDay = new Date();
-            austDay = new Date(austDay.getFullYear() + 1, 1 - 1, 26);
-            $('#defaultCountdown').countdown({until: austDay});
+            //austDay = new Date(austDay.getFullYear() + 1, 1 - 1, 26);
+            austDay = new Date(2015, 7 - 1, 4, 13);
+            $.countdown.setDefaults($.countdown.regionalOptions['pt-BR']);
+            $('#defaultCountdown').countdown({until: austDay, format: 'ODHM'});
             $('#year').text(austDay.getFullYear());
         },
         // Partners Slider
@@ -252,9 +254,9 @@ var theme = function () {
                 responsive: {
                     0:    {items: 1},
                     479:  {items: 1},
-                    768:  {items: 2},
-                    991:  {items: 3},
-                    1024: {items: 4}
+                    768:  {items: 1},
+                    991:  {items: 2},
+                    1024: {items: 3}
                 }
             });
         },

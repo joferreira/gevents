@@ -5,9 +5,9 @@
 		<!--  -->
 		<div class="row-event event-carousel">
 			<div class="owl-carousel">
-				<div class="row-event-media">
+				<div class="row-event-media" style="width:400px">
 					<div class="thumbnail no-border no-padding">
-						<div class="media">
+						<div class="media"style="height:200px">
 							<div class="date-block">
 								<span class="month">Nov</span>
 								<span class="day">29</span>
@@ -28,14 +28,12 @@
 							<small>103 Prince st. New York, NY 10012</small>
 							<br/>
 							<small>Nov 29, 2014 - 08:00 am</small>
-							<br/>
-							<small>Price: <strong>$50</strong></small>
 						</div>
 					</div>
 				</div>
-				<div class="row-event-media">
+				<div class="row-event-media" style="width:400px">
 					<div class="thumbnail no-border no-padding">
-						<div class="media">
+						<div class="media"style="height:200px">
 							<div class="date-block">
 								<span class="month">Nov</span>
 								<span class="day">29</span>
@@ -56,14 +54,12 @@
 							<small>103 Prince st. New York, NY 10012</small>
 							<br/>
 							<small>Nov 29, 2014 - 08:00 am</small>
-							<br/>
-							<small>Price: <strong>$50</strong></small>
 						</div>
 					</div>
 				</div>
-				<div class="row-event-media">
+				<div class="row-event-media" style="width:400px">
 					<div class="thumbnail no-border no-padding">
-						<div class="media">
+						<div class="media"style="height:200px">
 							<div class="date-block">
 								<span class="month">Nov</span>
 								<span class="day">29</span>
@@ -84,14 +80,12 @@
 							<small>103 Prince st. New York, NY 10012</small>
 							<br/>
 							<small>Nov 29, 2014 - 08:00 am</small>
-							<br/>
-							<small>Price: <strong>$50</strong></small>
 						</div>
 					</div>
 				</div>
-				<div class="row-event-media">
+				<div class="row-event-media" style="width:400px">
 					<div class="thumbnail no-border no-padding">
-						<div class="media">
+						<div class="media"style="height:200px">
 							<div class="date-block">
 								<span class="month">Nov</span>
 								<span class="day">29</span>
@@ -112,14 +106,12 @@
 							<small>103 Prince st. New York, NY 10012</small>
 							<br/>
 							<small>Nov 29, 2014 - 08:00 am</small>
-							<br/>
-							<small>Price: <strong>$50</strong></small>
 						</div>
 					</div>
 				</div>
-				<div class="row-event-media">
+				<div class="row-event-media" style="width:400px">
 					<div class="thumbnail no-border no-padding">
-						<div class="media">
+						<div class="media"style="height:200px">
 							<div class="date-block">
 								<span class="month">Nov</span>
 								<span class="day">29</span>
@@ -140,14 +132,12 @@
 							<small>103 Prince st. New York, NY 10012</small>
 							<br/>
 							<small>Nov 29, 2014 - 08:00 am</small>
-							<br/>
-							<small>Price: <strong>$50</strong></small>
 						</div>
 					</div>
 				</div>
-				<div class="row-event-media">
+				<div class="row-event-media" style="width:400px">
 					<div class="thumbnail no-border no-padding">
-						<div class="media">
+						<div class="media"style="height:200px">
 							<div class="date-block">
 								<span class="month">Nov</span>
 								<span class="day">29</span>
@@ -168,8 +158,6 @@
 							<small>103 Prince st. New York, NY 10012</small>
 							<br/>
 							<small>Nov 29, 2014 - 08:00 am</small>
-							<br/>
-							<small>Price: <strong>$50</strong></small>
 						</div>
 					</div>
 				</div>

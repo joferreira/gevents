@@ -26,7 +26,6 @@
 						<h3 class="caption-title">Lorem ipsum dolor sit amet</h3>
 						<small>103 Prince st. New York, NY 10012</small><br/>
 						<small>Nov 29, 2014 - 08:00 am</small><br/>
-						<small>Price: <strong>$50</strong></small>
 					</div>
 				</div>
 			</div>
@@ -51,7 +50,6 @@
 						<h3 class="caption-title">Lorem ipsum dolor sit amet</h3>
 						<small>103 Prince st. New York, NY 10012</small><br/>
 						<small>Nov 29, 2014 - 08:00 am</small><br/>
-						<small>Price: <strong>$50</strong></small>
 					</div>
 				</div>
 			</div>
@@ -76,7 +74,6 @@
 						<h3 class="caption-title">Lorem ipsum dolor sit amet</h3>
 						<small>103 Prince st. New York, NY 10012</small><br/>
 						<small>Nov 29, 2014 - 08:00 am</small><br/>
-						<small>Price: <strong>$50</strong></small>
 					</div>
 				</div>
 			</div>
@@ -101,7 +98,6 @@
 						<h3 class="caption-title">Lorem ipsum dolor sit amet</h3>
 						<small>103 Prince st. New York, NY 10012</small><br/>
 						<small>Nov 29, 2014 - 08:00 am</small><br/>
-						<small>Price: <strong>$50</strong></small>
 					</div>
 				</div>
 			</div>
@@ -126,7 +122,6 @@
 						<h3 class="caption-title">Lorem ipsum dolor sit amet</h3>
 						<small>103 Prince st. New York, NY 10012</small><br/>
 						<small>Nov 29, 2014 - 08:00 am</small><br/>
-						<small>Price: <strong>$50</strong></small>
 					</div>
 				</div>
 			</div>
@@ -151,7 +146,6 @@
 						<h3 class="caption-title">Lorem ipsum dolor sit amet</h3>
 						<small>103 Prince st. New York, NY 10012</small><br/>
 						<small>Nov 29, 2014 - 08:00 am</small><br/>
-						<small>Price: <strong>$50</strong></small>
 					</div>
 				</div>
 			</div>
@@ -176,7 +170,6 @@
 						<h3 class="caption-title">Lorem ipsum dolor sit amet</h3>
 						<small>103 Prince st. New York, NY 10012</small><br/>
 						<small>Nov 29, 2014 - 08:00 am</small><br/>
-						<small>Price: <strong>$50</strong></small>
 					</div>
 				</div>
 			</div>
@@ -201,7 +194,6 @@
 						<h3 class="caption-title">Lorem ipsum dolor sit amet</h3>
 						<small>103 Prince st. New York, NY 10012</small><br/>
 						<small>Nov 29, 2014 - 08:00 am</small><br/>
-						<small>Price: <strong>$50</strong></small>
 					</div>
 				</div>
 			</div>

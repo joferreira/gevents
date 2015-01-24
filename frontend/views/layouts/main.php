@@ -140,6 +140,7 @@ AppAsset::register($this);
 					});
 				}
 			}
+			$('[data-toggle="popover"]').popover();
 		});
 
 	</script>
