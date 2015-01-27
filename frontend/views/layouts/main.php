@@ -22,8 +22,14 @@ AppAsset::register($this);
 	<title><?= Html::encode($this->title) ?></title>
 
 	<!-- Favicons -->
-	<link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/ico/apple-touch-icon-144-precomposed.png">
-	<link rel="shortcut icon" href="assets/ico/favicon.ico">
+	<link rel="apple-touch-icon-precomposed" sizes="144x144" href="ico/apple-touch-icon-144-precomposed.png">
+	<link rel="shortcut icon" href="ico/favicon.ico">
+
+	<!--link href="plugins/countdown/jquery.countdown.css" rel="stylesheet">
+	<link href="css/theme.css" rel="stylesheet">
+	<link href="css/theme-red-1.css" rel="stylesheet" id="theme-config-link">
+	<link href="css/custom.css" rel="stylesheet">
+	<link href="js/theme-config.css" rel="stylesheet"-->
 	
 	<?php $this->head() ?>
 </head>
@@ -106,6 +112,7 @@ AppAsset::register($this);
 
 	<div class="to-top"><i class="fa fa-angle-up"></i></div>
 	<?php $this->endBody() ?>
+	<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&amp;sensor=false"></script>
 	<script type="text/javascript">
 		jQuery(document).ready(function () {
 			theme.init();

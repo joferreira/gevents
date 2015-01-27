@@ -51,7 +51,6 @@ class AppAsset extends AssetBundle
 		'js/custom.js',
 		'plugins/jquery.cookie.js',
 		'js/theme-config.js',
-		'https://maps.googleapis.com/maps/api/js?v=3.exp&amp;sensor=false',
 	];
 	public $depends = [
 		'yii\web\YiiAsset',

@@ -7,11 +7,10 @@
 		</h1>
 		<div class="row">
 			<div class="col-lg-8">
-				<p data-animation="fadeInUp" data-animation-delay="300">Praesent ac sem in neque venenatis tristique. Morbi et ligula velit. Nullam a augue vel mi porta
-					vestibulum non ac elit. Vivamus convallis tortor et fermentum semper. In hac habitasse platea
-					dictumst. Curabitur eget dui id metus pulvinar suscipit. Quisque vitae ligula laoreet, scelerisque
-					leo quis, facilisis metus. Sed pellentesque, urna sed varius consectetur, eros augue fringilla
-					magna, id sem magna vel diam. Nulla sed hendrerit nunc.</p>
+				<p data-animation="fadeInUp" data-animation-delay="300">Visamos uma tecnologia avançada em uma plataforma inteligente abrangendo os diversos tipos de eventos customizados, sendo assim, atingindo a todo um público e organizadores diferenciados.</p>
+				<p data-animation="fadeInUp" data-animation-delay="300">Buscamos em toda nossa experiência profissional a melhor forma de explanar todo este mundo de eventos, com idéias inovadoras e uma equipe preparada para novos desafios tecnológicos.</p>
+				<p data-animation="fadeInUp" data-animation-delay="300">Temos foco, persuasão, conhecimento e tecnologia avançada para atender da melhor forma a cada requisição.</p>
+				<p data-animation="fadeInUp" data-animation-delay="300">Sempre olhamos os eventos de cima, e por isso somos chamados de Gigantes.</p>
 				<p class="btn-row">
 					<a href="#register" class="btn btn-theme btn-theme-xl scroll-to" data-animation="flipInY" data-animation-delay="200">Register <i class="fa fa-arrow-circle-right"></i></a>
 					<!-- -->

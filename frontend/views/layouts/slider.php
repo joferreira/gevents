@@ -12,7 +12,7 @@
 						<div class="div-table">
 							<div class="div-cell">
 								<h2 class="caption-title" data-animation="fadeInDown" data-animation-delay="100"><span>4 de Julho de 2015</span></h2>
-								<h3 class="caption-subtitle" data-animation="fadeInUp" data-animation-delay="300">Gigantes dos Eventos</h3>
+								<h3 class="caption-subtitle" data-animation="fadeInUp" data-animation-delay="300">Gigante dos Eventos</h3>
 								<div class="countdown-wrapper">
 									<div id="defaultCountdown" class="defaultCountdown clearfix"></div>
 								</div>
@@ -32,7 +32,7 @@
 					<div class="div-table">
 					<div class="div-cell">
 						<h2 class="caption-title" data-animation="fadeInDown" data-animation-delay="100"><span>4 de Julho de 2015</span></h2>
-						<h3 class="caption-subtitle" data-animation="fadeInUp" data-animation-delay="300">Gigantes dos Eventos</h3>
+						<h3 class="caption-subtitle" data-animation="fadeInUp" data-animation-delay="300">Gigante dos Eventos</h3>
 						<p class="caption-text">
 							<a class="btn btn-theme btn-theme-xl scroll-to" href="#register" data-animation="flipInY" data-animation-delay="600"> Cadastre-se <i class="fa fa-arrow-circle-right"></i></a><!--
 							--><a class="btn btn-theme btn-theme-xl btn-theme-transparent-white" href="http://www.youtube.com/watch?v=O-zpOMYRi0w" data-gal="prettyPhoto" data-animation="flipInY" data-animation-delay="900">Watch video</a>
@@ -112,7 +112,7 @@
 							<div class="col-md-6 col-lg-8">
 								<div class="text-holder">
 								<h2 class="caption-title">4 de Julho de 2015</h2>
-								<h3 class="caption-subtitle">Gigantes dos Eventos </h3>
+								<h3 class="caption-subtitle">Gigante dos Eventos </h3>
 								</div>
 							</div>
 						</div>
@@ -131,7 +131,7 @@
 					<div class="div-table">
 					<div class="div-cell">
 						<h2 class="caption-title"><span>4 de Julho de 2015</span></h2>
-						<h3 class="caption-subtitle">Gigantes dos Eventos</h3>
+						<h3 class="caption-subtitle">Gigante dos Eventos</h3>
 						<p class="caption-text">
 							<a class="btn btn-play" href="http://www.youtube.com/watch?v=O-zpOMYRi0w" data-gal="prettyPhoto"><i class="fa fa-play"></i></a>
 						</p>

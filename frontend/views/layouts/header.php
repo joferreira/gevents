@@ -10,7 +10,7 @@
 						<i class="fa logo-hex fa-stack-2x"></i>
 						<i class="fa logo-fa fa-map-marker fa-stack-1x"></i>
 					</span>
-					Event
+					Gigante dos Eventos
 				</a>
 			</div>
 			<!-- /Logo -->
@@ -25,6 +25,7 @@
 					<li><a href="#price">Planos</a></li>
 					<li><a href="#location">Localização</a></li>
 					<li><a href="#register">Cadastrar</a></li>
+					<li><a href="#login">Login</a></li>
 				</ul>
 			</nav>
 			<!-- /Navigation -->
