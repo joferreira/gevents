@@ -8,7 +8,7 @@
 		<form id="login-form" name="login-form" class="login-form" action="" method="post">
 			<div class="row">
 				<div class="col-sm-12 form-alert"></div>
-				<div class="col-sm-6 col-md-3">
+				<div class="col-sm-6 col-md-4">
 					<div class="form-group" data-animation="fadeInUp" data-animation-delay="200">
 						<input
 								type="text" class="form-control input-login"
@@ -16,7 +16,7 @@
 								placeholder="Login"/>
 					</div>
 				</div>
-				<div class="col-sm-6 col-md-3">
+				<div class="col-sm-6 col-md-4">
 					<div class="form-group" data-animation="fadeInUp" data-animation-delay="400">
 						<input
 								type="password" class="form-control input-name"
@@ -24,11 +24,11 @@
 								placeholder="Senha"/>
 					</div>
 				</div>
-				<div class="col-md-12 overflowed">
-					<div class="text-center margin-top">
+				<div class="col-sm-6 col-md-4">
+					<div class="text-center">
 						<button
 								data-animation="flipInY" data-animation-delay="100"
-								class="btn btn-theme btn-theme-xl submit-button" type="submit"
+								class="btn btn-theme btn-theme-lg submit-button" type="submit"
 								> Entrar <i class="fa fa-arrow-circle-right"></i></button>
 					</div>
 				</div>
