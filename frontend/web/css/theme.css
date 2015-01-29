@@ -2740,7 +2740,7 @@ div.pp_overlay {
     position: relative;
 }
 .price-table.featured:before {
-    content: 'Best';
+    content: 'Melhor';
     position: absolute;
     top: 15px; right: -65px;
     display: block;

@@ -12,9 +12,9 @@
 				<p data-animation="fadeInUp" data-animation-delay="300">Temos foco, persuasão, conhecimento e tecnologia avançada para atender da melhor forma a cada requisição.</p>
 				<p data-animation="fadeInUp" data-animation-delay="300">Sempre olhamos os eventos de cima, e por isso somos chamados de Gigantes.</p>
 				<p class="btn-row">
-					<a href="#register" class="btn btn-theme btn-theme-xl scroll-to" data-animation="flipInY" data-animation-delay="200">Register <i class="fa fa-arrow-circle-right"></i></a>
+					<a href="#register" class="btn btn-theme btn-theme-xl scroll-to" data-animation="flipInY" data-animation-delay="200">Cadastre-se <i class="fa fa-arrow-circle-right"></i></a>
 					<!-- -->
-					<a href="#" class="btn btn-theme btn-theme-xl btn-theme-transparent" data-animation="flipInY" data-animation-delay="400">Watch video</a>
+					<a href="#" class="btn btn-theme btn-theme-xl btn-theme-transparent hidden" data-animation="flipInY" data-animation-delay="400">Watch video</a>
 				</p>
 			</div>
 			<div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 pull-left">
