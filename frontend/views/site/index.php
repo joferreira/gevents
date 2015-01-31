@@ -8,7 +8,6 @@ $this->title = 'Gigante dos Eventos';
 <?= $this->render('/layouts/event_grid'); ?>
 <?= $this->render('/layouts/about'); ?>
 <?= $this->render('/layouts/login'); ?>
-<?= $this->render('/layouts/testimonials'); ?>
 <?= $this->render('/layouts/register'); ?>
 <?= $this->render('/layouts/price'); ?>
 <?= $this->render('/layouts/faq'); ?>

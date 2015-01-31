@@ -108,6 +108,7 @@ AppAsset::register($this);
 			</div>
 		</div>
 	</footer>
+	<br/>
 	<!-- /FOOTER -->
 
 	<div class="to-top"><i class="fa fa-angle-up"></i></div>

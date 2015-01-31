@@ -23,40 +23,40 @@
 				<div class="row thumbnails">
 
 					<div class="col-sm-6 col-xs-6">
-						<a href="javascript:void(0);" class="" title="Cadastre-se é simples e rápido" data-toggle="popover" data-placement="left" data-content="O seu cadastro será dividido em três etapas para facilitar o preenchimento dos seus dados de acesso, vinculação e correspondência.">
+						<a href="javascript:void(0);" class="" title="Cadastre-se é simples e rápido" data-toggle="popover" data-placement="left" data-content="O seu cadastro será dividido em duas etapas para facilitar o preenchimento dos seus dados de acesso, vinculação e correspondência.">
 							<div class="thumbnail no-border no-padding" data-animation="fadeInLeft" data-animation-delay="100">							
 								<div class="media">
-									<img src="img/preview/about-sm-1.jpg" alt="">
+									<img src="img/preview/about-sm-1.png" alt="">
 								</div>
 							</div>
 						</a>
 					</div>
 
 					<div class="col-sm-6 col-xs-6">
-						<a href="javascript:void(0);" class="" title="Crie a página para o seu evento" data-toggle="popover" data-placement="left" data-content="É muito simples criar um evento! Você só precisa inserir as informações específicas que devem ser divulgadas e publicar o seu evento. Depois disso, você já pode começar a controlar a lista de inscritos e as formas de pagamento realizadas. ">
+						<a href="javascript:void(0);" class="" title="Cria o HotEvent para o seu evento" data-toggle="popover" data-placement="left" data-content="É muito simples criar um HotEvent! Você só precisa inserir as informações específicas que devem ser divulgadas e publicar o seu evento. Depois disso, você já pode começar a controlar a lista de participantes, ingressos e as formas de pagamentos realizadas.">
 							<div class="thumbnail no-border no-padding" data-animation="fadeInDown" data-animation-delay="200">
 								<div class="media">
-									<img src="img/preview/about-sm-2.jpg" alt="">
+									<img src="img/preview/about-sm-2.png" alt="">
 								</div>
 							</div>
 						</a>
 					</div>
 
 					<div class="col-sm-6 col-xs-6">
-						<a href="javascript:void(0);" class="" title="Gerencie o seu evento" data-toggle="popover" data-placement="left" data-content="Através do painel de controle é possível emitir relatórios das inscrições, com informações relativas ao status de pagamento, número de inscritos, inscrições realizadas com cupom de desconto e outros dados. Os relatórios são intuitivos e de fácil entendimento, possibilitando uma melhor interpretação por parte do organizador.">
+						<a href="javascript:void(0);" class="" title="Gerencie o seu evento" data-toggle="popover" data-placement="left" data-content="Através do painel de controle é possível emitir relatórios das inscrições, com informações relativas ao status de pagamento, número de participantes, inscrições realizadas com cupom de desconto e outros dados. Os relatórios são intuitivos e de fácil entendimento, possibilitando uma melhor interpretação por parte do organizador.">
 							<div class="thumbnail no-border no-padding" data-animation="fadeInRight" data-animation-delay="300">
 								<div class="media">
-									<img src="img/preview/about-sm-3.jpg" alt="">
+									<img src="img/preview/about-sm-3.png" alt="">
 								</div>
 							</div>
 						</a>
 					</div>
 
 					<div class="col-sm-6 col-xs-6">
-						<a href="javascript:void(0);" class="" title="Gerencie o seu evento" data-toggle="popover" data-placement="left" data-content="Através do painel de controle é possível emitir relatórios das inscrições, com informações relativas ao status de pagamento, número de inscritos, inscrições realizadas com cupom de desconto e outros dados. Os relatórios são intuitivos e de fácil entendimento, possibilitando uma melhor interpretação por parte do administrador.">
+						<a href="javascript:void(0);" class="" title="Taxa de serviço" data-toggle="popover" data-placement="left" data-content="Para eventos pagos é cobrada a taxa de R$ 2,50 reais fixo para cada inscrição indiferente do valor e somado a taxa do PagSeguro que varia conforme valor e tipo de pagamento. Todos os pagamentos são processados através do PagSeguro. São aceitos boletos, cartões de débitos e os principais cartões de crédito, incluindo Mastercard, Visa e Hipercard.">
 							<div class="thumbnail no-border no-padding" data-animation="fadeInUp" data-animation-delay="400">
 								<div class="media">
-									<img src="img/preview/about-sm-4.jpg" alt="">
+									<img src="img/preview/about-sm-4.png" alt="">
 								</div>
 							</div>
 						</a>
