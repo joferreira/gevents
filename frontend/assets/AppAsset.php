@@ -49,11 +49,14 @@ class AppAsset extends AssetBundle
 		'js/theme-ajax-mail.js',
 		'js/theme.js',
 		'js/custom.js',
-		'plugins/jquery.cookie.js',
-		'js/theme-config.js',
 	];
 	public $depends = [
 		'yii\web\YiiAsset',
 		'yii\bootstrap\BootstrapAsset',
 	];
 }
+
+/*
+		'plugins/jquery.cookie.js',
+		'js/theme-config.js',
+*/
