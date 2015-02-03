@@ -23,7 +23,7 @@
 					<li><a href="#home">Home</a></li>
 					<li><a href="#about">Sobre</a></li>
 					<li><a href="#price">Planos</a></li>
-					<li><a href="#location">Localização</a></li>
+					<li><a href="#faq">FAQS</a></li>
 					<li><a href="#register">Cadastrar</a></li>
 					<li><a href="#login">Login</a></li>
 				</ul>

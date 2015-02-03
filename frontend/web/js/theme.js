@@ -189,7 +189,7 @@ var theme = function () {
             $('#main-slider').owlCarousel({
                 //items: 1,
                 autoplay: true,
-                autoplayHoverPause: false,
+                autoplayHoverPause: true,
                 loop: true,
                 margin: 0,
                 dots: false,

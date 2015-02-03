@@ -6,7 +6,7 @@
 		<div id="main-slider" class="owl-carousel owl-theme">
 
 			<!-- Slide -->
-			<div class="item page text-center slide0">
+			<!--div class="item page text-center slide0">
 				<div class="caption">
 					<div class="container">
 						<div class="div-table">
@@ -23,7 +23,7 @@
 						</div>
 					</div>
 				</div>
-			</div>
+			</div-->
 
 			<!-- Slide -->
 			<div class="item page text-center slide1">
@@ -31,11 +31,11 @@
 				<div class="container">
 					<div class="div-table">
 					<div class="div-cell">
-						<h2 class="caption-title" data-animation="fadeInDown" data-animation-delay="100"><span>4 de Julho de 2015</span></h2>
+						<h2 class="caption-title" data-animation="fadeInDown" data-animation-delay="100"><span>Uma forma diferente de se fazer eventos</span></h2>
 						<h3 class="caption-subtitle" data-animation="fadeInUp" data-animation-delay="300">Gigante dos Eventos</h3>
 						<p class="caption-text">
-							<a class="btn btn-theme btn-theme-xl scroll-to" href="#register" data-animation="flipInY" data-animation-delay="600"> Cadastre-se <i class="fa fa-arrow-circle-right"></i></a><!--
-							--><a class="btn btn-theme btn-theme-xl btn-theme-transparent-white" href="http://www.youtube.com/watch?v=O-zpOMYRi0w" data-gal="prettyPhoto" data-animation="flipInY" data-animation-delay="900">Watch video</a>
+							<a class="btn btn-theme btn-theme-xl scroll-to" href="#register" data-animation="flipInY" data-animation-delay="600"> Cadastre-se <i class="fa fa-arrow-circle-right"></i></a>
+							<a class="btn btn-theme btn-theme-xl btn-theme-transparent-white hidden" href="http://www.youtube.com/watch?v=O-zpOMYRi0w" data-gal="prettyPhoto" data-animation="flipInY" data-animation-delay="900">Watch video</a>
 						</p>
 					</div>
 					</div>
@@ -55,7 +55,7 @@
 								<div class="form-header color">
 									<h1 class="section-title">
 										<span class="icon-inner"><span class="fa-stack"><i class="fa rhex fa-stack-2x"></i><i class="fa fa-ticket fa-stack-1x"></i></span></span>
-										<span class="title-inner">Event Register</span>
+										<span class="title-inner">Cadastro</span>
 									</h1>
 								</div>
 
@@ -66,34 +66,32 @@
 											<div class="form-group">
 												<input
 														type="text" class="form-control input-name"
-														data-toggle="tooltip" title="Name is required"
-														placeholder="Name and Surname"/>
+														data-toggle="tooltip" title="Nome é obrigatório"
+														placeholder="Nome e Sobrenome"/>
 											</div>
 										</div>
 										<div class="col-sm-12">
 											<div class="form-group">
 												<input
 														type="text" class="form-control input-email"
-														data-toggle="tooltip" title="Mail is required"
-														placeholder="Your Mail Here"/>
+														data-toggle="tooltip" title="E-mail é obrigatório"
+														placeholder="O seu e-mail aqui"/>
 											</div>
 										</div>
 										<div class="col-sm-12">
 											<div class="form-group">
 												<input
-														type="text" class="form-control input-phone"
-														placeholder="Your Phone Number"/>
+														type="password" class="form-control input-password"
+														data-toggle="tooltip" title="Senha"
+														placeholder="Senha" />
 											</div>
 										</div>
 										<div class="col-sm-12">
-											<div class="form-group selectpicker-wrapper">
-												<select
-														class="selectpicker input-price" data-live-search="true" data-width="100%"
-														data-toggle="tooltip" title="Select Your Price Tab">
-													<option>Select Your Price Tab</option>
-													<option>$100</option>
-													<option>$200</option>
-												</select>
+											<div class="form-group">
+												<input
+														type="password" class="form-control "
+														data-toggle="tooltip" title="Confirme a senha"
+														placeholder="Confirme a senha" />
 											</div>
 										</div>
 										<div class="col-sm-12">
@@ -101,7 +99,7 @@
 												<button
 														data-animation="flipInY" data-animation-delay="100"
 														class="btn btn-theme btn-block submit-button" type="submit"
-														> Register Now <i class="fa fa-arrow-circle-right"></i></button>
+														> Cadastre-se Agora <i class="fa fa-arrow-circle-right"></i></button>
 											</div>
 										</div>
 									</div>
@@ -111,7 +109,7 @@
 							</div>
 							<div class="col-md-6 col-lg-8">
 								<div class="text-holder">
-								<h2 class="caption-title">4 de Julho de 2015</h2>
+								<h2 class="caption-title">Bem vindo ao</h2>
 								<h3 class="caption-subtitle">Gigante dos Eventos </h3>
 								</div>
 							</div>
@@ -125,7 +123,7 @@
 			</div>
 
 			<!-- Slide -->
-			<div class="item page text-center slide3">
+			<!--div class="item page text-center slide3">
 				<div class="caption">
 				<div class="container">
 					<div class="div-table">
@@ -135,19 +133,17 @@
 						<p class="caption-text">
 							<a class="btn btn-play" href="http://www.youtube.com/watch?v=O-zpOMYRi0w" data-gal="prettyPhoto"><i class="fa fa-play"></i></a>
 						</p>
-						<!-- Event description -->
-						<!-- /Event description -->
 					</div>
 					</div>
 				</div>
 				</div>
-			</div>
+			</div-->
 
 		</div>
 		</div>
 
 		<!-- Event description -->
-		<div class="event-description">
+		<!--div class="event-description">
 			<div class="container">
 			<div class="row">
 			<div class="event-background">
@@ -202,7 +198,7 @@
 			</div>
 			</div>
 			</div>
-		</div>
+		</div-->
 		<!-- /Event description -->
 
 	</section>
