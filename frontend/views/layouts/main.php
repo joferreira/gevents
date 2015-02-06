@@ -79,7 +79,7 @@ AppAsset::register($this);
 		<?php echo $this->render('header'); ?>
 
 		<!--div class="container"-->
-		<div class="content-area">
+		<div class="content-area  <?= !empty($menu_page)? '1': 'Test'; ?>" >
 		<?= Breadcrumbs::widget([
 			'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
 		]) ?>
@@ -121,7 +121,7 @@ AppAsset::register($this);
 			theme.initCountDown();
 			theme.initPartnerSlider();
 			theme.initTestimonials();
-			theme.initGoogleMap();
+			//theme.initGoogleMap();
 			theme.initEventCarousel();
 		});
 		jQuery(window).load(function () {

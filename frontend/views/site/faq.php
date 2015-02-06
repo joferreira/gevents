@@ -1,5 +1,10 @@
+<?php
+/* @var $this yii\web\View */
+$this->title = 'Gigante dos Eventos - FAQ';
+?>
 <!-- FAQ -->
 <section id="faq" class="page-section light">
+	<div style="height:50px;"></div>
 	<div class="container">
 		<div class="row">
 			<div class="col-md-8 pull-left">
@@ -8,12 +13,25 @@
 					<span data-animation="fadeInRight" data-animation-delay="500" class="title-inner">Gigante FAQS <small> / encontre suas respostas</small></span>
 				</h1>
 			</div>
-			<div class="col-md-4 text-right-md pull-right">
-				<a href="index.php?r=site/faq" class="btn btn-theme btn-theme-lg btn-theme-transparent-grey pull-right"
-				   data-animation="flipInY" data-animation-delay="700"><i class="fa fa-pencil"></i> Ainda está com dúvidas ?</a>
-			</div>
 		</div>
-		<div class="row faq margin-top" data-animation="fadeInUp" data-animation-delay="100">
+		<div class="row faq" data-animation="fadeInUp" data-animation-delay="100">
+			<form id="faq-form" name="faq-form" class="faq-form" action="" method="post">
+				<div class="row">
+					<div class="col-sm-12 form-alert"></div>
+					<div class="col-sm-6 col-md-8">
+						<div class="form-group" data-animation="fadeInUp" data-animation-delay="200">
+							<input type="text" class="form-control input-faq" data-toggle="tooltip" title="" placeholder="Qual é a sua Dúvida ?"/>
+						</div>
+					</div>
+					<div class="col-sm-6 col-md-4">
+						<div class="text-center">
+							<button data-animation="flipInY" data-animation-delay="100" class="btn btn-theme btn-theme-lg submit-button" type="submit" > Buscar <i class="fa fa-arrow-circle-right"></i></button>
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+		<!--div class="row faq margin-top" data-animation="fadeInUp" data-animation-delay="100">
 			<div class="col-sm-6 col-md-6 pull-left">
 				<ul id="tabs-faq"  class="nav">
 					<li class="active"><a href="#tab-faq1" data-toggle="tab"><i class="fa fa-angle-right"></i> <span class="faq-inner">Como criar um HotEvent ?</span></a></li>
@@ -94,7 +112,7 @@
 					</div>
 				</div>
 			</div>
-		</div>
+		</div-->
 	</div>
 </section>
 <!-- /FAQ -->
