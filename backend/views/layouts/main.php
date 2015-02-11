@@ -52,9 +52,9 @@ AppAsset::register($this);
             */
         ?>
         <?php
-        if (!\Yii::$app->user->isGuest) {
+        //if (!\Yii::$app->user->isGuest) {
             echo $this->render('menu');
-        }
+        //}
           ?>
         <div id="wrapper">
         <?= Breadcrumbs::widget([ 'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [], ]) ?>
