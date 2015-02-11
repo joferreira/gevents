@@ -3,9 +3,9 @@ return [
     'components' => [
         'db' => [
             'class' => 'yii\db\Connection',
-            'dsn' => 'mysql:host=208.91.199.77;port=3306;dbname=fjgamtjo_gevents',
-            'username' => 'fjgamtjo_gevents',
-            'password' => 'R[+!{]pTc#me',
+            'dsn' => 'mysql:host=208.91.199.77;dbname=fjgamtjo_gevents',
+            'username' => 'fjgamtjo',
+            'password' => '.3V{lLoXaGwZ',
             'charset' => 'utf8',
         ],
         'mailer' => [
