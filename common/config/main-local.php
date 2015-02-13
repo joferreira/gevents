@@ -3,9 +3,9 @@ return [
     'components' => [
         'db' => [
             'class' => 'yii\db\Connection',
-            'dsn' => 'mysql:host=208.91.199.77;dbname=fjgamtjo_gevents',
-            'username' => 'fjgamtjo',
-            'password' => '.3V{lLoXaGwZ',
+            'dsn' => 'mysql:host=fjgames.com.br.md-28.webhostbox.net;dbname=fjgamtjo_gevents',
+            'username' => 'fjgamtjo_gevents0',
+            'password' => 'R[+!{]pTc#me',
             'charset' => 'utf8',
         ],
         'mailer' => [
@@ -18,3 +18,9 @@ return [
         ],
     ],
 ];
+// .3V{lLoXaGwZ R[+!{]pTc#me .3.S52Pqdb fjgamtjo_gevents 20
+/*
+            'dsn' => 'mysql:host=104.131.186.117;dbname=database',
+            'username' => 'clins',
+            'password' => 'clinsbcl824010',
+*/

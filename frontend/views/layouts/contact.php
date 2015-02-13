@@ -1,3 +1,8 @@
+<?php
+use yii\helpers\Html;
+use yii\bootstrap\ActiveForm;
+use yii\captcha\Captcha;
+?>
 <!-- PAGE CONTACT -->
 <section class="page-section color">
 	<div class="container">
@@ -8,6 +13,43 @@
 		</h1>
 
 		<!-- Contact form -->
+
+		<?php $form = ActiveForm::begin(['id' => 'af-form',
+					'layout' => 'default',
+						'fieldConfig' => [
+							'template' => "{beginWrapper}\n{input}\n{hint}\n{error}\n{endWrapper}",
+							'horizontalCssClasses' => [
+								'offset' => '',
+								'wrapper' => 'af-inner',
+								'error' => '',
+								'hint' => '',
+							],
+						],
+					], ['class'=>'af-form row']); ?>
+			<?= $form->field($model, 'name', [
+							'inputOptions' => [ 
+								'placeholder' => $model->getAttributeLabel('Digite o seu nome... ')
+							]
+						])->label(false); ?>
+			<?= $form->field($model, 'email', [
+							'inputOptions' => [ 
+								'placeholder' => $model->getAttributeLabel('Digite o seu Email... ')
+							]
+						])->label(false); ?>
+			<?= $form->field($model, 'body', [
+							'inputOptions' => [ 
+								'placeholder' => $model->getAttributeLabel('Digite a sua Mensagem... ')
+							]
+						])->label(false)->textArea(['rows' => 6]) ?>
+			<div class="col-sm-12 af-outer af-required text-center">
+				<div class="form-group af-inner">
+					<?= Html::submitButton('Enviar mensagem', [
+						'class' => 'form-button form-button-submit btn btn-theme btn-theme-lg btn-theme-transparent',
+						'name' => 'contact-button']) ?>
+				</div>
+			</div>
+		<?php ActiveForm::end(); ?>
+
 		<form name="af-form" method="post" action="#contact" class="af-form row" id="af-form">
 
 			<div class="col-sm-12 af-outer af-required">

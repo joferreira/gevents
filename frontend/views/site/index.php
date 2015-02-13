@@ -9,5 +9,5 @@ $this->title = 'Gigante dos Eventos';
 <?= $this->render('/layouts/register'); ?>
 <?= $this->render('/layouts/price'); ?>
 <?= $this->render('/layouts/faq'); ?>
-<?= $this->render('/layouts/contact'); ?>
+<?= $this->render('/layouts/contact', ['model'=>$contato,]); ?>
 <!-- /Content area -->
