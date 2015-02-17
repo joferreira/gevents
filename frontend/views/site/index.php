@@ -6,7 +6,7 @@ $this->title = 'Gigante dos Eventos';
 <?= $this->render('/layouts/slider'); ?>
 <?= $this->render('/layouts/about'); ?>
 <?= $this->render('/layouts/login'); ?>
-<?= $this->render('/layouts/register'); ?>
+<?= $this->render('/layouts/register', ['model'=>$cadastro,]); ?>
 <?= $this->render('/layouts/price'); ?>
 <?= $this->render('/layouts/faq'); ?>
 <?= $this->render('/layouts/contact', ['model'=>$contato,]); ?>

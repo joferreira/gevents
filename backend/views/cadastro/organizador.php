@@ -6,8 +6,9 @@ use yii\grid\GridView;
 /* @var $this yii\web\View */
 /* @var $searchModel backend\models\UsarioSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
+$titiulo = 'Organizador';
 
-$this->title = 'Usuarios';
+$this->title = $titiulo;
 ?>
 	<div id="page-wrapper" class="usuario-index">
 		<br/>
@@ -24,11 +25,9 @@ $this->title = 'Usuarios';
 				'columns' => [
 					['class' => 'yii\grid\SerialColumn'],
 
-					'INT_ID_USUARIO',
-					'PERFIL_INT_ID_PERFIL',
+					'INT_ID_CLIENTE',
 					'STR_NOME_COMPLETO',
 					'STR_EMAIL:email',
-					'STR_SENHA',
 
 					['class' => 'yii\grid\ActionColumn'],
 				],

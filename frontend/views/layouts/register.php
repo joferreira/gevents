@@ -1,11 +1,62 @@
+<?php
+use yii\helpers\Html;
+use yii\bootstrap\ActiveForm;
+use yii\bootstrap\Alert;
+?>
 <!-- REGISTER -->
 <section class="page-section image" id="register">
 	<div class="container">
 		<h1 class="section-title">
-			<span data-animation="flipInY" data-animation-delay="300" class="icon-inner"><span class="fa-stack"><i class="fa rhex fa-stack-2x"></i><i class="fa fa-ticket fa-stack-1x"></i></span></span>
+			<span data-animation="flipInY" data-animation-delay="300" class="icon-inner"><span class="fa-stack"><i class="fa rhex fa-stack-2x"></i><i class="fa fa-user fa-stack-1x"></i></span></span>
 			<span data-animation="fadeInRight" data-animation-delay="500" class="title-inner">Cadastre-se <small> </small></span>
 		</h1>
-		<form id="registration-form" name="registration-form" class="registration-form" action="#" method="post">
+		<!-- Cadastro Form -->
+		<?php $form = ActiveForm::begin(['id' => 'cadastro-form', 'method' => 'post', 'action' => ['cliente/cadastro'] ] , ['class'=>'af-form row']); ?>
+		<div class="row">
+			<div class="col-sm-12 form-alert"></div>
+			<div class="col-sm-6 col-md-3">
+				 <?= $form->field($model, 'nome', [
+						'inputOptions' => [ 
+							'placeholder' => $model->getAttributeLabel('Nome e Sobrenome')
+						], 
+						'inputTemplate' => '<div class="form-group" data-animation="fadeInUp" data-animation-delay="200">{input}</div>',
+				 ])->label(false); ?>
+			</div>
+			<div class="col-sm-6 col-md-3">
+				<?= $form->field($model, 'email', [
+						'inputOptions' => [ 
+							'placeholder' => $model->getAttributeLabel('O seu e-mail aqui '),
+							'enableError' => true
+						],
+						'inputTemplate' => '<div class="form-group" data-animation="fadeInUp" data-animation-delay="200">{input}</div>',
+					])->label(false); ?>
+			</div>
+			<div class="col-sm-6 col-md-3">
+				<?= $form->field($model, 'senha', [
+						'inputOptions' => [ 
+							'placeholder' => $model->getAttributeLabel('Senha')
+						],
+						'inputTemplate' => '<div class="form-group" data-animation="fadeInUp" data-animation-delay="200">{input}</div>',
+					])->label(false)->passwordInput(); ?>
+			</div>
+			<div class="col-sm-6 col-md-3">
+				<?= $form->field($model, 'confirmeSenha', [
+						'inputOptions' => [ 
+							'placeholder' => $model->getAttributeLabel('Confirme a senha')
+						], 
+						'inputTemplate' => '<div class="form-group" data-animation="fadeInUp" data-animation-delay="200">{input}</div>',
+					])->label(false)->passwordInput(); ?>
+			</div>
+			<div class="col-md-12 overflowed">
+				<div class="text-center margin-top">
+					<?= Html::submitButton('Cadastre-se <i class="fa fa-arrow-circle-right"></i>', [
+						'class' => 'btn btn-theme btn-theme-xl submit-button ',
+						'name' => 'contact-button']) ?>
+				</div>
+			</div>
+		</div>
+		<?php ActiveForm::end(); ?>
+		<!--form id="registration-form" name="registration-form" class="registration-form" action="#" method="post">
 			<div class="row">
 				<div class="col-sm-12 form-alert"></div>
 				<div class="col-sm-6 col-md-3">
@@ -50,7 +101,8 @@
 					</div>
 				</div>
 			</div>
-		</form>
+		</form-->
+		<!-- /Cadastro Form -->
 	</div>
 </section>
 <!-- /REGISTER -->

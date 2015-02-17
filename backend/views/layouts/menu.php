@@ -1,3 +1,8 @@
+<?php
+
+use yii\helpers\Html;
+
+?>
 	<!-- Navigation -->
 	<nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
 		<div class="navbar-header">
@@ -7,7 +12,7 @@
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="">Gigante dos Eventos</a>
+			<a class="navbar-brand" href="">Gigante dos Eventos - <?= Html::encode($this->title) ?></a>
 		</div>
 		<!-- /.navbar-header -->
 
@@ -224,6 +229,65 @@
 		<div class="navbar-default sidebar" role="navigation">
 			<div class="sidebar-nav navbar-collapse">
 				<ul class="nav" id="side-menu">
+					<li class="sidebar-search">
+						<div class="input-group custom-search-form">
+							<input type="text" class="form-control" placeholder="Search...">
+							<span class="input-group-btn">
+							<button class="btn btn-default" type="button">
+								<i class="fa fa-search"></i>
+							</button>
+						</span>
+						</div>
+					</li>
+					<li>
+						<a href="index.php"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+					</li>
+					<li>
+						<a href="javascritp:;"><i class="fa fa-gear fa-fw"></i> Administrador<span class="fa arrow"></span></a>
+						<ul class="nav nav-second-level">
+							<li>
+								<a href="index.php?r=usuario/index">Usuário</a>
+							</li>
+						</ul>
+					</li>
+					<li>
+						<a href="javascritp:;"><i class="fa fa-user fa-fw"></i> Organizador<span class="fa arrow"></span></a>
+						<ul class="nav nav-second-level">
+							<li>
+								<a href="">Cadastro</a>
+							</li>
+							<li>
+								<a href="index.php?r=cliente/organizador">Listagem</a>
+							</li>
+						</ul>
+					</li>
+					<li>
+						<a href="javascritp:;"><i class="fa fa-users fa-fw"></i> Participante<span class="fa arrow"></span></a>
+						<ul class="nav nav-second-level">
+							<li>
+								<a href="">Cadastro</a>
+							</li>
+							<li>
+								<a href="index.php?r=cliente/participante">Listagem</a>
+							</li>
+						</ul>
+					</li>
+					<li>
+						<a href="javascritp:;"><i class="fa fa-calendar fa-fw"></i> Eventos<span class="fa arrow"></span></a>
+						<ul class="nav nav-second-level">
+							<li>
+								<a href="">Cadastro</a>
+							</li>
+							<li>
+								<a href="">Listagem</a>
+							</li>
+							<li>
+								<a href="">Formas de pagamento</a>
+							</li>
+						</ul>
+					</li>
+				</ul>
+				<ul class="nav hidden" id="side-menu1">
 					<li class="sidebar-search">
 						<div class="input-group custom-search-form">
 							<input type="text" class="form-control" placeholder="Search...">

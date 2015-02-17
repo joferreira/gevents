@@ -54,7 +54,7 @@
 								<div class="form-background">
 								<div class="form-header color">
 									<h1 class="section-title">
-										<span class="icon-inner"><span class="fa-stack"><i class="fa rhex fa-stack-2x"></i><i class="fa fa-ticket fa-stack-1x"></i></span></span>
+										<span class="icon-inner"><span class="fa-stack"><i class="fa rhex fa-stack-2x"></i><i class="fa fa-user fa-stack-1x"></i></span></span>
 										<span class="title-inner">Cadastro</span>
 									</h1>
 								</div>
