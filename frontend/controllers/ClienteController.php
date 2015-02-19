@@ -24,8 +24,6 @@ class ClienteController extends \yii\web\Controller
 				$cadastrado = $_POST['CadastroForm'];
 
 				$arrDados = array();
-				$arrDados['TIPO_CLIENTE_INT_ID_TIPO_CLIENTE'] = 2;
-				$arrDados['TIPO_PESSOA_INT_ID_TIPO_PESSOA'] = 1;
 				$arrDados['STATUS_INT_ID_STATUS'] = 2;
 				$arrDados['STR_NOME_COMPLETO'] = $cadastrado['nome'];
 				$arrDados['STR_EMAIL'] = $cadastrado['email'];

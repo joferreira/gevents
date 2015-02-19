@@ -254,7 +254,7 @@ use yii\helpers\Html;
 						<a href="javascritp:;"><i class="fa fa-user fa-fw"></i> Organizador<span class="fa arrow"></span></a>
 						<ul class="nav nav-second-level">
 							<li>
-								<a href="">Cadastro</a>
+								<a href="index.php?r=cliente/create">Cadastro</a>
 							</li>
 							<li>
 								<a href="index.php?r=cliente/organizador">Listagem</a>
@@ -265,7 +265,7 @@ use yii\helpers\Html;
 						<a href="javascritp:;"><i class="fa fa-users fa-fw"></i> Participante<span class="fa arrow"></span></a>
 						<ul class="nav nav-second-level">
 							<li>
-								<a href="">Cadastro</a>
+								<a href="index.php?r=cliente/create">Cadastro</a>
 							</li>
 							<li>
 								<a href="index.php?r=cliente/participante">Listagem</a>

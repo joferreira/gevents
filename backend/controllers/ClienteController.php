@@ -80,7 +80,7 @@ class ClienteController extends Controller
 		if ($model->load(Yii::$app->request->post()) && $model->save()) {
 			return $this->redirect(['view', 'id' => $model->INT_ID_CLIENTE]);
 		} else {
-			return $this->render('create', [
+			return $this->render('/cadastro\create', [
 				'model' => $model,
 			]);
 		}
