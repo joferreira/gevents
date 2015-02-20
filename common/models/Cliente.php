@@ -5,6 +5,7 @@ namespace common\models;
 use Yii;
 use yii\db\ActiveRecord;
 use yii\db\Transaction;
+
 /**
  * This is the model class for table "cliente".
  *
@@ -45,6 +46,7 @@ use yii\db\Transaction;
  * @property ReservaAtividade[] $reservaAtividades
  * @property ReservaEstacionamento[] $reservaEstacionamentos
  */
+
 class Cliente extends \yii\db\ActiveRecord
 {
 	/**
@@ -208,12 +210,12 @@ class Cliente extends \yii\db\ActiveRecord
 	}
 
 	/**
-	 * Método para salvar cliente.
+	 * Método para salvar cliente organizador .
 	 *
 	 * @param array Parâmetros do formulário
 	 * @return integer Código do cliente gerado
 	 */
-	public function saveCliente($arrDados = array()) {
+	public function saveOrganizador($arrDados = array()) {
 
 		$connection = \Yii::$app->db;
 		$objTransaction = $connection->beginTransaction();
@@ -226,7 +228,8 @@ class Cliente extends \yii\db\ActiveRecord
 				->insert(
 					$this->tableName(), 
 					[
-						'STATUS_INT_ID_STATUS' => $arrDados['STATUS_INT_ID_STATUS'],
+						'STATUS_INT_ID_STATUS' => Status::STATUS_AGUARDANDO,
+						'TIPO_CLIENTE_INT_ID_TIPO_CLIENTE' => Status::STATUS_AGUARDANDO,
 						'STR_NOME_COMPLETO' => $arrDados['STR_NOME_COMPLETO'],
 						'STR_EMAIL' => $arrDados['STR_EMAIL'],
 						'STR_SENHA' => $arrDados['STR_SENHA']
@@ -245,6 +248,88 @@ class Cliente extends \yii\db\ActiveRecord
 			echo $objExcessao->getMessage();
 		}
 	}
+
+	/**
+	 * Método para salvar cliente organizador / participante via admin.
+	 *
+	 * @param array Parâmetros do formulário
+	 * @return integer Código do cliente gerado
+	 */
+	public function saveCliente($arrDados = array()) {
+
+		$connection = \Yii::$app->db;
+		$objTransaction = $connection->beginTransaction();
+		try {
+			if (empty($arrDados))
+				throw new Exception('Campos Vazios!');
+
+			$strSenha = empty($arrDados['STR_SENHA']) ? $this->generate_password() : $arrDados['STR_SENHA'];
+
+			$DAT_DATA_NASCIMENTO = $data = implode("-",array_reverse(explode("/",$arrDados['DAT_DATA_NASCIMENTO']))); ;
+
+			// Insere os dados
+			$connection->createCommand()
+				->insert(
+					$this->tableName(), 
+					[
+						'TIPO_CLIENTE_INT_ID_TIPO_CLIENTE' => $arrDados['TIPO_CLIENTE_INT_ID_TIPO_CLIENTE'],
+						'TIPO_PESSOA_INT_ID_TIPO_PESSOA' => $arrDados['TIPO_PESSOA_INT_ID_TIPO_PESSOA'],
+						'STATUS_INT_ID_STATUS' => $arrDados['STATUS_INT_ID_STATUS'],
+						'STR_NOME_COMPLETO' => $arrDados['STR_NOME_COMPLETO'],
+						'DAT_DATA_NASCIMENTO' => $DAT_DATA_NASCIMENTO,
+						'STR_SEXO' => $arrDados['STR_SEXO'],
+						'STR_CPF' => $arrDados['STR_CPF'],
+						'STR_CNPJ' => $arrDados['STR_CNPJ'],
+						'STR_RG' => $arrDados['STR_RG'],
+						'STR_EMAIL' => $arrDados['STR_EMAIL'],
+						'STR_SENHA' => $strSenha ,
+						'INT_TELEFONE_DDI' => $arrDados['INT_TELEFONE_DDI'],
+						'INT_TELEFONE_DDD' => $arrDados['INT_TELEFONE_DDD'],
+						'INT_TELEFONE' => $arrDados['INT_TELEFONE'],
+						'INT_CELULAR_DDI' => $arrDados['INT_CELULAR_DDI'],
+						'INT_CELULAR_DDD' => $arrDados['INT_CELULAR_DDD'],
+						'INT_CELULAR' => $arrDados['INT_CELULAR'],
+						'INT_FAX_DDI' => $arrDados['INT_FAX_DDI'],
+						'INT_FAX_DDD' => $arrDados['INT_FAX_DDD'],
+						'INT_FAX' => $arrDados['INT_FAX'],
+						'STR_RAZAO_SOCIAL' => $arrDados['STR_RAZAO_SOCIAL'],
+						'STR_NOME_FANTASIA' => $arrDados['STR_NOME_FANTASIA'],
+						'STR_INSCRICAO_MUNICIPAL' => $arrDados['STR_INSCRICAO_MUNICIPAL'],
+						'STR_CATEGORIA_EMPRESA' => $arrDados['STR_CATEGORIA_EMPRESA']
+					]
+				)
+				->execute();
+
+			$objTransaction->commit();
+
+			$intIdCliente = self::getPrimaryKey(); 
+
+			return $intIdCliente;
+
+		} catch (Exception $objExcessao) {
+			$objTransaction->rollback();
+			echo $objExcessao->getMessage();
+		}
+	}	
+
+	/**
+	 * Description
+	 * @param type $intLength
+	 * @return type $strSenha
+	 */
+	function generate_password($length = 10){
+		$chars =  'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'.'0123456789``-=~!@#$%^&*()_+,./<>?;:[]{}\|';
+
+		$str = '';
+		$max = strlen($chars) - 1;
+
+		for ($i=0; $i < $length; $i++)
+			$str .= $chars[mt_rand(0, $max)];
+
+		return $str;
+	}
+
+
 
 	/**
 	 * Método para salvar cliente inicial.

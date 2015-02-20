@@ -24,7 +24,6 @@ class ClienteController extends \yii\web\Controller
 				$cadastrado = $_POST['CadastroForm'];
 
 				$arrDados = array();
-				$arrDados['STATUS_INT_ID_STATUS'] = 2;
 				$arrDados['STR_NOME_COMPLETO'] = $cadastrado['nome'];
 				$arrDados['STR_EMAIL'] = $cadastrado['email'];
 				$arrDados['STR_SENHA'] = $cadastrado['senha'];
@@ -33,9 +32,8 @@ class ClienteController extends \yii\web\Controller
 
 					$arrStatusEmail = $objModelCliente->verificaEmail($arrDados['STR_EMAIL']);
 					if(empty($arrStatusEmail)){
-						$intIdCliente = $objModelCliente->saveCliente($arrDados);
+						$intIdCliente = $objModelCliente->saveOrganizador($arrDados);
 						//print_r($_POST['CadastroForm']);
-
 						echo "cadastro efetuado com sucesso!";
 
 					} else 	throw new Exception("E-mail já cadastrado!");

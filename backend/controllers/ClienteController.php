@@ -75,13 +75,13 @@ class ClienteController extends Controller
 	 */
 	public function actionCreate()
 	{
-		$model = new Cliente();
+		$objModelCliente = new Cliente();
 
-		if ($model->load(Yii::$app->request->post()) && $model->save()) {
-			return $this->redirect(['view', 'id' => $model->INT_ID_CLIENTE]);
+		if ($objModelCliente->load(Yii::$app->request->post()) && $objModelCliente->saveCliente()) {
+			return $this->redirect(['/cadastro\view', 'id' => $objModelCliente->INT_ID_CLIENTE]);
 		} else {
 			return $this->render('/cadastro\create', [
-				'model' => $model,
+				'model' => $objModelCliente,
 			]);
 		}
 	}
@@ -96,8 +96,8 @@ class ClienteController extends Controller
 	{
 		$model = $this->findModel($id);
 
-		if ($model->load(Yii::$app->request->post()) && $model->save()) {
-			return $this->redirect(['view', 'id' => $model->INT_ID_CLIENTE]);
+		if ($model->load(Yii::$app->request->post()) && $model->saveCliente()) {
+			return $this->redirect(['/cadastro\view', 'id' => $model->INT_ID_CLIENTE]);
 		} else {
 			return $this->render('/cadastro\update', [
 				'model' => $model,
@@ -116,6 +116,29 @@ class ClienteController extends Controller
 		$this->findModel($id)->delete();
 
 		return $this->redirect(['index']);
+	}
+
+	public function actionSave()
+	{
+		try {			
+
+			$objModelCliente = new Cliente();
+
+			if( isset($_POST['Cliente']) ){
+				$arrDados = $_POST['Cliente'];
+
+				$arrStatusEmail = $objModelCliente->verificaEmail($arrDados['STR_EMAIL']);
+				if(empty($arrStatusEmail)){
+					$intIdCliente = $objModelCliente->saveCliente($arrDados);
+					return $this->redirect(['/cliente\organizador']);
+					echo "cadastro efetuado com sucesso!";
+				} else 	throw new Exception("E-mail já cadastrado!");
+			} else 	throw new Exception("Campos não preenchidos corretamente!");				
+			
+		} catch (Exception $e) {
+
+			echo $e->getMessage();
+		}
 	}
 
 	/**

@@ -8,13 +8,12 @@ use yii\i18n\Formatter;
 /* @var $this yii\web\View */
 /* @var $model backend\models\Usuario */
 /* @var $form yii\widgets\ActiveForm */
-$aniversario =  isset($model->DAT_DATA_NASCIMENTO) ? $model->DAT_DATA_NASCIMENTO : date('Y-m-d');
-$dataNascimento = Yii::$app->formatter->asDate($aniversario);
+$dataNascimento = isset($model->DAT_DATA_NASCIMENTO) ? $model->DAT_DATA_NASCIMENTO : date('Y-m-d');
 ?>
 
 <div class="usuario-form row">
 
-	<?php $form = ActiveForm::begin(['layout' => 'default']); ?>
+	<?php $form = ActiveForm::begin(['id' => 'cliente-form', 'method' => 'post','layout' => 'default', 'action' => ['cliente/save']]); ?>
 	<div class="col-md-11 col-md-offset-1">
 		<div class="col-md-3">
 		<?= $form->field($model, 'TIPO_CLIENTE_INT_ID_TIPO_CLIENTE', [
