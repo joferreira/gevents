@@ -116,7 +116,7 @@ trait LinkTrait
 				/(?(R) # in case of recursion match parentheses
 					 \(((?>[^\s()]+)|(?R))*\)
 				|      # else match a link with title
-					^\(\s*(((?>[^\s()]+)|(?R))*)(\s+"(.*?)")?\s*\)
+					^\((((?>[^\s()]+)|(?R))*)(\s+"(.*?)")?\)
 				)/x
 REGEXP;
 			if (preg_match($pattern, $markdown, $refMatches)) {

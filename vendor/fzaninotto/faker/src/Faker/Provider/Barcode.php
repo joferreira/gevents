@@ -9,22 +9,21 @@ class Barcode extends \Faker\Provider\Base
 {
     private function ean($length = 13)
     {
-        $code = $this->numerify(str_repeat('#', $length - 1));
+        $code = array();
+        for ($i = 0; $i < $length - 1; $i++) {
+            $code[] = static::randomDigit();
+        }
 
-        return $code . static::eanChecksum($code);
-    }
+        $sequence = $length == 8 ? array(3, 1) : array(1, 3);
 
-    /**
-     * Utility function for computing EAN checksums
-     */
-    protected static function eanChecksum($input)
-    {
-        $sequence = (strlen($input) - 1) == 8 ? array(3, 1) : array(1, 3);
         $sums = 0;
-        foreach (str_split($input) as $n => $digit) {
+        foreach ($code as $n => $digit) {
             $sums += $digit * $sequence[$n % 2];
         }
-        return (10 - $sums % 10) % 10;
+
+        $checksum = (10 - $sums % 10) % 10;
+
+        return implode('', $code) . $checksum;
     }
 
     /**

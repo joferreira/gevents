@@ -13,6 +13,7 @@ $this->title = 'Cadastro Cliente';
 		<div>
 			<?= $this->render('_form', [
 				'model' => $model,
+				'endereco' => $endereco,
 			]) ?>
 		</div>
 

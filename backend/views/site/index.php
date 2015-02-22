@@ -24,4 +24,6 @@ $this->title = 'Dashboard';
 	</div>
 </div>
 
+<script src="/gevents/backend/web/plugins/morrisjs/morris.min.js"></script>
+<script src="/gevents/backend/web/js/morris-data.js"></script>
 <!-- /#page-wrapper -->

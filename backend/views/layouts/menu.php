@@ -243,7 +243,7 @@ use yii\helpers\Html;
 						<a href="index.php"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
 					</li>
 					<li>
-						<a href="javascritp:;"><i class="fa fa-gear fa-fw"></i> Administrador<span class="fa arrow"></span></a>
+						<a href="javascript:;"><i class="fa fa-gear fa-fw"></i> Administrador<span class="fa arrow"></span></a>
 						<ul class="nav nav-second-level">
 							<li>
 								<a href="index.php?r=usuario/index">Usuário</a>
@@ -251,7 +251,21 @@ use yii\helpers\Html;
 						</ul>
 					</li>
 					<li>
-						<a href="javascritp:;"><i class="fa fa-user fa-fw"></i> Organizador<span class="fa arrow"></span></a>
+						<a href="javascript:;"><i class="fa fa-users fa-fw"></i> Cliente<span class="fa arrow"></span></a>
+						<ul class="nav nav-second-level">
+							<li>
+								<a href="index.php?r=cliente/create"><i class="fa fa-users fa-fw"></i> Cadastro</a>
+							</li>
+							<li>
+								<a href="index.php?r=cliente/organizador"><i class="fa fa-user-md fa-fw"></i> Organizador</a>
+							</li>
+							<li>
+								<a href="index.php?r=cliente/participante"><i class="fa fa-user fa-fw"></i> Participante</a>
+							</li>
+						</ul>
+					</li>
+					<li class="hidden">
+						<a href="javascript:;"><i class="fa fa-user fa-fw"></i> Organizador<span class="fa arrow"></span></a>
 						<ul class="nav nav-second-level">
 							<li>
 								<a href="index.php?r=cliente/create">Cadastro</a>
@@ -261,8 +275,8 @@ use yii\helpers\Html;
 							</li>
 						</ul>
 					</li>
-					<li>
-						<a href="javascritp:;"><i class="fa fa-users fa-fw"></i> Participante<span class="fa arrow"></span></a>
+					<li class="hidden">
+						<a href="javascript:;"><i class="fa fa-users fa-fw"></i> Participante<span class="fa arrow"></span></a>
 						<ul class="nav nav-second-level">
 							<li>
 								<a href="index.php?r=cliente/create">Cadastro</a>
@@ -273,19 +287,19 @@ use yii\helpers\Html;
 						</ul>
 					</li>
 					<li>
-						<a href="javascritp:;"><i class="fa fa-calendar fa-fw"></i> Eventos<span class="fa arrow"></span></a>
+						<a href="javascript:;"><i class="fa fa-calendar fa-fw"></i> Eventos<span class="fa arrow"></span></a>
 						<ul class="nav nav-second-level">
 							<li>
-								<a href="">Cadastro</a>
+								<a href="index.php?r=evento/create">Cadastro</a>
 							</li>
 							<li>
-								<a href="">Listagem</a>
+								<a href="index.php?r=evento/list">Listagem</a>
 							</li>
 							<li>
-								<a href="">Formas de pagamento</a>
+								<a href="index.php?r=evento/pagamento">Formas de pagamento</a>
 							</li>
 						</ul>
-					</li>
+					</li>				
 				</ul>
 				<ul class="nav hidden" id="side-menu1">
 					<li class="sidebar-search">

@@ -6,10 +6,13 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model backend\models\Usuario */
 
-$this->title = $model->STR_NOME_COMPLETO;
+$this->title = 'Dados Cadastrais';
 ?>
 	<div id="page-wrapper" class="usuario-view">
-		<br/>
+		<div class="row">
+			<h3><?= Html::encode($model->STR_NOME_COMPLETO) ?></h3>
+		</div>
+
 		<div class="row">
 			<p>
 				<?= Html::a('Update', ['update', 'id' => $model->INT_ID_CLIENTE], ['class' => 'btn btn-primary']) ?>
@@ -49,8 +52,7 @@ $this->title = $model->STR_NOME_COMPLETO;
 					'STR_RAZAO_SOCIAL',
 					'STR_NOME_FANTASIA',
 					'STR_INSCRICAO_MUNICIPAL',
-					'STR_CATEGORIA_EMPRESA',
-					'DAT_DATA_CADASTRO'
+					'STR_CATEGORIA_EMPRESA'
 				],
 			]) ?>
 		</div>

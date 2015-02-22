@@ -194,7 +194,7 @@ class Cliente extends \yii\db\ActiveRecord
 	public function verificaEmail($strEmail) {
 		try {
 			if (empty($strEmail))
-				throw new Exception('Parâmetro informado errado!');
+				Yii::$app->session->setFlash('error', 'Parâmetro informado errado!'); // throw new Exception('Parâmetro informado errado!');
 
 			$objResult = self::find()
 					->where(["STR_EMAIL" => $strEmail])
@@ -221,7 +221,7 @@ class Cliente extends \yii\db\ActiveRecord
 		$objTransaction = $connection->beginTransaction();
 		try {
 			if (empty($arrDados))
-				throw new Exception('Campos Vazios!');
+				Yii::$app->session->setFlash('error', 'Campos Vazios!'); //throw new Exception('Campos Vazios!');
 
 			// Insere os dados
 			$connection->createCommand()
@@ -265,7 +265,7 @@ class Cliente extends \yii\db\ActiveRecord
 
 			$strSenha = empty($arrDados['STR_SENHA']) ? $this->generate_password() : $arrDados['STR_SENHA'];
 
-			$DAT_DATA_NASCIMENTO = $data = implode("-",array_reverse(explode("/",$arrDados['DAT_DATA_NASCIMENTO']))); ;
+			$DAT_DATA_NASCIMENTO = implode("-",array_reverse(explode("/",$arrDados['DAT_DATA_NASCIMENTO'])));
 
 			// Insere os dados
 			$connection->createCommand()

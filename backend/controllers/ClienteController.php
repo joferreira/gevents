@@ -4,13 +4,13 @@ namespace backend\controllers;
 
 use Yii;
 use common\models\Cliente;
+use common\models\Endereco;
 use backend\models\OrganizadorSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 use backend\models\LoginForm;
-
 
 class ClienteController extends Controller
 {
@@ -25,7 +25,14 @@ class ClienteController extends Controller
 			],
 		];
 	}
-
+	public function actions()
+	{
+	    return [
+	        'error' => [
+	            'class' => 'yii\web\ErrorAction',
+	        ]
+	    ];
+	}
 	/**
 	 * Lista todos Organizadores.
 	 * @return mixed
@@ -75,14 +82,40 @@ class ClienteController extends Controller
 	 */
 	public function actionCreate()
 	{
-		$objModelCliente = new Cliente();
 
-		if ($objModelCliente->load(Yii::$app->request->post()) && $objModelCliente->saveCliente()) {
-			return $this->redirect(['/cadastro\view', 'id' => $objModelCliente->INT_ID_CLIENTE]);
-		} else {
-			return $this->render('/cadastro\create', [
-				'model' => $objModelCliente,
-			]);
+		try {			
+
+			$objModelCliente = new Cliente();
+			$objModelEndereco = new Endereco();
+
+			if ($objModelCliente->load(Yii::$app->request->post()) ){
+
+				if( isset($_POST['Cliente']) ){
+					$arrDados = $_POST['Cliente'];
+
+					$arrStatusEmail = $objModelCliente->verificaEmail($arrDados['STR_EMAIL']);
+					if(empty($arrDados['STR_EMAIL']) ) {
+						Yii::$app->session->setFlash('error', 'E-mail não foi preenchido!');
+					} else if(empty($arrStatusEmail)){
+						$intIdCliente = $objModelCliente->saveCliente($arrDados);
+						Yii::$app->session->setFlash('success', 'cadastro efetuado com sucesso!'); // echo "cadastro efetuado com sucesso!";
+						return $this->redirect(['/cliente/organizador']);
+						//return $this->redirect($this->createUrl('/cliente/organizador'));
+					} else Yii::$app->session->setFlash('error', 'E-mail já cadastrado!');//	throw new Exception("E-mail já cadastrado!");
+				} else Yii::$app->session->setFlash('error', 'Campos não preenchidos corretamente!'); //	throw new Exception("Campos não preenchidos corretamente!");
+
+
+			}
+
+				return $this->render('/cadastro\create', [
+					'model' => $objModelCliente,
+					'endereco' => $objModelEndereco,
+				]);
+			
+			
+		} catch (Exception $e) {
+
+			Yii::$app->session->setFlash('error', $e->getMessage()); //echo $e->getMessage();
 		}
 	}
 
@@ -130,14 +163,15 @@ class ClienteController extends Controller
 				$arrStatusEmail = $objModelCliente->verificaEmail($arrDados['STR_EMAIL']);
 				if(empty($arrStatusEmail)){
 					$intIdCliente = $objModelCliente->saveCliente($arrDados);
+					Yii::$app->session->setFlash('success', 'cadastro efetuado com sucesso!'); // echo "cadastro efetuado com sucesso!";
 					return $this->redirect(['/cliente\organizador']);
-					echo "cadastro efetuado com sucesso!";
-				} else 	throw new Exception("E-mail já cadastrado!");
-			} else 	throw new Exception("Campos não preenchidos corretamente!");				
+					//return $this->redirect(['/cliente/organizador'], array('id' => $intIdCliente));
+				} else Yii::$app->session->setFlash('error', 'E-mail já cadastrado!');//	throw new Exception("E-mail já cadastrado!");
+			} else Yii::$app->session->setFlash('error', 'Campos não preenchidos corretamente!'); //	throw new Exception("Campos não preenchidos corretamente!");				
 			
 		} catch (Exception $e) {
 
-			echo $e->getMessage();
+			Yii::$app->session->setFlash('error', $e->getMessage()); //echo $e->getMessage();
 		}
 	}
 
