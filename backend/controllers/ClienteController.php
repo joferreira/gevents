@@ -6,6 +6,7 @@ use Yii;
 use common\models\Cliente;
 use common\models\Endereco;
 use backend\models\OrganizadorSearch;
+use backend\models\ParticipanteSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -47,6 +48,21 @@ class ClienteController extends Controller
 			'dataProvider' => $dataProvider,
 		]);
 	}
+
+	/**
+	 * Lista todos Participantes.
+	 * @return mixed
+	 */
+	public function actionParticipante()
+	{
+		$searchModel = new ParticipanteSearch();
+		$dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+
+		return $this->render('/cadastro\participante', [
+			'searchModel' => $searchModel,
+			'dataProvider' => $dataProvider,
+		]);
+	}	
 
 	/**
 	 * Lists all Usuario models.
@@ -128,12 +144,14 @@ class ClienteController extends Controller
 	public function actionUpdate($id)
 	{
 		$model = $this->findModel($id);
+		$objModelEndereco = new Endereco();
 
 		if ($model->load(Yii::$app->request->post()) && $model->saveCliente()) {
 			return $this->redirect(['/cadastro\view', 'id' => $model->INT_ID_CLIENTE]);
 		} else {
 			return $this->render('/cadastro\update', [
 				'model' => $model,
+				'endereco' => $objModelEndereco,
 			]);
 		}
 	}

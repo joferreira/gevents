@@ -15,6 +15,7 @@ $this->title = 'Update Cliente ';
 		<div class="row">
 			<?= $this->render('_form', [
 				'model' => $model,
+				'endereco' => $endereco,
 			]) ?>
 		</div>
 	</div>

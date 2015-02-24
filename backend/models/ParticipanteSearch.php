@@ -8,9 +8,9 @@ use yii\data\ActiveDataProvider;
 use common\models\Cliente;
 
 /**
- * OrganizadorSearch represents the model behind the search form about `common\models\Cliente`.
+ * ParticipanteSearch represents the model behind the search form about `common\models\Cliente`.
  */
-class OrganizadorSearch extends Cliente
+class ParticipanteSearch extends Cliente
 {
 	/**
 	 * @inheritdoc
@@ -48,7 +48,7 @@ class OrganizadorSearch extends Cliente
 		]);
 
 		$query->andFilterWhere([
-			'TIPO_CLIENTE_INT_ID_TIPO_CLIENTE' => 2,
+			'TIPO_CLIENTE_INT_ID_TIPO_CLIENTE' => 1,
 		]);
 
 		if (!($this->load($params) && $this->validate())) {

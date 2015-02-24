@@ -50,14 +50,14 @@ $listCliente=ArrayHelper::map($tipoCliente,'INT_ID_TIPO_CLIENTE','STR_DESCRICAO'
 		<div class="col-md-12">
 		<?= $form->field($model, 'STR_NOME_COMPLETO', [ 
 			'template' => '<div class="input-group"><span class="input-group-addon">{label}</span>{input}</div>',
-		])->textInput(['maxlength' => 150]) ?>
+		])->textInput(['maxlength' => 200]) ?>
 		</div>
 	</div>
 	<div class="col-md-12">
 		<div class="col-md-12">
 		<?php echo $form->field($model, 'STR_EMAIL', [ 
 			'template' => '<div class="input-group"><span class="input-group-addon">{label}</span>{input}</div>',
-		]);?>
+		])->textInput(['maxlength' => 150]);?>
 		</div>
 	</div>
 	<div class="col-md-12">
@@ -83,120 +83,120 @@ $listCliente=ArrayHelper::map($tipoCliente,'INT_ID_TIPO_CLIENTE','STR_DESCRICAO'
 		<div class="col-md-4">
 		<?= $form->field($model, 'STR_RG', [ 
 			'template' => '<div class="input-group"><span class="input-group-addon">{label}</span>{input}</div>',
-		])->textInput(['maxlength' => 150]) ?>
+		])->textInput(['maxlength' => 10]) ?>
 		</div>
 		<div class="col-md-4">
 		<?= $form->field($model, 'STR_CPF', [ 
 			'template' => '<div class="input-group"><span class="input-group-addon">{label}</span>{input}</div>',
-		])->textInput(['maxlength' => 150]) ?>
+		])->textInput(['maxlength' => 11]) ?>
 		</div>
 		<div class="col-md-4">
 		<?= $form->field($model, 'STR_CNPJ', [ 
 			'template' => '<div class="input-group"><span class="input-group-addon">{label}</span>{input}</div>',
-		])->textInput(['maxlength' => 150]) ?>
+		])->textInput(['maxlength' => 14]) ?>
 		</div>
 	</div>
 	<div class="col-md-12">
 		<div class="col-md-4">
 		<?= $form->field($model, 'INT_TELEFONE_DDI', [ 
 			'template' => '<div class="input-group"><span class="input-group-addon">{label}</span>{input}</div>',
-		])->textInput(['maxlength' => 150]) ?>
+		])->textInput(['maxlength' => 2]) ?>
 		</div>
 		<div class="col-md-4">
 		<?= $form->field($model, 'INT_TELEFONE_DDD', [ 
 			'template' => '<div class="input-group"><span class="input-group-addon">{label}</span>{input}</div>',
-		])->textInput(['maxlength' => 150]) ?>
+		])->textInput(['maxlength' => 2]) ?>
 		</div>
 		<div class="col-md-4">
 		<?= $form->field($model, 'INT_TELEFONE', [ 
 			'template' => '<div class="input-group"><span class="input-group-addon">{label}</span>{input}</div>',
-		])->textInput(['maxlength' => 150]) ?>
+		])->textInput(['maxlength' => 8]) ?>
 		</div>
 	</div>
 	<div class="col-md-12">
 		<div class="col-md-4">
 		<?= $form->field($model, 'INT_CELULAR_DDI', [ 
 			'template' => '<div class="input-group"><span class="input-group-addon">{label}</span>{input}</div>',
-		])->textInput(['maxlength' => 150]) ?>
+		])->textInput(['maxlength' => 2]) ?>
 		</div>
 		<div class="col-md-4">
 		<?= $form->field($model, 'INT_CELULAR_DDD', [ 
 			'template' => '<div class="input-group"><span class="input-group-addon">{label}</span>{input}</div>',
-		])->textInput(['maxlength' => 150]) ?>
+		])->textInput(['maxlength' => 2]) ?>
 		</div>
 		<div class="col-md-4">
 		<?= $form->field($model, 'INT_CELULAR', [ 
 			'template' => '<div class="input-group"><span class="input-group-addon">{label}</span>{input}</div>',
-		])->textInput(['maxlength' => 150]) ?>
+		])->textInput(['maxlength' => 9]) ?>
 		</div>
 	</div>
 	<div class="col-md-12">
 		<div class="col-md-4">	
 		<?= $form->field($model, 'INT_FAX_DDI', [ 
 			'template' => '<div class="input-group"><span class="input-group-addon">{label}</span>{input}</div>',
-		])->textInput(['maxlength' => 150]) ?>
+		])->textInput(['maxlength' => 2]) ?>
 		</div>
 		<div class="col-md-4">
 		<?= $form->field($model, 'INT_FAX_DDD', [ 
 			'template' => '<div class="input-group"><span class="input-group-addon">{label}</span>{input}</div>',
-		])->textInput(['maxlength' => 150]) ?>
+		])->textInput(['maxlength' => 2]) ?>
 		</div>
 		<div class="col-md-4">
 		<?= $form->field($model, 'INT_FAX', [ 
 			'template' => '<div class="input-group"><span class="input-group-addon">{label}</span>{input}</div>',
-		])->textInput(['maxlength' => 150]) ?>
+		])->textInput(['maxlength' => 8]) ?>
 		</div>
 	</div>
 	<div class="col-md-12">		
 		<div class="col-md-12">	
 		<?= $form->field($model, 'STR_RAZAO_SOCIAL', [ 
 			'template' => '<div class="input-group"><span class="input-group-addon">{label}</span>{input}</div>',
-		])->textInput(['maxlength' => 150]) ?>
+		])->textInput(['maxlength' => 255]) ?>
 		</div>
 	</div>
 	<div class="col-md-12">
 		<div class="col-md-12">
 		<?= $form->field($model, 'STR_NOME_FANTASIA', [ 
 			'template' => '<div class="input-group"><span class="input-group-addon">{label}</span>{input}</div>',
-		])->textInput(['maxlength' => 150]) ?>
+		])->textInput(['maxlength' => 255]) ?>
 		</div>
 	</div>
 	<div class="col-md-12">
 		<div class="col-md-6">
 		<?= $form->field($model, 'STR_INSCRICAO_MUNICIPAL', [ 
 			'template' => '<div class="input-group"><span class="input-group-addon">{label}</span>{input}</div>',
-		])->textInput(['maxlength' => 150]) ?>
+		])->textInput(['maxlength' => 255]) ?>
 		</div>
 		<div class="col-md-6">
 		<?= $form->field($model, 'STR_CATEGORIA_EMPRESA', [ 
 			'template' => '<div class="input-group"><span class="input-group-addon">{label}</span>{input}</div>',
-		])->textInput(['maxlength' => 150]) ?>
+		])->textInput(['maxlength' => 6]) ?>
 		</div>
 	</div>
 	<div class="col-md-12">
 		<div class="col-md-4">
 		<?= $form->field($endereco, 'INT_CEP', [ 
 			'template' => '<div class="input-group"><span class="input-group-addon">{label}</span>{input}</div>',
-		])->textInput(['maxlength' => 150]) ?>
+		])->textInput(['maxlength' => 8]) ?>
 		</div>
 		<div class="col-md-4">
 		<?= $form->field($endereco, 'STR_CAIXA_POSTAL', [ 
 			'template' => '<div class="input-group"><span class="input-group-addon">{label}</span>{input}</div>',
-		])->textInput(['maxlength' => 150]) ?>
+		])->textInput(['maxlength' => 10]) ?>
 		</div>
 	</div>
 	<div class="col-md-12">	
 		<div class="col-md-12">
 		<?= $form->field($endereco, 'STR_ENDERECO', [ 
 			'template' => '<div class="input-group"><span class="input-group-addon">{label}</span>{input}</div>',
-		])->textInput(['maxlength' => 150]) ?>
+		])->textInput(['maxlength' => 255]) ?>
 		</div>	
 	</div>
 	<div class="col-md-12">	
 		<div class="col-md-4">	
 		<?= $form->field($endereco, 'STR_NUMERO', [ 
 			'template' => '<div class="input-group"><span class="input-group-addon">{label}</span>{input}</div>',
-		])->textInput(['maxlength' => 150]) ?>
+		])->textInput(['maxlength' => 10]) ?>
 		</div>
 		<div class="col-md-8">
 		<?= $form->field($endereco, 'STR_COMPLEMENTO', [ 
@@ -208,7 +208,7 @@ $listCliente=ArrayHelper::map($tipoCliente,'INT_ID_TIPO_CLIENTE','STR_DESCRICAO'
 		<div class="col-md-4">
 		<?= $form->field($endereco, 'UNIDADE_FEDERAL_INT_ID_UNIDADE_FEDERAL', [ 
 			'template' => '<div class="input-group"><span class="input-group-addon">{label}</span>{input}</div>',
-		])->textInput(['maxlength' => 150]) ?>
+		])->textInput(['maxlength' => 11]) ?>
 		</div>	
 		<div class="col-md-4">
 		<?= $form->field($endereco, 'STR_MUNICIPIO', [ 
