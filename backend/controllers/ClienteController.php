@@ -43,7 +43,7 @@ class ClienteController extends Controller
 		$searchModel = new OrganizadorSearch();
 		$dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
-		return $this->render('/cadastro\organizador', [
+		return $this->render('/cadastro/organizador', [
 			'searchModel' => $searchModel,
 			'dataProvider' => $dataProvider,
 		]);
@@ -58,7 +58,7 @@ class ClienteController extends Controller
 		$searchModel = new ParticipanteSearch();
 		$dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
-		return $this->render('/cadastro\participante', [
+		return $this->render('/cadastro/participante', [
 			'searchModel' => $searchModel,
 			'dataProvider' => $dataProvider,
 		]);
@@ -86,7 +86,7 @@ class ClienteController extends Controller
 	 */
 	public function actionView($id)
 	{
-		return $this->render('/cadastro\view', [
+		return $this->render('/cadastro/view', [
 			'model' => $this->findModel($id),
 		]);
 	}
@@ -123,7 +123,7 @@ class ClienteController extends Controller
 
 			}
 
-				return $this->render('/cadastro\create', [
+				return $this->render('/cadastro/create', [
 					'model' => $objModelCliente,
 					'endereco' => $objModelEndereco,
 				]);
@@ -147,9 +147,9 @@ class ClienteController extends Controller
 		$objModelEndereco = new Endereco();
 
 		if ($model->load(Yii::$app->request->post()) && $model->saveCliente()) {
-			return $this->redirect(['/cadastro\view', 'id' => $model->INT_ID_CLIENTE]);
+			return $this->redirect(['/cadastro/view', 'id' => $model->INT_ID_CLIENTE]);
 		} else {
-			return $this->render('/cadastro\update', [
+			return $this->render('/cadastro/update', [
 				'model' => $model,
 				'endereco' => $objModelEndereco,
 			]);
@@ -182,7 +182,7 @@ class ClienteController extends Controller
 				if(empty($arrStatusEmail)){
 					$intIdCliente = $objModelCliente->saveCliente($arrDados);
 					Yii::$app->session->setFlash('success', 'cadastro efetuado com sucesso!'); // echo "cadastro efetuado com sucesso!";
-					return $this->redirect(['/cliente\organizador']);
+					return $this->redirect(['/cliente/organizador']);
 					//return $this->redirect(['/cliente/organizador'], array('id' => $intIdCliente));
 				} else Yii::$app->session->setFlash('error', 'E-mail já cadastrado!');//	throw new Exception("E-mail já cadastrado!");
 			} else Yii::$app->session->setFlash('error', 'Campos não preenchidos corretamente!'); //	throw new Exception("Campos não preenchidos corretamente!");				
