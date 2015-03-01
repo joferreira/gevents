@@ -2,6 +2,7 @@
 namespace frontend\controllers;
 
 use Yii;
+use common\models\Cliente;
 use frontend\models\ContactForm;
 use frontend\models\CadastroForm;
 use yii\base\InvalidParamException;
@@ -64,12 +65,54 @@ class SiteController extends Controller
 
 	public function actionIndex()
 	{
-		$contato = new ContactForm();
-		$cadastro = new CadastroForm();
-		return $this->render('index', [
+
+		try {			
+
+			$objModelCliente = new Cliente();
+			$contato = new ContactForm();
+			$cadastro = new CadastroForm();
+
+			//if ($objModelCliente->load(Yii::$app->request->post()) ){
+
+				if( isset($_POST['CadastroForm']) ){
+					$cadastrado = $_POST['CadastroForm'];
+
+					$arrDados = array();
+					$arrDados['STR_NOME_COMPLETO'] = $cadastrado['nome'];
+					$arrDados['STR_EMAIL'] = $cadastrado['email'];
+					$arrDados['STR_SENHA'] = $cadastrado['senha'];
+
+					if($cadastrado['senha'] == $cadastrado['confirmeSenha'] ){
+
+						$arrStatusEmail = $objModelCliente->verificaEmail($arrDados['STR_EMAIL']);
+
+						if(empty($arrStatusEmail)){
+							$intIdCliente = $objModelCliente->saveOrganizador($arrDados);					
+							Yii::$app->session->setFlash('cadastrado', 'cadastro efetuado com sucesso!');
+						} else Yii::$app->session->setFlash('error', 'E-mail já cadastrado!');
+
+					} else {
+						Yii::$app->session->setFlash('error', 'A confirma senha é diferente da senha'); 
+						return $this->redirect(['#register']);
+					}
+
+				} // else Yii::$app->session->setFlash('error', 'Campos não preenchidos corretamente!'); 
+
+			//}
+
+			return $this->render('index', [
+				//'cliente' => $objModelCliente,
 				'contato' => $contato,
 				'cadastro' => $cadastro,
 			]);
+			
+			
+		} catch (Exception $e) {
+
+
+
+			Yii::$app->session->setFlash('error', $e->getMessage()); //echo $e->getMessage();
+		}
 	}
 
 	public function actionAbout()

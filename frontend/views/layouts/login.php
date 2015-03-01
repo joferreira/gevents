@@ -1,3 +1,6 @@
+<?php
+use yii\bootstrap\Alert;
+?>
 <!-- LOGIN -->
 <section class="page-section" id="login">
 	<div class="container">
@@ -6,6 +9,18 @@
 			<span data-animation="fadeInRight" data-animation-delay="500" class="title-inner">Login <small> </small></span>
 		</h1>
 		<form id="login-form" name="login-form" class="login-form" action="" method="post">
+			<div>
+				<?php 
+				if (Yii::$app->session->hasFlash('cadastrado')):
+					echo Alert::widget([
+						'options' => [
+							'class' => 'alert-success',
+						],
+						'body' => Yii::$app->session->getFlash('cadastrado'),
+					]);
+				endif;
+				?>
+			</div>
 			<div class="row">
 				<div class="col-sm-12 form-alert"></div>
 				<div class="col-sm-6 col-md-4">

@@ -4,7 +4,7 @@ use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
 use frontend\assets\AppAsset;
-use frontend\widgets\Alert;
+use yii\bootstrap\Alert;
 use yii\base\View;
 
 /* @var $this \yii\web\View */
@@ -83,17 +83,33 @@ AppAsset::register($this);
 		<?= Breadcrumbs::widget([
 			'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
 		]) ?>
-		<?= Alert::widget() ?>
+
 
 		<?= $content ?>
 		</div>
 	</div>
-	<!--footer class="footer">
-		<div class="container">
-		<p class="pull-left">&copy; My Company <?= date('Y') ?></p>
-		<p class="pull-right"><?= Yii::powered() ?></p>
-		</div>
-	</footer-->
+
+	<div class="text-center" style="left:20%; position:absolute; top:35%; width:60%; z-index:20;">
+		<?php 
+		/* if (Yii::$app->session->hasFlash('success')):
+			echo Alert::widget([
+				'options' => [
+					'class' => 'alert-success',
+				],
+				'body' => Yii::$app->session->getFlash('success'),
+			]);
+				//echo Yii::$app->session->getFlash('success');
+		else */
+			if (Yii::$app->session->hasFlash('error')):
+			echo Alert::widget([
+				'options' => [
+					'class' => 'alert-danger',
+				],
+				'body' => Yii::$app->session->getFlash('error'),
+			]);
+		 ?>
+		<?php endif; ?>
+	</div>
 	<!-- FOOTER -->
 	<footer class="footer">
 		<div class="footer-meta">
