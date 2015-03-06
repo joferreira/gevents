@@ -15,121 +15,124 @@ use yii\filters\AccessControl;
 
 /**
  * Método de controle de cliente.
+ * 
+ * @package Controller
+ * @author Josemar Ferreira <jf.sorin@gmail.com>
  */
 class ClienteController extends Controller {
 
-    /**
-     * Método para cadastro do cliente.
-     * 
-     * @throws Exception
-     */
-    public function actionCadastro() {
-        try {
-            $objModelCliente = new Cliente();
+	/**
+	 * Método para cadastro do cliente.
+	 * 
+	 * @throws Exception
+	 */
+	public function actionCadastro() {
+		try {
+			$objModelCliente = new Cliente();
 
-            if (isset($_POST['CadastroForm'])) {
-                $arrCadastrado = $_POST['CadastroForm'];
+			if (isset($_POST['CadastroForm'])) {
+				$arrCadastrado = $_POST['CadastroForm'];
 
-                $arrDados = array();
-                $arrDados['STR_NOME_COMPLETO'] = $cadastrado['nome'];
-                $arrDados['STR_EMAIL'] = $cadastrado['email'];
-                $arrDados['STR_SENHA'] = $cadastrado['senha'];
+				$arrDados = array();
+				$arrDados['STR_NOME_COMPLETO'] = $cadastrado['nome'];
+				$arrDados['STR_EMAIL'] = $cadastrado['email'];
+				$arrDados['STR_SENHA'] = $cadastrado['senha'];
 
-                if ($arrCadastrado['senha'] == $arrCadastrado['confirmeSenha']) {
-                    $arrStatusEmail = $objModelCliente->verificaEmail($arrDados['STR_EMAIL']);
-                    
-                    if (empty($arrStatusEmail)) {
-                        // Salva o organizador
-                        $intIdCliente = $objModelCliente->saveOrganizador($arrDados);
-                        //print_r($_POST['CadastroForm']);
-                        echo "Seu cadastro efetuado com sucesso. Obrigado por fazer parte!";
-                    } else
-                        throw new Exception("Seu e-mail já cadastrado, por favor, pedimos para que verifique e requisite lembrar de sua senha. Obrigado!");
-                } else
-                    throw new Exception("Sua senha, está diferente da requisitada. Por favor, pedimos que verifique");
-            } else
-                throw new Exception("Os campos não estão preenchidos corretamente, por favor, verifique!");
-        } catch (Exception $objException) {
-            echo $objException->getMessage();
-        }
-        
-        /*
+				if ($arrCadastrado['senha'] == $arrCadastrado['confirmeSenha']) {
+					$arrStatusEmail = $objModelCliente->verificaEmail($arrDados['STR_EMAIL']);
 
-          try {
-          $objModelCliente = new CLIENTE();
-          $objModelAceite = new ACEITE();
-          $objModelAcesso = new ACESSO();
-          $objModelLog = new LOG();
+					if (empty($arrStatusEmail)) {
+						// Salva o organizador
+						$intIdCliente = $objModelCliente->saveOrganizador($arrDados);
+						//print_r($_POST['CadastroForm']);
+						echo "Seu cadastro efetuado com sucesso. Obrigado por fazer parte!";
+					} else
+						throw new Exception("Seu e-mail já cadastrado, por favor, pedimos para que verifique e requisite lembrar de sua senha. Obrigado!");
+				} else
+					throw new Exception("Sua senha, está diferente da requisitada. Por favor, pedimos que verifique");
+			} else
+				throw new Exception("Os campos não estão preenchidos corretamente, por favor, verifique!");
+		} catch (Exception $objException) {
+			echo $objException->getMessage();
+		}
 
-          // Validação Ajax
-          $this->performAjaxValidation($objModelCliente);
-          $this->performAjaxValidation($objModelAceite);
+		/*
 
-          // Post de dados do formulário
-          if (isset($_POST['CLIENTE']) && isset($_POST['ACEITE'])) {
-          $objModelCliente->attributes = $_POST['CLIENTE'];
-          $objModelAceite->attributes = $_POST['ACEITE'];
+		  try {
+		  $objModelCliente = new CLIENTE();
+		  $objModelAceite = new ACEITE();
+		  $objModelAcesso = new ACESSO();
+		  $objModelLog = new LOG();
 
-          if ($objModelCliente->validate()) {
-          $arrStatusEmail = $objModelCliente->verificaEmail($_POST['CLIENTE']['STR_EMAIL']);
+		  // Validação Ajax
+		  $this->performAjaxValidation($objModelCliente);
+		  $this->performAjaxValidation($objModelAceite);
 
-          // Verifica se e-mail possui em base de dados e efetua tratamento
-          if (!empty($arrStatusEmail)) {
-          // Retorna para a view informando que existe e-mail cadastrado
-          Yii::app()->user->setFlash('warning', 'Atenção! O e-mail informado já está cadastrado.');
-          } else {
-          // Verifica a validação do aceite e efetua a gravação dos dados
-          if ($objModelAceite->validate()) {
-          if (empty($_POST['ACEITE']['STR_ACEITE_TERMO']) || empty($_POST['ACEITE']['STR_ACEITE_ARTISTA'])) {
-          // Retorna para a view requisitando o aceite dos termos
-          Yii::app()->user->setFlash('warning', 'Atenção! O aceite dos termos, são necessários para sua inscrição.');
-          } else {
-          // Salva inscrição inicial de cliente e recebe o último código de cliente registrado
-          $intMaxIdCliente = $objModelCliente->saveClienteInicial($_POST['CLIENTE']);
+		  // Post de dados do formulário
+		  if (isset($_POST['CLIENTE']) && isset($_POST['ACEITE'])) {
+		  $objModelCliente->attributes = $_POST['CLIENTE'];
+		  $objModelAceite->attributes = $_POST['ACEITE'];
 
-          $arrAceite = array();
-          $arrAceite['CLIENTE_INT_ID_CLIENTE'] = $intMaxIdCliente;
-          $arrAceite['STR_ACEITE_TERMO'] = $_POST['ACEITE']['STR_ACEITE_TERMO'];
-          $arrAceite['STR_ACEITE_ARTISTA'] = $_POST['ACEITE']['STR_ACEITE_ARTISTA'];
-          $arrAceite['STR_ACEITE_NEWSLETTER'] = $_POST['ACEITE']['STR_ACEITE_NEWSLETTER'];
+		  if ($objModelCliente->validate()) {
+		  $arrStatusEmail = $objModelCliente->verificaEmail($_POST['CLIENTE']['STR_EMAIL']);
 
-          // Salva termos de aceite
-          $objModelAceite->saveAceite($arrAceite);
+		  // Verifica se e-mail possui em base de dados e efetua tratamento
+		  if (!empty($arrStatusEmail)) {
+		  // Retorna para a view informando que existe e-mail cadastrado
+		  Yii::app()->user->setFlash('warning', 'Atenção! O e-mail informado já está cadastrado.');
+		  } else {
+		  // Verifica a validação do aceite e efetua a gravação dos dados
+		  if ($objModelAceite->validate()) {
+		  if (empty($_POST['ACEITE']['STR_ACEITE_TERMO']) || empty($_POST['ACEITE']['STR_ACEITE_ARTISTA'])) {
+		  // Retorna para a view requisitando o aceite dos termos
+		  Yii::app()->user->setFlash('warning', 'Atenção! O aceite dos termos, são necessários para sua inscrição.');
+		  } else {
+		  // Salva inscrição inicial de cliente e recebe o último código de cliente registrado
+		  $intMaxIdCliente = $objModelCliente->saveClienteInicial($_POST['CLIENTE']);
 
-          $arrAcesso = array();
-          $arrAcesso['CLIENTE_INT_ID_CLIENTE'] = $intMaxIdCliente;
+		  $arrAceite = array();
+		  $arrAceite['CLIENTE_INT_ID_CLIENTE'] = $intMaxIdCliente;
+		  $arrAceite['STR_ACEITE_TERMO'] = $_POST['ACEITE']['STR_ACEITE_TERMO'];
+		  $arrAceite['STR_ACEITE_ARTISTA'] = $_POST['ACEITE']['STR_ACEITE_ARTISTA'];
+		  $arrAceite['STR_ACEITE_NEWSLETTER'] = $_POST['ACEITE']['STR_ACEITE_NEWSLETTER'];
 
-          $objModelAcesso->saveAcesso($arrAcesso);
+		  // Salva termos de aceite
+		  $objModelAceite->saveAceite($arrAceite);
 
-          $arrLog = array();
-          $arrLog['CLIENTE_INT_ID_CLIENTE'] = $intMaxIdCliente;
-          $arrLog['STR_OCORRENCIA'] = LOG::MENSAGEM_CADASTRO;
+		  $arrAcesso = array();
+		  $arrAcesso['CLIENTE_INT_ID_CLIENTE'] = $intMaxIdCliente;
 
-          $objModelLog->saveLog($arrLog);
+		  $objModelAcesso->saveAcesso($arrAcesso);
 
-          // Envio de e-mail
-          $_POST['CLIENTE']['STR_TIPO_ENVIO'] = 'confirmacao';
-          Helpers::SendEmail($_POST['CLIENTE']);
+		  $arrLog = array();
+		  $arrLog['CLIENTE_INT_ID_CLIENTE'] = $intMaxIdCliente;
+		  $arrLog['STR_OCORRENCIA'] = LOG::MENSAGEM_CADASTRO;
 
-          // Retorno de mensagem
-          Yii::app()->user->setFlash('success', 'Inscrição feita com sucesso!<br>Agradecemos pela sua participação.');
+		  $objModelLog->saveLog($arrLog);
 
-          $this->redirect(array('cliente/inscricao'));
-          }
-          }
-          }
-          }
-          }
+		  // Envio de e-mail
+		  $_POST['CLIENTE']['STR_TIPO_ENVIO'] = 'confirmacao';
+		  Helpers::SendEmail($_POST['CLIENTE']);
 
-          // Envio para a view
-          $this->render('inscricao', array(
-          'objModelCliente' => $objModelCliente,
-          'objModelAceite' => $objModelAceite
-          ));
-          } catch (Exception $objException) {
-          echo 'Exception: ' . $objException->getMessage() . '<br>';
-          }
-         */
-    }
+		  // Retorno de mensagem
+		  Yii::app()->user->setFlash('success', 'Inscrição feita com sucesso!<br>Agradecemos pela sua participação.');
+
+		  $this->redirect(array('cliente/inscricao'));
+		  }
+		  }
+		  }
+		  }
+		  }
+
+		  // Envio para a view
+		  $this->render('inscricao', array(
+		  'objModelCliente' => $objModelCliente,
+		  'objModelAceite' => $objModelAceite
+		  ));
+		  } catch (Exception $objException) {
+		  echo 'Exception: ' . $objException->getMessage() . '<br>';
+		  }
+		 */
+	}
 
 }
