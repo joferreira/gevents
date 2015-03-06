@@ -41,7 +41,7 @@ $RECYCLE.BIN/
 Network Trash Folder
 Temporary Items
 .apdisk
+
+*.log
+*.sublime-workspace
 *.sublime-project
-gevents.sublime-project
-gevents.sublime-project
-gevents.sublime-workspace

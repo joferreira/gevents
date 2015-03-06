@@ -7,6 +7,13 @@ use yii\db\ActiveRecord;
 use yii\db\Transaction;
 
 /**
+ * Método de model de cliente.
+ * 
+ * @package Model
+ * @author Josemar Ferreira <jf.sorin@gmail.com>
+ */
+
+/**
  * This is the model class for table "cliente".
  *
  * @property string $INT_ID_CLIENTE
@@ -47,7 +54,7 @@ use yii\db\Transaction;
  * @property ReservaEstacionamento[] $reservaEstacionamentos
  */
 
-class Cliente extends \yii\db\ActiveRecord
+class Cliente extends ActiveRecord
 {
 	/**
 	 * @inheritdoc
@@ -194,7 +201,7 @@ class Cliente extends \yii\db\ActiveRecord
 	public function verificaEmail($strEmail) {
 		try {
 			if (empty($strEmail))
-				Yii::$app->session->setFlash('error', 'Parâmetro informado errado!'); // throw new Exception('Parâmetro informado errado!');
+				Yii::$app->session->setFlash('error', 'Parâmetro informado errado!'); 
 
 			$objResult = self::find()
 					->where(["STR_EMAIL" => $strEmail])
@@ -221,7 +228,7 @@ class Cliente extends \yii\db\ActiveRecord
 		$objTransaction = $connection->beginTransaction();
 		try {
 			if (empty($arrDados))
-				Yii::$app->session->setFlash('error', 'Campos Vazios!'); //throw new Exception('Campos Vazios!');
+				Yii::$app->session->setFlash('error', 'Campos Vazios!');
 
 			// Insere os dados
 			$connection->createCommand()
@@ -328,8 +335,6 @@ class Cliente extends \yii\db\ActiveRecord
 
 		return $str;
 	}
-
-
 
 	/**
 	 * Método para salvar cliente inicial.

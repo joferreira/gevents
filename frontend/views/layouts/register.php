@@ -17,7 +17,8 @@ use yii\bootstrap\Alert;
 			<div class="col-sm-6 col-md-3">
 				 <?= $form->field($model, 'nome', [
 						'inputOptions' => [ 
-							'placeholder' => $model->getAttributeLabel('Nome e Sobrenome')
+							'placeholder' => $model->getAttributeLabel('Nome e Sobrenome'),
+							'enableError' => true
 						], 
 						'inputTemplate' => '<div class="form-group" data-animation="fadeInUp" data-animation-delay="200">{input}</div>',
 				 ])->label(false); ?>

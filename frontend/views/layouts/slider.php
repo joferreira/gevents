@@ -1,3 +1,8 @@
+<?php
+use yii\helpers\Html;
+use yii\bootstrap\ActiveForm;
+use yii\bootstrap\Alert;
+?>
 <div id="main">
 	<!-- SLIDER -->
 	<section class="page-section no-padding background-img-slider">
@@ -58,8 +63,55 @@
 										<span class="title-inner">Cadastro</span>
 									</h1>
 								</div>
+								<!-- Cadastro Form -->
+								<?php $form = ActiveForm::begin(['id' => 'cadastroform', 'method' => 'post', 'action' => ['cliente/cadastro']] , ['class'=>'af-form row']); ?>
+								<div class="row">
+									<div class="col-sm-12 form-alert"></div>
+									<div class="col-sm-12">
+										 <?= $form->field($model, 'nome', [
+												'inputOptions' => [ 
+													'placeholder' => $model->getAttributeLabel('Nome e Sobrenome'),
+													'enableError' => true
+												], 
+												'inputTemplate' => '<div class="form-group" data-animation="fadeInUp" data-animation-delay="200">{input}</div>',
+										 ])->label(false); ?>
+									</div>
+									<div class="col-sm-12">
+										<?= $form->field($model, 'email', [
+												'inputOptions' => [ 
+													'placeholder' => $model->getAttributeLabel('O seu e-mail aqui '),
+													'enableError' => true
+												],
+												'inputTemplate' => '<div class="form-group" data-animation="fadeInUp" data-animation-delay="200">{input}</div>',
+											])->label(false); ?>
+									</div>
+									<div class="col-sm-12">
+										<?= $form->field($model, 'senha', [
+												'inputOptions' => [ 
+													'placeholder' => $model->getAttributeLabel('Senha')
+												],
+												'inputTemplate' => '<div class="form-group" data-animation="fadeInUp" data-animation-delay="200">{input}</div>',
+											])->label(false)->passwordInput(); ?>
+									</div>
+									<div class="col-sm-12">
+										<?= $form->field($model, 'confirmeSenha', [
+												'inputOptions' => [ 
+													'placeholder' => $model->getAttributeLabel('Confirme a senha')
+												], 
+												'inputTemplate' => '<div class="form-group" data-animation="fadeInUp" data-animation-delay="200">{input}</div>',
+											])->label(false)->passwordInput(); ?>
+									</div>
+									<div class="col-sm-12">
+										<div class="text-center">
+											<?= Html::submitButton('Cadastre-se <i class="fa fa-arrow-circle-right"></i>', [
+												'class' => 'btn btn-theme btn-theme-xl submit-button ',
+												'name' => 'contact-button']) ?>
+										</div>
+									</div>
+								</div>
+								<?php ActiveForm::end(); ?>
 
-								<form id="registration-form-alt" name="registration-form-alt" class="registration-form alt" action="#" method="post">
+								<!--form id="registration-form-alt" name="registration-form-alt" class="registration-form alt" action="#" method="post">
 									<div class="row">
 										<div class="col-sm-12 form-alert"></div>
 										<div class="col-sm-12">
@@ -103,7 +155,7 @@
 											</div>
 										</div>
 									</div>
-								</form>
+								</form-->
 
 								</div>
 							</div>

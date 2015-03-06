@@ -1,1 +1,18 @@
 [22-Jan-2015 09:21:22 America/Sao_Paulo] PHP Parse error:  syntax error, unexpected ''layout'' (T_CONSTANT_ENCAPSED_STRING), expecting ']' in C:\Apache24\htdocs\gevents\backend\views\site\login.php on line 20
+[19-Feb-2015 14:31:49 America/Sao_Paulo] PHP Parse error:  syntax error, unexpected '=>' (T_DOUBLE_ARROW) in C:\Apache24\htdocs\gevents\backend\views\cadastro\_form.php on line 16
+[19-Feb-2015 16:11:30 America/Sao_Paulo] PHP Parse error:  syntax error, unexpected '=>' (T_DOUBLE_ARROW) in C:\Apache24\htdocs\gevents\backend\views\cadastro\_form.php on line 16
+[19-Feb-2015 16:12:27 America/Sao_Paulo] PHP Parse error:  syntax error, unexpected ']' in C:\Apache24\htdocs\gevents\backend\views\cadastro\_form.php on line 21
+[20-Feb-2015 16:16:18 America/Sao_Paulo] PHP Parse error:  syntax error, unexpected ',' in C:\Apache24\htdocs\gevents\common\models\Cliente.php on line 277
+[20-Feb-2015 16:16:23 America/Sao_Paulo] PHP Parse error:  syntax error, unexpected ',' in C:\Apache24\htdocs\gevents\common\models\Cliente.php on line 277
+[20-Feb-2015 16:17:48 America/Sao_Paulo] PHP Parse error:  syntax error, unexpected ',' in C:\Apache24\htdocs\gevents\common\models\Cliente.php on line 277
+[20-Feb-2015 16:18:20 America/Sao_Paulo] PHP Parse error:  syntax error, unexpected ',' in C:\Apache24\htdocs\gevents\common\models\Cliente.php on line 277
+[20-Feb-2015 16:20:02 America/Sao_Paulo] PHP Fatal error:  Class 'common\models\Exception' not found in C:\Apache24\htdocs\gevents\common\models\Cliente.php on line 264
+[20-Feb-2015 16:26:46 America/Sao_Paulo] PHP Fatal error:  Class 'common\models\Exception' not found in C:\Apache24\htdocs\gevents\common\models\Cliente.php on line 264
+[20-Feb-2015 16:31:14 America/Sao_Paulo] PHP Fatal error:  Class 'common\models\Exception' not found in C:\Apache24\htdocs\gevents\common\models\Cliente.php on line 264
+[20-Feb-2015 16:33:32 America/Sao_Paulo] PHP Fatal error:  Class 'common\models\Exception' not found in C:\Apache24\htdocs\gevents\common\models\Cliente.php on line 264
+[20-Feb-2015 16:35:59 America/Sao_Paulo] PHP Fatal error:  Class 'common\models\Exception' not found in C:\Apache24\htdocs\gevents\common\models\Cliente.php on line 264
+[20-Feb-2015 16:38:44 America/Sao_Paulo] PHP Fatal error:  Class 'common\models\Exception' not found in C:\Apache24\htdocs\gevents\common\models\Cliente.php on line 264
+[20-Feb-2015 16:41:26 America/Sao_Paulo] PHP Fatal error:  Class 'common\models\Exception' not found in C:\Apache24\htdocs\gevents\common\models\Cliente.php on line 264
+[23-Feb-2015 17:32:23 America/Sao_Paulo] PHP Fatal error:  Class 'backend\controllers\ParticipanteSearch' not found in C:\Apache24\htdocs\gevents\backend\controllers\ClienteController.php on line 57
+[23-Feb-2015 17:32:49 America/Sao_Paulo] PHP Fatal error:  Class 'backend\controllers\ParticipanteSearch' not found in C:\Apache24\htdocs\gevents\backend\controllers\ClienteController.php on line 57
+[23-Feb-2015 17:33:20 America/Sao_Paulo] PHP Fatal error:  Class 'backend\controllers\ParticipanteSearch' not found in C:\Apache24\htdocs\gevents\backend\controllers\ClienteController.php on line 57

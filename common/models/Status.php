@@ -3,6 +3,14 @@
 namespace common\models;
 
 use Yii;
+use yii\db\ActiveRecord;
+
+/**
+ * Método de model de status.
+ * 
+ * @package Model
+ * @author Josemar Ferreira <jf.sorin@gmail.com>
+ */
 
 /**
  * This is the model class for table "status".
@@ -13,7 +21,8 @@ use Yii;
  * @property Cliente[] $clientes
  * @property Evento[] $eventos
  */
-class Status extends \yii\db\ActiveRecord
+
+class Status extends ActiveRecord
 {
 	const STATUS_ATIVO = 1;
 	const STATUS_AGUARDANDO = 2;

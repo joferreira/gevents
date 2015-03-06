@@ -4,7 +4,7 @@ use yii\bootstrap\ActiveForm;
 use yii\captcha\Captcha;
 ?>
 <!-- PAGE CONTACT -->
-<section class="page-section color">
+<section class="page-section color" id="contact">
 	<div class="container">
 
 		<h1 class="section-title">
@@ -49,7 +49,7 @@ use yii\captcha\Captcha;
 			</div>
 		<?php ActiveForm::end(); ?>
 
-		<form name="af-form" method="post" action="#contact" class="af-form row" id="af-form">
+		<!--form name="af-form" method="post" action="#contact" class="af-form row" id="af-form">
 
 			<div class="col-sm-12 af-outer af-required">
 				<div class="form-group af-inner">
@@ -84,7 +84,7 @@ use yii\captcha\Captcha;
 				</div>
 			</div>
 
-		</form>
+		</form-->
 		<!-- /Contact form -->
 
 	</div>
