@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"col",
+				"col-sm-12"
+			],
+			[
 				"valord",
 				"valorDevolucao"
 			],
@@ -510,20 +514,168 @@
 			[
 				"arremata",
 				"Arrematantes"
-			],
-			[
-				"tem",
-				"temCarta"
 			]
 		]
 	},
 	"buffers":
 	[
 		{
+			"file": "/C/Apache24/htdocs/test/teste.php",
+			"settings":
+			{
+				"buffer_size": 363,
+				"line_ending": "Windows"
+			}
+		},
+		{
 			"file": "frontend/views/layouts/main.php",
 			"settings":
 			{
-				"buffer_size": 6342,
+				"buffer_size": 4918,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/C/Apache24/htdocs/layout/imevent/index.html",
+			"settings":
+			{
+				"buffer_size": 233000,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "frontend/controllers/SiteController.php",
+			"settings":
+			{
+				"buffer_size": 1448,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/C/Users/jferreira/Downloads/Model Gevents.sql",
+			"settings":
+			{
+				"buffer_size": 75497,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "common/config/main-local.php",
+			"settings":
+			{
+				"buffer_size": 860,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "frontend/config/main-local.php",
+			"settings":
+			{
+				"buffer_size": 546,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "backend/controllers/SiteController.php",
+			"settings":
+			{
+				"buffer_size": 1857,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "backend/controllers/UsuarioController.php",
+			"settings":
+			{
+				"buffer_size": 3807,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "backend/views/layouts/main.php",
+			"settings":
+			{
+				"buffer_size": 2237,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "frontend/views/layouts/contact.php",
+			"settings":
+			{
+				"buffer_size": 3240,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "frontend/views/site/index.php",
+			"settings":
+			{
+				"buffer_size": 451,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "frontend/models/ContactForm.php",
+			"settings":
+			{
+				"buffer_size": 1337,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "backend/views/site/login.php",
+			"settings":
+			{
+				"buffer_size": 1665,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "common/models/Cliente.php",
+			"settings":
+			{
+				"buffer_size": 8345,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "frontend/controllers/ClienteController.php",
+			"settings":
+			{
+				"buffer_size": 4244,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "backend/views/layouts/menu.php",
+			"settings":
+			{
+				"buffer_size": 11758,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "backend/controllers/ClienteController.php",
+			"settings":
+			{
+				"buffer_size": 3009,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "backend/views/cadastro/create.php",
+			"settings":
+			{
+				"buffer_size": 287,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "backend/views/cadastro/_form.php",
+			"settings":
+			{
+				"buffer_size": 7106,
 				"line_ending": "Windows"
 			}
 		}
@@ -543,7 +695,7 @@
 	},
 	"console":
 	{
-		"height": 118.0
+		"height": 184.0
 	},
 	"distraction_free":
 	{
@@ -556,6 +708,87 @@
 	},
 	"file_history":
 	[
+		"/C/Apache24/htdocs/distribuicaodigital/protected/modules/dashboard/views/contacliente/meusdados.php",
+		"/C/Apache24/htdocs/distribuicaodigital/protected/views/cliente/inscricao.php",
+		"/C/Apache24/htdocs/gevents/backend/config/main.php",
+		"/C/Users/jferreira/Downloads/Model Gevents.sql",
+		"/C/Apache24/htdocs/gevents/frontend/web/php_errors.log",
+		"/C/Apache24/htdocs/gevents/frontend/assets/AppAsset.php",
+		"/C/Apache24/htdocs/gevents/frontend/views/layouts/header.php",
+		"/C/Apache24/htdocs/gevents/frontend/views/layouts/register.php",
+		"/C/Apache24/htdocs/gevents/frontend/views/layouts/login.php",
+		"/C/Apache24/htdocs/gevents/frontend/views/site/index.php",
+		"/C/Apache24/htdocs/gevents/frontend/views/layouts/slider.php",
+		"/C/Apache24/htdocs/gevents/frontend/web/js/theme.js",
+		"/C/Apache24/htdocs/gevents/frontend/views/layouts/about.php",
+		"/C/Apache24/htdocs/gevents/frontend/web/css/theme.css",
+		"/C/Apache24/htdocs/gevents/frontend/views/layouts/price.php",
+		"/C/Apache24/htdocs/gevents/frontend/views/layouts/faq.php",
+		"/C/Apache24/htdocs/gevents/frontend/views/site/faq.php",
+		"/C/Apache24/htdocs/gevents/environments/dev/common/config/main-local.php",
+		"/C/Apache24/htdocs/gevents/environments/prod/common/config/main-local.php",
+		"/C/Apache24/htdocs/gevents/frontend/config/main.php",
+		"/C/Apache24/htdocs/gevents/frontend/config/main-local.php",
+		"/C/Apache24/conf/httpd.conf",
+		"/C/Apache24/htdocs/gevents/frontend/runtime/gii-2.0.2-dev/yii-gii-generators-module-Generator.json",
+		"/C/Apache24/htdocs/gevents/backend/views/layouts/menu.php",
+		"/C/Apache24/htdocs/gevents/backend/views/layouts/main.php",
+		"/C/Apache24/htdocs/gevents/backend/controllers/SiteController.php",
+		"/C/Apache24/htdocs/layout/imevent/coming-soon-1.html",
+		"/C/Apache24/htdocs/layout/imevent-christmas/register.html",
+		"/C/Apache24/htdocs/layout/imevent-multipage/assets/php/registration-form.php",
+		"/C/Apache24/htdocs/layout/imevent-multipage/members.html",
+		"/C/Apache24/htdocs/layout/imevent/register.html",
+		"/C/Apache24/htdocs/gevents/frontend/views/layouts/blog.php",
+		"/C/Apache24/htdocs/gevents/frontend/views/layouts/schedule.php",
+		"/C/Apache24/htdocs/gevents/frontend/views/layouts/speakers.php",
+		"/C/Apache24/htdocs/gevents/frontend/views/layouts/sponsors.php",
+		"/C/Apache24/htdocs/gevents/frontend/views/layouts/testimonials.php",
+		"/C/Apache24/htdocs/gevents/frontend/views/layouts/contact.php",
+		"/C/Apache24/htdocs/gevents/frontend/modules/admin/views/default/index.php",
+		"/C/Apache24/htdocs/gevents/frontend/modules/participante/participante.php",
+		"/C/Apache24/htdocs/gevents/frontend/modules/participante/views/index.php",
+		"/C/Apache24/htdocs/gevents/frontend/modules/participante/index.php",
+		"/C/Apache24/htdocs/layout/imevent/index-circle.html",
+		"/C/Apache24/htdocs/gevents/frontend/views/layouts/event_carousel.php",
+		"/C/Apache24/htdocs/gevents/frontend/views/layouts/event_grid.php",
+		"/C/Apache24/htdocs/gevents/frontend/web/js/theme-config.js",
+		"/C/Apache24/htdocs/layout/imevent-multipage/event-grid.html",
+		"/C/Apache24/htdocs/layout/admin/pages/index.html",
+		"/C/Apache24/htdocs/gevents/backend/views/site/index.php",
+		"/C/Apache24/htdocs/gevents/backend/assets/AppAsset.php",
+		"/C/Apache24/htdocs/layout/admin/pages/login.html",
+		"/C/Apache24/htdocs/gevents/backend/views/site/login.php",
+		"/C/Apache24/htdocs/layout/admin/dist/css/sb-admin-2.css",
+		"/C/Apache24/htdocs/gevents/tests/codeception/frontend/acceptance/LoginCept.php",
+		"/C/Apache24/htdocs/gevents/tests/codeception/backend/acceptance/LoginCept.php",
+		"/C/Apache24/htdocs/gevents/tests/codeception/backend/functional/LoginCept.php",
+		"/C/Apache24/htdocs/gevents/common/models/LoginForm.php",
+		"/C/Apache24/htdocs/gevents/tests/codeception/common/_pages/LoginPage.php",
+		"/C/Apache24/htdocs/gevents/vendor/yiisoft/yii2-codeception/README.md",
+		"/C/Apache24/htdocs/gevents/vendor/yiisoft/yii2/widgets/Menu.php",
+		"/C/Apache24/htdocs/gevents/vendor/yiisoft/yii2/web/User.php",
+		"/C/Apache24/htdocs/gevents/backend/views/layouts/boxNotifications.php",
+		"/C/Apache24/htdocs/gevents/backend/views/layouts/boxChartDonut.php",
+		"/C/Apache24/htdocs/gevents/backend/views/layouts/boxChat.php",
+		"/C/Apache24/htdocs/gevents/backend/views/layouts/boxChart.php",
+		"/C/Apache24/htdocs/gevents/backend/views/layouts/boxTimeline",
+		"/C/Apache24/htdocs/gevents/backend/views/layouts/boxSupport.php",
+		"/C/Apache24/htdocs/gevents/backend/views/layouts/boxOrders.php",
+		"/C/Apache24/htdocs/gevents/backend/views/layouts/boxComments.php",
+		"/C/Apache24/htdocs/gevents/backend/views/layouts/boxTaks.php",
+		"/C/Apache24/htdocs/layout/imevent/assets/js/theme.js",
+		"/C/Apache24/htdocs/layout/admin/index.html",
+		"/C/Apache24/htdocs/gevents/backend/web/assets/.gitignore",
+		"/C/Apache24/htdocs/layout/imevent-multipage/assets/css/theme.css",
+		"/C/Apache24/htdocs/layout/imevent-multipage/assets/js/theme.js",
+		"/C/Apache24/htdocs/layout/imevent-multipage/assets/js/theme-config.css",
+		"/C/Apache24/htdocs/gevents/frontend/web/css/theme-red-1.css",
+		"/C/Apache24/htdocs/layout/imevent-multipage/assets/css/theme-red-1.css",
+		"/C/Apache24/htdocs/layout/imevent-multipage/assets/js/theme-config.js",
+		"/C/Apache24/htdocs/layout/imevent-multipage/assets/js/custom.js",
+		"/C/Apache24/htdocs/gevents/frontend/views/layouts/location.php",
+		"/C/Apache24/htdocs/gevents/gevents.sublime-project",
 		"/C/Apache24/htdocs/financeiro/application/views/popup/popup_devolver.php",
 		"/F/gevents/console/migrations/m130524_201442_init.php",
 		"/C/Apache24/htdocs/financeiro/application/controllers/controller_email.php",
@@ -602,88 +835,7 @@
 		"/C/Apache24/htdocs/financeiro/application/views/retirada/lista_atrasados.php",
 		"/C/Apache24/htdocs/financeiro/application/views/popup/popup_abandonar.php",
 		"/C/Apache24/htdocs/financeiro/application/views/carta/criar_editar.php",
-		"/C/Apache24/htdocs/financeiro/application/views/fechamento/agendamento_retirada.php",
-		"/C/Apache24/htdocs/financeiro/application/controllers/controller_fechamento.php",
-		"/C/Apache24/htdocs/financeiro/application/views/fechamento/listagem.php",
-		"/C/Apache24/htdocs/financeiro/application/views/lote/nao_aprovados.php",
-		"/C/Apache24/htdocs/financeiro/application/views/leilao/detalhe_carta.php",
-		"/C/Apache24/htdocs/financeiro/application/views/conciliacao/conciliacao.php",
-		"/C/Apache24/htdocs/financeiro/application/views/fechamento/resumo.php",
-		"/C/Apache24/htdocs/financeiro/application/models/despesas_adm_model.php",
-		"/C/Apache24/htdocs/financeiro/application/views/popup/popup_comentarios.php",
-		"/C/Apache24/htdocs/financeiro/application/controllers/controller_comentario.php",
-		"/C/Apache24/htdocs/financeiro/application/views/popup/popup_depositos.php",
-		"/C/Apache24/htdocs/financeiro/application/views/notificacao/lista.php",
-		"/C/Apache24/htdocs/financeiro/application/models/desistente_model.php",
-		"/C/Apache24/htdocs/financeiro/application/models/fechamento_model.php",
-		"/C/Apache24/htdocs/financeiro/application/controllers/controller_deposito.php",
-		"/C/Apache24/htdocs/financeiro/application/controllers/controller_notificacao.php",
-		"/C/Apache24/htdocs/financeiro/application/views/desistente/listagem.php",
-		"/C/Apache24/htdocs/financeiro/application/views/devolucao/listagem.php",
-		"/C/Apache24/htdocs/financeiro/application/views/devolucao/detalhe_devolucao.php",
-		"/C/Apache24/htdocs/financeiro/application/models/notificacao_model.php",
-		"/C/Apache24/htdocs/financeiro/application/controllers/controller_uploader.php",
-		"/C/Users/jferreira/Downloads/WWaNzfHP5q/index.html",
-		"/C/Users/JFERRE~1/AppData/Local/Temp/7zE29C4.tmp/index.html",
-		"/C/Program Files/Sublime Text 2/License.sublime_license",
-		"/C/Apache24/htdocs/financeiro/application/controllers/controller_carta.php",
-		"/C/Apache24/htdocs/financeiro/application/models/conciliacao_model.php",
-		"/C/Apache24/htdocs/financeiro/application/views/popup/popup_carta.php",
-		"/C/Apache24/htdocs/financeiro/application/models/conta_model.php",
-		"/C/Apache24/htdocs/financeiro/application/controllers/controller_extrato.php",
-		"/C/Apache24/htdocs/financeiro/system/libraries/Upload.php",
-		"/C/Apache24/htdocs/financeiro/application/views/layout/menu.php",
-		"/C/Apache24/htdocs/financeiro/application/models/extrato_model.php",
-		"/C/Apache24/htdocs/financeiro/application/models/leilao_model.php",
-		"/C/Users/jferreira/AppData/Roaming/Sublime Text 2/Packages/User/Preferences.sublime-settings",
-		"/C/Users/jferreira/AppData/Roaming/Sublime Text 2/Packages/Default/Preferences.sublime-settings",
-		"/C/Apache24/htdocs/financeiro/application/controllers/controller_desistente.php",
-		"/C/Apache24/htdocs/financeiro/application/models/carta_model.php",
-		"/C/Users/jferreira/Downloads/opencart-1.5.6.4/upload/system/library/url.php",
-		"/C/Users/jferreira/Downloads/opencart-1.5.6.4/upload/system/library/config.php",
-		"/C/Users/jferreira/Downloads/opencart-1.5.6.4/upload/system/library/db.php",
-		"/C/Users/jferreira/Downloads/opencart-1.5.6.4/upload/system/startup.php",
-		"/C/Users/jferreira/Downloads/opencart-1.5.6.4/upload/catalog/controller/module/featured.php",
-		"/C/Users/jferreira/Downloads/opencart-1.5.6.4/upload/catalog/controller/module/latest.php",
-		"/C/Users/jferreira/Downloads/opencart-1.5.6.4/upload/catalog/controller/module/special.php",
-		"/C/Users/jferreira/Downloads/opencart-1.5.6.4/upload/catalog/controller/module/carousel.php",
-		"/C/Users/jferreira/Downloads/opencart-1.5.6.4/upload/catalog/controller/module/banner.php",
-		"/C/Users/jferreira/Downloads/opencart-1.5.6.4/upload/catalog/view/theme/default/template/module/featured.tpl",
-		"/C/Users/jferreira/Downloads/opencart-1.5.6.4/upload/catalog/view/theme/default/template/module/bestseller.tpl",
-		"/C/Users/jferreira/Downloads/opencart-1.5.6.4/upload/catalog/view/theme/default/template/module/carousel.tpl",
-		"/C/Users/jferreira/Downloads/opencart-1.5.6.4/upload/catalog/view/theme/default/template/module/banner.tpl",
-		"/C/Users/jferreira/Downloads/opencart-1.5.6.4/upload/admin/view/template/module/banner.tpl",
-		"/C/Users/jferreira/Downloads/opencart-1.5.6.4/upload/admin/view/template/module/store.tpl",
-		"/C/Users/jferreira/Downloads/opencart-1.5.6.4/upload/admin/view/template/module/slideshow.tpl",
-		"/C/Users/jferreira/Downloads/opencart-1.5.6.4/upload/admin/view/template/module/featured.tpl",
-		"/C/Users/jferreira/Downloads/opencart-1.5.6.4/upload/admin/view/template/module/latest.tpl",
-		"/C/Users/jferreira/Downloads/opencart-1.5.6.4/upload/admin/view/template/module/special.tpl",
-		"/C/Users/jferreira/Downloads/opencart-1.5.6.4/upload/admin/model/catalog/product.php",
-		"/C/Users/jferreira/Downloads/opencart-1.5.6.4/upload/catalog/view/theme/default/template/product/special.tpl",
-		"/C/Users/jferreira/Downloads/opencart-1.5.6.4/upload/catalog/view/theme/default/template/module/special.tpl",
-		"/C/Users/jferreira/Downloads/opencart-1.5.6.4/upload/admin/model/setting/extension.php",
-		"/C/Users/jferreira/Downloads/opencart-1.5.6.4/upload/admin/controller/module/special.php",
-		"/C/Users/jferreira/Downloads/opencart-1.5.6.4/upload/catalog/controller/common/home.php",
-		"/C/Users/jferreira/Downloads/opencart-1.5.6.4/upload/catalog/view/theme/default/template/module/pp_layout.tpl",
-		"/C/Users/jferreira/Downloads/opencart-1.5.6.4/upload/catalog/view/theme/default/template/common/content_top.tpl",
-		"/C/Users/jferreira/Downloads/opencart-1.5.6.4/upload/catalog/view/theme/default/template/common/header.tpl",
-		"/C/Users/jferreira/Downloads/opencart-1.5.6.4/upload/catalog/view/theme/default/template/common/home.tpl",
-		"/C/Users/jferreira/Downloads/opencart-1.5.6.4/upload/catalog/model/catalog/category.php",
-		"/C/Users/jferreira/Downloads/opencart-1.5.6.4/upload/catalog/language/english/product/special.php",
-		"/C/Users/jferreira/Downloads/opencart-1.5.6.4/upload/catalog/controller/product/product.php",
-		"/C/Users/jferreira/Downloads/opencart-1.5.6.4/upload/catalog/controller/product/special.php",
-		"/C/Users/jferreira/Downloads/opencart-1.5.6.4/upload/catalog/controller/product/category.php",
-		"/C/Apache24/htdocs/financeiro/application/views/conciliacao/conciliacao_detalhe.php",
-		"/C/Apache24/htdocs/financeiro/application/controllers/controller_conciliacao.php",
-		"/C/Apache24/htdocs/financeiro/application/assets/modules/bootstrap/css/bootstrap.min.css",
-		"/C/Apache24/htdocs/financeiro/application/models/comentario_model.php",
-		"/C/Users/jferreira/Downloads/opencart-1.5.6.4/upload/catalog/model/setting/extension.php",
-		"/C/Users/jferreira/Downloads/opencart-1.5.6.4/upload/catalog/model/design/banner.php",
-		"/C/Users/jferreira/Downloads/opencart-1.5.6.4/upload/catalog/model/design/layout.php",
-		"/C/Users/jferreira/Downloads/opencart-1.5.6.4/upload/catalog/controller/common/content_top.php",
-		"/C/Users/jferreira/Downloads/opencart-1.5.6.4/upload/catalog/model/catalog/product.php",
-		"/C/Apache24/htdocs/financeiro/application/views/desistente/desistente.php",
-		"/C/Apache24/htdocs/financeiro/application/views/lote/nao_arrematados.php"
+		"/C/Apache24/htdocs/financeiro/application/views/fechamento/agendamento_retirada.php"
 	],
 	"find":
 	{
@@ -702,6 +854,46 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"class=\"row\"",
+			"($\n",
+			"model",
+			"($\n",
+			"model",
+			"	</div>\n	<div class=\"row\">",
+			"&quot;",
+			"gevents",
+			"mysql_connect",
+			"mysql",
+			"yii2advanced",
+			"login",
+			"registration",
+			"Gigantes",
+			"assets/img/icon-google-map.png",
+			"assets/",
+			"assets/img/partner/light/",
+			"assets/js/theme-config.css",
+			"assets/",
+			"defaultRoute",
+			"controllerMap",
+			"');\n",
+			"cannot be blank.",
+			"route",
+			"site/login",
+			"red",
+			"UTF-8",
+			"dashbo",
+			"\"",
+			"../dist",
+			"../bower_components",
+			"<script src=",
+			"></script>",
+			" rel=\"stylesheet\">",
+			"<link href=",
+			"event",
+			"thumbnail",
+			"s/",
+			"/",
+			"\\",
 			"totalArrematante",
 			"btnTotal",
 			"2,",
@@ -789,47 +981,7 @@
 			"auth",
 			"user",
 			"operador",
-			"comen",
-			"title",
-			"to_da",
-			"form_comentarios",
-			"popup_comentarios",
-			"$arrematante->id_arrematante",
-			"->having",
-			"id_extrato",
-			"tbrtAgendada",
-			"RtAtrasada",
-			"rtAtrasada",
-			"getLoteCartaArrematante",
-			"getLote",
-			"getCarta",
-			"tbArDesistentes",
-			"stat",
-			"//->",
-			"para",
-			"getlote",
-			"badge",
-			"user",
-			"getResumo",
-			"update",
-			"associados",
-			"popup_aprovados",
-			"form_aprovados",
-			"form_atribuir",
-			"green",
-			"popup_atribuir",
-			"lance_inicial",
-			"popup_desaprovado",
-			"popup_aprovacao",
-			"popup_depositos",
-			"clear",
-			".clearfix",
-			"devol",
-			"descricao",
-			"feito",
-			"devolver",
-			"left",
-			"erro de"
+			"comen"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -837,6 +989,9 @@
 		"regex": false,
 		"replace_history":
 		[
+			"fjgamtjo_gevents",
+			"login",
+			"Gigante",
 			"totalAtivo",
 			"id_leilao",
 			"form_remanescente",
@@ -881,23 +1036,161 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 19,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "frontend/views/layouts/main.php",
+					"file": "/C/Apache24/htdocs/test/teste.php",
 					"settings":
 					{
-						"buffer_size": 6342,
+						"buffer_size": 363,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2810,
-								2810
+								363,
+								363
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "frontend/views/layouts/main.php",
+					"settings":
+					{
+						"buffer_size": 4918,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3720,
+								3720
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1176.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "/C/Apache24/htdocs/layout/imevent/index.html",
+					"settings":
+					{
+						"buffer_size": 233000,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								231580,
+								231580
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 236.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "frontend/controllers/SiteController.php",
+					"settings":
+					{
+						"buffer_size": 1448,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 462.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "/C/Users/jferreira/Downloads/Model Gevents.sql",
+					"settings":
+					{
+						"buffer_size": 75497,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/SQL/SQL.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "common/config/main-local.php",
+					"settings":
+					{
+						"buffer_size": 860,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								641,
+								653
 							]
 						],
 						"settings":
@@ -907,7 +1200,388 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 546.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "frontend/config/main-local.php",
+					"settings":
+					{
+						"buffer_size": 546,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								390,
+								390
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "backend/controllers/SiteController.php",
+					"settings":
+					{
+						"buffer_size": 1857,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1266,
+								1266
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 95.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "backend/controllers/UsuarioController.php",
+					"settings":
+					{
+						"buffer_size": 3807,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1236,
+								1245
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 378.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 9,
+					"file": "backend/views/layouts/main.php",
+					"settings":
+					{
+						"buffer_size": 2237,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								644,
+								644
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 294.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 10,
+					"file": "frontend/views/layouts/contact.php",
+					"settings":
+					{
+						"buffer_size": 3240,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								915,
+								915
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 168.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 11,
+					"file": "frontend/views/site/index.php",
+					"settings":
+					{
+						"buffer_size": 451,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								6,
+								6
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 12,
+					"file": "frontend/models/ContactForm.php",
+					"settings":
+					{
+						"buffer_size": 1337,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								811,
+								811
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 168.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 13,
+					"file": "backend/views/site/login.php",
+					"settings":
+					{
+						"buffer_size": 1665,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1230,
+								1244
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 42.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 14,
+					"file": "common/models/Cliente.php",
+					"settings":
+					{
+						"buffer_size": 8345,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1703,
+								1703
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 720.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 15,
+					"file": "frontend/controllers/ClienteController.php",
+					"settings":
+					{
+						"buffer_size": 4244,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								540,
+								540
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 16,
+					"file": "backend/views/layouts/menu.php",
+					"settings":
+					{
+						"buffer_size": 11758,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								8295,
+								8295
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 540.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 17,
+					"file": "backend/controllers/ClienteController.php",
+					"settings":
+					{
+						"buffer_size": 3009,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1738,
+								1738
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 855.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 18,
+					"file": "backend/views/cadastro/create.php",
+					"settings":
+					{
+						"buffer_size": 287,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								287,
+								287
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 19,
+					"file": "backend/views/cadastro/_form.php",
+					"settings":
+					{
+						"buffer_size": 7106,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2855,
+								2855
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 450.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"

@@ -27,6 +27,10 @@ $listCliente=ArrayHelper::map($tipoCliente,'INT_ID_TIPO_CLIENTE','STR_DESCRICAO'
 
 	<?php $form = ActiveForm::begin(['id' => 'cliente-form', 'method' => 'post','layout' => 'default', 'action' => ['cliente/create']]); ?>
 	<div class="col-md-12">
+		<div><?= $form->field($model, 'STATUS_INT_ID_STATUS', [
+			'template' => '<div class="input-group "><span class="input-group-addon">{label}</span>{input}</div>',
+		])->dropDownList($listStatus, ['prompt'=>'Selecione...', 'id'=>'status', 'size'=>1]);
+		?></div>
 		<div class="col-md-4">
 		<?= $form->field($model, 'TIPO_CLIENTE_INT_ID_TIPO_CLIENTE', [
 			'template' => '<div class="input-group"><span class="input-group-addon">{label}</span>{input}</div>',
@@ -56,7 +60,7 @@ $listCliente=ArrayHelper::map($tipoCliente,'INT_ID_TIPO_CLIENTE','STR_DESCRICAO'
 	<div class="col-md-12">
 		<div class="col-md-12">
 		<?php echo $form->field($model, 'STR_EMAIL', [ 
-			'template' => '<div class="input-group"><span class="input-group-addon">{label}</span>{input}</div>',
+			'template' => '<div class="input-group"><span class="input-group-addon">{label}</span>{input}</div> {error}',
 		])->textInput(['maxlength' => 150]);?>
 		</div>
 	</div>

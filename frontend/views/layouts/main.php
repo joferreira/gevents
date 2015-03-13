@@ -166,6 +166,21 @@ AppAsset::register($this);
 			}
 			$('[data-toggle="popover"]').popover();
 		});
+		function message(message, alert_class, timeout){
+			$("#messageBox")
+				.removeClass()
+				.addClass('messageBox')
+				.addClass('alert')
+				.addClass(alert_class)
+				.html(message)
+				.show();
+
+			setTimeout(
+				function(){ 
+					$('#messageBox').addClass('hidden').hide(); 
+				},(!timeout)?3000:timeout
+			);
+		}
 
 	</script>
 </body>

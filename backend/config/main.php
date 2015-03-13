@@ -29,7 +29,15 @@ return [
 		],
 		'errorHandler' => [
 			'errorAction' => 'site/error',
-		],
+		],		
 	],
+	'sourceLanguage'=>'pt-BR',
+	'language'=>'pt-BR',
 	'params' => $params,
 ];
+/*
+'enableAutoLogin' => false,
+'enableSession' => true,
+'authTimeout' => 300,
+'loginUrl' => ['usuario/login'],
+*/

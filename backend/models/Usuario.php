@@ -17,7 +17,7 @@ use yii\web\IdentityInterface;
  *
  * @property Perfil $pERFILINTIDPERFIL
  */
-class Usuario extends \yii\db\ActiveRecord implements IdentityInterface
+class Usuario extends ActiveRecord implements IdentityInterface
 //class Usuario extends ActiveRecord implements IdentityInterface
 {
 
