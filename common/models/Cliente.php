@@ -82,6 +82,7 @@ class Cliente extends ActiveRecord
 			[['STR_EMAIL'], 'string', 'max' => 150],
 			[['STR_SENHA', 'STR_RAZAO_SOCIAL', 'STR_NOME_FANTASIA', 'STR_INSCRICAO_MUNICIPAL'], 'string', 'max' => 255],
 			[['STR_CATEGORIA_EMPRESA'], 'string', 'max' => 6]
+			//['confirmesenha', 'compare', 'compareAttribute' => 'STR_SENHA']
 		];
 	}
 

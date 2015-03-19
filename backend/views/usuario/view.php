@@ -13,13 +13,14 @@ $this->title = $model->STR_NOME_COMPLETO;
 		<div class="row">
 			<p>
 				<?= Html::a('Update', ['update', 'id' => $model->INT_ID_USUARIO], ['class' => 'btn btn-primary']) ?>
-				<?= Html::a('Delete', ['delete', 'id' => $model->INT_ID_USUARIO], [
+				<!--<?= Html::a('Delete', ['delete', 'id' => $model->INT_ID_USUARIO], [
 					'class' => 'btn btn-danger',
 					'data' => [
 						'confirm' => 'Are you sure you want to delete this item?',
 						'method' => 'post',
 					],
 				]) ?>
+			-->
 			</p>
 
 			<?= DetailView::widget([

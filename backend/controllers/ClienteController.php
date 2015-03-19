@@ -40,6 +40,10 @@ class ClienteController extends Controller
 	 */
 	public function actionOrganizador()
 	{
+		if ( Yii::$app->user->isGuest) {
+			return $this->redirect(['/usuario/login']);
+		}
+
 		$searchModel = new OrganizadorSearch();
 		$dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
@@ -55,6 +59,10 @@ class ClienteController extends Controller
 	 */
 	public function actionParticipante()
 	{
+		if ( Yii::$app->user->isGuest) {
+			return $this->redirect(['/usuario/login']);
+		}
+
 		$searchModel = new ParticipanteSearch();
 		$dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
@@ -70,6 +78,10 @@ class ClienteController extends Controller
 	 */
 	public function actionIndex()
 	{
+		if ( Yii::$app->user->isGuest) {
+			return $this->redirect(['/usuario/login']);
+		}
+
 		$searchModel = new UsarioSearch();
 		$dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
@@ -86,9 +98,13 @@ class ClienteController extends Controller
 	 */
 	public function actionView($id)
 	{
-		return $this->render('/cadastro/view', [
-			'model' => $this->findModel($id),
-		]);
+		if ( Yii::$app->user->isGuest) {
+			return $this->redirect(['/usuario/login']);
+		} else {
+			return $this->render('/cadastro/view', [
+				'model' => $this->findModel($id),
+			]);
+		}
 	}
 
 	/**
@@ -98,6 +114,10 @@ class ClienteController extends Controller
 	 */
 	public function actionCreate()
 	{
+
+		if ( Yii::$app->user->isGuest) {
+			return $this->redirect(['/usuario/login']);
+		}
 
 		try {			
 
@@ -143,6 +163,10 @@ class ClienteController extends Controller
 	 */
 	public function actionUpdate($id)
 	{
+		if ( Yii::$app->user->isGuest) {
+			return $this->redirect(['/usuario/login']);
+		}
+
 		$model = $this->findModel($id);
 		$objModelEndereco = new Endereco();
 
@@ -171,6 +195,11 @@ class ClienteController extends Controller
 
 	public function actionSave()
 	{
+
+		if ( Yii::$app->user->isGuest) {
+			return $this->redirect(['/usuario/login']);
+		}
+
 		try {			
 
 			$objModelCliente = new Cliente();

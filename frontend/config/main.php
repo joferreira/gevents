@@ -29,5 +29,7 @@ return [
             'errorAction' => 'site/error',
         ],
     ],
+    'sourceLanguage'=>'pt-BR',
+    'language'=>'pt-BR',    
     'params' => $params,
 ];
