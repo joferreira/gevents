@@ -68,7 +68,7 @@ use yii\bootstrap\Alert;
 								<div class="row">
 									<div class="col-sm-12 form-alert"></div>
 									<div class="col-sm-12">
-										 <?= $form->field($model, 'nome', [
+										 <?= $form->field($model, 'STR_NOME_COMPLETO', [
 												'inputOptions' => [ 
 													'placeholder' => $model->getAttributeLabel('Nome e Sobrenome'),
 													'enableError' => true
@@ -77,7 +77,7 @@ use yii\bootstrap\Alert;
 										 ])->label(false); ?>
 									</div>
 									<div class="col-sm-12">
-										<?= $form->field($model, 'email', [
+										<?= $form->field($model, 'STR_EMAIL', [
 												'inputOptions' => [ 
 													'placeholder' => $model->getAttributeLabel('O seu e-mail aqui '),
 													'enableError' => true
@@ -86,17 +86,19 @@ use yii\bootstrap\Alert;
 											])->label(false); ?>
 									</div>
 									<div class="col-sm-12">
-										<?= $form->field($model, 'senha', [
+										<?= $form->field($model, 'STR_SENHA', [
 												'inputOptions' => [ 
-													'placeholder' => $model->getAttributeLabel('Senha')
+													'placeholder' => $model->getAttributeLabel('Senha'),
+													'enableError' => true
 												],
 												'inputTemplate' => '<div class="form-group" data-animation="fadeInUp" data-animation-delay="200">{input}</div>',
 											])->label(false)->passwordInput(); ?>
 									</div>
 									<div class="col-sm-12">
-										<?= $form->field($model, 'confirmeSenha', [
+										<?= $form->field($model, 'STR_SENHA_CONFIRME', [
 												'inputOptions' => [ 
-													'placeholder' => $model->getAttributeLabel('Confirme a senha')
+													'placeholder' => $model->getAttributeLabel('Confirme a senha'),
+													'enableError' => true
 												], 
 												'inputTemplate' => '<div class="form-group" data-animation="fadeInUp" data-animation-delay="200">{input}</div>',
 											])->label(false)->passwordInput(); ?>

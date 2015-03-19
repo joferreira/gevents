@@ -72,7 +72,7 @@ class SiteController extends Controller
 
 			$objModelCliente = new Cliente();
 			$contato = new ContactForm();
-			$cadastro = new CadastroForm();
+			$cadastro = new Cliente(['scenario' => 'register']);
 
 			//if ($objModelCliente->load(Yii::$app->request->post()) ){
 

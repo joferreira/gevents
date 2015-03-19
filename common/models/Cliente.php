@@ -42,6 +42,7 @@ use yii\db\Transaction;
  * @property string $STR_INSCRICAO_MUNICIPAL
  * @property string $STR_CATEGORIA_EMPRESA
  * @property string $DAT_DATA_CADASTRO
+ * @property string $STR_SENHA_CONFIRME
  *
  * @property Aceite[] $aceites
  * @property TipoPessoa $tIPOPESSOAINTIDTIPOPESSOA
@@ -56,6 +57,12 @@ use yii\db\Transaction;
 
 class Cliente extends ActiveRecord
 {
+
+	public $STR_NOME_COMPLETO;
+	public $STR_EMAIL;
+	public $STR_SENHA;
+	public $STR_SENHA_CONFIRME;
+
 	/**
 	 * @inheritdoc
 	 */
@@ -70,7 +77,13 @@ class Cliente extends ActiveRecord
 	public function rules()
 	{
 		//[['TIPO_CLIENTE_INT_ID_TIPO_CLIENTE', 'TIPO_PESSOA_INT_ID_TIPO_PESSOA', 'STATUS_INT_ID_STATUS', 'STR_NOME_COMPLETO', 'DAT_DATA_NASCIMENTO', 'STR_SEXO', 'STR_CPF', 'STR_CNPJ', 'STR_EMAIL', 'STR_SENHA', 'INT_TELEFONE_DDI', 'INT_TELEFONE_DDD', 'INT_TELEFONE', 'INT_CELULAR_DDI', 'INT_CELULAR_DDD', 'INT_CELULAR', 'INT_FAX_DDI', 'INT_FAX_DDD', 'INT_FAX', 'STR_RAZAO_SOCIAL', 'STR_NOME_FANTASIA', 'STR_INSCRICAO_MUNICIPAL', 'STR_CATEGORIA_EMPRESA'], 'required'],
+
 		return [
+			[['STR_EMAIL', 'STR_NOME_COMPLETO', 'STR_SENHA'], 'required', 'on'=>'register'],
+			[['STR_SENHA'], 'string', 'min' => 8, 'max' => 10],
+			['STR_SENHA_CONFIRME', 'compare', 'compareAttribute' => 'STR_SENHA', 'on'=>'register'],
+			['STR_EMAIL', 'email'],
+			
 			[['STR_NOME_COMPLETO', 'STR_EMAIL'], 'required'],
 			[['TIPO_CLIENTE_INT_ID_TIPO_CLIENTE', 'TIPO_PESSOA_INT_ID_TIPO_PESSOA', 'STATUS_INT_ID_STATUS', 'INT_TELEFONE_DDI', 'INT_TELEFONE_DDD', 'INT_TELEFONE', 'INT_CELULAR_DDI', 'INT_CELULAR_DDD', 'INT_CELULAR', 'INT_FAX_DDI', 'INT_FAX_DDD', 'INT_FAX'], 'integer'],
 			[['DAT_DATA_NASCIMENTO', 'DAT_DATA_CADASTRO'], 'safe'],
@@ -80,10 +93,17 @@ class Cliente extends ActiveRecord
 			[['STR_CNPJ'], 'string', 'max' => 14],
 			[['STR_RG'], 'string', 'max' => 10],
 			[['STR_EMAIL'], 'string', 'max' => 150],
-			[['STR_SENHA', 'STR_RAZAO_SOCIAL', 'STR_NOME_FANTASIA', 'STR_INSCRICAO_MUNICIPAL'], 'string', 'max' => 255],
+			[[ 'STR_RAZAO_SOCIAL', 'STR_NOME_FANTASIA', 'STR_INSCRICAO_MUNICIPAL'], 'string', 'max' => 255],
 			[['STR_CATEGORIA_EMPRESA'], 'string', 'max' => 6]
 			//['confirmesenha', 'compare', 'compareAttribute' => 'STR_SENHA']
 		];
+	}
+	public function scenarios()
+	{
+		$scenarios = parent::scenarios();
+		$scenarios['login'] = ['email', 'senha'];
+		$scenarios['register'] = ['STR_NOME_COMPLETO', 'STR_EMAIL', 'STR_SENHA','STR_SENHA_CONFIRME'];
+		return $scenarios;	
 	}
 
 	/**
@@ -118,6 +138,7 @@ class Cliente extends ActiveRecord
 			'STR_INSCRICAO_MUNICIPAL' => 'Inscricao Municipal',
 			'STR_CATEGORIA_EMPRESA' => 'Categoria Empresa',
 			'DAT_DATA_CADASTRO' => 'Data Cadastro',
+			'STR_SENHA_CONFIRME' => 'Confirmar Senha',
 		];
 	}
 
