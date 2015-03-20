@@ -70,21 +70,17 @@ class SiteController extends Controller
 
 		try {			
 
-			$objModelCliente = new Cliente();
+			$objModelCliente = new Cliente(['scenario' => 'register']);
+			$objModelLogin = new Cliente(['scenario' => 'login']);
 			$contato = new ContactForm();
-			$cadastro = new Cliente(['scenario' => 'register']);
+			$cadastro = new CadastroForm(['scenario' => 'register']);
 
-			//if ($objModelCliente->load(Yii::$app->request->post()) ){
+			/*if ($objModelCliente->load(Yii::$app->request->post()) ){
 
 				if( isset($_POST['CadastroForm']) ){
-					$cadastrado = $_POST['CadastroForm'];
+					$arrDados = $_POST['CadastroForm'];
 
-					$arrDados = array();
-					$arrDados['STR_NOME_COMPLETO'] = $cadastrado['nome'];
-					$arrDados['STR_EMAIL'] = $cadastrado['email'];
-					$arrDados['STR_SENHA'] = $cadastrado['senha'];
-
-					if($cadastrado['senha'] == $cadastrado['confirmeSenha'] ){
+					if($arrDados['STR_SENHA'] == $arrDados['STR_SENHA_CONFIRME'] ){
 
 						$arrStatusEmail = $objModelCliente->verificaEmail($arrDados['STR_EMAIL']);
 
@@ -100,12 +96,13 @@ class SiteController extends Controller
 
 				} // else Yii::$app->session->setFlash('error', 'Campos não preenchidos corretamente!'); 
 
-			//}
+			//} */
 
 			return $this->render('index', [
 				//'cliente' => $objModelCliente,
 				'contato' => $contato,
 				'cadastro' => $cadastro,
+				'login' => $objModelLogin,
 			]);
 			
 			

@@ -18,7 +18,6 @@
         "yiisoft/yii2": "*",
         "yiisoft/yii2-bootstrap": "*",
         "yiisoft/yii2-swiftmailer": "*",
-        "yiibr/yii2-correios": "*",
         "yiisoft/yii2-jui": "*"
     },
     "require-dev": {

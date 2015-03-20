@@ -174,7 +174,7 @@ var theme = function () {
         },
         init: function () {
             handlePreventEmptyLinks();
-            handlePlaceholdem();
+            //handlePlaceholdem();
             handleBootstrapSelect();
             handleHoverClass();
             handleSuperFish();

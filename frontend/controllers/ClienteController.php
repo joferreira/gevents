@@ -30,17 +30,12 @@ class ClienteController extends Controller {
 
 		try {
 
-			$objModelCliente = new Cliente();
+			$objModelCliente = new Cliente(['scenario' => 'register']);
 
-			if (isset($_POST['CadastroForm'])) {
-				$arrCadastrado = $_POST['CadastroForm'];
+			if (isset($_POST['Cliente'])) {
+				$arrDados = $_POST['Cliente'];
 
-				$arrDados = array();
-				$arrDados['STR_NOME_COMPLETO'] = $arrCadastrado['nome'];
-				$arrDados['STR_EMAIL'] = $arrCadastrado['email'];
-				$arrDados['STR_SENHA'] = $arrCadastrado['senha'];
-
-				if ($arrCadastrado['senha'] == $arrCadastrado['confirmeSenha']) {
+				if ($arrDados['STR_SENHA'] == $arrDados['STR_SENHA_CONFIRME']) {
 
 					$arrStatusEmail = $objModelCliente->verificaEmail($arrDados['STR_EMAIL']);
 					if (empty($arrStatusEmail)) {

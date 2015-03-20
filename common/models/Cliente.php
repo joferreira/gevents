@@ -5,6 +5,7 @@ namespace common\models;
 use Yii;
 use yii\db\ActiveRecord;
 use yii\db\Transaction;
+use yii\base\Model;
 
 /**
  * Método de model de cliente.
@@ -79,11 +80,17 @@ class Cliente extends ActiveRecord
 		//[['TIPO_CLIENTE_INT_ID_TIPO_CLIENTE', 'TIPO_PESSOA_INT_ID_TIPO_PESSOA', 'STATUS_INT_ID_STATUS', 'STR_NOME_COMPLETO', 'DAT_DATA_NASCIMENTO', 'STR_SEXO', 'STR_CPF', 'STR_CNPJ', 'STR_EMAIL', 'STR_SENHA', 'INT_TELEFONE_DDI', 'INT_TELEFONE_DDD', 'INT_TELEFONE', 'INT_CELULAR_DDI', 'INT_CELULAR_DDD', 'INT_CELULAR', 'INT_FAX_DDI', 'INT_FAX_DDD', 'INT_FAX', 'STR_RAZAO_SOCIAL', 'STR_NOME_FANTASIA', 'STR_INSCRICAO_MUNICIPAL', 'STR_CATEGORIA_EMPRESA'], 'required'],
 
 		return [
-			[['STR_EMAIL', 'STR_NOME_COMPLETO', 'STR_SENHA'], 'required', 'on'=>'register'],
-			[['STR_SENHA'], 'string', 'min' => 8, 'max' => 10],
-			['STR_SENHA_CONFIRME', 'compare', 'compareAttribute' => 'STR_SENHA', 'on'=>'register'],
-			['STR_EMAIL', 'email'],
-			
+			[['STR_EMAIL', 'STR_NOME_COMPLETO', 'STR_SENHA', 'STR_SENHA_CONFIRME'], 'required', 'on'=>'register'],
+			[['STR_SENHA','STR_SENHA_CONFIRME'], 'string', 'min' => 8, 'max' => 10, 'on'=>'register'],
+			['STR_EMAIL', 'email', 'on'=>'register'],
+			//[['STR_SENHA_CONFIRME'], 'compare', 'compareAttribute'=>'STR_SENHA', 'on'=>'register'],
+			['STR_EMAIL', 'checkEmail', 'on'=>'register' ],
+			[['STR_SENHA'], 'safe', 'on'=>'register'],
+
+			[['STR_EMAIL', 'STR_SENHA'], 'required', 'on'=>'login'],
+			['STR_EMAIL', 'verificaEmail', 'on'=>'login' ],
+			[['STR_SENHA'], 'safe', 'on'=>'login']
+/*
 			[['STR_NOME_COMPLETO', 'STR_EMAIL'], 'required'],
 			[['TIPO_CLIENTE_INT_ID_TIPO_CLIENTE', 'TIPO_PESSOA_INT_ID_TIPO_PESSOA', 'STATUS_INT_ID_STATUS', 'INT_TELEFONE_DDI', 'INT_TELEFONE_DDD', 'INT_TELEFONE', 'INT_CELULAR_DDI', 'INT_CELULAR_DDD', 'INT_CELULAR', 'INT_FAX_DDI', 'INT_FAX_DDD', 'INT_FAX'], 'integer'],
 			[['DAT_DATA_NASCIMENTO', 'DAT_DATA_CADASTRO'], 'safe'],
@@ -95,15 +102,25 @@ class Cliente extends ActiveRecord
 			[['STR_EMAIL'], 'string', 'max' => 150],
 			[[ 'STR_RAZAO_SOCIAL', 'STR_NOME_FANTASIA', 'STR_INSCRICAO_MUNICIPAL'], 'string', 'max' => 255],
 			[['STR_CATEGORIA_EMPRESA'], 'string', 'max' => 6]
+*/
+			
 			//['confirmesenha', 'compare', 'compareAttribute' => 'STR_SENHA']
 		];
 	}
 	public function scenarios()
 	{
 		$scenarios = parent::scenarios();
-		$scenarios['login'] = ['email', 'senha'];
+		$scenarios['login'] = ['STR_EMAIL', 'STR_SENHA'];
 		$scenarios['register'] = ['STR_NOME_COMPLETO', 'STR_EMAIL', 'STR_SENHA','STR_SENHA_CONFIRME'];
 		return $scenarios;	
+	}
+
+	public function checkEmail($attribute,$params)
+	{
+	   // $models = ServiceReviews::model()->findAllByAttributes(array('STR_EMAIL' =>$this->STR_EMAIL));
+	   // if(count($models)>0){
+	        $this->addError($attribute, 'You have already submitted review for this item');
+	    //}
 	}
 
 	/**
@@ -220,13 +237,13 @@ class Cliente extends ActiveRecord
 	 * @param string E-mail
 	 * @return array Database_Result|Array
 	 */
-	public function verificaEmail($strEmail) {
+	public function verificaEmail($STR_EMAIL) {
 		try {
-			if (empty($strEmail))
+			if (empty($STR_EMAIL))
 				Yii::$app->session->setFlash('error', 'Parâmetro informado errado!'); 
 
 			$objResult = self::find()
-					->where(["STR_EMAIL" => $strEmail])
+					->where(["STR_EMAIL" => $STR_EMAIL])
 					->one();
 			
 			if($objResult)
