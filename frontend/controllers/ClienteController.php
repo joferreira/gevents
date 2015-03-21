@@ -51,10 +51,51 @@ class ClienteController extends Controller {
 			} else
 				Yii::$app->session->setFlash('error', '"Os campos não estão preenchidos corretamente, por favor, verifique!');
 
-			return $this->redirect(['site/index', '#' => 'register']);
+			//return $this->redirect(['site/index', '#' => 'register']);
+			return $this->render('/layouts/register', [
+				//'cliente' => $objModelCliente,
+				'model' => $objModelCliente,
+			]);
+			
 		} catch (Exception $objException) {
 			Yii::$app->session->setFlash('error', $objException->getMessage());
 			return $this->redirect(['site/index', '#' => 'register']);
+		}
+
+	}
+
+	/**
+	 * Método para o login do cliente.
+	 * 
+	 * @throws Exception
+	 */
+	public function actionLogin() {
+
+		try {
+
+			$objModelCliente = new Cliente(['scenario' => 'login']);
+
+			if (isset($_POST['Cliente'])) {
+				$arrDados = $_POST['Cliente'];
+
+				$arrStatusEmail = $objModelCliente->verificaEmailSenha($arrDados);
+				if (empty($arrStatusEmail)) 
+					Yii::$app->session->setFlash('error', 'E-mail e/ou senha estão incorretos. Por favor, verifique!');
+				else 
+					Yii::$app->session->setFlash('cadastrado', 'Login efetuado com sucesso!');
+
+			} else
+				Yii::$app->session->setFlash('error', '"Os campos não estão preenchidos corretamente, por favor, verifique!');
+
+			return $this->redirect(['site/index', '#' => 'login']);
+			/*
+			return $this->render('/site/success', [
+				'model' => $objModelCliente,
+			]); */
+			
+		} catch (Exception $objException) {
+			Yii::$app->session->setFlash('error', $objException->getMessage());
+			return $this->redirect(['site/index', '#' => 'login']);
 		}
 
 	}

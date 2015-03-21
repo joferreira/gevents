@@ -107,8 +107,16 @@ AppAsset::register($this);
 				],
 				'body' => Yii::$app->session->getFlash('error'),
 			]);
-		 ?>
-		<?php endif; ?>
+			endif;
+
+			if (Yii::$app->session->hasFlash('success')):
+			echo Alert::widget([
+				'options' => [
+					'class' => 'alert-success',
+				],
+				'body' => Yii::$app->session->getFlash('success'),
+			]);
+			endif; ?>
 	</div>
 	<!-- FOOTER -->
 	<footer class="footer">

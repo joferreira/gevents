@@ -34,13 +34,21 @@ use yii\bootstrap\Alert;
 			</div>
 			<div class="col-sm-6 col-md-3">
 				<?= $form->field($model, 'STR_SENHA', [
+						'inputOptions' => [ 
+							'placeholder' => $model->getAttributeLabel('Senha'),
+							'enableError' => true
+						],
 						'inputTemplate' => '<div class="form-group" data-animation="fadeInUp" data-animation-delay="200">{input}</div>',
-					])->label(false)->passwordInput([ 'placeholder' => 'Senha', 'enableError' => TRUE]); ?>
+					])->label(false)->passwordInput(); ?>
 			</div>
 			<div class="col-sm-6 col-md-3">
 				<?= $form->field($model, 'STR_SENHA_CONFIRME', [
+						'inputOptions' => [ 
+							'placeholder' => $model->getAttributeLabel('Confirme a senha'),
+							'enableError' => true
+						], 
 						'inputTemplate' => '<div class="form-group" data-animation="fadeInUp" data-animation-delay="200">{input}</div>',
-					])->label(false)->passwordInput([ 'placeholder' => 'Digite sua senha', 'enableError' => TRUE]); ?>
+					])->label(false)->passwordInput(); ?>
 			</div>
 			<div class="col-md-12 overflowed">
 				<div class="text-center margin-top">

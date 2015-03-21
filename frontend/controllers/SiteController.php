@@ -10,8 +10,7 @@ use yii\web\BadRequestHttpException;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
-
-
+use yii\base\Exception;
 
 /**
  * Site controller
@@ -102,13 +101,12 @@ class SiteController extends Controller
 				//'cliente' => $objModelCliente,
 				'contato' => $contato,
 				'cadastro' => $cadastro,
+				'formCadastro' => $objModelCliente,
 				'login' => $objModelLogin,
 			]);
 			
 			
 		} catch (Exception $e) {
-
-
 
 			Yii::$app->session->setFlash('error', $e->getMessage()); //echo $e->getMessage();
 		}

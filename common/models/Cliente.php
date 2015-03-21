@@ -5,7 +5,6 @@ namespace common\models;
 use Yii;
 use yii\db\ActiveRecord;
 use yii\db\Transaction;
-use yii\base\Model;
 
 /**
  * Método de model de cliente.
@@ -83,9 +82,9 @@ class Cliente extends ActiveRecord
 			[['STR_EMAIL', 'STR_NOME_COMPLETO', 'STR_SENHA', 'STR_SENHA_CONFIRME'], 'required', 'on'=>'register'],
 			[['STR_SENHA','STR_SENHA_CONFIRME'], 'string', 'min' => 8, 'max' => 10, 'on'=>'register'],
 			['STR_EMAIL', 'email', 'on'=>'register'],
-			//[['STR_SENHA_CONFIRME'], 'compare', 'compareAttribute'=>'STR_SENHA', 'on'=>'register'],
-			['STR_EMAIL', 'checkEmail', 'on'=>'register' ],
+			['STR_SENHA_CONFIRME', 'compare', 'compareAttribute'=>'STR_SENHA', 'on'=>'register'],
 			[['STR_SENHA'], 'safe', 'on'=>'register'],
+			['STR_EMAIL', 'checkEmail', 'on'=>'register' ],
 
 			[['STR_EMAIL', 'STR_SENHA'], 'required', 'on'=>'login'],
 			['STR_EMAIL', 'verificaEmail', 'on'=>'login' ],
@@ -119,8 +118,8 @@ class Cliente extends ActiveRecord
 	{
 	   // $models = ServiceReviews::model()->findAllByAttributes(array('STR_EMAIL' =>$this->STR_EMAIL));
 	   // if(count($models)>0){
-	        $this->addError($attribute, 'You have already submitted review for this item');
-	    //}
+			$this->addError($attribute, 'You have already submitted review for this item');
+		//}
 	}
 
 	/**
@@ -411,6 +410,51 @@ class Cliente extends ActiveRecord
 		} catch (Exception $objExcessao) {
 			$objTransaction->rollback();
 			echo 'Exception: ' . $objExcessao->getMessage() . '</br>';
+		}
+	}
+
+	/** Login do cliente */
+
+	/**
+	 * Método para verificação de e-mail e senha de acesso.
+	 * 
+	 * @param stringer E-mail
+	 * @param stringer Senha
+	 * @return array Database_Result|Array
+	 */
+	public function verificaEmailSenha($arrDados = array()) {
+		try {
+			$connection = \Yii::$app->db;
+			if (empty($arrDados['STR_EMAIL']))
+				throw new \yii\web\HttpException('Parâmetro e-mail necessário!');
+
+			if (empty($arrDados['STR_SENHA']))
+				throw new \yii\web\HttpException('Parâmetro senha necessário!');
+
+
+			$objResult = self::find()
+					->where(["STR_EMAIL" => $arrDados['STR_EMAIL']])
+					->andWhere(["STR_SENHA" =>  $arrDados['STR_SENHA']])
+					->one();
+/*
+			$query = new Query;
+			// compose the query
+			$query->select('id, name')
+			    ->from('user')
+			    ->limit(10);
+			// build and execute the query
+			$rows = $query->all();
+			// alternatively, you can create DB command and execute it
+			$command = $query->createCommand();
+			// $command->sql returns the actual SQL
+			$rows = $command->queryAll();
+*/
+			if ($objResult)
+				return $objResult;
+			else
+				return FALSE;
+		} catch (Exception $objException) {
+			throw $objException;
 		}
 	}
 }

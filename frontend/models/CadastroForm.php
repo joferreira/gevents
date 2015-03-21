@@ -28,7 +28,8 @@ class CadastroForm extends Model
 			[['STR_NOME_COMPLETO'], 'filter', 'filter' => 'trim'],
 			['STR_EMAIL', 'email'],
 			['STR_EMAIL', 'checkEmail', 'on'=>'register' ],
-			[['STR_SENHA_CONFIRME'], 'compare', 'compareValue' => 'STR_SENHA', 'on'=>'register']
+			//[['STR_SENHA_CONFIRME'], 'compare', 'compareValue' => 'STR_SENHA', 'on'=>'register']
+			['STR_SENHA_CONFIRME', 'compare', 'compareAttribute' => 'STR_SENHA']
 		];
 	}
     public function scenarios()
