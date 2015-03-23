@@ -79,7 +79,7 @@ AppAsset::register($this);
 		<?php echo $this->render('header'); ?>
 
 		<!--div class="container"-->
-		<div class="content-area  <?= !empty($menu_page)? '1': 'Test'; ?>" >
+		<div class="content-area" >
 		<?= Breadcrumbs::widget([
 			'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
 		]) ?>
@@ -147,6 +147,9 @@ AppAsset::register($this);
 			theme.initTestimonials();
 			//theme.initGoogleMap();
 			theme.initEventCarousel();
+
+			$("#faq").on('click', '.faq-more', faqs);
+			$("#faq .faqs-more").hide();
 		});
 		jQuery(window).load(function () {
 			theme.initAnimation();
@@ -174,6 +177,24 @@ AppAsset::register($this);
 			}
 			$('[data-toggle="popover"]').popover();
 		});
+		function faqs(evt){
+			evt.preventDefault();
+			var faq = $(evt.currentTarget);
+			if(faq.attr('faq') == 'hide'){
+				$("#faq .faq").hide();
+				$("#faq .faqs-more").show();
+				faq.text('Voltar');
+				faq.attr('faq','show');
+			} else {
+				$("#faq .faqs-more").hide();
+				$("#faq .faq").show();
+				faq.html('<i class="fa fa-pencil"></i>&nbsp; Ainda está com dúvidas ?');
+				faq.attr('faq','hide');
+			}
+
+			return false;
+		}
+
 		function message(message, alert_class, timeout){
 			$("#messageBox")
 				.removeClass()

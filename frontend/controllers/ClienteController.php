@@ -41,8 +41,8 @@ class ClienteController extends Controller {
 					if (empty($arrStatusEmail)) {
 						// Salva o organizador
 						$intIdCliente = $objModelCliente->saveOrganizador($arrDados);
-
-						Yii::$app->session->setFlash('cadastrado', 'Seu cadastro efetuado com sucesso. Obrigado por fazer parte!');
+						//Seu cadastro efetuado com sucesso. Obrigado por fazer parte!
+						Yii::$app->session->setFlash('cadastrado', 'Agradecemos por se cadastrar no Gigantes dos Eventos. Para acessar seu Dashboard insira seu e-mail e senha.');
 						return $this->redirect(['site/index', '#' => 'login']);
 					} else
 						Yii::$app->session->setFlash('error', 'Seu e-mail já cadastrado, por favor, pedimos para que verifique e requisite lembrar de sua senha. Obrigado!');
@@ -51,11 +51,7 @@ class ClienteController extends Controller {
 			} else
 				Yii::$app->session->setFlash('error', '"Os campos não estão preenchidos corretamente, por favor, verifique!');
 
-			//return $this->redirect(['site/index', '#' => 'register']);
-			return $this->render('/layouts/register', [
-				//'cliente' => $objModelCliente,
-				'model' => $objModelCliente,
-			]);
+			return $this->redirect(['site/index', '#' => 'register']);
 			
 		} catch (Exception $objException) {
 			Yii::$app->session->setFlash('error', $objException->getMessage());
@@ -80,12 +76,12 @@ class ClienteController extends Controller {
 
 				$arrStatusEmail = $objModelCliente->verificaEmailSenha($arrDados);
 				if (empty($arrStatusEmail)) 
-					Yii::$app->session->setFlash('error', 'E-mail e/ou senha estão incorretos. Por favor, verifique!');
+					Yii::$app->session->setFlash('error_login', 'E-mail e/ou senha estão incorretos. Por favor, verifique!');
 				else 
 					Yii::$app->session->setFlash('cadastrado', 'Login efetuado com sucesso!');
 
 			} else
-				Yii::$app->session->setFlash('error', '"Os campos não estão preenchidos corretamente, por favor, verifique!');
+				Yii::$app->session->setFlash('error_login', '"Os campos não estão preenchidos corretamente, por favor, verifique!');
 
 			return $this->redirect(['site/index', '#' => 'login']);
 			/*
@@ -94,7 +90,7 @@ class ClienteController extends Controller {
 			]); */
 			
 		} catch (Exception $objException) {
-			Yii::$app->session->setFlash('error', $objException->getMessage());
+			Yii::$app->session->setFlash('error_login', $objException->getMessage());
 			return $this->redirect(['site/index', '#' => 'login']);
 		}
 

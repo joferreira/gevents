@@ -42,7 +42,6 @@ use yii\db\Transaction;
  * @property string $STR_INSCRICAO_MUNICIPAL
  * @property string $STR_CATEGORIA_EMPRESA
  * @property string $DAT_DATA_CADASTRO
- * @property string $STR_SENHA_CONFIRME
  *
  * @property Aceite[] $aceites
  * @property TipoPessoa $tIPOPESSOAINTIDTIPOPESSOA
@@ -82,12 +81,11 @@ class Cliente extends ActiveRecord
 			[['STR_EMAIL', 'STR_NOME_COMPLETO', 'STR_SENHA', 'STR_SENHA_CONFIRME'], 'required', 'on'=>'register'],
 			[['STR_SENHA','STR_SENHA_CONFIRME'], 'string', 'min' => 8, 'max' => 10, 'on'=>'register'],
 			['STR_EMAIL', 'email', 'on'=>'register'],
-			['STR_SENHA_CONFIRME', 'compare', 'compareAttribute'=>'STR_SENHA', 'on'=>'register'],
+			//['STR_SENHA_CONFIRME', 'compare', 'compareAttribute'=>'STR_SENHA', 'on'=>'register'],
 			[['STR_SENHA'], 'safe', 'on'=>'register'],
-			['STR_EMAIL', 'checkEmail', 'on'=>'register' ],
 
 			[['STR_EMAIL', 'STR_SENHA'], 'required', 'on'=>'login'],
-			['STR_EMAIL', 'verificaEmail', 'on'=>'login' ],
+			['STR_EMAIL', 'email', 'on'=>'login' ],
 			[['STR_SENHA'], 'safe', 'on'=>'login']
 /*
 			[['STR_NOME_COMPLETO', 'STR_EMAIL'], 'required'],
@@ -112,14 +110,6 @@ class Cliente extends ActiveRecord
 		$scenarios['login'] = ['STR_EMAIL', 'STR_SENHA'];
 		$scenarios['register'] = ['STR_NOME_COMPLETO', 'STR_EMAIL', 'STR_SENHA','STR_SENHA_CONFIRME'];
 		return $scenarios;	
-	}
-
-	public function checkEmail($attribute,$params)
-	{
-	   // $models = ServiceReviews::model()->findAllByAttributes(array('STR_EMAIL' =>$this->STR_EMAIL));
-	   // if(count($models)>0){
-			$this->addError($attribute, 'You have already submitted review for this item');
-		//}
 	}
 
 	/**
@@ -436,19 +426,7 @@ class Cliente extends ActiveRecord
 					->where(["STR_EMAIL" => $arrDados['STR_EMAIL']])
 					->andWhere(["STR_SENHA" =>  $arrDados['STR_SENHA']])
 					->one();
-/*
-			$query = new Query;
-			// compose the query
-			$query->select('id, name')
-			    ->from('user')
-			    ->limit(10);
-			// build and execute the query
-			$rows = $query->all();
-			// alternatively, you can create DB command and execute it
-			$command = $query->createCommand();
-			// $command->sql returns the actual SQL
-			$rows = $command->queryAll();
-*/
+
 			if ($objResult)
 				return $objResult;
 			else

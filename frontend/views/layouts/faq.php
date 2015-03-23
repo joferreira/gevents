@@ -9,10 +9,11 @@
 				</h1>
 			</div>
 			<div class="col-md-4 text-right-md pull-right">
-				<a href="index.php?r=site/faq" class="btn btn-theme btn-theme-lg btn-theme-transparent-grey pull-right"
+				<a href="javascript:;" faq="hide" class="faq-more btn btn-theme btn-theme-lg btn-theme-transparent-grey pull-right"
 				   data-animation="flipInY" data-animation-delay="700"><i class="fa fa-pencil"></i> Ainda está com dúvidas ?</a>
 			</div>
 		</div>
+		<!-- FAQ - inicial -->
 		<div class="row faq margin-top" data-animation="fadeInUp" data-animation-delay="100">
 			<div class="col-sm-6 col-md-6 pull-left">
 				<ul id="tabs-faq"  class="nav">
@@ -94,6 +95,25 @@
 					</div>
 				</div>
 			</div>
+		</div>
+
+		<!-- FAQS - Outras duvidas -->
+		<div class="row faqs-more margin-top" data-animation="fadeInUp" data-animation-delay="100">
+			<form id="faq-form" name="faq-form" class="faq-form" action="" method="post">
+				<div class="row">
+					<div class="col-sm-12 form-alert"></div>
+					<div class="col-sm-6 col-md-8">
+						<div class="form-group" data-animation="fadeInUp" data-animation-delay="200">
+							<input type="text" class="form-control input-faq" data-toggle="tooltip" title="" placeholder="Qual é a sua Dúvida ?"/>
+						</div>
+					</div>
+					<div class="col-sm-6 col-md-4">
+						<div class="text-center">
+							<button data-animation="flipInY" data-animation-delay="100" class="btn btn-theme btn-theme-lg submit-button" type="submit" > Buscar <i class="fa fa-arrow-circle-right"></i></button>
+						</div>
+					</div>
+				</div>
+			</form>
 		</div>
 	</div>
 </section>

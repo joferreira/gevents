@@ -12,19 +12,7 @@ use yii\bootstrap\Alert;
 		</h1>
 		<!-- Login Form -->
 		<!--form id="login-form" name="login-form" class="login-form" action="" method="post"-->
-		<?php $form = ActiveForm::begin(['id' => 'login-form', 'method' => 'post', 'action' => ['cliente/login']] , ['class'=>'af-form row']); ?>
-			<div>
-				<?php 
-				if (Yii::$app->session->hasFlash('cadastrado')):
-					echo Alert::widget([
-						'options' => [
-							'class' => 'alert-success',
-						],
-						'body' => Yii::$app->session->getFlash('cadastrado'),
-					]);
-				endif;
-				?>
-			</div>		
+		<?php $form = ActiveForm::begin(['id' => 'login-form', 'method' => 'post', 'action' => ['cliente/login']] , ['class'=>'af-form row']); ?>	
 			<div class="row">
 				<div class="col-sm-6 col-md-4">
 					<?= $form->field($model, 'STR_EMAIL', [
@@ -48,6 +36,29 @@ use yii\bootstrap\Alert;
 					</div>
 				</div>
 			</div>
+			<br/>
+			<div>
+				<?php 
+				if (Yii::$app->session->hasFlash('cadastrado')):
+					echo Alert::widget([
+						'options' => [
+							'class' => 'alert-success',
+						],
+						'body' => Yii::$app->session->getFlash('cadastrado'),
+					]);
+				endif;
+				?>
+				<?php 
+				if (Yii::$app->session->hasFlash('error_login')):
+					echo Alert::widget([
+						'options' => [
+							'class' => 'alert-danger',
+						],
+						'body' => Yii::$app->session->getFlash('error_login'),
+					]);
+				endif;
+				?>
+			</div>	
 			<?php ActiveForm::end(); ?>
 			<!--div class="row">
 				<div class="col-sm-12 form-alert"></div>
