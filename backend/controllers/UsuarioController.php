@@ -34,6 +34,10 @@ class UsuarioController extends Controller
 	 */
 	public function actionIndex()
 	{
+		if ( Yii::$app->user->isGuest) {
+			return $this->redirect(['/usuario/login']);
+		}
+
 		$searchModel = new UsarioSearch();
 		$dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
@@ -77,6 +81,10 @@ class UsuarioController extends Controller
 	 */
 	public function actionView($id)
 	{
+		if ( Yii::$app->user->isGuest) {
+			return $this->redirect(['/usuario/login']);
+		}
+
 		return $this->render('view', [
 			'model' => $this->findModel($id),
 		]);
@@ -89,6 +97,10 @@ class UsuarioController extends Controller
 	 */
 	public function actionCreate()
 	{
+		if ( Yii::$app->user->isGuest) {
+			return $this->redirect(['/usuario/login']);
+		}
+
 		$model = new Usuario();
 
 		if ($model->load(Yii::$app->request->post()) && $model->save()) {
@@ -108,6 +120,10 @@ class UsuarioController extends Controller
 	 */
 	public function actionUpdate($id)
 	{
+		if ( Yii::$app->user->isGuest) {
+			return $this->redirect(['/usuario/login']);
+		}
+
 		$model = $this->findModel($id);
 
 		if ($model->load(Yii::$app->request->post()) && $model->save()) {
@@ -127,6 +143,10 @@ class UsuarioController extends Controller
 	 */
 	public function actionDelete($id)
 	{
+		if ( Yii::$app->user->isGuest) {
+			return $this->redirect(['/usuario/login']);
+		}
+		
 		$this->findModel($id)->delete();
 
 		return $this->redirect(['index']);

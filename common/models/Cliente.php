@@ -86,8 +86,8 @@ class Cliente extends ActiveRecord
 
 			[['STR_EMAIL', 'STR_SENHA'], 'required', 'on'=>'login'],
 			['STR_EMAIL', 'email', 'on'=>'login' ],
-			[['STR_SENHA'], 'safe', 'on'=>'login']
-/*
+			[['STR_SENHA'], 'safe', 'on'=>'login'],
+
 			[['STR_NOME_COMPLETO', 'STR_EMAIL'], 'required'],
 			[['TIPO_CLIENTE_INT_ID_TIPO_CLIENTE', 'TIPO_PESSOA_INT_ID_TIPO_PESSOA', 'STATUS_INT_ID_STATUS', 'INT_TELEFONE_DDI', 'INT_TELEFONE_DDD', 'INT_TELEFONE', 'INT_CELULAR_DDI', 'INT_CELULAR_DDD', 'INT_CELULAR', 'INT_FAX_DDI', 'INT_FAX_DDD', 'INT_FAX'], 'integer'],
 			[['DAT_DATA_NASCIMENTO', 'DAT_DATA_CADASTRO'], 'safe'],
@@ -99,7 +99,7 @@ class Cliente extends ActiveRecord
 			[['STR_EMAIL'], 'string', 'max' => 150],
 			[[ 'STR_RAZAO_SOCIAL', 'STR_NOME_FANTASIA', 'STR_INSCRICAO_MUNICIPAL'], 'string', 'max' => 255],
 			[['STR_CATEGORIA_EMPRESA'], 'string', 'max' => 6]
-*/
+
 			
 			//['confirmesenha', 'compare', 'compareAttribute' => 'STR_SENHA']
 		];
@@ -231,12 +231,12 @@ class Cliente extends ActiveRecord
 			if (empty($STR_EMAIL))
 				Yii::$app->session->setFlash('error', 'Parâmetro informado errado!'); 
 
-			$objResult = self::find()
+			$arrResult = self::find()
 					->where(["STR_EMAIL" => $STR_EMAIL])
 					->one();
 			
-			if($objResult)
-				return $objResult;
+			if($arrResult)
+				return $arrResult;
 			else
 				return FALSE;
 		} catch (Exception $objExcessao) {
@@ -272,9 +272,9 @@ class Cliente extends ActiveRecord
 				)
 				->execute();
 
-			$objTransaction->commit();
+			$intIdCliente = $connection->getLastInsertID();
 
-			$intIdCliente = self::getPrimaryKey(); 
+			$objTransaction->commit();
 
 			return $intIdCliente;
 
@@ -292,7 +292,7 @@ class Cliente extends ActiveRecord
 	 */
 	public function saveCliente($arrDados = array()) {
 
-		$connection = \Yii::$app->db;
+		$connection = Yii::$app->db;
 		$objTransaction = $connection->beginTransaction();
 		try {
 			if (empty($arrDados))
@@ -335,9 +335,10 @@ class Cliente extends ActiveRecord
 				)
 				->execute();
 
-			$objTransaction->commit();
+			$intIdCliente = $connection->getLastInsertID();
 
-			$intIdCliente = self::getPrimaryKey(); 
+			$objTransaction->commit();
+// ALTER TABLE `cliente` ADD COLUMN `INT_STATUS` TINYINT(1) NOT NULL DEFAULT '1' AFTER `DAT_DATA_CADASTRO`;
 
 			return $intIdCliente;
 
@@ -345,7 +346,45 @@ class Cliente extends ActiveRecord
 			$objTransaction->rollback();
 			echo $objExcessao->getMessage();
 		}
-	}	
+	}
+
+	/**
+	 * Método para deletear o cliente organizador / participante via admin.
+	 *
+	 * @param array Parâmetros do formulário
+	 * @return integer Código do cliente gerado
+	 */
+	public function deleteCliente($arrDados = array()) {	
+		$connection = Yii::$app->db;
+		$objTransaction = $connection->beginTransaction();
+		try {
+			if (empty($arrDados))
+				throw new Exception('Campos Vazios!');
+
+			// Insere os dados
+			$connection ->createCommand()
+				->update(
+					$this->tableName(), 
+					[
+						'INT_STATUS' =>  $arrDados['INT_STATUS']
+					],
+					[
+						'INT_ID_CLIENTE' => $arrDados['INT_ID_CLIENTE'] 
+					]
+				)
+				->execute();
+
+			$intIdCliente = $arrDados['INT_ID_CLIENTE'];
+
+			$objTransaction->commit();
+
+			return $intIdCliente;
+
+		} catch (Exception $objExcessao) {
+			$objTransaction->rollback();
+			echo $objExcessao->getMessage();
+		}
+	}
 
 	/**
 	 * Description

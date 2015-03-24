@@ -49,6 +49,7 @@ class OrganizadorSearch extends Cliente
 
 		$query->andFilterWhere([
 			'TIPO_CLIENTE_INT_ID_TIPO_CLIENTE' => 2,
+			'INT_STATUS'=>1, 
 		]);
 
 		if (!($this->load($params) && $this->validate())) {

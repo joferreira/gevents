@@ -134,8 +134,9 @@ class ClienteController extends Controller
 						Yii::$app->session->setFlash('error', 'E-mail não foi preenchido!');
 					} else if(empty($arrStatusEmail)){
 						$intIdCliente = $objModelCliente->saveCliente($arrDados);
-						Yii::$app->session->setFlash('success', 'cadastro efetuado com sucesso!'); // echo "cadastro efetuado com sucesso!";
-						return $this->redirect(['/cliente/organizador']);
+						Yii::$app->session->setFlash('success', 'cadastro efetuado com sucesso! '. $intIdCliente ); // echo "cadastro efetuado com sucesso!";
+						//return $this->redirect(['/cliente/organizador']);
+						return $this->redirect(['/cliente/view', 'id' => $intIdCliente]);
 						//return $this->redirect($this->createUrl('/cliente/organizador'));
 					} else Yii::$app->session->setFlash('error', 'E-mail já cadastrado!');//	throw new Exception("E-mail já cadastrado!");
 				} else Yii::$app->session->setFlash('error', 'Campos não preenchidos corretamente!'); //	throw new Exception("Campos não preenchidos corretamente!");
@@ -188,9 +189,29 @@ class ClienteController extends Controller
 	 */
 	public function actionDelete($id)
 	{
-		$this->findModel($id)->delete();
+		//$this->findModel($id)->delete();
+		if ( Yii::$app->user->isGuest) {
+			return $this->redirect(['/usuario/login']);
+		}
+		try {			
 
-		return $this->redirect(['index']);
+			$objModelCliente = new Cliente();
+
+			if( !empty($id) ){
+				$arrDados['INT_ID_CLIENTE'] = $id;
+				$arrDados['INT_STATUS'] = 0;
+
+				$intIdCliente = $objModelCliente->deleteCliente($arrDados);
+				Yii::$app->session->setFlash('success', 'Exclusão realizada com sucesso!'); 
+				return $this->redirect(['/cliente/organizador']);
+
+			} else Yii::$app->session->setFlash('error', 'Não foi possível excluir o cliente!'); 
+			
+		} catch (Exception $e) {
+
+			Yii::$app->session->setFlash('error', $e->getMessage()); //echo $e->getMessage();
+		}
+		return $this->redirect(['/cliente/organizador']);
 	}
 
 	public function actionSave()

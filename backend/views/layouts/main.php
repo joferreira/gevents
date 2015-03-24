@@ -59,7 +59,9 @@ AppAsset::register($this);
 		  ?>
 		<div id="wrapper">
 		<?= Breadcrumbs::widget([ 'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [], ]) ?>
-		<?= $content ?>
+		<?php
+			echo $content;
+		?>
 		</div>
 	</div>
 	<div class="text-center" style="left:20%; position:absolute; top:45%; width:60%; z-index:10;">

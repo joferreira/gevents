@@ -16,18 +16,18 @@ $this->title = $titiulo;
 			<?php //secho $this->render('_search', ['model' => $searchModel]); ?>
 
 			<p>
-				<?= Html::a('Create Usuario', ['create'], ['class' => 'btn btn-success']) ?>
+				<?= Html::a('Cadastro de Organizador', ['create'], ['class' => 'btn btn-success']) ?>
 			</p>
 
 			<?= GridView::widget([
 				'dataProvider' => $dataProvider,
 				'filterModel' => $searchModel,
-				'columns' => [
-					['class' => 'yii\grid\SerialColumn'],
+				'columns' => [ 
 
 					'INT_ID_CLIENTE',
 					'STR_NOME_COMPLETO',
 					'STR_EMAIL:email',
+					'DAT_DATA_CADASTRO:datetime',
 
 					['class' => 'yii\grid\ActionColumn'],
 				],
