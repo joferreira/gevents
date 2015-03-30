@@ -21,7 +21,6 @@ use yii\helpers\Security;
  * @property Perfil $pERFILINTIDPERFIL
  */
 class Usuario extends ActiveRecord implements IdentityInterface
-//class Usuario extends ActiveRecord implements IdentityInterface
 {
 
 public $id;

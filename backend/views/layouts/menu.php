@@ -262,6 +262,9 @@ use yii\helpers\Html;
 							<li>
 								<a href="index.php?r=cliente/participante"><i class="fa fa-user fa-fw"></i> Participante</a>
 							</li>
+							<li>
+								<a href="index.php?r=cliente/organizadorparticipante"><i class="fa fa-users fa-fw"></i> Organizador / Participante</a>
+							</li>
 						</ul>
 					</li>
 					<li class="hidden">

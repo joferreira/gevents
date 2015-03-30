@@ -200,6 +200,7 @@ AppAsset::register($this);
 				.removeClass()
 				.addClass('messageBox')
 				.addClass('alert')
+				.addClass('text-center')
 				.addClass(alert_class)
 				.html(message)
 				.show();

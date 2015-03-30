@@ -64,7 +64,7 @@ AppAsset::register($this);
 		?>
 		</div>
 	</div>
-	<div class="text-center" style="left:20%; position:absolute; top:45%; width:60%; z-index:10;">
+	<div class="text-center" style="left:20%; position:absolute; top:45%; width:60%; z-index:9999;">
 		<?php if (Yii::$app->session->hasFlash('success')):
 			echo Alert::widget([
 				'options' => [
@@ -84,14 +84,50 @@ AppAsset::register($this);
 		<?php endif; ?>
 	</div>
 
+	<div id="confirmBox" class="text-center alert alert-info hidden" style="left:20%; position:absolute; top:45%; width:60%; z-index:9999;">
+		<div id="message-confirmBox" style="font-size:16px; font-weight:bold" >Teste de mensagem ?</div>
+		<div id="button-confirmBox">
+			<a id="button-yes" action="yes" href="javascript:;" class="confirmBox btn btn-sm btn-success">Sim</a>&nbsp;
+			<a id="button-no" action="no" href="javascript:;" class="confirmBox btn btn-sm btn-danger">Não</a>
+		</div>
+	</div>
+
+	<div id="messageBox" class="hidden" style="left:20%; position:absolute; top:45%; width:60%; z-index:10000;">
+		
+	</div>
+
 	<footer class="footer">
 		<div class="container">
 		<p class="pull-left">&copy; Gigante dos Eventos <?= date('Y') ?></p>
 		<p class="pull-right"><?= Yii::powered() ?></p>
 		</div>
 	</footer>
+	
 
 	<?php $this->endBody() ?>
+	<script type="text/javascript">
+		$('#wrapper').tooltip({
+			selector: "[data-toggle=tooltip]",
+			container: "body"
+		});
+
+		function message(message, alert_class, timeout){
+			$("#messageBox")
+				.removeClass()
+				.addClass('messageBox')
+				.addClass('alert')
+				.addClass('text-center')
+				.addClass(alert_class)
+				.html(message)
+				.show();
+
+			setTimeout(
+				function(){ 
+					$('#messageBox').addClass('hidden').hide(); 
+				},(!timeout)?3000:timeout
+			);
+		}
+	</script>
 </body>
 </html>
 <?php $this->endPage() ?>

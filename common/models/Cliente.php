@@ -5,6 +5,7 @@ namespace common\models;
 use Yii;
 use yii\db\ActiveRecord;
 use yii\db\Transaction;
+use yii\db\Query;
 
 /**
  * Método de model de cliente.
@@ -57,9 +58,6 @@ use yii\db\Transaction;
 class Cliente extends ActiveRecord
 {
 
-	public $STR_NOME_COMPLETO;
-	public $STR_EMAIL;
-	public $STR_SENHA;
 	public $STR_SENHA_CONFIRME;
 
 	/**
@@ -75,9 +73,21 @@ class Cliente extends ActiveRecord
 	 */
 	public function rules()
 	{
-		//[['TIPO_CLIENTE_INT_ID_TIPO_CLIENTE', 'TIPO_PESSOA_INT_ID_TIPO_PESSOA', 'STATUS_INT_ID_STATUS', 'STR_NOME_COMPLETO', 'DAT_DATA_NASCIMENTO', 'STR_SEXO', 'STR_CPF', 'STR_CNPJ', 'STR_EMAIL', 'STR_SENHA', 'INT_TELEFONE_DDI', 'INT_TELEFONE_DDD', 'INT_TELEFONE', 'INT_CELULAR_DDI', 'INT_CELULAR_DDD', 'INT_CELULAR', 'INT_FAX_DDI', 'INT_FAX_DDD', 'INT_FAX', 'STR_RAZAO_SOCIAL', 'STR_NOME_FANTASIA', 'STR_INSCRICAO_MUNICIPAL', 'STR_CATEGORIA_EMPRESA'], 'required'],
+		 //[['TIPO_CLIENTE_INT_ID_TIPO_CLIENTE', 'TIPO_PESSOA_INT_ID_TIPO_PESSOA', 'STATUS_INT_ID_STATUS', 'STR_NOME_COMPLETO', 'DAT_DATA_NASCIMENTO', 'STR_SEXO', 'STR_CPF', 'STR_CNPJ', 'STR_EMAIL', 'STR_SENHA', 'INT_TELEFONE_DDI', 'INT_TELEFONE_DDD', 'INT_TELEFONE', 'INT_CELULAR_DDI', 'INT_CELULAR_DDD', 'INT_CELULAR', 'INT_FAX_DDI', 'INT_FAX_DDD', 'INT_FAX', 'STR_RAZAO_SOCIAL', 'STR_NOME_FANTASIA', 'STR_INSCRICAO_MUNICIPAL', 'STR_CATEGORIA_EMPRESA'], 'required'],
 
 		return [
+			[['STR_NOME_COMPLETO', 'STR_EMAIL'], 'required'],
+			[['TIPO_CLIENTE_INT_ID_TIPO_CLIENTE', 'TIPO_PESSOA_INT_ID_TIPO_PESSOA', 'STATUS_INT_ID_STATUS', 'INT_TELEFONE_DDI', 'INT_TELEFONE_DDD', 'INT_TELEFONE', 'INT_CELULAR_DDI', 'INT_CELULAR_DDD', 'INT_CELULAR', 'INT_FAX_DDI', 'INT_FAX_DDD', 'INT_FAX'], 'integer'],
+			[['DAT_DATA_NASCIMENTO', 'DAT_DATA_CADASTRO'], 'safe'],
+			[['STR_NOME_COMPLETO'], 'string', 'max' => 200],
+			[['STR_SEXO'], 'string', 'max' => 1],
+			[['STR_CPF'], 'string', 'max' => 11],
+			[['STR_CNPJ'], 'string', 'max' => 14],
+			[['STR_RG'], 'string', 'max' => 10],
+			[['STR_EMAIL'], 'string', 'max' => 150],
+			[['STR_RAZAO_SOCIAL', 'STR_NOME_FANTASIA', 'STR_INSCRICAO_MUNICIPAL'], 'string', 'max' => 255],
+			[['STR_CATEGORIA_EMPRESA'], 'string', 'max' => 6],
+
 			[['STR_EMAIL', 'STR_NOME_COMPLETO', 'STR_SENHA', 'STR_SENHA_CONFIRME'], 'required', 'on'=>'register'],
 			[['STR_SENHA','STR_SENHA_CONFIRME'], 'string', 'min' => 8, 'max' => 10, 'on'=>'register'],
 			['STR_EMAIL', 'email', 'on'=>'register'],
@@ -88,20 +98,6 @@ class Cliente extends ActiveRecord
 			['STR_EMAIL', 'email', 'on'=>'login' ],
 			[['STR_SENHA'], 'safe', 'on'=>'login'],
 
-			[['STR_NOME_COMPLETO', 'STR_EMAIL'], 'required'],
-			[['TIPO_CLIENTE_INT_ID_TIPO_CLIENTE', 'TIPO_PESSOA_INT_ID_TIPO_PESSOA', 'STATUS_INT_ID_STATUS', 'INT_TELEFONE_DDI', 'INT_TELEFONE_DDD', 'INT_TELEFONE', 'INT_CELULAR_DDI', 'INT_CELULAR_DDD', 'INT_CELULAR', 'INT_FAX_DDI', 'INT_FAX_DDD', 'INT_FAX'], 'integer'],
-			[['DAT_DATA_NASCIMENTO', 'DAT_DATA_CADASTRO'], 'safe'],
-			[['STR_NOME_COMPLETO'], 'string', 'max' => 200],
-			[['STR_SEXO'], 'string', 'max' => 1],
-			[['STR_CPF'], 'string', 'max' => 11],
-			[['STR_CNPJ'], 'string', 'max' => 14],
-			[['STR_RG'], 'string', 'max' => 10],
-			[['STR_EMAIL'], 'string', 'max' => 150],
-			[[ 'STR_RAZAO_SOCIAL', 'STR_NOME_FANTASIA', 'STR_INSCRICAO_MUNICIPAL'], 'string', 'max' => 255],
-			[['STR_CATEGORIA_EMPRESA'], 'string', 'max' => 6]
-
-			
-			//['confirmesenha', 'compare', 'compareAttribute' => 'STR_SENHA']
 		];
 	}
 	public function scenarios()
@@ -226,13 +222,13 @@ class Cliente extends ActiveRecord
 	 * @param string E-mail
 	 * @return array Database_Result|Array
 	 */
-	public function verificaEmail($STR_EMAIL) {
+	public function verificaEmail($strEmail) {
 		try {
-			if (empty($STR_EMAIL))
+			if (empty($strEmail))
 				Yii::$app->session->setFlash('error', 'Parâmetro informado errado!'); 
 
 			$arrResult = self::find()
-					->where(["STR_EMAIL" => $STR_EMAIL])
+					->where(["STR_EMAIL" => $strEmail])
 					->one();
 			
 			if($arrResult)
@@ -252,19 +248,17 @@ class Cliente extends ActiveRecord
 	 */
 	public function saveOrganizador($arrDados = array()) {
 
-		$connection = \Yii::$app->db;
-		$objTransaction = $connection->beginTransaction();
+		$objTransaction = Yii::$app->db->beginTransaction();
 		try {
 			if (empty($arrDados))
 				Yii::$app->session->setFlash('error', 'Campos Vazios!');
 
 			// Insere os dados
-			$connection->createCommand()
+			Yii::$app->db->createCommand()
 				->insert(
 					$this->tableName(), 
 					[
 						'STATUS_INT_ID_STATUS' => Status::STATUS_AGUARDANDO,
-						'TIPO_CLIENTE_INT_ID_TIPO_CLIENTE' => Status::STATUS_AGUARDANDO,
 						'STR_NOME_COMPLETO' => $arrDados['STR_NOME_COMPLETO'],
 						'STR_EMAIL' => $arrDados['STR_EMAIL'],
 						'STR_SENHA' => $arrDados['STR_SENHA']
@@ -272,7 +266,7 @@ class Cliente extends ActiveRecord
 				)
 				->execute();
 
-			$intIdCliente = $connection->getLastInsertID();
+			$intIdCliente = Yii::$app->db->getLastInsertID();
 
 			$objTransaction->commit();
 
@@ -292,59 +286,59 @@ class Cliente extends ActiveRecord
 	 */
 	public function saveCliente($arrDados = array()) {
 
-		$connection = Yii::$app->db;
-		$objTransaction = $connection->beginTransaction();
+		$objTransaction = $objTransaction = Yii::$app->db->beginTransaction();
 		try {
 			if (empty($arrDados))
-				throw new Exception('Campos Vazios!');
+				Yii::$app->session->setFlash('error','Campos Vazios!');
 
-			$strSenha = empty($arrDados['STR_SENHA']) ? $this->generate_password() : $arrDados['STR_SENHA'];
+			if( empty($arrDados['TIPO_CLIENTE_INT_ID_TIPO_CLIENTE']) )
+				throw new \Exception('Favor selecionar o Tipo Cliente!');
 
-			$DAT_DATA_NASCIMENTO = implode("-",array_reverse(explode("/",$arrDados['DAT_DATA_NASCIMENTO'])));
+			//if( empty($arrDados['TIPO_PESSOA_INT_ID_TIPO_PESSOA']) )
+			//	throw new \Exception('Favor selecionar o Tipo Pessoa!');
 
-			// Insere os dados
-			$connection->createCommand()
-				->insert(
-					$this->tableName(), 
-					[
-						'TIPO_CLIENTE_INT_ID_TIPO_CLIENTE' => $arrDados['TIPO_CLIENTE_INT_ID_TIPO_CLIENTE'],
-						'TIPO_PESSOA_INT_ID_TIPO_PESSOA' => $arrDados['TIPO_PESSOA_INT_ID_TIPO_PESSOA'],
-						'STATUS_INT_ID_STATUS' => $arrDados['STATUS_INT_ID_STATUS'],
-						'STR_NOME_COMPLETO' => $arrDados['STR_NOME_COMPLETO'],
-						'DAT_DATA_NASCIMENTO' => $DAT_DATA_NASCIMENTO,
-						'STR_SEXO' => $arrDados['STR_SEXO'],
-						'STR_CPF' => $arrDados['STR_CPF'],
-						'STR_CNPJ' => $arrDados['STR_CNPJ'],
-						'STR_RG' => $arrDados['STR_RG'],
-						'STR_EMAIL' => $arrDados['STR_EMAIL'],
-						'STR_SENHA' => $strSenha ,
-						'INT_TELEFONE_DDI' => $arrDados['INT_TELEFONE_DDI'],
-						'INT_TELEFONE_DDD' => $arrDados['INT_TELEFONE_DDD'],
-						'INT_TELEFONE' => $arrDados['INT_TELEFONE'],
-						'INT_CELULAR_DDI' => $arrDados['INT_CELULAR_DDI'],
-						'INT_CELULAR_DDD' => $arrDados['INT_CELULAR_DDD'],
-						'INT_CELULAR' => $arrDados['INT_CELULAR'],
-						'INT_FAX_DDI' => $arrDados['INT_FAX_DDI'],
-						'INT_FAX_DDD' => $arrDados['INT_FAX_DDD'],
-						'INT_FAX' => $arrDados['INT_FAX'],
-						'STR_RAZAO_SOCIAL' => $arrDados['STR_RAZAO_SOCIAL'],
-						'STR_NOME_FANTASIA' => $arrDados['STR_NOME_FANTASIA'],
-						'STR_INSCRICAO_MUNICIPAL' => $arrDados['STR_INSCRICAO_MUNICIPAL'],
-						'STR_CATEGORIA_EMPRESA' => $arrDados['STR_CATEGORIA_EMPRESA']
-					]
-				)
-				->execute();
+			if( empty($arrDados['STATUS_INT_ID_STATUS']) )
+				throw new \Exception('Favor selecionar o Status!');
 
-			$intIdCliente = $connection->getLastInsertID();
+			$arrDados['DAT_DATA_NASCIMENTO'] = implode("-",array_reverse(explode("/",$arrDados['DAT_DATA_NASCIMENTO'])));
+
+			if( isset($arrDados['INT_ID_CLIENTE']) ){
+				
+				Yii::$app->db->createCommand()
+					->update(
+						$this->tableName(), 
+						$arrDados,
+						[
+							'INT_ID_CLIENTE' => $arrDados['INT_ID_CLIENTE'] 
+						]
+					)
+					->execute();
+
+				$arrResult['INT_ID_CLIENTE'] = $arrDados['INT_ID_CLIENTE'];
+				$arrResult['TIPO_CLIENTE_INT_ID_TIPO_CLIENTE'] = $arrDados['TIPO_CLIENTE_INT_ID_TIPO_CLIENTE'];
+			} else {
+
+				$strSenha = empty($arrDados['STR_SENHA']) ? $this->generate_password() : $arrDados['STR_SENHA'];			
+
+				// Insere os dados
+				Yii::$app->db->createCommand()
+					->insert(
+						$this->tableName(), 
+						$arrDados
+					)
+					->execute();
+
+				$arrResult['INT_ID_CLIENTE'] = Yii::$app->db->getLastInsertID();
+				$arrResult['TIPO_CLIENTE_INT_ID_TIPO_CLIENTE'] = $arrDados['TIPO_CLIENTE_INT_ID_TIPO_CLIENTE'];
+			}
 
 			$objTransaction->commit();
-// ALTER TABLE `cliente` ADD COLUMN `INT_STATUS` TINYINT(1) NOT NULL DEFAULT '1' AFTER `DAT_DATA_CADASTRO`;
 
-			return $intIdCliente;
+			return $arrResult;
 
-		} catch (Exception $objExcessao) {
+		} catch (\Exception $objExcessao) {
 			$objTransaction->rollback();
-			echo $objExcessao->getMessage();
+			Yii::$app->session->setFlash('error', $objExcessao->getMessage());
 		}
 	}
 
@@ -355,18 +349,18 @@ class Cliente extends ActiveRecord
 	 * @return integer Código do cliente gerado
 	 */
 	public function deleteCliente($arrDados = array()) {	
-		$connection = Yii::$app->db;
-		$objTransaction = $connection->beginTransaction();
+
+		$objTransaction = Yii::$app->db->beginTransaction();
 		try {
 			if (empty($arrDados))
-				throw new Exception('Campos Vazios!');
+				throw new \Exception('Campos Vazios!');
 
-			// Insere os dados
-			$connection ->createCommand()
+			// Altera os dados
+			Yii::$app->db->createCommand()
 				->update(
 					$this->tableName(), 
 					[
-						'INT_STATUS' =>  $arrDados['INT_STATUS']
+						'STATUS_INT_ID_STATUS' =>  Status::STATUS_INATIVO
 					],
 					[
 						'INT_ID_CLIENTE' => $arrDados['INT_ID_CLIENTE'] 
@@ -387,6 +381,33 @@ class Cliente extends ActiveRecord
 	}
 
 	/**
+	 * Método para informar os dados do cliente.
+	 * 
+	 * @return object Database_Result|Array
+	 * @throws Exception
+	 */
+	public function getClienteByTipoCliente($intTipoCliente) {
+		try {
+			$query = new Query;
+			// compose the query
+			$query->select('INT_ID_CLIENTE , TIPO_CLIENTE_INT_ID_TIPO_CLIENTE , TIPO_PESSOA_INT_ID_TIPO_PESSOA , STATUS_INT_ID_STATUS , STR_NOME_COMPLETO , DAT_DATA_NASCIMENTO , STR_SEXO , STR_CPF , STR_CNPJ , STR_RG , STR_EMAIL , STR_SENHA , INT_TELEFONE_DDI , INT_TELEFONE_DDD , INT_TELEFONE , INT_CELULAR_DDI , INT_CELULAR_DDD , INT_CELULAR , INT_FAX_DDI , INT_FAX_DDD , INT_FAX , STR_RAZAO_SOCIAL , STR_NOME_FANTASIA , STR_INSCRICAO_MUNICIPAL , STR_CATEGORIA_EMPRESA , DAT_DATA_CADASTRO')
+			->from($this->tableName())
+			->where(['TIPO_CLIENTE_INT_ID_TIPO_CLIENTE'=>$intTipoCliente]);
+
+			$command = $query->createCommand();
+			$arrResult = $command->queryAll();
+
+		if ($arrResult)
+				return $arrResult;
+			else
+				return FALSE;
+
+		} catch (\Exception $objException) {
+			throw $objException;
+		}
+	}
+
+	/**
 	 * Description
 	 * @param type $intLength
 	 * @return type $strSenha
@@ -403,45 +424,6 @@ class Cliente extends ActiveRecord
 		return $str;
 	}
 
-	/**
-	 * Método para salvar cliente inicial.
-	 * 
-	 * @param array Parâmetros do formulário
-	 * @return integer Código do cliente gerado
-	 */
-	public function saveClienteInicial($arrDados = array()) {
-		try {
-			if (empty($arrDados))
-				throw new Exception('Parâmetros necessários!');
-
-			$objTransaction = Yii::app()->db->beginTransaction();
-
-			// Insere dados iniciais
-			Yii::app()->db->createCommand()
-					->insert(
-							$this->tableName(), array(
-						'STR_NOME' => $arrDados['STR_NOME'],
-						'STR_NOME_COMPLEMENTO' => $arrDados['STR_NOME_COMPLEMENTO'],
-						'STR_EMAIL' => $arrDados['STR_EMAIL'],
-						'STR_SENHA' => $arrDados['STR_SENHA'],
-						'STR_SENHA_CONFIRMACAO' => $arrDados['STR_SENHA_CONFIRMACAO'])
-			);
-
-
-			$objTransaction->commit();
-
-			$intMaxIdCliente = Yii::app()->db->createCommand()
-					->select('MAX(INT_ID_CLIENTE) as MAX_INT_ID_CLIENTE')
-					->from($this->tableName())
-					->queryScalar();
-
-			return $intMaxIdCliente;
-		} catch (Exception $objExcessao) {
-			$objTransaction->rollback();
-			echo 'Exception: ' . $objExcessao->getMessage() . '</br>';
-		}
-	}
-
 	/** Login do cliente */
 
 	/**
@@ -453,7 +435,7 @@ class Cliente extends ActiveRecord
 	 */
 	public function verificaEmailSenha($arrDados = array()) {
 		try {
-			$connection = \Yii::$app->db;
+			
 			if (empty($arrDados['STR_EMAIL']))
 				throw new \yii\web\HttpException('Parâmetro e-mail necessário!');
 

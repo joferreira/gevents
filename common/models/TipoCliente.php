@@ -23,6 +23,10 @@ use yii\db\ActiveRecord;
 
 class TipoCliente extends ActiveRecord
 {
+	const TIPO_CLIENTE_PARTICIPANTE = 1;
+	const TIPO_CLIENTE_ORGANIZADOR = 2;
+	const TIPO_CLIENTE_ORGANIZADOR_PARTICIPANTE = 3;
+
 	/**
 	 * @inheritdoc
 	 */

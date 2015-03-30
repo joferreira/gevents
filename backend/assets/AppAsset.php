@@ -23,13 +23,16 @@ class AppAsset extends AssetBundle
 		'css/timeline.css',
 		'css/sb-admin-2.css',
 		'plugins/morrisjs/morris.css',
-		'plugins/font-awesome/css/font-awesome.min.css'
+		'plugins/font-awesome/css/font-awesome.min.css',
+		'plugins/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.css'
 	];
 	public $js = [
 		'plugins/bootstrap/dist/js/bootstrap.js',
 		'plugins/metisMenu/dist/metisMenu.js',
 		'plugins/raphael/raphael-min.js',
-		'js/sb-admin-2.js'
+		'js/sb-admin-2.js',
+		'plugins/datatables/media/js/jquery.dataTables.js',
+		'plugins/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.js'
 	];
 	public $depends = [
 		'yii\web\YiiAsset',

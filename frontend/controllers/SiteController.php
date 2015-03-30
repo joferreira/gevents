@@ -72,7 +72,6 @@ class SiteController extends Controller
 			$objModelCliente = new Cliente(['scenario' => 'register']);
 			$objModelLogin = new Cliente(['scenario' => 'login']);
 			$contato = new ContactForm();
-			$cadastro = new Cliente(['scenario' => 'register']);
 
 			/*if ($objModelCliente->load(Yii::$app->request->post()) ){
 
@@ -100,8 +99,7 @@ class SiteController extends Controller
 			return $this->render('index', [
 				//'cliente' => $objModelCliente,
 				'contato' => $contato,
-				'cadastro' => $cadastro,
-				'formCadastro' => $objModelCliente,
+				'cadastro' => $objModelCliente,
 				'login' => $objModelLogin,
 			]);
 			

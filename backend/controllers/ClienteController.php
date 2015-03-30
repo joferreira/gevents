@@ -4,17 +4,18 @@ namespace backend\controllers;
 
 use Yii;
 use common\models\Cliente;
+use common\models\TipoCliente;
 use common\models\Endereco;
-use backend\models\OrganizadorSearch;
-use backend\models\ParticipanteSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
-use backend\models\LoginForm;
+use yii\web\Request;
+use yii\web\Response;
 
 class ClienteController extends Controller
 {
+
 	public function behaviors()
 	{
 		return [
@@ -28,11 +29,11 @@ class ClienteController extends Controller
 	}
 	public function actions()
 	{
-	    return [
-	        'error' => [
-	            'class' => 'yii\web\ErrorAction',
-	        ]
-	    ];
+		return [
+			'error' => [
+				'class' => 'yii\web\ErrorAction',
+			]
+		];
 	}
 	/**
 	 * Lista todos Organizadores.
@@ -40,38 +41,61 @@ class ClienteController extends Controller
 	 */
 	public function actionOrganizador()
 	{
-		if ( Yii::$app->user->isGuest) {
+		if ( Yii::$app->user->isGuest) 
 			return $this->redirect(['/usuario/login']);
-		}
 
-		$searchModel = new OrganizadorSearch();
-		$dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+		$intTipoCliente = TipoCliente::TIPO_CLIENTE_ORGANIZADOR;
+		$tituloPagina = 'Organizador';
 
-		return $this->render('/cadastro/organizador', [
-			'searchModel' => $searchModel,
+		$searchModel = new Cliente();
+		$dataProvider = $searchModel->getClienteByTipoCliente($intTipoCliente);
+
+		return $this->render('/cliente/gridCliente', [
 			'dataProvider' => $dataProvider,
+			'tituloPagina' => $tituloPagina,
 		]);
 	}
-
 	/**
 	 * Lista todos Participantes.
 	 * @return mixed
 	 */
 	public function actionParticipante()
 	{
-		if ( Yii::$app->user->isGuest) {
+		if ( Yii::$app->user->isGuest) 
 			return $this->redirect(['/usuario/login']);
-		}
+		
+		$intTipoCliente = TipoCliente::TIPO_CLIENTE_PARTICIPANTE;
+		$tituloPagina = 'Participante';
 
-		$searchModel = new ParticipanteSearch();
-		$dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+		$searchModel = new Cliente();
+		$dataProvider = $searchModel->getClienteByTipoCliente($intTipoCliente);
 
-		return $this->render('/cadastro/participante', [
-			'searchModel' => $searchModel,
+		return $this->render('/cliente/gridCliente', [
 			'dataProvider' => $dataProvider,
+			'tituloPagina' => $tituloPagina,
 		]);
-	}	
+	}
 
+	/**
+	 * Lista todos Organizadores / Participantes.
+	 * @return mixed
+	 */
+	public function actionOrganizadorparticipante()
+	{
+		if ( Yii::$app->user->isGuest)
+			return $this->redirect(['/usuario/login']);
+
+		$intTipoCliente = TipoCliente::TIPO_CLIENTE_ORGANIZADOR_PARTICIPANTE;
+		$tituloPagina = 'Organizador/Participante';
+
+		$searchModel = new Cliente();
+		$dataProvider = $searchModel->getClienteByTipoCliente($intTipoCliente);
+
+		return $this->render('/cliente/gridCliente', [
+			'dataProvider' => $dataProvider,
+			'tituloPagina' => $tituloPagina,
+		]);
+	}
 	/**
 	 * Lists all Usuario models.
 	 * @return mixed
@@ -90,7 +114,6 @@ class ClienteController extends Controller
 			'dataProvider' => $dataProvider,
 		]);
 	}
-
 	/**
 	 * Displays a single Usuario model.
 	 * @param string $id
@@ -101,12 +124,11 @@ class ClienteController extends Controller
 		if ( Yii::$app->user->isGuest) {
 			return $this->redirect(['/usuario/login']);
 		} else {
-			return $this->render('/cadastro/view', [
+			return $this->render('/cliente/view', [
 				'model' => $this->findModel($id),
 			]);
 		}
 	}
-
 	/**
 	 * Creates a new Usuario model.
 	 * If creation is successful, the browser will be redirected to the 'view' page.
@@ -119,7 +141,11 @@ class ClienteController extends Controller
 			return $this->redirect(['/usuario/login']);
 		}
 
-		try {			
+		$arrTipoCliente[TipoCliente::TIPO_CLIENTE_PARTICIPANTE] = 'participante';
+		$arrTipoCliente[TipoCliente::TIPO_CLIENTE_ORGANIZADOR] = 'organizador';
+		$arrTipoCliente[TipoCliente::TIPO_CLIENTE_ORGANIZADOR_PARTICIPANTE] = 'organizadorparticipante';
+
+		try {
 
 			$objModelCliente = new Cliente();
 			$objModelEndereco = new Endereco();
@@ -130,13 +156,20 @@ class ClienteController extends Controller
 					$arrDados = $_POST['Cliente'];
 
 					$arrStatusEmail = $objModelCliente->verificaEmail($arrDados['STR_EMAIL']);
-					if(empty($arrDados['STR_EMAIL']) ) {
+
+					if(empty($arrDados['TIPO_CLIENTE_INT_ID_TIPO_CLIENTE']) ) {
+						Yii::$app->session->setFlash('error','Favor selecionar o Tipo Cliente!');
+					//} elseif(empty($arrDados['TIPO_PESSOA_INT_ID_TIPO_PESSOA']) ) {
+					//	Yii::$app->session->setFlash('error','Favor selecionar o Tipo Pessoa!');
+					} else if(empty($arrDados['STATUS_INT_ID_STATUS']) ){
+						Yii::$app->session->setFlash('error','Favor selecionar o Status!');
+					} else if(empty($arrDados['STR_EMAIL']) ) {
 						Yii::$app->session->setFlash('error', 'E-mail não foi preenchido!');
 					} else if(empty($arrStatusEmail)){
-						$intIdCliente = $objModelCliente->saveCliente($arrDados);
-						Yii::$app->session->setFlash('success', 'cadastro efetuado com sucesso! '. $intIdCliente ); // echo "cadastro efetuado com sucesso!";
+						$arrResult = $objModelCliente->saveCliente($arrDados);
+						Yii::$app->session->setFlash('success', 'cadastro efetuado com sucesso!'); // echo "cadastro efetuado com sucesso!";
 						//return $this->redirect(['/cliente/organizador']);
-						return $this->redirect(['/cliente/view', 'id' => $intIdCliente]);
+						return $this->redirect(['/cliente/'.$arrTipoCliente[$arrResult['TIPO_CLIENTE_INT_ID_TIPO_CLIENTE']] ]);
 						//return $this->redirect($this->createUrl('/cliente/organizador'));
 					} else Yii::$app->session->setFlash('error', 'E-mail já cadastrado!');//	throw new Exception("E-mail já cadastrado!");
 				} else Yii::$app->session->setFlash('error', 'Campos não preenchidos corretamente!'); //	throw new Exception("Campos não preenchidos corretamente!");
@@ -144,10 +177,10 @@ class ClienteController extends Controller
 
 			}
 
-				return $this->render('/cadastro/create', [
-					'model' => $objModelCliente,
-					'endereco' => $objModelEndereco,
-				]);
+			return $this->render('/cliente/create', [
+				'model' => $objModelCliente,
+				'endereco' => $objModelEndereco,
+			]);
 			
 			
 		} catch (Exception $e) {
@@ -155,7 +188,6 @@ class ClienteController extends Controller
 			Yii::$app->session->setFlash('error', $e->getMessage()); //echo $e->getMessage();
 		}
 	}
-
 	/**
 	 * Updates an existing Usuario model.
 	 * If update is successful, the browser will be redirected to the 'view' page.
@@ -168,50 +200,72 @@ class ClienteController extends Controller
 			return $this->redirect(['/usuario/login']);
 		}
 
+		$arrTipoCliente[TipoCliente::TIPO_CLIENTE_PARTICIPANTE] = 'participante';
+		$arrTipoCliente[TipoCliente::TIPO_CLIENTE_ORGANIZADOR] = 'organizador';
+		$arrTipoCliente[TipoCliente::TIPO_CLIENTE_ORGANIZADOR_PARTICIPANTE] = 'organizadorparticipante';
+
 		$model = $this->findModel($id);
+		if( isset($_POST['Cliente']) ) {
+			$arrDados = $_POST['Cliente'];
+			$arrDados['INT_ID_CLIENTE'] = $id;
+		}
+
 		$objModelEndereco = new Endereco();
 
-		if ($model->load(Yii::$app->request->post()) && $model->saveCliente()) {
-			return $this->redirect(['/cadastro/view', 'id' => $model->INT_ID_CLIENTE]);
+		if ($model->load(Yii::$app->request->post()) && $model->saveCliente($arrDados)) {
+			return $this->redirect(['/cliente/'.$arrTipoCliente[$model->TIPO_CLIENTE_INT_ID_TIPO_CLIENTE] ]);
 		} else {
-			return $this->render('/cadastro/update', [
+			return $this->render('/cliente/update', [
 				'model' => $model,
 				'endereco' => $objModelEndereco,
 			]);
 		}
 	}
-
 	/**
 	 * Deletes an existing Usuario model.
 	 * If deletion is successful, the browser will be redirected to the 'index' page.
 	 * @param string $id
 	 * @return mixed
 	 */
-	public function actionDelete($id)
+	public function actionDelete()
 	{
 		//$this->findModel($id)->delete();
 		if ( Yii::$app->user->isGuest) {
 			return $this->redirect(['/usuario/login']);
 		}
-		try {			
 
-			$objModelCliente = new Cliente();
+		Yii::$app->response->format = Response::FORMAT_JSON;
+		$arrResponse = array('message' => '', 'response' => false );
 
-			if( !empty($id) ){
-				$arrDados['INT_ID_CLIENTE'] = $id;
-				$arrDados['INT_STATUS'] = 0;
+		try {
+			$arrDados = Yii::$app->request->post();
+
+			if (empty($arrDados['INT_ID_CLIENTE'])) {
+				throw new \Exception("Parâmetro id cliente necessário!", 1);
+			} else {
+
+				$objModelCliente = new Cliente();
 
 				$intIdCliente = $objModelCliente->deleteCliente($arrDados);
-				Yii::$app->session->setFlash('success', 'Exclusão realizada com sucesso!'); 
-				return $this->redirect(['/cliente/organizador']);
+				if( !empty($intIdCliente ) ){
+					$arrResponse['message'] = 'Inativação efetuada com sucesso! O organizador será notificado.';
+					$arrResponse['response'] = true;
+					/* Enviar o e-mail de notificação */
+				} else
+					throw new \Exception("Não foi possível inativar o cliente!", 1);
 
-			} else Yii::$app->session->setFlash('error', 'Não foi possível excluir o cliente!'); 
-			
-		} catch (Exception $e) {
+			}
+			return $arrResponse;
 
-			Yii::$app->session->setFlash('error', $e->getMessage()); //echo $e->getMessage();
+		} catch (\Exception $e) {
+
+			$res = [
+				'message' => $e->getMessage(),
+				'response' => false,
+			];
+			return $res;
 		}
-		return $this->redirect(['/cliente/organizador']);
+	
 	}
 
 	public function actionSave()
@@ -257,5 +311,5 @@ class ClienteController extends Controller
 		} else {
 			throw new NotFoundHttpException('The requested page does not exist.');
 		}
-	}	
+	}
 }

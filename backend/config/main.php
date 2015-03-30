@@ -17,6 +17,8 @@ return [
 			'identityClass' => 'backend\models\usuario',
 			'enableAutoLogin' => false,
 			'loginUrl' => ['usuario/login'],
+			//'enableSession' => true,
+			'authTimeout' => 600,
 		],
 		'log' => [
 			'traceLevel' => YII_DEBUG ? 3 : 0,
@@ -29,7 +31,8 @@ return [
 		],
 		'errorHandler' => [
 			'errorAction' => 'site/error',
-		],		
+		],
+
 	],
 	'sourceLanguage'=>'pt-BR',
 	'language'=>'pt-BR',

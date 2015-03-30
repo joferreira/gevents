@@ -13,7 +13,7 @@
 		</div>
 		<a href="#">
 			<div class="panel-footer">
-				<span class="pull-left">Vizualizar</span>
+				<span class="pull-left">Visualizar</span>
 				<span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
 				<div class="clearfix"></div>
 			</div>
