@@ -450,7 +450,7 @@ class Cliente extends ActiveRecord
 
 			$objResult = self::find()
 					->where(["STR_EMAIL" => $arrDados['STR_EMAIL']])
-					->andWhere(["STR_SENHA" =>  $arrDados['STR_SENHA']])
+					->andWhere(["STR_SENHA" => md5($arrDados['STR_SENHA']) ])
 					->one();
 
 			if ($objResult)
