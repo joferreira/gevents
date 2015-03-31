@@ -20,7 +20,7 @@ $this->title = $tituloPagina;
 				<?= Html::a('Cadastro de '.$tituloPagina, ['create'], ['class' => 'btn btn-success']) ?>
 			</p>
 			<div>
-				<table id="grid_cliente" class="table">
+				<table id="grid_cliente" class="table table-striped table-hover">
 					<thead>
 						<tr>
 							<th width="120">Cód. do Cliente</th>
@@ -121,8 +121,8 @@ $this->title = $tituloPagina;
 	$(document).ready(function() {
 		
 		$('#grid_cliente').DataTable({
-			responsive: true,
-			"lengthChange": false,
+			"searching": true,
+			"ordering": true,
 			"columnDefs": [
 				{ "orderable": false, "targets": 4 }
 			],

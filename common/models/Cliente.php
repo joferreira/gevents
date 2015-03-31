@@ -258,10 +258,11 @@ class Cliente extends ActiveRecord
 				->insert(
 					$this->tableName(), 
 					[
+						'TIPO_CLIENTE_INT_ID_TIPO_CLIENTE' => TipoCliente::TIPO_CLIENTE_ORGANIZADOR,
 						'STATUS_INT_ID_STATUS' => Status::STATUS_AGUARDANDO,
 						'STR_NOME_COMPLETO' => $arrDados['STR_NOME_COMPLETO'],
 						'STR_EMAIL' => $arrDados['STR_EMAIL'],
-						'STR_SENHA' => $arrDados['STR_SENHA']
+						'STR_SENHA' => md5($arrDados['STR_SENHA'])
 					]
 				)
 				->execute();
@@ -269,6 +270,8 @@ class Cliente extends ActiveRecord
 			$intIdCliente = Yii::$app->db->getLastInsertID();
 
 			$objTransaction->commit();
+
+			/* Enviar Email de confirmação */
 
 			return $intIdCliente;
 
@@ -318,7 +321,8 @@ class Cliente extends ActiveRecord
 				$arrResult['TIPO_CLIENTE_INT_ID_TIPO_CLIENTE'] = $arrDados['TIPO_CLIENTE_INT_ID_TIPO_CLIENTE'];
 			} else {
 
-				$strSenha = empty($arrDados['STR_SENHA']) ? $this->generate_password() : $arrDados['STR_SENHA'];			
+				$strSenha = isset($arrDados['STR_SENHA']) ? $arrDados['STR_SENHA'] : $this->generate_password();
+				$arrDados['STR_SENHA'] = md5($strSenha);
 
 				// Insere os dados
 				Yii::$app->db->createCommand()
@@ -330,6 +334,7 @@ class Cliente extends ActiveRecord
 
 				$arrResult['INT_ID_CLIENTE'] = Yii::$app->db->getLastInsertID();
 				$arrResult['TIPO_CLIENTE_INT_ID_TIPO_CLIENTE'] = $arrDados['TIPO_CLIENTE_INT_ID_TIPO_CLIENTE'];
+				$arrResult['STR_SENHA'] = $strSenha;
 			}
 
 			$objTransaction->commit();

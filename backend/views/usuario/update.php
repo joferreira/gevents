@@ -5,7 +5,7 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model backend\models\Usuario */
 
-$this->title = 'Update Usuario: ' . ' ' . $model->STR_NOME_COMPLETO;
+$this->title = 'Dados do Usuário';
 ?>
 	<div id="page-wrapper" class="usuario-update">
 		<br/>

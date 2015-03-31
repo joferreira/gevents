@@ -6,13 +6,13 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model backend\models\Usuario */
 
-$this->title = $model->STR_NOME_COMPLETO;
+$this->title = 'Dados do Usuário';
 ?>
 	<div id="page-wrapper" class="usuario-view">
 		<br/>
 		<div class="row">
 			<p>
-				<?= Html::a('Update', ['update', 'id' => $model->INT_ID_USUARIO], ['class' => 'btn btn-primary']) ?>
+				<?= Html::a('Alterar', ['update', 'id' => $model->INT_ID_USUARIO], ['class' => 'btn btn-primary']) ?>
 				<!--<?= Html::a('Delete', ['delete', 'id' => $model->INT_ID_USUARIO], [
 					'class' => 'btn btn-danger',
 					'data' => [

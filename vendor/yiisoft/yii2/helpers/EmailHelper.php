@@ -25,26 +25,19 @@ class EmailHelper {
 				Yii::$app->session->setFlash('error', 'Parâmetros inválidos para envio de e-mail!');
 
 			if ($arrParametros['STR_TIPO_ENVIO'] == 'confirmacao') {
-				$strSubject = 'Confirmação de inscrição - Distribuição Digital';
+				$strSubject = 'Confirmação de Cadastro - Gigante dos Eventos';
 
-				$strMensagem = '<h1>Confirmação de inscrição</h1></br>'
-						. 'Olá,</br></br>'
-						. 'Estamos felizes em recebê-lo(a) no Distribuição Digital, o serviço de distribuição de música com uma diferença muito grande!</br></br>'
-						. 'Construa a sua base de fãs, faça render dinheiro, libere a sua música no iTunes, Spotify e outras grandes lojas digitais.</br></br>'
-						. 'Você mantém todos os direitos em receber por suas vendas efetuadas nas lojas digitais.</br></br>'
-						. 'Você também irá obter o feedback de suas músicas e vendas através de nosso serviço DASHBOARD, que oferece relatórios de acompanhamentos.</br></br>'
-						. 'É muito fácil começar:</br>'
-						. '1 - Você já deu o primeiro passo em se inscrever</br>'
-						. '<strong>E-mail:</strong> <i>' . $arrParametros['STR_EMAIL'] . '</i></br>'
-						. '<strong>Senha:</strong> <i>' . $arrParametros['STR_SENHA'] . '</i></br>'
-						. '2 - Complete o seu perfil</br>'
-						. '3 - Envie seu single, EP ou Álbum</br>'
-						. '4 - Conheça nosso DASHBOARD</br></br>'
-						. 'Também certifique-se que você siga-nos no Twitter (https://twitter.com/distribuicaodig) e Facebook (https://pt-br.facebook.com/distribuicaodigital).</br></br>'
-						. 'Se você tiver alguma dúvida, consulte o nosso FAQ (http://www.distribuicaodigital.com.br/faq) ou contacte-nos em http://www.distribuicaodigital.com.br/contato</br></br>'
-						. 'Nos vemos em http://www.distribuicaodigital.com.br</br></br>'
-						. 'Boa sorte !</br></br>'
-						. 'Distribuição Digital | Sua música na internet';
+				$strMensagem = 
+					"<p>Caro(a) organizador,<p>
+					<p>Estamos felizes em recebê-lo(a) no Gigante dos Eventos, a ferramenta de eventos online!</p>
+					<p></p>
+					<p><strong>E-mail:</strong> <i>".$arrParametros['STR_EMAIL']."</i></p>
+					<p><strong>Senha:</strong> <i>".$arrParametros['STR_SENHA']."</i></p>
+					<p></p>
+					<p>Construa sua base de inscrições, crie e divulgue seus eventos no HotEvent.</p>
+					<p></p>
+					<p>Gigante dos Eventos | Uma forma diferente de se fazer eventos</p>";
+
 			}
 
 			// Configuração para envio de e-mail Google
@@ -59,15 +52,15 @@ class EmailHelper {
 			$objEmail->Host = 'smtp.gmail.com'; // SMTP GOOGLE E-MAIL
 			
 			// Usuário e Senha
-			$objEmail->Username = 'digital@distribuicaodigital.com.br';
-			$objEmail->Password = 'mu2si4ca6';
+			$objEmail->Username = 'josemar.ferreira.jf@gmail.com';
+			$objEmail->Password = 'jF@81692098';
 			
 			// Formatação da mensagem e envio
-			$objEmail->setFrom('digital@distribuicaodigital.com.br', 'Distribuição Digital | Sua música na internet');
+			$objEmail->setFrom('josemar.ferreira.jf@gmail.com', 'Gigante dos Eventos');
 			$objEmail->Subject = $strSubject;
 			$objEmail->AltBody = 'Para ver a mensagem, por favor, use um visualizador de e-mail compatível com HTML!';
 			$objEmail->msgHTML($strMensagem);
-			$objEmail->addAddress($arrParametros['STR_EMAIL'], $arrParametros['STR_NOME'] . ' ' . $arrParametros['STR_NOME_COMPLEMENTO']);
+			$objEmail->addAddress($arrParametros['STR_EMAIL'], $arrParametros['STR_NOME_COMPLETO']);
 			$objEmail->send();
 		} catch (Exception $objException) {
 			echo 'Exception: ' . $objException->getMessage() . '</br>';

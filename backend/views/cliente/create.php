@@ -6,7 +6,7 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model backend\models\Usuario */
 
-$this->title = 'Cadastro Cliente';
+$this->title = 'Cadastro de Participante, Organizador e Organizador/Participante';
 ?>
 	<div id="page-wrapper" class="usuario-create">
 		<br/>

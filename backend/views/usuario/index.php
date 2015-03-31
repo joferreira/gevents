@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel backend\models\UsarioSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Usuarios';
+$this->title = 'Usuários';
 ?>
 	<div id="page-wrapper" class="usuario-index">
 		<br/>
@@ -15,14 +15,13 @@ $this->title = 'Usuarios';
 			<?php //secho $this->render('_search', ['model' => $searchModel]); ?>
 
 			<p>
-				<?= Html::a('Create Usuario', ['create'], ['class' => 'btn btn-success']) ?>
+				<?= Html::a('Cadastrar Usuario', ['create'], ['class' => 'btn btn-success']) ?>
 			</p>
 
 			<?= GridView::widget([
 				'dataProvider' => $dataProvider,
 				'filterModel' => $searchModel,
 				'columns' => [
-					['class' => 'yii\grid\SerialColumn'],
 
 					'INT_ID_USUARIO',
 					'PERFIL_INT_ID_PERFIL',

@@ -56,7 +56,7 @@ public $accessToken;
 	public function attributeLabels()
 	{
 		return [
-			'INT_ID_USUARIO' => 'Id Usuario',
+			'INT_ID_USUARIO' => 'Código do usuário',
 			'PERFIL_INT_ID_PERFIL' => 'Perfil',
 			'STR_NOME_COMPLETO' => 'Nome  Completo',
 			'STR_EMAIL' => 'Email',

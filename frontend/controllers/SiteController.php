@@ -104,7 +104,7 @@ class SiteController extends Controller
 			]);
 			
 			
-		} catch (Exception $e) {
+		} catch (\Exception $e) {
 
 			Yii::$app->session->setFlash('error', $e->getMessage()); //echo $e->getMessage();
 		}

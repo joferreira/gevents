@@ -18,7 +18,7 @@ return [
 			'enableAutoLogin' => false,
 			'loginUrl' => ['usuario/login'],
 			//'enableSession' => true,
-			'authTimeout' => 600,
+			//'authTimeout' => 600,
 		],
 		'log' => [
 			'traceLevel' => YII_DEBUG ? 3 : 0,
