@@ -6,6 +6,7 @@ use Yii;
 use common\models\Cliente;
 use common\models\TipoCliente;
 use common\models\Endereco;
+use common\models\Log;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -54,6 +55,7 @@ class ClienteController extends Controller
 		return $this->render('/cliente/gridCliente', [
 			'dataProvider' => $dataProvider,
 			'tituloPagina' => $tituloPagina,
+			'intTipoCliente' => $intTipoCliente,
 		]);
 	}
 	/**
@@ -74,6 +76,7 @@ class ClienteController extends Controller
 		return $this->render('/cliente/gridCliente', [
 			'dataProvider' => $dataProvider,
 			'tituloPagina' => $tituloPagina,
+			'intTipoCliente' => $intTipoCliente,
 		]);
 	}
 
@@ -95,6 +98,7 @@ class ClienteController extends Controller
 		return $this->render('/cliente/gridCliente', [
 			'dataProvider' => $dataProvider,
 			'tituloPagina' => $tituloPagina,
+			'intTipoCliente' => $intTipoCliente,
 		]);
 	}
 	/**
@@ -150,6 +154,7 @@ class ClienteController extends Controller
 
 			$objModelCliente = new Cliente();
 			$objModelEndereco = new Endereco();
+			$objModelLog = new Log();
 
 			if ($objModelCliente->load(Yii::$app->request->post()) ){
 
@@ -168,12 +173,20 @@ class ClienteController extends Controller
 						Yii::$app->session->setFlash('error', 'E-mail não foi preenchido!');
 					} else if(empty($arrStatusEmail)){
 						$arrResult = $objModelCliente->saveCliente($arrDados);
-						Yii::$app->session->setFlash('success', 'cadastro efetuado com sucesso!');
+						Yii::$app->session->setFlash('success', 'cadastro efetuado com sucesso! ');
 
-						/* Envia o Email de confirmação */
-						$arrDados['STR_TIPO_ENVIO'] = 'confirmacao';
-						$arrDados['STR_SENHA'] = $arrResult['STR_SENHA'];
-						EmailHelper::SendEmail($arrDados);
+						if( !isset($_POST['Cliente']['INT_ID_CLIENTE']) ){
+							/* Salva o Log de Cadastro */
+							$arrLog = array();
+							$arrLog['CLIENTE_INT_ID_CLIENTE'] = $arrResult['INT_ID_CLIENTE'] ;
+							$arrLog['STR_OCORRENCIA'] = LOG::MENSAGEM_CADASTRO;
+							$objModelLog->saveLog($arrLog);
+
+							/* Envia o Email de confirmação */
+							$arrDados['STR_TIPO_ENVIO'] = 'confirmacao';
+							$arrDados['STR_SENHA'] = $arrResult['STR_SENHA'];
+							EmailHelper::SendEmail($arrDados);
+						}						
 
 						return $this->redirect(['/cliente/'.$arrTipoCliente[$arrResult['TIPO_CLIENTE_INT_ID_TIPO_CLIENTE']] ]);
 
@@ -189,9 +202,9 @@ class ClienteController extends Controller
 			]);
 			
 			
-		} catch (Exception $e) {
+		} catch (\Exception $objExcessao) {
 
-			Yii::$app->session->setFlash('error', $e->getMessage()); 
+			Yii::$app->session->setFlash('error', $objExcessao->getMessage()); 
 		}
 	}
 	/**
@@ -263,53 +276,15 @@ class ClienteController extends Controller
 			}
 			return $arrResponse;
 
-		} catch (\Exception $e) {
+		} catch (\Exception $objExcessao) {
 
-			$res = [
-				'message' => $e->getMessage(),
+			$arrResponse = [
+				'message' => $objExcessao->getMessage(),
 				'response' => false,
 			];
-			return $res;
+			return $arrResponse;
 		}
 	
-	}
-
-	public function actionSave()
-	{
-
-		if ( Yii::$app->user->isGuest) {
-			return $this->redirect(['/usuario/login']);
-		}
-
-		try {		
-
-			$arrTipoCliente[TipoCliente::TIPO_CLIENTE_PARTICIPANTE] = 'participante';
-			$arrTipoCliente[TipoCliente::TIPO_CLIENTE_ORGANIZADOR] = 'organizador';
-			$arrTipoCliente[TipoCliente::TIPO_CLIENTE_ORGANIZADOR_PARTICIPANTE] = 'organizadorparticipante';
-
-			$objModelCliente = new Cliente();
-
-			if( isset($_POST['Cliente']) ){
-				$arrDados = $_POST['Cliente'];
-
-				$arrStatusEmail = $objModelCliente->verificaEmail($arrDados['STR_EMAIL']);
-				if(empty($arrStatusEmail)){
-					$arrResult = $objModelCliente->saveCliente($arrDados);
-					Yii::$app->session->setFlash('success', 'cadastro efetuado com sucesso!'); // echo "cadastro efetuado com sucesso!";
-					/* Envia o Email de confirmação */
-					if( isset($_POST['Cliente']['INT_ID_CLIENTE']) ){
-						$arrDados['STR_TIPO_ENVIO'] = 'confirmacao';
-						EmailHelper::SendEmail($arrDados);
-					}
-
-					return $this->redirect(['/cliente/'.$arrTipoCliente[$arrResult->TIPO_CLIENTE_INT_ID_TIPO_CLIENTE] ]);
-				} else Yii::$app->session->setFlash('error', 'E-mail já cadastrado!');//	throw new Exception("E-mail já cadastrado!");
-			} else Yii::$app->session->setFlash('error', 'Campos não preenchidos corretamente!'); //	throw new Exception("Campos não preenchidos corretamente!");				
-			
-		} catch (\Exception $e) {
-
-			Yii::$app->session->setFlash('error', $e->getMessage()); //echo $e->getMessage();
-		}
 	}
 
 	/**

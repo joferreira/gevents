@@ -5,6 +5,7 @@ namespace frontend\controllers;
 use Yii;
 use common\models\Cliente;
 use common\models\TipoCliente;
+use common\models\Log;
 use frontend\models\CadastroForm;
 use yii\web\Controller;
 use yii\base\Exception;
@@ -33,6 +34,7 @@ class ClienteController extends Controller {
 		try {
 
 			$objModelCliente = new Cliente(['scenario' => 'register']);
+			$objModelLog = new Log();
 
 			if (isset($_POST['Cliente'])) {
 				$arrDados = $_POST['Cliente'];
@@ -43,6 +45,12 @@ class ClienteController extends Controller {
 					if (empty($arrStatusEmail)) {
 						// Salva o organizador
 						$intIdCliente = $objModelCliente->saveOrganizador($arrDados);
+
+						/* Salva o Log de Cadastro */
+						$arrLog = array();
+						$arrLog['CLIENTE_INT_ID_CLIENTE'] = $intIdCliente;
+						$arrLog['STR_OCORRENCIA'] = LOG::MENSAGEM_CADASTRO;
+						$objModelLog->saveLog($arrLog);
 
 						/* Envia o Email de confirmação */
 						$arrDados['STR_TIPO_ENVIO'] = 'confirmacao';
@@ -59,7 +67,7 @@ class ClienteController extends Controller {
 
 			return $this->redirect(['site/index', '#' => 'register']);
 			
-		} catch (Exception $objException) {
+		} catch (\Exception $objException) {
 			Yii::$app->session->setFlash('error', $objException->getMessage());
 			return $this->redirect(['site/index', '#' => 'register']);
 		}
@@ -95,7 +103,7 @@ class ClienteController extends Controller {
 				'model' => $objModelCliente,
 			]); */
 			
-		} catch (Exception $objException) {
+		} catch (\Exception $objException) {
 			Yii::$app->session->setFlash('error_login', $objException->getMessage());
 			return $this->redirect(['site/index', '#' => 'login']);
 		}

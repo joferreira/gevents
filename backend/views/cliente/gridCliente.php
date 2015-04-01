@@ -17,7 +17,8 @@ $this->title = $tituloPagina;
 			<?php //secho $this->render('_search', ['model' => $searchModel]); ?>
 
 			<p>
-				<?= Html::a('Cadastro de '.$tituloPagina, ['create'], ['class' => 'btn btn-success']) ?>
+				<?php //echo Html::a('Cadastro de '.$tituloPagina, ['create&intTipoCliente='.$intTipoCliente], ['class' => 'btn btn-success']) ?>
+				<a href='index.php?r=cliente/create&intTipoCliente=<?=$intTipoCliente;?>' class='btn btn-success' >Cadastro de <?=$tituloPagina?></a> 
 			</p>
 			<div>
 				<table id="grid_cliente" class="table table-striped table-hover">

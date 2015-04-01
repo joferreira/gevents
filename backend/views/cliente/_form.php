@@ -22,7 +22,7 @@ $listPessoa=ArrayHelper::map($tipoPessoa,'INT_ID_TIPO_PESSOA','STR_DESCRICAO');
 $tipoCliente=TipoCliente::find()->all();
 $listCliente=ArrayHelper::map($tipoCliente,'INT_ID_TIPO_CLIENTE','STR_DESCRICAO');
 
-//$tpCliente = isset($_GET['intTipoCliente']) ? $_GET['intTipoCliente'] : ''; ,['options' =>[$tpCliente => ['selected' => true] ]]
+$tpCliente = isset($_GET['intTipoCliente']) ? $_GET['intTipoCliente'] : ''; 
 ?>
 
 <div class="usuario-form row">
@@ -31,10 +31,10 @@ $listCliente=ArrayHelper::map($tipoCliente,'INT_ID_TIPO_CLIENTE','STR_DESCRICAO'
 	<div class="col-md-12">	
 		<div class="col-md-4">
 		<?php 
-		//$model->TIPO_CLIENTE_INT_ID_TIPO_CLIENTE = $tpCliente;
+		$model->TIPO_CLIENTE_INT_ID_TIPO_CLIENTE = $tpCliente;
 		echo $form->field($model, 'TIPO_CLIENTE_INT_ID_TIPO_CLIENTE', [
 			'template' => '<div class="input-group"><span class="input-group-addon">{label}</span>{input}</div>',
-		])->dropDownList($listCliente, ['prompt'=>'Selecione...', 'id'=>'tipo_cliente', 'size'=>1]);
+		])->dropDownList($listCliente, ['prompt'=>'Selecione...', 'id'=>'tipo_cliente', 'size'=>1],['options' =>[$tpCliente => ['selected' => true] ]]);
 		?>
 		</div>
 		<div class="col-md-4">

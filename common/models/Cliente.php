@@ -235,7 +235,7 @@ class Cliente extends ActiveRecord
 				return $arrResult;
 			else
 				return FALSE;
-		} catch (Exception $objExcessao) {
+		} catch (\Exception $objExcessao) {
 			echo $objExcessao->getMessage();
 		}
 	}
@@ -271,11 +271,9 @@ class Cliente extends ActiveRecord
 
 			$objTransaction->commit();
 
-			/* Enviar Email de confirmação */
-
 			return $intIdCliente;
 
-		} catch (Exception $objExcessao) {
+		} catch (\Exception $objExcessao) {
 			$objTransaction->rollback();
 			echo $objExcessao->getMessage();
 		}
@@ -379,7 +377,7 @@ class Cliente extends ActiveRecord
 
 			return $intIdCliente;
 
-		} catch (Exception $objExcessao) {
+		} catch (\Exception $objExcessao) {
 			$objTransaction->rollback();
 			echo $objExcessao->getMessage();
 		}
@@ -408,7 +406,7 @@ class Cliente extends ActiveRecord
 				return FALSE;
 
 		} catch (\Exception $objException) {
-			throw $objException;
+			echo $objExcessao->getMessage();
 		}
 	}
 
@@ -442,10 +440,10 @@ class Cliente extends ActiveRecord
 		try {
 			
 			if (empty($arrDados['STR_EMAIL']))
-				throw new \yii\web\HttpException('Parâmetro e-mail necessário!');
+				throw new \Exception('Parâmetro e-mail necessário!');
 
 			if (empty($arrDados['STR_SENHA']))
-				throw new \yii\web\HttpException('Parâmetro senha necessário!');
+				throw new \Exception('Parâmetro senha necessário!');
 
 
 			$objResult = self::find()
@@ -457,8 +455,8 @@ class Cliente extends ActiveRecord
 				return $objResult;
 			else
 				return FALSE;
-		} catch (Exception $objException) {
-			throw $objException;
+		} catch (\Exception $objException) {
+			echo $objExcessao->getMessage();
 		}
 	}
 }

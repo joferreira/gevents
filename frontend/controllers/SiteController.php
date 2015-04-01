@@ -73,40 +73,16 @@ class SiteController extends Controller
 			$objModelLogin = new Cliente(['scenario' => 'login']);
 			$contato = new ContactForm();
 
-			/*if ($objModelCliente->load(Yii::$app->request->post()) ){
-
-				if( isset($_POST['CadastroForm']) ){
-					$arrDados = $_POST['CadastroForm'];
-
-					if($arrDados['STR_SENHA'] == $arrDados['STR_SENHA_CONFIRME'] ){
-
-						$arrStatusEmail = $objModelCliente->verificaEmail($arrDados['STR_EMAIL']);
-
-						if(empty($arrStatusEmail)){
-							$intIdCliente = $objModelCliente->saveOrganizador($arrDados);					
-							Yii::$app->session->setFlash('cadastrado', 'cadastro efetuado com sucesso!');
-						} else Yii::$app->session->setFlash('error', 'E-mail já cadastrado!');
-
-					} else {
-						Yii::$app->session->setFlash('error', 'A confirma senha é diferente da senha'); 
-						return $this->redirect(['#register']);
-					}
-
-				} // else Yii::$app->session->setFlash('error', 'Campos não preenchidos corretamente!'); 
-
-			//} */
-
 			return $this->render('index', [
-				//'cliente' => $objModelCliente,
 				'contato' => $contato,
 				'cadastro' => $objModelCliente,
 				'login' => $objModelLogin,
 			]);
 			
 			
-		} catch (\Exception $e) {
+		} catch (\Exception $objExcessao) {
 
-			Yii::$app->session->setFlash('error', $e->getMessage()); //echo $e->getMessage();
+			Yii::$app->session->setFlash('error', $objExcessao->getMessage()); 
 		}
 	}
 
