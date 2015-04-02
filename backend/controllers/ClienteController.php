@@ -179,7 +179,7 @@ class ClienteController extends Controller
 							/* Salva o Log de Cadastro */
 							$arrLog = array();
 							$arrLog['CLIENTE_INT_ID_CLIENTE'] = $arrResult['INT_ID_CLIENTE'] ;
-							$arrLog['STR_OCORRENCIA'] = LOG::MENSAGEM_CADASTRO;
+							$arrLog['STR_OCORRENCIA'] = Log::MENSAGEM_CADASTRO;
 							$objModelLog->saveLog($arrLog);
 
 							/* Envia o Email de confirmação */

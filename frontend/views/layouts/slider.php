@@ -64,7 +64,7 @@ use yii\bootstrap\Alert;
 									</h1>
 								</div>
 								<!-- Cadastro Form -->
-								<?php $form = ActiveForm::begin(['id' => 'cadastroform', 'method' => 'post', 'action' => ['cliente/cadastro']] , ['class'=>'af-form row']); ?>
+								<?php $form = ActiveForm::begin(['id' => 'cadastroform', 'method' => 'post'] , ['class'=>'af-form row']); ?>
 								<div class="row">
 									<div class="col-sm-12 form-alert"></div>
 									<div class="col-sm-12">
@@ -105,8 +105,8 @@ use yii\bootstrap\Alert;
 									</div>
 									<div class="col-sm-12">
 										<div class="text-center">
-											<?= Html::submitButton('Cadastre-se <i class="fa fa-arrow-circle-right"></i>', [
-												'class' => 'btn btn-theme btn-theme-xl submit-button ',
+											<?= Html::button('Cadastre-se <i class="fa fa-arrow-circle-right"></i>', [
+												'class' => 'cadastrar btn btn-theme btn-theme-xl submit-button ',
 												'name' => 'contact-button']) ?>
 										</div>
 									</div>

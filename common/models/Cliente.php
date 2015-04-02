@@ -91,8 +91,10 @@ class Cliente extends ActiveRecord
 			[['STR_EMAIL', 'STR_NOME_COMPLETO', 'STR_SENHA', 'STR_SENHA_CONFIRME'], 'required', 'on'=>'register'],
 			[['STR_SENHA','STR_SENHA_CONFIRME'], 'string', 'min' => 8, 'max' => 10, 'on'=>'register'],
 			['STR_EMAIL', 'email', 'on'=>'register'],
-			//['STR_SENHA_CONFIRME', 'compare', 'compareAttribute'=>'STR_SENHA', 'on'=>'register'],
 			[['STR_SENHA'], 'safe', 'on'=>'register'],
+
+			[['STR_EMAIL', 'STR_NOME_COMPLETO', 'STR_SENHA', 'STR_SENHA_CONFIRME'], 'required', 'on'=>'registerAjax'],
+			['STR_SENHA_CONFIRME', 'compare', 'compareAttribute'=>'STR_SENHA', 'on'=>'registerAjax'],
 
 			[['STR_EMAIL', 'STR_SENHA'], 'required', 'on'=>'login'],
 			['STR_EMAIL', 'email', 'on'=>'login' ],
@@ -105,6 +107,7 @@ class Cliente extends ActiveRecord
 		$scenarios = parent::scenarios();
 		$scenarios['login'] = ['STR_EMAIL', 'STR_SENHA'];
 		$scenarios['register'] = ['STR_NOME_COMPLETO', 'STR_EMAIL', 'STR_SENHA','STR_SENHA_CONFIRME'];
+		$scenarios['registerAjax'] = ['STR_NOME_COMPLETO', 'STR_EMAIL', 'STR_SENHA','STR_SENHA_CONFIRME'];
 		return $scenarios;	
 	}
 

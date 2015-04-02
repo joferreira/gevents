@@ -24,12 +24,6 @@ AppAsset::register($this);
 	<!-- Favicons -->
 	<link rel="apple-touch-icon-precomposed" sizes="144x144" href="ico/apple-touch-icon-144-precomposed.png">
 	<link rel="shortcut icon" href="ico/favicon.ico">
-
-	<!--link href="plugins/countdown/jquery.countdown.css" rel="stylesheet">
-	<link href="css/theme.css" rel="stylesheet">
-	<link href="css/theme-red-1.css" rel="stylesheet" id="theme-config-link">
-	<link href="css/custom.css" rel="stylesheet">
-	<link href="js/theme-config.css" rel="stylesheet"-->
 	
 	<?php $this->head() ?>
 </head>
@@ -78,12 +72,10 @@ AppAsset::register($this);
 		?>
 		<?php echo $this->render('header'); ?>
 
-		<!--div class="container"-->
-		<div class="content-area" >
+		<div id="content" class="content-area" >
 		<?= Breadcrumbs::widget([
 			'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
 		]) ?>
-
 
 		<?= $content ?>
 		</div>
@@ -91,15 +83,6 @@ AppAsset::register($this);
 
 	<div class="text-center" style="left:20%; position:absolute; top:35%; width:60%; z-index:20;">
 		<?php 
-		/* if (Yii::$app->session->hasFlash('success')):
-			echo Alert::widget([
-				'options' => [
-					'class' => 'alert-success',
-				],
-				'body' => Yii::$app->session->getFlash('success'),
-			]);
-				//echo Yii::$app->session->getFlash('success');
-		else */
 			if (Yii::$app->session->hasFlash('error')):
 			echo Alert::widget([
 				'options' => [
@@ -118,6 +101,10 @@ AppAsset::register($this);
 			]);
 			endif; ?>
 	</div>
+
+	<div id="messageBox" class="hidden" style="left:20%; position:fixed; top:35%; width:60%; z-index:100;">
+		
+	</div>
 	<!-- FOOTER -->
 	<footer class="footer">
 		<div class="footer-meta">
@@ -131,6 +118,8 @@ AppAsset::register($this);
 				<span class="copyright" data-animation="fadeInUp" data-animation-delay="100">Copyright: &copy; 2015 Gigante dos Eventos &#8212; Uma forma diferente de se fazer eventos</span>
 			</div>
 		</div>
+		<a id="url_cadastrar_organizador" class="hidden" href="index.php?r=cliente/cadastro"></a>
+		<a id="url_grid_cliente" class="hidden" href="index.php?r=cliente/gridCliente"></a>
 	</footer>
 	<br/>
 	<!-- /FOOTER -->
@@ -139,7 +128,7 @@ AppAsset::register($this);
 	<?php $this->endBody() ?>
 	<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&amp;sensor=false"></script>
 	<script type="text/javascript">
-		jQuery(document).ready(function () {
+		$(document).ready(function () {
 			theme.init();
 			theme.initMainSlider();
 			theme.initCountDown();
@@ -150,25 +139,29 @@ AppAsset::register($this);
 
 			$("#faq").on('click', '.faq-more', faqs);
 			$("#faq .faqs-more").hide();
+
+			//$('#grid_cliente').on('click', '.inativar', confirmacao);
+			$('#content').on('click', '#cadastroform .cadastrar', cadastrarOrganizador);
+			$('#content').on('click', ' #cadastro-form .cadastrar', cadastrarOrganizador);
 		});
-		jQuery(window).load(function () {
+		$(window).load(function () {
 			theme.initAnimation();
 		});
 
-		jQuery(window).load(function () { jQuery('body').scrollspy({offset: 100, target: '.navigation'}); });
-		jQuery(window).load(function () { jQuery('body').scrollspy('refresh'); });
-		jQuery(window).resize(function () { jQuery('body').scrollspy('refresh'); });
+		$(window).load(function () { $('body').scrollspy({offset: 100, target: '.navigation'}); });
+		$(window).load(function () { $('body').scrollspy('refresh'); });
+		$(window).resize(function () { $('body').scrollspy('refresh'); });
 
-		jQuery(document).ready(function () { theme.onResize(); });
-		jQuery(window).load(function(){ theme.onResize(); });
-		jQuery(window).resize(function(){ theme.onResize(); });
+		$(document).ready(function () { theme.onResize(); });
+		$(window).load(function(){ theme.onResize(); });
+		$(window).resize(function(){ theme.onResize(); });
 
-		jQuery(window).load(function() {
+		$(window).load(function() {
 			if (location.hash != '') {
 				var hash = '#' + window.location.hash.substr(1);
 				if (hash.length) {
-					jQuery('html,body').delay(0).animate({
-						scrollTop: jQuery(hash).offset().top - 44 + 'px'
+					$('html,body').delay(0).animate({
+						scrollTop: $(hash).offset().top - 44 + 'px'
 					}, {
 						duration: 1200,
 						easing: "easeInOutExpo"
@@ -210,6 +203,43 @@ AppAsset::register($this);
 					$('#messageBox').addClass('hidden').hide(); 
 				},(!timeout)?3000:timeout
 			);
+		}
+
+		function positionLogin(){
+			$('.sf-menu a').removeClass('active');
+			$('#login').addClass('active');
+			$('html, body').animate({
+				scrollTop: $('#login').offset().top - 0 + 'px'
+			}, {
+				duration: 1000,
+				easing: 'easeInOutExpo'
+			});
+		}
+
+		function cadastrarOrganizador(evt) {
+			evt.preventDefault;
+			var url = $('#url_cadastrar_organizador').attr('href');
+
+			var form = $(evt.currentTarget).closest('form');
+			var arrDados = form.serialize();
+			var messageErrors = '';
+
+			$.post( url , arrDados,  function( data ) {
+				if (data.response) {
+					form[0].reset();
+					positionLogin();
+					message(data.message, 'alert-success');
+				} else {
+					var objError = data.message ;					
+					for (var prop in objError) {
+						messageErrors += objError[prop] +' <br>';
+					}
+					message(messageErrors, 'alert-danger');
+				}
+				
+			});
+
+			return false;
 		}
 
 	</script>

@@ -84,7 +84,7 @@ $this->title = $tituloPagina;
 
 	}
 
-	function removerConfirmBox (){
+	function removerConfirmBox(){
 		var confirmBox = $("#confirmBox");
 
 		confirmBox.find( "#message-confirmBox" ).text('');
@@ -93,7 +93,7 @@ $this->title = $tituloPagina;
 		confirmBox.addClass('hidden').hide();
 	}
 
-	function inativarCliente (evt) {
+	function inativarCliente(evt) {
 		evt.preventDefault;
 		var url = $('#url_inativar_cliente').attr('href');
 		var action = $(evt.currentTarget).attr('action');

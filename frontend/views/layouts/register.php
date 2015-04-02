@@ -11,7 +11,7 @@ use yii\bootstrap\Alert;
 			<span data-animation="fadeInRight" data-animation-delay="500" class="title-inner">Cadastre-se <small> </small></span>
 		</h1>
 		<!-- Cadastro Form -->
-		<?php $form = ActiveForm::begin(['id' => 'cadastro-form', 'method' => 'post', 'action' => ['cliente/cadastro']] , ['class'=>'af-form row']); ?>
+		<?php $form = ActiveForm::begin(['id' => 'cadastro-form', 'method' => 'post'] , ['class'=>'af-form row']); ?>
 		<div class="row">
 			<div class="col-sm-12 form-alert"></div>
 			<div class="col-sm-6 col-md-3">
@@ -52,8 +52,8 @@ use yii\bootstrap\Alert;
 			</div>
 			<div class="col-md-12 overflowed">
 				<div class="text-center margin-top">
-					<?= Html::submitButton('Cadastre-se <i class="fa fa-arrow-circle-right"></i>', [
-						'class' => 'btn btn-theme btn-theme-xl submit-button ',
+					<?= Html::button('Cadastre-se <i class="fa fa-arrow-circle-right"></i>', [
+						'class' => 'cadastrar btn btn-theme btn-theme-xl submit-button ',
 						'name' => 'contact-button']) ?>
 				</div>
 			</div>
