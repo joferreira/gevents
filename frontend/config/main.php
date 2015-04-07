@@ -14,7 +14,7 @@ return [
     'components' => [
         'user' => [
             'identityClass' => 'common\models\Cliente',
-            'enableAutoLogin' => true,
+            'enableAutoLogin' => false,
         ],
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
@@ -27,6 +27,11 @@ return [
         ],
         'errorHandler' => [
             'errorAction' => 'site/error',
+        ],
+    ],
+    'modules' => [
+        'dashboard' => [
+            'class' => 'frontend\modules\dashboard\dashboard',
         ],
     ],
     'sourceLanguage'=>'pt-BR',

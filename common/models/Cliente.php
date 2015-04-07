@@ -462,4 +462,5 @@ class Cliente extends ActiveRecord
 			echo $objExcessao->getMessage();
 		}
 	}
+	
 }

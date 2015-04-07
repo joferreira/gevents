@@ -16,6 +16,7 @@ use yii\filters\AccessControl;
 use yii\helpers\EmailHelper;
 use yii\web\Request;
 use yii\web\Response;
+use yii\web\Session;
 
 /**
  * Método de controle de cliente.
@@ -114,7 +115,7 @@ class ClienteController extends Controller {
 					$arrResponse['message'] = ['Seu e-mail já cadastrado, por favor, pedimos para que verifique e requisite lembrar de sua senha. Obrigado!'];
 					//Yii::$app->session->setFlash('error', 'Seu e-mail já cadastrado, por favor, pedimos para que verifique e requisite lembrar de sua senha. Obrigado!');
 
-				//Yii::$app->session->setFlash('error', '"Os campos não estão preenchidos corretamente, por favor, verifique!');
+				//Yii::$app->session->setFlash('error', 'Os campos não estão preenchidos corretamente, por favor, verifique!');
 				
 			} else 
 				$arrResponse['message'] =$objModelCliente->errors;
@@ -142,6 +143,7 @@ class ClienteController extends Controller {
 		try {
 
 			$objModelCliente = new Cliente(['scenario' => 'login']);
+			$session = new Session;
 
 			if (isset($_POST['Cliente'])) {
 				$arrDados = $_POST['Cliente'];
@@ -149,8 +151,17 @@ class ClienteController extends Controller {
 				$arrStatusEmail = $objModelCliente->verificaEmailSenha($arrDados);
 				if (empty($arrStatusEmail)) 
 					Yii::$app->session->setFlash('error_login', 'E-mail e/ou senha estão incorretos. Por favor, verifique!');
-				else 
+				else {
+
+					$session->open();
+					$session->set( 'STR_NOME',$arrStatusEmail['STR_NOME_COMPLETO'] );
+					$session->set( 'STR_EMAIL', $arrStatusEmail['STR_EMAIL'] );
+
+					$session->close();					
+
 					Yii::$app->session->setFlash('cadastrado', 'Login efetuado com sucesso!');
+					return $this->redirect(['dashboard/']);
+				}
 
 			} else
 				Yii::$app->session->setFlash('error_login', '"Os campos não estão preenchidos corretamente, por favor, verifique!');
@@ -166,6 +177,19 @@ class ClienteController extends Controller {
 			return $this->redirect(['site/index', '#' => 'login']);
 		}
 
+	}
+
+	public function actionLogout()
+	{
+		$session = new Session;
+
+		$session->open();
+
+		$session->destroy();
+
+		$session->close();
+
+		return $this->goHome();
 	}
 
 }

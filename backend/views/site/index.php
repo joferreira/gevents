@@ -16,6 +16,7 @@ $this->title = 'Dashboard';
 		<div class="col-md-8">
 			<?php echo $this->render('/layouts/boxChart'); ?>
 			<?php echo $this->render('/layouts/boxTimeline'); ?>
+		</div>
 		<div class="col-md-4">
 			<?php echo $this->render('/layouts/boxNotifications'); ?>
 			<?php echo $this->render('/layouts/boxChartDonut'); ?>
