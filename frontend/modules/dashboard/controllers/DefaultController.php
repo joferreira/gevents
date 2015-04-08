@@ -15,7 +15,6 @@ class DefaultController extends Controller
 			return $this->render('index');
 		else 
 			return $this->goHome();
-			//return $this->render('login', ['model' => $objModelLogin,]);
 
 	}
 

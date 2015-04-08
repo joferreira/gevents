@@ -22,10 +22,41 @@ AppAsset::register($this);
 	<title><?= Html::encode($this->title) ?></title>
 
 	<!-- Favicons -->
-	<link rel="apple-touch-icon-precomposed" sizes="144x144" href="ico/apple-touch-icon-144-precomposed.png">
-	<link rel="shortcut icon" href="ico/favicon.ico">
-	
-	<?php $this->head() ?>
+	<link href="/gevents/frontend/web/ico/apple-touch-icon-144-precomposed.png" sizes="144x144" rel="apple-touch-icon-precomposed">
+	<link href="/gevents/frontend/web/ico/favicon.ico" rel="shortcut icon">
+
+	<?php $this->head(); ?>
+
+	<link rel="stylesheet" href="/gevents/frontend/web/plugins/fontawesome/css/font-awesome.min.css">
+	<link rel="stylesheet" href="/gevents/frontend/web/plugins/bootstrap-select/bootstrap-select.min.css">
+	<link rel="stylesheet" href="/gevents/frontend/web/plugins/owlcarousel2/assets/owl.carousel.min.css">
+	<link rel="stylesheet" href="/gevents/frontend/web/plugins/owlcarousel2/assets/owl.theme.default.min.css">
+	<link rel="stylesheet" href="/gevents/frontend/web/plugins/prettyphoto/css/prettyPhoto.css">
+	<link rel="stylesheet" href="/gevents/frontend/web/plugins/animate/animate.min.css">
+	<link rel="stylesheet" href="/gevents/frontend/web/plugins/countdown/jquery.countdown.css">
+	<link rel="stylesheet" href="/gevents/frontend/web/css/theme.css">
+	<link rel="stylesheet" href="/gevents/frontend/web/css/theme-red-1.css">
+	<link rel="stylesheet" href="/gevents/frontend/web/css/custom.css">
+	<link rel="stylesheet" href="/gevents/frontend/web/js/theme-config.css">
+
+	<script src="/gevents/frontend/web/plugins/modernizr.custom.js"></script>
+	<script src="/gevents/frontend/web/plugins/bootstrap/js/bootstrap.min.js"></script>
+	<script src="/gevents/frontend/web/plugins/bootstrap-select/bootstrap-select.min.js"></script>
+	<script src="/gevents/frontend/web/plugins/superfish/js/superfish.js"></script>
+	<script src="/gevents/frontend/web/plugins/prettyphoto/js/jquery.prettyPhoto.js"></script>
+	<script src="/gevents/frontend/web/plugins/placeholdem.min.js"></script>
+	<script src="/gevents/frontend/web/plugins/jquery.smoothscroll.min.js"></script>
+	<script src="/gevents/frontend/web/plugins/jquery.easing.min.js"></script>
+	<script src="/gevents/frontend/web/plugins/smooth-scrollbar.min.js"></script>
+	<script src="/gevents/frontend/web/plugins/owlcarousel2/owl.carousel.min.js"></script>
+	<script src="/gevents/frontend/web/plugins/waypoints/waypoints.min.js"></script>
+	<script src="/gevents/frontend/web/plugins/countdown/jquery.plugin.min.js"></script>
+	<script src="/gevents/frontend/web/plugins/countdown/jquery.countdown.min.js"></script>
+	<script src="/gevents/frontend/web/plugins/countdown/jquery.countdown-pt-BR.js"></script>
+	<script src="/gevents/frontend/web/js/theme-ajax-mail.js"></script>
+	<script src="/gevents/frontend/web/js/theme.js"></script>
+	<script src="/gevents/frontend/web/js/custom.js"></script>
+
 </head>
 <body id="home" class="wide body-light">
 	<?php $this->beginBody() ?>

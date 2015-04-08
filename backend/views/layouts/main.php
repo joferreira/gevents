@@ -25,34 +25,6 @@ AppAsset::register($this);
 	<?php $this->beginBody() ?>
 	<div class="wrap">
 		<?php
-		/*
-			NavBar::begin([
-				'brandLabel' => 'My Company',
-				'brandUrl' => Yii::$app->homeUrl,
-				'options' => [
-					'class' => 'navbar-inverse navbar-fixed-top',
-				],
-			]);
-			$menuItems = [
-				['label' => 'Home', 'url' => ['/site/index']],
-			];
-			if (Yii::$app->user->isGuest) {
-				$menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];
-			} else {
-				$menuItems[] = [
-					'label' => 'Logout (' . Yii::$app->user->identity->username . ')',
-					'url' => ['/site/logout'],
-					'linkOptions' => ['data-method' => 'post']
-				];
-			}
-			echo Nav::widget([
-				'options' => ['class' => 'navbar-nav navbar-right'],
-				'items' => $menuItems,
-			]);
-			NavBar::end();
-			*/
-		?>
-		<?php
 		if (!\Yii::$app->user->isGuest) {
 			echo $this->render('menu');
 		}
@@ -72,7 +44,6 @@ AppAsset::register($this);
 				],
 				'body' => Yii::$app->session->getFlash('success'),
 			]);
-				//echo Yii::$app->session->getFlash('success');
 		elseif (Yii::$app->session->hasFlash('error')):
 			echo Alert::widget([
 				'options' => [

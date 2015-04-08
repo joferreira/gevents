@@ -20,37 +20,34 @@ AppAsset::register($this);
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<?= Html::csrfMetaTags() ?>
 	<title><?= Html::encode($this->title) ?></title>
-	<?php $this->head() ?>
 
-	<link href="/gevents/frontend/web/modules/css/site.css" rel="stylesheet">
-	<link href="/gevents/frontend/web/modules/metisMenu/dist/metisMenu.css" rel="stylesheet">
-	<link href="/gevents/frontend/web/modules/css/timeline.css" rel="stylesheet">
-	<link href="/gevents/frontend/web/modules/css/sb-admin-2.css" rel="stylesheet">
-	<link href="/gevents/frontend/web/modules/morrisjs/morris.css" rel="stylesheet">
-	<link href="/gevents/frontend/web/modules/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-	<link href="/gevents/frontend/web/modules/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.css" rel="stylesheet">
+	<?php $this->head(); ?>
+	<link rel="stylesheet" href="/gevents/frontend/web/modules/css/site.css">
+	<link rel="stylesheet" href="/gevents/frontend/web/modules/metisMenu/dist/metisMenu.css">
+	<link rel="stylesheet" href="/gevents/frontend/web/modules/css/timeline.css">
+	<link rel="stylesheet" href="/gevents/frontend/web/modules/css/sb-admin-2.css">
+	<link rel="stylesheet" href="/gevents/frontend/web/modules/morrisjs/morris.css">
+	<link rel="stylesheet" href="/gevents/frontend/web/modules/font-awesome/css/font-awesome.min.css">
+
+	<script src="/gevents/frontend/web/modules/bootstrap/dist/js/bootstrap.js"></script>
 	<script src="/gevents/frontend/web/modules/metisMenu/dist/metisMenu.js"></script>
-	<script src="/gevents/frontend/web/modules/raphael/raphael.js"></script>
+	<script src="/gevents/frontend/web/modules/raphael/raphael-min.js"></script>
 	<script src="/gevents/frontend/web/modules/js/sb-admin-2.js"></script>
+
 
 </head>
 <body>
 	<?php $this->beginBody() ?>
 	<div class="wrap">
 		<?php
-		
-		//if ( Yii::$app->session->getIsActive() ) {
 			echo $this->render('menu');
 		?>
-			<div id="wrapper">
-			<?= Breadcrumbs::widget([ 'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [], ]) ?>
-			<?php
-				echo $content;
-			?>
-			</div>
-		<?
-		// }
+		<div id="wrapper">
+		<?= Breadcrumbs::widget([ 'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [], ]) ?>
+		<?php
+			echo $content;
 		?>
+		</div>
 	</div>
 	<div class="text-center" style="left:20%; position:absolute; top:45%; width:60%; z-index:9999;">
 		<?php if (Yii::$app->session->hasFlash('success')):
@@ -60,7 +57,7 @@ AppAsset::register($this);
 				],
 				'body' => Yii::$app->session->getFlash('success'),
 			]);
-				//echo Yii::$app->session->getFlash('success');
+
 		elseif (Yii::$app->session->hasFlash('error')):
 			echo Alert::widget([
 				'options' => [
@@ -92,12 +89,9 @@ AppAsset::register($this);
 	</footer>
 	
 
-	<?php $this->endBody() ?>
+	<?php $this->endBody(); ?>
+
 	<script type="text/javascript">
-		$('#wrapper').tooltip({
-			selector: "[data-toggle=tooltip]",
-			container: "body"
-		});
 
 		function message(message, alert_class, timeout){
 			$("#messageBox")
