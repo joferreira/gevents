@@ -2,6 +2,7 @@
 
 namespace frontend\modules\dashboard;
 
+use Yii;
 use yii\base\Module;
 
 class Dashboard extends Module

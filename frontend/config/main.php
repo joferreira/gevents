@@ -16,6 +16,9 @@ return [
             'identityClass' => 'common\models\Cliente',
             'enableAutoLogin' => false,
         ],
+        'session' => [
+            'name' => 'PHPFRONTSESSID',
+        ],
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
             'targets' => [

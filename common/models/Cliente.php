@@ -6,6 +6,7 @@ use Yii;
 use yii\db\ActiveRecord;
 use yii\db\Transaction;
 use yii\db\Query;
+use yii\web\Session;
 
 /**
  * Método de model de cliente.
@@ -89,7 +90,7 @@ class Cliente extends ActiveRecord
 			[['STR_CATEGORIA_EMPRESA'], 'string', 'max' => 6],
 
 			[['STR_EMAIL', 'STR_NOME_COMPLETO', 'STR_SENHA', 'STR_SENHA_CONFIRME'], 'required', 'on'=>'register'],
-			[['STR_SENHA','STR_SENHA_CONFIRME'], 'string', 'min' => 8, 'max' => 10, 'on'=>'register'],
+			[['STR_SENHA','STR_SENHA_CONFIRME'], 'string', 'min' => 6, 'max' => 8, 'on'=>'register'],
 			['STR_EMAIL', 'email', 'on'=>'register'],
 			[['STR_SENHA'], 'safe', 'on'=>'register'],
 
@@ -289,6 +290,7 @@ class Cliente extends ActiveRecord
 	 * @return integer Código do cliente gerado
 	 */
 	public function saveCliente($arrDados = array()) {
+		$session = new Session;
 
 		$objTransaction = $objTransaction = Yii::$app->db->beginTransaction();
 		try {
@@ -298,8 +300,10 @@ class Cliente extends ActiveRecord
 			if( empty($arrDados['TIPO_CLIENTE_INT_ID_TIPO_CLIENTE']) )
 				throw new \Exception('Favor selecionar o Tipo Cliente!');
 
-			//if( empty($arrDados['TIPO_PESSOA_INT_ID_TIPO_PESSOA']) )
-			//	throw new \Exception('Favor selecionar o Tipo Pessoa!');
+			if( !empty( $session->get('STR_NOME',false) ) ) {
+				if( empty($arrDados['TIPO_PESSOA_INT_ID_TIPO_PESSOA']) )
+					throw new \Exception('Favor selecionar o Tipo Pessoa!');
+			}
 
 			if( empty($arrDados['STATUS_INT_ID_STATUS']) )
 				throw new \Exception('Favor selecionar o Status!');
@@ -418,7 +422,7 @@ class Cliente extends ActiveRecord
 	 * @param type $intLength
 	 * @return type $strSenha
 	 */
-	function generate_password($length = 10){
+	function generate_password($length = 8){
 		$chars =  'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'.'0123456789``-=~!@#$%^&*()_+,./<>?;:[]{}\|';
 
 		$str = '';
@@ -462,5 +466,5 @@ class Cliente extends ActiveRecord
 			echo $objExcessao->getMessage();
 		}
 	}
-	
+
 }

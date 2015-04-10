@@ -213,7 +213,7 @@ use yii\web\Session;
 					<i class="fa fa-user fa-fw"></i> <?php  echo Yii::$app->session->get('STR_NOME') ; ?> <i class="fa fa-caret-down"></i>
 				</a>
 				<ul class="dropdown-menu dropdown-user">
-					<li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
+					<li><a href="index.php?r=dashboard/cadastro"><i class="fa fa-user fa-fw"></i> User Profile</a>
 					</li>
 					<li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
 					</li>

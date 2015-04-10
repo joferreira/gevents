@@ -6,11 +6,22 @@ use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
 use yii\bootstrap\Alert;
 use yii\web\Session;
+use yii\web\Controller;
 
 /* @var $this \yii\web\View */
 /* @var $content string */
 
 AppAsset::register($this);
+// Tratamento de sessão de usuário
+if ( Yii::$app->session->get('LOGADO') ) {
+    // Verifica se o tempo definido é menor que o tempo real
+    // Caso o tempo definido seja menor que o tempo real, será feito o logout e redirecionado para a tela de login
+    if ( Yii::$app->session->get('passwordResetTokenExpire') < time() ) {
+    	return Controller::redirect(['/cliente/logout']);
+    }
+} elseif( !Yii::$app->session->get('LOGADO') ) {
+    return Controller::redirect(['/cliente/logout']);
+}
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>

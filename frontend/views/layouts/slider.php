@@ -87,7 +87,8 @@ use yii\bootstrap\Alert;
 									</div>
 									<div class="col-sm-12">
 										<?= $form->field($model, 'STR_SENHA', [
-												'inputOptions' => [ 
+												'inputOptions' => [
+													'maxlength' => 8,
 													'placeholder' => $model->getAttributeLabel('Senha'),
 													'enableError' => true
 												],
@@ -96,7 +97,8 @@ use yii\bootstrap\Alert;
 									</div>
 									<div class="col-sm-12">
 										<?= $form->field($model, 'STR_SENHA_CONFIRME', [
-												'inputOptions' => [ 
+												'inputOptions' => [
+													'maxlength' => 8,
 													'placeholder' => $model->getAttributeLabel('Confirme a senha'),
 													'enableError' => true
 												], 

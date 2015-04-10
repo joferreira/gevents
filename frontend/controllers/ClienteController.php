@@ -148,18 +148,22 @@ class ClienteController extends Controller {
 			if (isset($_POST['Cliente'])) {
 				$arrDados = $_POST['Cliente'];
 
-				$arrStatusEmail = $objModelCliente->verificaEmailSenha($arrDados);
-				if (empty($arrStatusEmail)) 
+				$arrEmailSenha = $objModelCliente->verificaEmailSenha($arrDados);
+				if (empty($arrEmailSenha)) 
 					Yii::$app->session->setFlash('error_login', 'E-mail e/ou senha estão incorretos. Por favor, verifique!');
 				else {
 
 					$session->open();
-					$session->set( 'STR_NOME',$arrStatusEmail['STR_NOME_COMPLETO'] );
-					$session->set( 'STR_EMAIL', $arrStatusEmail['STR_EMAIL'] );
-
+					$session->set( 'INT_CLIENTE',$arrEmailSenha['INT_ID_CLIENTE'] );
+					$session->set( 'STR_NOME',$arrEmailSenha['STR_NOME_COMPLETO'] );
+					$session->set( 'STR_EMAIL', $arrEmailSenha['STR_EMAIL'] );
+					$session->set( 'INT_TIPO_CLIENTE', $arrEmailSenha['TIPO_CLIENTE_INT_ID_TIPO_CLIENTE'] );
+					$session->set( 'INT_STATUS', $arrEmailSenha['STATUS_INT_ID_STATUS'] );
+					$session->set( 'LOGADO', true );
+					// Define o tempo de acesso
+					$session->set('passwordResetTokenExpire', time() + Yii::$app->params['user.passwordResetTokenExpire']); // 30 minutos
 					$session->close();					
 
-					Yii::$app->session->setFlash('cadastrado', 'Login efetuado com sucesso!');
 					return $this->redirect(['dashboard/']);
 				}
 
@@ -167,10 +171,6 @@ class ClienteController extends Controller {
 				Yii::$app->session->setFlash('error_login', '"Os campos não estão preenchidos corretamente, por favor, verifique!');
 
 			return $this->redirect(['site/index', '#' => 'login']);
-			/*
-			return $this->render('/site/success', [
-				'model' => $objModelCliente,
-			]); */
 			
 		} catch (\Exception $objException) {
 			Yii::$app->session->setFlash('error_login', $objException->getMessage());
@@ -179,14 +179,17 @@ class ClienteController extends Controller {
 
 	}
 
+	/**
+	 * Método para logout de cliente.
+	 * 
+	 * @return type
+	 */
 	public function actionLogout()
 	{
 		$session = new Session;
 
 		$session->open();
-
 		$session->destroy();
-
 		$session->close();
 
 		return $this->goHome();

@@ -47,6 +47,7 @@ class Endereco extends ActiveRecord
 	{
 		return [
 			[['CLIENTE_INT_ID_CLIENTE', 'UNIDADE_FEDERAL_INT_ID_UNIDADE_FEDERAL'], 'required'],
+			[['STR_ENDERECO','STR_NUMERO','STR_BAIRRO','STR_MUNICIPIO','INT_CEP'], 'required'],
 			[['CLIENTE_INT_ID_CLIENTE', 'UNIDADE_FEDERAL_INT_ID_UNIDADE_FEDERAL', 'INT_CEP'], 'integer'],
 			[['STR_ENDERECO'], 'string', 'max' => 255],
 			[['STR_NUMERO', 'STR_CAIXA_POSTAL'], 'string', 'max' => 10],
