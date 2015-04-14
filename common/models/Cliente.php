@@ -77,7 +77,7 @@ class Cliente extends ActiveRecord
 		 //[['TIPO_CLIENTE_INT_ID_TIPO_CLIENTE', 'TIPO_PESSOA_INT_ID_TIPO_PESSOA', 'STATUS_INT_ID_STATUS', 'STR_NOME_COMPLETO', 'DAT_DATA_NASCIMENTO', 'STR_SEXO', 'STR_CPF', 'STR_CNPJ', 'STR_EMAIL', 'STR_SENHA', 'INT_TELEFONE_DDI', 'INT_TELEFONE_DDD', 'INT_TELEFONE', 'INT_CELULAR_DDI', 'INT_CELULAR_DDD', 'INT_CELULAR', 'INT_FAX_DDI', 'INT_FAX_DDD', 'INT_FAX', 'STR_RAZAO_SOCIAL', 'STR_NOME_FANTASIA', 'STR_INSCRICAO_MUNICIPAL', 'STR_CATEGORIA_EMPRESA'], 'required'],
 
 		return [
-			[['STR_NOME_COMPLETO', 'STR_EMAIL'], 'required'],
+			[['TIPO_CLIENTE_INT_ID_TIPO_CLIENTE','TIPO_PESSOA_INT_ID_TIPO_PESSOA','STR_NOME_COMPLETO', 'STR_EMAIL'], 'required'],
 			[['TIPO_CLIENTE_INT_ID_TIPO_CLIENTE', 'TIPO_PESSOA_INT_ID_TIPO_PESSOA', 'STATUS_INT_ID_STATUS', 'INT_TELEFONE_DDI', 'INT_TELEFONE_DDD', 'INT_TELEFONE', 'INT_CELULAR_DDI', 'INT_CELULAR_DDD', 'INT_CELULAR', 'INT_FAX_DDI', 'INT_FAX_DDD', 'INT_FAX'], 'integer'],
 			[['DAT_DATA_NASCIMENTO', 'DAT_DATA_CADASTRO'], 'safe'],
 			[['STR_NOME_COMPLETO'], 'string', 'max' => 200],
@@ -292,7 +292,7 @@ class Cliente extends ActiveRecord
 	public function saveCliente($arrDados = array()) {
 		$session = new Session;
 
-		$objTransaction = $objTransaction = Yii::$app->db->beginTransaction();
+		$objTransaction = Yii::$app->db->beginTransaction();
 		try {
 			if (empty($arrDados))
 				Yii::$app->session->setFlash('error','Campos Vazios!');
@@ -324,6 +324,7 @@ class Cliente extends ActiveRecord
 
 				$arrResult['INT_ID_CLIENTE'] = $arrDados['INT_ID_CLIENTE'];
 				$arrResult['TIPO_CLIENTE_INT_ID_TIPO_CLIENTE'] = $arrDados['TIPO_CLIENTE_INT_ID_TIPO_CLIENTE'];
+				$arrResult['STATUS_INT_ID_STATUS'] = $arrDados['STATUS_INT_ID_STATUS'];
 			} else {
 
 				$strSenha = isset($arrDados['STR_SENHA']) ? $arrDados['STR_SENHA'] : $this->generate_password();
@@ -348,7 +349,8 @@ class Cliente extends ActiveRecord
 
 		} catch (\Exception $objExcessao) {
 			$objTransaction->rollback();
-			Yii::$app->session->setFlash('error', $objExcessao->getMessage());
+			//Yii::$app->session->setFlash('error', $objExcessao->getMessage());
+			return $arrResult['error'] = $objExcessao->getMessage();
 		}
 	}
 

@@ -46,7 +46,7 @@ class Endereco extends ActiveRecord
 	public function rules()
 	{
 		return [
-			[['CLIENTE_INT_ID_CLIENTE', 'UNIDADE_FEDERAL_INT_ID_UNIDADE_FEDERAL'], 'required'],
+			[['UNIDADE_FEDERAL_INT_ID_UNIDADE_FEDERAL'], 'required'],
 			[['STR_ENDERECO','STR_NUMERO','STR_BAIRRO','STR_MUNICIPIO','INT_CEP'], 'required'],
 			[['CLIENTE_INT_ID_CLIENTE', 'UNIDADE_FEDERAL_INT_ID_UNIDADE_FEDERAL', 'INT_CEP'], 'integer'],
 			[['STR_ENDERECO'], 'string', 'max' => 255],
@@ -88,5 +88,53 @@ class Endereco extends ActiveRecord
 	public function getUNIDADEFEDERALINTIDUNIDADEFEDERAL()
 	{
 		return $this->hasOne(UnidadeFederal::className(), ['INT_ID_UNIDADE_FEDERAL' => 'UNIDADE_FEDERAL_INT_ID_UNIDADE_FEDERAL']);
+	}
+
+	public function saveEndereco($arrDados = array())
+	{
+		$objTransaction = Yii::$app->db->beginTransaction();
+		try {
+			if (empty($arrDados))
+				Yii::$app->session->setFlash('error','Campos Vazios!');
+
+			//if( empty($arrDados['STATUS_INT_ID_STATUS']) )
+			//	throw new \Exception('Favor selecionar o Status!');
+
+			if( isset($arrDados['INT_ID_ENDERECO']) ){
+				
+				Yii::$app->db->createCommand()
+					->update(
+						$this->tableName(), 
+						$arrDados,
+						[
+							'INT_ID_ENDERECO' => $arrDados['INT_ID_ENDERECO'] 
+						]
+					)
+					->execute();
+
+				$arrResult['INT_ID_ENDERECO'] = $arrDados['INT_ID_ENDERECO'];
+
+			} else {
+
+				// Insere os dados
+				Yii::$app->db->createCommand()
+					->insert(
+						$this->tableName(), 
+						$arrDados
+					)
+					->execute();
+
+				$arrResult['INT_ID_ENDERECO'] = Yii::$app->db->getLastInsertID();
+
+			}
+
+			$objTransaction->commit();
+
+			return $arrResult;
+
+		} catch (\Exception $objExcessao) {
+			$objTransaction->rollback();
+			return $arrResult['error'] = $objExcessao->getMessage();
+		}
 	}
 }

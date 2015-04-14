@@ -52,12 +52,6 @@ $this->title = 'Informações do Cliente';
 				])->dropDownList($listPessoa, ['prompt'=>'Selecione...', 'id'=>'tipo_pessoa', 'size'=>1]);
 				?>
 				</div>
-				<div class="col-md-4">
-				<?= $form->field($model, 'STATUS_INT_ID_STATUS', [
-					'template' => '<div class="input-group "><span class="input-group-addon">{label}</span>{input}</div>',
-				])->dropDownList($listStatus, ['prompt'=>'Selecione...', 'id'=>'status', 'size'=>1]);
-				?>
-				</div>
 			</div>
 			<div class="col-md-12">
 				<div class="col-md-12">
@@ -232,7 +226,9 @@ $this->title = 'Informações do Cliente';
 			</div>
 			
 			<div class="form-group col-md-11 text-center">
-				<?= Html::submitButton($model->isNewRecord ? 'Gravar' : 'Gravar', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+				<?= Html::button('Gravar', [
+						'class' => 'alterar btn btn-primary submit-button ',
+						'name' => 'alterar-button']) ?>
 			</div>
 
 			<?php ActiveForm::end(); ?>
