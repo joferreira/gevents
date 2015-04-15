@@ -161,30 +161,33 @@ if ( Yii::$app->session->get('LOGADO') ) {
 			evt.preventDefault;
 			var url = $('#url_save_cliente').attr('href');
 
-			var form = $(evt.currentTarget).closest('form');
-			var arrDados = form.serialize();
-			var messageErrors = '';
-			var endereco = 'field-endereco';
-			var cliente = 'field-cliente';
+			if( validarCPF_CNPJ() ){
 
-			$.post( url , arrDados,  function( data ) {
-				if (data.response) {
-					//form[0].reset();
-					message(data.message, 'alert-success');
-				} else {
-					var objError = data.message ;
-					console.log(objError);
-					for (var prop in objError) {
-						var idProp = prop;
-						$('.'+cliente+'-'+idProp.toLowerCase()).addClass('has-error');
-						$('.'+endereco+'-'+idProp.toLowerCase()).addClass('has-error');
-						messageErrors += objError[prop] +' <br>';
+				var form = $(evt.currentTarget).closest('form');
+				var arrDados = form.serialize();
+				var messageErrors = '';
+				var endereco = 'field-endereco';
+				var cliente = 'field-cliente';
+
+				$.post( url , arrDados,  function( data ) {
+					if (data.response) {
+						//form[0].reset();
+						message(data.message, 'alert-success');
+					} else {
+						var objError = data.message ;
+						console.log(objError);
+						for (var prop in objError) {
+							var idProp = prop;
+							$('.'+cliente+'-'+idProp.toLowerCase()).addClass('has-error');
+							$('.'+endereco+'-'+idProp.toLowerCase()).addClass('has-error');
+							messageErrors += objError[prop] +' <br>';
+						}
+						//'Verifique os campos em Vermelho'
+						message(messageErrors, 'alert-danger');
 					}
-					//'Verifique os campos em Vermelho'
-					message(messageErrors, 'alert-danger');
-				}
-				
-			});
+					
+				});
+			}
 
 			return false;
 		}

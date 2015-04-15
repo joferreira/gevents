@@ -25,28 +25,19 @@ class CadastroController extends Controller
 
 		$id = $objSession->get('INT_CLIENTE');
 
-		$model = $this->findModel($id);
+		$objModelCliente = $this->findModel($id);
 		if( isset($_POST['Cliente']) ) {
 			$arrDados = $_POST['Cliente'];
 			$arrDados['INT_ID_CLIENTE'] = $id;
 		}
 
-		$objModelEndereco = new Endereco();
+		$arrEndereco['CLIENTE_INT_ID_CLIENTE'] = $id;
+		$objModelEndereco = $this->findEndereco($arrEndereco);
 
 		return $this->render('/cliente/form', [
-			'model' => $model,
-			'endereco' => $objModelEndereco,
+			'objModelCliente' => $objModelCliente,
+			'objModelEndereco' => $objModelEndereco,
 		]);
-		/*
-		if ($model->load(Yii::$app->request->post()) && $model->saveCliente($arrDados)) {
-
-			return $this->redirect(['/dashboard/']);
-		} else {
-			return $this->render('/cliente/form', [
-				'model' => $model,
-				'endereco' => $objModelEndereco,
-			]);
-		}*/
 
 	}
 
@@ -87,7 +78,7 @@ class CadastroController extends Controller
 					$intIdEndereco = $objModelEndereco->saveEndereco($arrEndereco);
 
 					// Envia o Email de Ativação 
-					//$arrCliente['STR_TIPO_ENVIO'] = 'ativacao';
+					$arrCliente['STR_TIPO_ENVIO'] = 'ativacao';
 					//EmailHelper::SendEmail($arrCliente);
 
 					$arrResponse['message'] = 'Informações atualizadas com sucesso.';
@@ -125,6 +116,20 @@ class CadastroController extends Controller
 			return $model;
 		} else {
 			throw new NotFoundHttpException('The requested page does not exist.');
+		}
+	}
+
+	/**
+	 * Finds the Endereco model based on its primary key value.
+	 * @param string $id
+	 * @return Endereco the loaded model
+	 */
+	protected function findEndereco($id)
+	{
+		if (($model = Endereco::findOne($id)) !== null) {
+			return $model;
+		} else {
+			return new Endereco();
 		}
 	}
 }

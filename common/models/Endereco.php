@@ -4,6 +4,8 @@ namespace common\models;
 
 use Yii;
 use yii\db\ActiveRecord;
+use yii\db\Query;
+
 
 /**
  * Método de model de endereço.
@@ -95,10 +97,7 @@ class Endereco extends ActiveRecord
 		$objTransaction = Yii::$app->db->beginTransaction();
 		try {
 			if (empty($arrDados))
-				Yii::$app->session->setFlash('error','Campos Vazios!');
-
-			//if( empty($arrDados['STATUS_INT_ID_STATUS']) )
-			//	throw new \Exception('Favor selecionar o Status!');
+				throw new \Exception('Campos Vazios!');
 
 			if( isset($arrDados['INT_ID_ENDERECO']) ){
 				
@@ -137,4 +136,5 @@ class Endereco extends ActiveRecord
 			return $arrResult['error'] = $objExcessao->getMessage();
 		}
 	}
+
 }
