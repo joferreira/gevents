@@ -6,21 +6,22 @@ use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
 use yii\bootstrap\Alert;
 use yii\web\Session;
-use yii\web\Controller;
 
 /* @var $this \yii\web\View */
 /* @var $content string */
 
 AppAsset::register($this);
 // Tratamento de sessão de usuário
+
 if ( Yii::$app->session->get('LOGADO') ) {
-    // Verifica se o tempo definido é menor que o tempo real
-    // Caso o tempo definido seja menor que o tempo real, será feito o logout e redirecionado para a tela de login
-    if ( Yii::$app->session->get('passwordResetTokenExpire') < time() ) {
-    	return Controller::redirect(['/cliente/logout']);
-    }
+	// Verifica se o tempo definido é menor que o tempo real
+	// Caso o tempo definido seja menor que o tempo real, será feito o logout e redirecionado para a tela de login
+	if ( Yii::$app->session->get('passwordResetTokenExpire') < time() ) {
+		Yii::$app->response->redirect(array('cliente/logout', 'id' => 302));
+	}
 } elseif( !Yii::$app->session->get('LOGADO') ) {
-    return Controller::redirect(['/cliente/logout']);
+	//return Controller::redirect(['/cliente/logout']);
+	Yii::$app->response->redirect(array('cliente/logout', 'id' => 302));
 }
 ?>
 <?php $this->beginPage() ?>
@@ -161,7 +162,7 @@ if ( Yii::$app->session->get('LOGADO') ) {
 			evt.preventDefault;
 			var url = $('#url_save_cliente').attr('href');
 
-			if( validarCPF_CNPJ() ){
+			if( validar_dados() ){
 
 				var form = $(evt.currentTarget).closest('form');
 				var arrDados = form.serialize();

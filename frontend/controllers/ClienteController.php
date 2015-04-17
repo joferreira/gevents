@@ -110,10 +110,8 @@ class ClienteController extends Controller {
 					$arrResponse['message'] = 'Agradecemos por se cadastrar no Gigantes dos Eventos. Para acessar seu Dashboard insira seu e-mail e senha.';
 					$arrResponse['response'] = true;
 
-					//Yii::$app->session->setFlash('cadastrado', 'Agradecemos por se cadastrar no Gigantes dos Eventos. Para acessar seu Dashboard insira seu e-mail e senha.');
 				} else
 					$arrResponse['message'] = ['Seu e-mail já cadastrado, por favor, pedimos para que verifique e requisite lembrar de sua senha. Obrigado!'];
-					//Yii::$app->session->setFlash('error', 'Seu e-mail já cadastrado, por favor, pedimos para que verifique e requisite lembrar de sua senha. Obrigado!');
 
 				//Yii::$app->session->setFlash('error', 'Os campos não estão preenchidos corretamente, por favor, verifique!');
 				
@@ -143,7 +141,7 @@ class ClienteController extends Controller {
 		try {
 
 			$objModelCliente = new Cliente(['scenario' => 'login']);
-			$session = new Session;
+			$objSession = new Session();
 
 			if (isset($_POST['Cliente'])) {
 				$arrDados = $_POST['Cliente'];
@@ -153,16 +151,16 @@ class ClienteController extends Controller {
 					Yii::$app->session->setFlash('error_login', 'E-mail e/ou senha estão incorretos. Por favor, verifique!');
 				else {
 
-					$session->open();
-					$session->set( 'INT_CLIENTE',$arrEmailSenha['INT_ID_CLIENTE'] );
-					$session->set( 'STR_NOME',$arrEmailSenha['STR_NOME_COMPLETO'] );
-					$session->set( 'STR_EMAIL', $arrEmailSenha['STR_EMAIL'] );
-					$session->set( 'INT_TIPO_CLIENTE', $arrEmailSenha['TIPO_CLIENTE_INT_ID_TIPO_CLIENTE'] );
-					$session->set( 'INT_STATUS', $arrEmailSenha['STATUS_INT_ID_STATUS'] );
-					$session->set( 'LOGADO', true );
+					$objSession->open();
+					$objSession->set( 'INT_CLIENTE',$arrEmailSenha['INT_ID_CLIENTE'] );
+					$objSession->set( 'STR_NOME',$arrEmailSenha['STR_NOME_COMPLETO'] );
+					$objSession->set( 'STR_EMAIL', $arrEmailSenha['STR_EMAIL'] );
+					$objSession->set( 'INT_TIPO_CLIENTE', $arrEmailSenha['TIPO_CLIENTE_INT_ID_TIPO_CLIENTE'] );
+					$objSession->set( 'INT_STATUS', $arrEmailSenha['STATUS_INT_ID_STATUS'] );
+					$objSession->set( 'LOGADO', true );
 					// Define o tempo de acesso
-					$session->set('passwordResetTokenExpire', time() + Yii::$app->params['user.passwordResetTokenExpire']); // 30 minutos
-					$session->close();					
+					$objSession->set('passwordResetTokenExpire', time() + Yii::$app->params['user.passwordResetTokenExpire']); // 30 minutos
+					$objSession->close();				
 
 					return $this->redirect(['dashboard/']);
 				}
@@ -186,11 +184,11 @@ class ClienteController extends Controller {
 	 */
 	public function actionLogout()
 	{
-		$session = new Session;
+		$objSession = new Session;
 
-		$session->open();
-		$session->destroy();
-		$session->close();
+		$objSession->open();
+		$objSession->destroy();
+		$objSession->close();
 
 		return $this->goHome();
 	}

@@ -72,10 +72,10 @@ class SiteController extends Controller
 
 			$objModelCliente = new Cliente(['scenario' => 'register']);
 			$objModelLogin = new Cliente(['scenario' => 'login']);
-			$contato = new ContactForm();
+			$objModelContato = new ContactForm();
 
 			return $this->render('index', [
-				'contato' => $contato,
+				'contato' => $objModelContato,
 				'cadastro' => $objModelCliente,
 				'login' => $objModelLogin,
 			]);

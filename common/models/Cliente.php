@@ -290,7 +290,7 @@ class Cliente extends ActiveRecord
 	 * @return integer Código do cliente gerado
 	 */
 	public function saveCliente($arrDados = array()) {
-		$session = new Session;
+		$session = new Session();
 
 		$objTransaction = Yii::$app->db->beginTransaction();
 		try {
@@ -300,7 +300,7 @@ class Cliente extends ActiveRecord
 			if( empty($arrDados['TIPO_CLIENTE_INT_ID_TIPO_CLIENTE']) )
 				throw new \Exception('Favor selecionar o Tipo Cliente!');
 
-			if( !empty( $session->get('STR_NOME',false) ) ) {
+			if( !$session->get('LOGADO') ) {
 				if( empty($arrDados['TIPO_PESSOA_INT_ID_TIPO_PESSOA']) )
 					throw new \Exception('Favor selecionar o Tipo Pessoa!');
 			}

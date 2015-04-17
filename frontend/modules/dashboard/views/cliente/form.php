@@ -11,6 +11,8 @@ use common\models\UnidadeFederal;
 use yii\helpers\ArrayHelper;
 use yii\jui\DatePicker;
 
+$hoje = date('d/m/Y');
+
 $dataNascimento = isset($objModelCliente->DAT_DATA_NASCIMENTO) ? $objModelCliente->DAT_DATA_NASCIMENTO : date('Y-m-d');
 $dataFormatada = Yii::$app->formatter->asDate( implode("-",array_reverse(explode("/",$dataNascimento))), 'php:d/m/Y');
 
@@ -40,13 +42,6 @@ $this->title = 'Informações do Cliente';
 			<?php $objFormCliente = ActiveForm::begin(['id' => 'cliente-form', 'method' => 'post','layout' => 'default']); ?>
 			<div class="col-md-12">	
 				<div class="col-md-4">
-				<?php 
-				echo $objFormCliente->field($objModelCliente, 'TIPO_CLIENTE_INT_ID_TIPO_CLIENTE', [
-					'template' => '<div class="input-group"><span class="input-group-addon">{label}</span>{input}</div>',
-				])->dropDownList($listCliente, ['prompt'=>'Selecione...', 'id'=>'tipo_cliente', 'size'=>1]);
-				?>
-				</div>
-				<div class="col-md-4">
 				<?= $objFormCliente->field($objModelCliente, 'TIPO_PESSOA_INT_ID_TIPO_PESSOA', [
 					'template' => '<div class="input-group"><span class="input-group-addon">{label}</span>{input}</div>',
 				])->dropDownList($listPessoa, ['prompt'=>'Selecione...', 'id'=>'tipo_pessoa', 'size'=>1]);
@@ -67,7 +62,7 @@ $this->title = 'Informações do Cliente';
 				])->textInput(['maxlength' => 150]);?>
 				</div>
 			</div>
-			<div class="col-md-12">
+			<div class="col-md-12 fisica">
 				<div class="col-md-4">
 				<?= $objFormCliente->field($objModelCliente, 'DAT_DATA_NASCIMENTO', [ 
 					'template' => '<div class="input-group"><span class="input-group-addon">{label}</span>{input}</div>',
@@ -76,7 +71,7 @@ $this->title = 'Informações do Cliente';
 				<div class="col-md-4">
 				<?= $objFormCliente->field($objModelCliente, 'STR_SEXO', [ 
 					'template' => '<div class="input-group"><span class="input-group-addon">{label}</span>{input}</div>',
-				])->dropDownList( [ 'M'=>'Masculino','F'=>'Feminino'], ['prompt'=>'Selecione', 'id'=>'status', 'size'=>1]);
+				])->dropDownList( [ 'M'=>'Masculino','F'=>'Feminino'], ['prompt'=>'Selecione', 'id'=>'sexo', 'size'=>1]);
 				?>
 				</div>
 				<div class="col-md-4">
@@ -226,7 +221,9 @@ $this->title = 'Informações do Cliente';
 			</div>
 			
 			<div class="form-group col-md-11 text-center">
-				<?php echo $objFormCliente->field($objModelEndereco, 'INT_ID_ENDERECO')->label(FALSE)->hiddenInput()?>
+				<?php echo Html::hiddenInput('Teste', $hoje , ['id'=>'hoje'] );?>
+				<?php echo $objFormCliente->field($objModelCliente, 'TIPO_CLIENTE_INT_ID_TIPO_CLIENTE')->label(FALSE)->hiddenInput();?>
+				<?php echo $objFormCliente->field($objModelEndereco, 'INT_ID_ENDERECO')->label(FALSE)->hiddenInput();?>
 				<?= Html::button('Gravar', [
 						'class' => 'alterar btn btn-primary submit-button ',
 						'name' => 'alterar-button']) ?>
@@ -278,14 +275,14 @@ $this->title = 'Informações do Cliente';
 		return false;
 	}
 
-	function validarCPF_CNPJ(){
-		var cnpj = $("#cliente-str_cnpj");
+	function validar_dados(){
+		var tipo = $("#tipo_pessoa");		
 		var cpf = $("#cliente-str_cpf");
+		var sexo = $("#sexo option:selected");
+		console.log(sexo);
+		var dataNascimento = $("#cliente-dat_data_nascimento");
+		var cnpj = $("#cliente-str_cnpj");
 		var razao = $("#cliente-str_razao_social");
-
-		console.log( cpf.val().length );
-
-		var tipo = $("#tipo_pessoa");
 
 		if(tipo.val() == 2){
 			if( cnpj.val() == '' || cnpj.val() == 0 || cnpj.val().length < 14  ){			
@@ -300,11 +297,22 @@ $this->title = 'Informações do Cliente';
 			}
 
 		} else if(tipo.val() == 1) {
+			if( dataNascimento.val() == $('#hoje').val() ){
+				message('Favor preencher o campo DATA de NASCIMENTO corretamente', 'alert-danger');
+				$('.field-cliente-dat_data_nascimento').addClass('has-error');
+				return false;
+			}
+			if( sexo.val() == '' ){
+				message('Favor preencher o campo SEXO corretamente', 'alert-danger');
+				$('.field-cliente-str_sexo').addClass('has-error');
+				return false;
+			}
 			if( cpf.val() == '' || cpf.val() == 0 || cpf.val().length < 11 ){
 				message('Favor preencher o campo CPF corretamente', 'alert-danger');
 				$('.field-cliente-str_cpf').addClass('has-error');
 				return false;
 			}
+
 		}
 
 		return true;
