@@ -99,7 +99,7 @@ class Endereco extends ActiveRecord
 			if (empty($arrDados))
 				throw new \Exception('Campos Vazios!');
 
-			if( isset($arrDados['INT_ID_ENDERECO']) ){
+			if( !empty($arrDados['INT_ID_ENDERECO']) ){
 				
 				Yii::$app->db->createCommand()
 					->update(

@@ -174,9 +174,9 @@ if ( Yii::$app->session->get('LOGADO') ) {
 					if (data.response) {
 						//form[0].reset();
 						message(data.message, 'alert-success');
+						location.reload(true);
 					} else {
 						var objError = data.message ;
-						console.log(objError);
 						for (var prop in objError) {
 							var idProp = prop;
 							$('.'+cliente+'-'+idProp.toLowerCase()).addClass('has-error');

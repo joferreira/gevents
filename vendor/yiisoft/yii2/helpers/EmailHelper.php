@@ -42,15 +42,14 @@ class EmailHelper {
 			}
 			// Email de ativação
 			if ($arrParametros['STR_TIPO_ENVIO'] == 'ativacao') {
-				$strSubject = 'Ativação de cadastro - Gigante dos Eventos';
+				$strSubject = 'Confirmação de Ativação - Gigante dos Eventos';
 
 				$strMensagem = 
-					"<p>Prezado (a), ".$arrParametros['STR_NOME_COMPLETO']."<p>
-					<p>Seu cadastro foi ativado com sucesso no Gigante dos Eventos.</p>
+					"<p>Caro(a) organizador, ".$arrParametros['STR_NOME_COMPLETO']."<p>
 					<p></p>
-					<p>A partir de agora você poderá utilizar todas as ferramentas que o Gigante proporciona a você.</p>
+					<p>Sua ativação foi efetivada com sucesso no Gigante dos Eventos.</p>
 					<p></p>
-					<p>Não perca mais tempo e comece agora!</p>
+					<p>Não perca tempo e crie o seu evento e começe a divulgá-lo em nossa plataforma.</p>
 					<p></p>
 					<p>Gigante dos Eventos | Uma forma diferente de se fazer eventos</p>";
 

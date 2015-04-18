@@ -279,7 +279,6 @@ $this->title = 'Informações do Cliente';
 		var tipo = $("#tipo_pessoa");		
 		var cpf = $("#cliente-str_cpf");
 		var sexo = $("#sexo option:selected");
-		console.log(sexo);
 		var dataNascimento = $("#cliente-dat_data_nascimento");
 		var cnpj = $("#cliente-str_cnpj");
 		var razao = $("#cliente-str_razao_social");

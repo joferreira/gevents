@@ -73,21 +73,24 @@ class CadastroController extends Controller
 					// Grava as alterações do Cliente
 					$arrResult = $objModelCliente->saveCliente($arrCliente);
 					if (!isset($arrResult['INT_ID_CLIENTE'])) 
-						throw new \Exception($arrResult);
+						throw new \Exception('Favor entre em contato, pois não foi possível alterar as suas informações.');
 
 					$arrEndereco['CLIENTE_INT_ID_CLIENTE'] = $arrResult['INT_ID_CLIENTE'];
 
 					$intIdEndereco = $objModelEndereco->saveEndereco($arrEndereco);
+
+					if (!isset($intIdEndereco['INT_ID_ENDERECO'])) 
+						throw new \Exception('Favor entre em contato, pois não foi possível alterar as informações de endereço.');
 					
 					if( $arrClienteAtivacao['STATUS_INT_ID_STATUS'] == Status::STATUS_AGUARDANDO ){
 						// Envia o Email de Ativação 
 						$arrCliente['STR_TIPO_ENVIO'] = 'ativacao';
-						//EmailHelper::SendEmail($arrClienteAtivacao);
+						EmailHelper::SendEmail($arrCliente);
 
 						$arrResponse['message'] = 'Ativação realizada com sucesso.';
 					} else {
 						// Envia o Email de Aviso de Alteração 
-						$arrCliente['STR_TIPO_ENVIO'] = 'alteracao';
+						//$arrCliente['STR_TIPO_ENVIO'] = 'alteracao';
 						//EmailHelper::SendEmail($arrClienteAtivacao);
 
 						$arrResponse['message'] = 'Informações atualizadas com sucesso.';
