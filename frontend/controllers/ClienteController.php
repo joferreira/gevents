@@ -152,7 +152,7 @@ class ClienteController extends Controller {
 				else {
 
 					$objSession->open();
-					$objSession->set( 'INT_CLIENTE',$arrEmailSenha['INT_ID_CLIENTE'] );
+					$objSession->set( 'INT_ID_CLIENTE',$arrEmailSenha['INT_ID_CLIENTE'] );
 					$objSession->set( 'STR_NOME',$arrEmailSenha['STR_NOME_COMPLETO'] );
 					$objSession->set( 'STR_EMAIL', $arrEmailSenha['STR_EMAIL'] );
 					$objSession->set( 'INT_TIPO_CLIENTE', $arrEmailSenha['TIPO_CLIENTE_INT_ID_TIPO_CLIENTE'] );

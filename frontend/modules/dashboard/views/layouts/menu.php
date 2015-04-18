@@ -213,7 +213,7 @@ use yii\web\Session;
 					<i class="fa fa-user fa-fw"></i> <?php  echo Yii::$app->session->get('STR_NOME') ; ?> <i class="fa fa-caret-down"></i>
 				</a>
 				<ul class="dropdown-menu dropdown-user">
-					<li><a href="index.php?r=dashboard/cadastro"><i class="fa fa-user fa-fw"></i> User Profile</a>
+					<li><a href="index.php?r=dashboard/cadastro"><i class="fa fa-user fa-fw"></i> Meus dados</a>
 					</li>
 					<li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
 					</li>
@@ -241,23 +241,33 @@ use yii\web\Session;
 						</div>
 					</li>
 					<li>
-						<a href="index.php?r=dashboard"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+						<a href="<?= Yii::$app->urlManager->createAbsoluteUrl('dashboard');?>"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
 					</li>
-
+					<li>
+						<a href="#"><i class="fa fa-cog fa-fw"></i> Minhas contas<span class="fa arrow"></span></a>
+						<ul class="nav nav-second-level">
+							<li>
+								<a href="<?= Yii::$app->urlManager->createAbsoluteUrl('dashboard/cliente/contas'); ?>"><i class="fa fa-book fa-fw"></i> Contas</a>
+							</li>
+						</ul>
+					</li>
 					<li>
 						<a href="javascript:;"><i class="fa fa-calendar fa-fw"></i> Eventos<span class="fa arrow"></span></a>
 						<ul class="nav nav-second-level">
 							<li>
-								<a href="index.php?r=evento/create">Cadastro</a>
+								<a href="<?= Yii::$app->urlManager->createAbsoluteUrl('dashboard/evento/create');?>">Cadastro</a>
 							</li>
 							<li>
-								<a href="index.php?r=evento/list">Listagem</a>
+								<a href="<?= Yii::$app->urlManager->createAbsoluteUrl('dashboard/evento/list');?>">Listagem</a>
 							</li>
 							<li>
-								<a href="index.php?r=evento/pagamento">Formas de pagamento</a>
+								<a href="<?= Yii::$app->urlManager->createAbsoluteUrl('dashboard/evento/pagamento'); ?>">Formas de pagamento</a>
 							</li>
 						</ul>
-					</li>				
+					</li>
+					<li>
+						<a href="<?= Yii::$app->urlManager->createAbsoluteUrl('dashboard/contato/index'); ?>"><i class="fa fa-envelope fa-fw"></i> Contato</a>
+					</li>			
 				</ul>
 
 			</div>

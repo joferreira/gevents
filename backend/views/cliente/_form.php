@@ -31,10 +31,16 @@ $tpCliente = isset($_GET['intTipoCliente']) ? $_GET['intTipoCliente'] : '';
 	<div class="col-md-12">	
 		<div class="col-md-4">
 		<?php 
-		$model->TIPO_CLIENTE_INT_ID_TIPO_CLIENTE = $tpCliente;
-		echo $form->field($model, 'TIPO_CLIENTE_INT_ID_TIPO_CLIENTE', [
-			'template' => '<div class="input-group"><span class="input-group-addon">{label}</span>{input}</div>',
-		])->dropDownList($listCliente, ['prompt'=>'Selecione...', 'id'=>'tipo_cliente', 'size'=>1],['options' =>[$tpCliente => ['selected' => true] ]]);
+		if(!empty($tpCliente)){
+			$model->TIPO_CLIENTE_INT_ID_TIPO_CLIENTE = $tpCliente;
+			echo $form->field($model, 'TIPO_CLIENTE_INT_ID_TIPO_CLIENTE', [
+				'template' => '<div class="input-group"><span class="input-group-addon">{label}</span>{input}</div>',
+			])->dropDownList($listCliente, ['prompt'=>'Selecione...', 'id'=>'tipo_cliente', 'size'=>1],['options' =>[$tpCliente => ['selected' => true] ]]);
+		} else {
+			echo $form->field($model, 'TIPO_CLIENTE_INT_ID_TIPO_CLIENTE', [
+				'template' => '<div class="input-group"><span class="input-group-addon">{label}</span>{input}</div>',
+			])->dropDownList($listCliente, ['prompt'=>'Selecione...', 'id'=>'tipo_cliente', 'size'=>1] );
+		}
 		?>
 		</div>
 		<div class="col-md-4">

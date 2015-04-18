@@ -40,8 +40,11 @@ if ( Yii::$app->session->get('LOGADO') ) {
 	<link rel="stylesheet" href="/gevents/frontend/web/modules/css/sb-admin-2.css">
 	<link rel="stylesheet" href="/gevents/frontend/web/modules/morrisjs/morris.css">
 	<link rel="stylesheet" href="/gevents/frontend/web/modules/font-awesome/css/font-awesome.min.css">
+	<link href="/gevents/frontend/web/modules/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.css" rel="stylesheet">
 
 	<script src="/gevents/frontend/web/modules/bootstrap/dist/js/bootstrap.js"></script>
+	<script src="/gevents/frontend/web/modules/datatables/media/js/jquery.dataTables.js"></script>
+	<script src="/gevents/frontend/web/modules/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.js"></script>
 	<script src="/gevents/frontend/web/modules/metisMenu/dist/metisMenu.js"></script>
 	<script src="/gevents/frontend/web/modules/raphael/raphael-min.js"></script>
 	<script src="/gevents/frontend/web/modules/js/sb-admin-2.js"></script>
@@ -105,7 +108,6 @@ if ( Yii::$app->session->get('LOGADO') ) {
 	<?php $this->endBody(); ?>
 
 	<script type="text/javascript">
-		/*
 		$.extend( $.fn.dataTable.defaults, {
 			responsive: true,
 			"lengthChange": false,
@@ -135,7 +137,7 @@ if ( Yii::$app->session->get('LOGADO') ) {
 				}
 			}
 		} );
-*/
+
 		$(document).ready(function () {
 			$('#wrapper').on('click', '#cliente-form .alterar', saveCliente);
 

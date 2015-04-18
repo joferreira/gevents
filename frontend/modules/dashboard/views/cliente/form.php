@@ -52,14 +52,14 @@ $this->title = 'Informações do Cliente';
 				<div class="col-md-12">
 				<?= $objFormCliente->field($objModelCliente, 'STR_NOME_COMPLETO', [ 
 					'template' => '<div class="input-group"><span class="input-group-addon">{label}</span>{input}</div>',
-				])->textInput(['maxlength' => 200]) ?>
+				])->textInput(['maxlength' => 200, 'readonly'=>true]) ?>
 				</div>
 			</div>
 			<div class="col-md-12">
 				<div class="col-md-12">
 				<?php echo $objFormCliente->field($objModelCliente, 'STR_EMAIL', [ 
 					'template' => '<div class="input-group"><span class="input-group-addon">{label}</span>{input}</div> {error}',
-				])->textInput(['maxlength' => 150]);?>
+				])->textInput(['maxlength' => 150, 'readonly'=>true]);?>
 				</div>
 			</div>
 			<div class="col-md-12 fisica">
@@ -238,6 +238,10 @@ $this->title = 'Informações do Cliente';
 
 	var juridica = $("#cliente-form .juridica");
 	var fisica = $("#cliente-form .fisica");
+	var cpf = $("#cliente-str_cpf");
+	var dataNascimento = $("#cliente-dat_data_nascimento");
+	var cnpj = $("#cliente-str_cnpj");
+	var razao = $("#cliente-str_razao_social");
 
 	$(function () {
 		var tipo = $("#tipo_pessoa");
@@ -262,9 +266,13 @@ $this->title = 'Informações do Cliente';
 		var tipo = $(evt.currentTarget);
 
 		if(tipo.val() == 2){
+			//dataNascimento.val('');
+			//cpf.val('');
 			fisica.hide();
 			juridica.show();
 		} else if(tipo.val() == 1) {
+			//cnpj.val('');
+			//razao.val('');
 			juridica.hide();
 			fisica.show();
 		} else {
@@ -277,11 +285,7 @@ $this->title = 'Informações do Cliente';
 
 	function validar_dados(){
 		var tipo = $("#tipo_pessoa");		
-		var cpf = $("#cliente-str_cpf");
 		var sexo = $("#sexo option:selected");
-		var dataNascimento = $("#cliente-dat_data_nascimento");
-		var cnpj = $("#cliente-str_cnpj");
-		var razao = $("#cliente-str_razao_social");
 
 		if(tipo.val() == 2){
 			if( cnpj.val() == '' || cnpj.val() == 0 || cnpj.val().length < 14  ){			

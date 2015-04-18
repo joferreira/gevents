@@ -23,7 +23,7 @@ class CadastroController extends Controller
 	{
 		$objSession = new Session;
 
-		$intIdCliente = $objSession->get('INT_CLIENTE');
+		$intIdCliente = $objSession->get('INT_ID_CLIENTE');
 
 		$objModelCliente = $this->findModel($intIdCliente);
 		if( isset($_POST['Cliente']) ) {
@@ -65,7 +65,7 @@ class CadastroController extends Controller
 
 					$arrCliente = $arrDados['Cliente'];
 					$arrEndereco = $arrDados['Endereco'];
-					$arrCliente['INT_ID_CLIENTE'] = $objSession->get('INT_CLIENTE');
+					$arrCliente['INT_ID_CLIENTE'] = $objSession->get('INT_ID_CLIENTE');
 					$arrCliente['STATUS_INT_ID_STATUS'] = Status::STATUS_ATIVO;
 
 					$arrClienteAtivacao = $this->findModel($arrCliente['INT_ID_CLIENTE']);

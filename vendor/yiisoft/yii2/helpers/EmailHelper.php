@@ -55,6 +55,25 @@ class EmailHelper {
 
 			}
 
+			// Tratamento de e-mail de contato
+			if ($arrParametros['STR_TIPO_ENVIO'] == 'contato') {
+				$strSubject = 'Seu contato - Gigante dos Eventos';
+
+				$strMensagem = "<p><h1>Seu contato</h1></p>
+					<p></p>
+					<p>Olá,</p>
+					<p>Estamos felizes pelo seu contato com o Gigante dos Eventos.</p>
+					<p></p>
+					<p>Caso seja necessário de acordo com a sua mensagem entraremos em contato.</p>
+					<p><strong>Mensagem, dúvida ou pergunta:</br></strong> <i>" . $arrParametros['STR_MENSAGEM'] . "</i></p>
+					<p></p>
+					<p>Nos vemos em http://www.gigantedoseventos.com.br</p>
+					<p></p>
+					<p>Agradecemos seu contato !</p>
+					<p></p>
+					<p>Gigante dos Eventos | Uma forma diferente de se fazer eventos</p>";
+			}
+
 			// Configuração para envio de e-mail Google
 			$objEmail = new \PHPMailer();
 			$objEmail->isSMTP();
