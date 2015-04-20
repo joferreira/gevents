@@ -12,7 +12,7 @@ $this->title = 'Cadastro de Participante, Organizador e Organizador/Participante
 		<br/>
 		<div>
 			<?= $this->render('_form', [
-				'model' => $model,
+				'objModelCliente' => $objModelCliente,
 				'endereco' => $endereco,
 			]) ?>
 		</div>

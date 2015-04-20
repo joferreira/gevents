@@ -247,6 +247,9 @@ use yii\web\Session;
 						<a href="#"><i class="fa fa-cog fa-fw"></i> Minhas contas<span class="fa arrow"></span></a>
 						<ul class="nav nav-second-level">
 							<li>
+								<a href="<?= Yii::$app->urlManager->createAbsoluteUrl('dashboard/cadastro'); ?>"><i class="fa fa-user fa-fw"></i> Meus dados</a>
+							</li>
+							<li>
 								<a href="<?= Yii::$app->urlManager->createAbsoluteUrl('dashboard/cliente/contas'); ?>"><i class="fa fa-book fa-fw"></i> Contas</a>
 							</li>
 						</ul>
@@ -255,18 +258,18 @@ use yii\web\Session;
 						<a href="javascript:;"><i class="fa fa-calendar fa-fw"></i> Eventos<span class="fa arrow"></span></a>
 						<ul class="nav nav-second-level">
 							<li>
-								<a href="<?= Yii::$app->urlManager->createAbsoluteUrl('dashboard/evento/create');?>">Cadastro</a>
+								<a href="<?= Yii::$app->urlManager->createAbsoluteUrl('dashboard/evento');?>">Meus eventos</a>
 							</li>
 							<li>
-								<a href="<?= Yii::$app->urlManager->createAbsoluteUrl('dashboard/evento/list');?>">Listagem</a>
+								<a href="<?= Yii::$app->urlManager->createAbsoluteUrl('dashboard/evento/ticket');?>">Meus tickets</a>
 							</li>
 							<li>
-								<a href="<?= Yii::$app->urlManager->createAbsoluteUrl('dashboard/evento/pagamento'); ?>">Formas de pagamento</a>
+								<a href="<?= Yii::$app->urlManager->createAbsoluteUrl('dashboard/evento/pagamento'); ?>">Formas de pagamentos</a>
 							</li>
 						</ul>
 					</li>
 					<li>
-						<a href="<?= Yii::$app->urlManager->createAbsoluteUrl('dashboard/contato/index'); ?>"><i class="fa fa-envelope fa-fw"></i> Contato</a>
+						<a href="<?= Yii::$app->urlManager->createAbsoluteUrl('dashboard/contato'); ?>"><i class="fa fa-envelope fa-fw"></i> Contato</a>
 					</li>			
 				</ul>
 

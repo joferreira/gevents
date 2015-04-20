@@ -130,7 +130,7 @@ class ClienteController extends Controller
 			return $this->redirect(['/usuario/login']);
 		} else {
 			return $this->render('/cliente/view', [
-				'model' => $this->findModel($id),
+				'objModelCliente' => $this->findModel($id),
 			]);
 		}
 	}
@@ -197,7 +197,7 @@ class ClienteController extends Controller
 			}
 
 			return $this->render('/cliente/create', [
-				'model' => $objModelCliente,
+				'objModelCliente' => $objModelCliente,
 				'endereco' => $objModelEndereco,
 			]);
 			
@@ -223,7 +223,7 @@ class ClienteController extends Controller
 		$arrTipoCliente[TipoCliente::TIPO_CLIENTE_ORGANIZADOR] = 'organizador';
 		$arrTipoCliente[TipoCliente::TIPO_CLIENTE_ORGANIZADOR_PARTICIPANTE] = 'organizadorparticipante';
 
-		$model = $this->findModel($id);
+		$objModelCliente = $this->findModel($id);
 		if( isset($_POST['Cliente']) ) {
 			$arrDados = $_POST['Cliente'];
 			$arrDados['INT_ID_CLIENTE'] = $id;
@@ -231,11 +231,11 @@ class ClienteController extends Controller
 
 		$objModelEndereco = new Endereco();
 
-		if ($model->load(Yii::$app->request->post()) && $model->saveCliente($arrDados)) {
-			return $this->redirect(['/cliente/'.$arrTipoCliente[$model->TIPO_CLIENTE_INT_ID_TIPO_CLIENTE] ]);
+		if ($objModelCliente->load(Yii::$app->request->post()) && $objModelCliente->saveCliente($arrDados)) {
+			return $this->redirect(['/cliente/'.$arrTipoCliente[$objModelCliente->TIPO_CLIENTE_INT_ID_TIPO_CLIENTE] ]);
 		} else {
 			return $this->render('/cliente/update', [
-				'model' => $model,
+				'objModelCliente' => $objModelCliente,
 				'endereco' => $objModelEndereco,
 			]);
 		}

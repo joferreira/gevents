@@ -26,7 +26,7 @@ $tipoCliente=TipoCliente::find()->all();
 $listCliente=ArrayHelper::map($tipoCliente,'INT_ID_TIPO_CLIENTE','STR_DESCRICAO');
 
 $estados=UnidadeFederal::find()->all();
-$listEstados=ArrayHelper::map($estados,'INT_ID_UNIDADE_FEDERAL','STR_SIGLA_UNIDADE_FEDERAL');
+$listEstados=ArrayHelper::map($estados,'INT_ID_UNIDADE_FEDERAL','STR_DESCRICAO_UNIDADE_FEDERAL');
 
 $this->title = 'Informações do Cliente';
 ?>
@@ -164,9 +164,11 @@ $this->title = 'Informações do Cliente';
 				])->textInput(['maxlength' => 255]) ?>
 				</div>
 				<div class="col-md-6">
-				<?= $objFormCliente->field($objModelCliente, 'STR_CATEGORIA_EMPRESA', [ 
-					'template' => '<div class="input-group"><span class="input-group-addon">{label}</span>{input}</div>',
-				])->textInput(['maxlength' => 6]) ?>
+				<?php
+					echo $objFormCliente->field($objModelCliente, 'STR_CATEGORIA_EMPRESA', [
+						'template' => '<div class="input-group"><span class="input-group-addon">{label}</span>{input}</div>',
+					])->dropDownList(['Matriz'=>'Matriz', 'Filial'=>'Filial'], ['size'=>1]);
+				?>
 				</div>
 			</div>
 			<div class="col-md-12">
@@ -221,7 +223,7 @@ $this->title = 'Informações do Cliente';
 			</div>
 			
 			<div class="form-group col-md-11 text-center">
-				<?php echo Html::hiddenInput('Teste', $hoje , ['id'=>'hoje'] );?>
+				<?php echo Html::hiddenInput('Hoje', $hoje , ['id'=>'hoje'] );?>
 				<?php echo $objFormCliente->field($objModelCliente, 'TIPO_CLIENTE_INT_ID_TIPO_CLIENTE')->label(FALSE)->hiddenInput();?>
 				<?php echo $objFormCliente->field($objModelEndereco, 'INT_ID_ENDERECO')->label(FALSE)->hiddenInput();?>
 				<?= Html::button('Gravar', [

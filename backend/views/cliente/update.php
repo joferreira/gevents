@@ -14,7 +14,7 @@ $this->title = 'Alterar';
 
 		<div class="row">
 			<?= $this->render('_form', [
-				'model' => $model,
+				'objModelCliente' => $objModelCliente,
 				'endereco' => $endereco,
 			]) ?>
 		</div>

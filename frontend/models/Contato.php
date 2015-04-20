@@ -61,9 +61,9 @@ class Contato extends ActiveRecord
 				Yii::$app->session->setFlash('error', 'Parâmetros necessários!');
 			
 			$objQuery = new Query();
-			
-			$objQuery->select('CO.INT_ID_CONTATO, CO.CLIENTE_INT_ID_CLIENTE, CO.STR_MENSAGEM, CO.STR_VISUALIZADO, CO.DAT_DATA_CONTATO, '
-					. 'CL.STR_NOME_COMPLETO')
+
+			$objQuery->select('CO.INT_ID_CONTATO, CO.CLIENTE_INT_ID_CLIENTE, CO.STR_MENSAGEM, CO.STR_RETORNO, CO.STR_VISUALIZADO, CO.DAT_DATA_CONTATO, '
+					. 'CO.DAT_DATA_RETORNO, CL.STR_NOME_COMPLETO')
 					->from($this->tableName() . ' CO ')
 					->join('INNER JOIN', 'CLIENTE CL', 'CO.CLIENTE_INT_ID_CLIENTE = CL.INT_ID_CLIENTE')
 					->where(['CLIENTE_INT_ID_CLIENTE' => $this->CLIENTE_INT_ID_CLIENTE]);
