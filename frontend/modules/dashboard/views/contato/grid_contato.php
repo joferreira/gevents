@@ -11,12 +11,12 @@ $this->title = 'Contatos';
 
 <div id="page-wrapper">
 	<div class="row">
-		<div class="col-lg-12">
+		<div>
 			<h1 class="page-header"><i class="fa fa-envelope fa-fw"></i> Contatos efetuados</h1>
 		</div>
 	</div>
 	<div class="row">
-		<div class="row buttons text-center">
+		<div class="buttons">
 			<?= Html::a('Faça seu contato', ['contato/formulario'], ['class'=>'btn btn-success btn-primary']) ?>
 		</div>
 	</div>

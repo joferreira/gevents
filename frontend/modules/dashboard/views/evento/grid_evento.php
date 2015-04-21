@@ -11,17 +11,15 @@ $this->title = 'Eventos';
 
 <div id="page-wrapper">
 	<div class="row">
-		<div class="col-lg-12">
-			<h1 class="page-header"><i class="fa fa-calendar fa-fw"></i> Eventos </h1>
-		</div>
+		<h1 class="page-header"><i class="fa fa-calendar fa-fw"></i> Eventos </h1>
 	</div>
 	<div class="row">
-		<div class="row buttons text-center">
+		<div class="buttons">
 			<?= Html::a('Crie seu evento', ['evento/formulario'], ['class'=>'btn btn-success btn-primary']) ?>
 		</div>
 	</div>
 	<div class="row">
-		<table id="grid_contato" class="table table-striped table-hover">
+		<table id="grid_evento" class="table table-striped table-hover">
 			<thead>  
 				<tr>
 					<th width="100px" class="text-center">Cód.</th>
@@ -44,7 +42,7 @@ $this->title = 'Eventos';
 <script>
 $(document).ready(function() {
 		
-		$('#grid_contato').DataTable({
+		$('#grid_evento').DataTable({
 			"searching": true,
 			"ordering": true,
 			"columnDefs": [

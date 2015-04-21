@@ -4,73 +4,60 @@ use yii\helpers\Html;
 
 use yii\bootstrap\ActiveForm;
 use yii\i18n\Formatter;
-use common\models\Status;
-use common\models\TipoPessoa;
-use common\models\TipoCliente;
-use yii\helpers\ArrayHelper;
 use yii\jui\DatePicker;
 
 $dataNascimento = isset($objModelCliente->DAT_DATA_NASCIMENTO) ? $objModelCliente->DAT_DATA_NASCIMENTO : date('Y-m-d');
 $dataFormatada = Yii::$app->formatter->asDate( implode("-",array_reverse(explode("/",$dataNascimento))), 'php:d/m/Y');
 
-$status=Status::find()->all();
-$listStatus=ArrayHelper::map($status,'INT_ID_STATUS','STR_DESCRICAO_STATUS');
-
-$tipoPessoa=TipoPessoa::find()->all();
-$listPessoa=ArrayHelper::map($tipoPessoa,'INT_ID_TIPO_PESSOA','STR_DESCRICAO');
-
-$tipoCliente=TipoCliente::find()->all();
-$listCliente=ArrayHelper::map($tipoCliente,'INT_ID_TIPO_CLIENTE','STR_DESCRICAO');
-
-$tpCliente = isset($_GET['intTipoCliente']) ? $_GET['intTipoCliente'] : ''; 
+$tipoCliente = isset($_GET['intTipoCliente']) ? $_GET['intTipoCliente'] : ''; 
 ?>
 
 <div class="usuario-form row">
 
 	<?php $objFormCliente = ActiveForm::begin(['id' => 'cliente-form', 'method' => 'post','layout' => 'default']); ?>
-	<div class="col-md-12">	
+	<div class="row">	
 		<div class="col-md-4">
 		<?php 
-		if(!empty($tpCliente)){
-			$objModelCliente->TIPO_CLIENTE_INT_ID_TIPO_CLIENTE = $tpCliente;
+		if(!empty($tipoCliente)){
+			$objModelCliente->TIPO_CLIENTE_INT_ID_TIPO_CLIENTE = $tipoCliente;
 			echo $objFormCliente->field($objModelCliente, 'TIPO_CLIENTE_INT_ID_TIPO_CLIENTE', [
 				'template' => '<div class="input-group"><span class="input-group-addon">{label}</span>{input}</div>',
-			])->dropDownList($listCliente, ['prompt'=>'Selecione...', 'id'=>'tipo_cliente', 'size'=>1],['options' =>[$tpCliente => ['selected' => true] ]]);
+			])->dropDownList($arrTipoCliente, ['prompt'=>'Selecione...', 'id'=>'tipo_cliente', 'size'=>1],['options' =>[$tipoCliente => ['selected' => true] ]]);
 		} else {
 			echo $objFormCliente->field($objModelCliente, 'TIPO_CLIENTE_INT_ID_TIPO_CLIENTE', [
 				'template' => '<div class="input-group"><span class="input-group-addon">{label}</span>{input}</div>',
-			])->dropDownList($listCliente, ['prompt'=>'Selecione...', 'id'=>'tipo_cliente', 'size'=>1] );
+			])->dropDownList($arrTipoCliente, ['prompt'=>'Selecione...', 'id'=>'tipo_cliente', 'size'=>1] );
 		}
 		?>
 		</div>
 		<div class="col-md-4">
 		<?= $objFormCliente->field($objModelCliente, 'TIPO_PESSOA_INT_ID_TIPO_PESSOA', [
 			'template' => '<div class="input-group"><span class="input-group-addon">{label}</span>{input}</div>',
-		])->dropDownList($listPessoa, ['prompt'=>'Selecione...', 'id'=>'tipo_pessoa', 'size'=>1]);
+		])->dropDownList($arrTipoPessoa, ['prompt'=>'Selecione...', 'id'=>'tipo_pessoa', 'size'=>1]);
 		?>
 		</div>
 		<div class="col-md-4">
 		<?= $objFormCliente->field($objModelCliente, 'STATUS_INT_ID_STATUS', [
 			'template' => '<div class="input-group "><span class="input-group-addon">{label}</span>{input}</div>',
-		])->dropDownList($listStatus, ['prompt'=>'Selecione...', 'id'=>'status', 'size'=>1]);
+		])->dropDownList($arrStatus, ['prompt'=>'Selecione...', 'id'=>'status', 'size'=>1]);
 		?>
 		</div>
 	</div>
-	<div class="col-md-12">
+	<div class="row">
 		<div class="col-md-12">
 		<?= $objFormCliente->field($objModelCliente, 'STR_NOME_COMPLETO', [ 
 			'template' => '<div class="input-group"><span class="input-group-addon">{label}</span>{input}</div>',
 		])->textInput(['maxlength' => 200]) ?>
 		</div>
 	</div>
-	<div class="col-md-12">
+	<div class="row">
 		<div class="col-md-12">
 		<?php echo $objFormCliente->field($objModelCliente, 'STR_EMAIL', [ 
 			'template' => '<div class="input-group"><span class="input-group-addon">{label}</span>{input}</div> {error}',
 		])->textInput(['maxlength' => 150]);?>
 		</div>
 	</div>
-	<div class="col-md-12 fisica">
+	<div class="row fisica">
 		<div class="col-md-4">
 		<?= $objFormCliente->field($objModelCliente, 'DAT_DATA_NASCIMENTO', [ 
 			'template' => '<div class="input-group"><span class="input-group-addon">{label}</span>{input}</div>',
@@ -88,7 +75,7 @@ $tpCliente = isset($_GET['intTipoCliente']) ? $_GET['intTipoCliente'] : '';
 		])->textInput(['maxlength' => 10]) ?>
 		</div>
 	</div>
-	<div class="col-md-12">		
+	<div class="row">		
 		<div class="col-md-6 fisica">
 		<?= $objFormCliente->field($objModelCliente, 'STR_CPF', [ 
 			'template' => '<div class="input-group"><span class="input-group-addon">{label}</span>{input}</div>',
@@ -100,7 +87,7 @@ $tpCliente = isset($_GET['intTipoCliente']) ? $_GET['intTipoCliente'] : '';
 		])->textInput(['maxlength' => 14]) ?>
 		</div>
 	</div>
-	<div class="col-md-12">
+	<div class="row">
 		<div class="col-md-4">
 		<?= $objFormCliente->field($objModelCliente, 'INT_TELEFONE_DDI', [ 
 			'template' => '<div class="input-group"><span class="input-group-addon">{label}</span>{input}</div>',
@@ -117,7 +104,7 @@ $tpCliente = isset($_GET['intTipoCliente']) ? $_GET['intTipoCliente'] : '';
 		])->textInput(['maxlength' => 8]) ?>
 		</div>
 	</div>
-	<div class="col-md-12">
+	<div class="row">
 		<div class="col-md-4">
 		<?= $objFormCliente->field($objModelCliente, 'INT_CELULAR_DDI', [ 
 			'template' => '<div class="input-group"><span class="input-group-addon">{label}</span>{input}</div>',
@@ -134,7 +121,7 @@ $tpCliente = isset($_GET['intTipoCliente']) ? $_GET['intTipoCliente'] : '';
 		])->textInput(['maxlength' => 9]) ?>
 		</div>
 	</div>
-	<div class="col-md-12">
+	<div class="row">
 		<div class="col-md-4">	
 		<?= $objFormCliente->field($objModelCliente, 'INT_FAX_DDI', [ 
 			'template' => '<div class="input-group"><span class="input-group-addon">{label}</span>{input}</div>',
@@ -151,21 +138,21 @@ $tpCliente = isset($_GET['intTipoCliente']) ? $_GET['intTipoCliente'] : '';
 		])->textInput(['maxlength' => 8]) ?>
 		</div>
 	</div>
-	<div class="col-md-12 juridica">		
-		<div class="col-md-12">	
+	<div class="row juridica">		
+		<div class="row">	
 		<?= $objFormCliente->field($objModelCliente, 'STR_RAZAO_SOCIAL', [ 
 			'template' => '<div class="input-group"><span class="input-group-addon">{label}</span>{input}</div>',
 		])->textInput(['maxlength' => 255]) ?>
 		</div>
 	</div>
-	<div class="col-md-12 juridica">
+	<div class="row juridica">
 		<div class="col-md-12">
 		<?= $objFormCliente->field($objModelCliente, 'STR_NOME_FANTASIA', [ 
 			'template' => '<div class="input-group"><span class="input-group-addon">{label}</span>{input}</div>',
 		])->textInput(['maxlength' => 255]) ?>
 		</div>
 	</div>
-	<div class="col-md-12 juridica">
+	<div class="row juridica">
 		<div class="col-md-6">
 		<?= $objFormCliente->field($objModelCliente, 'STR_INSCRICAO_MUNICIPAL', [ 
 			'template' => '<div class="input-group"><span class="input-group-addon">{label}</span>{input}</div>',

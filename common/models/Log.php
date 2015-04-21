@@ -21,6 +21,7 @@ class Log extends ActiveRecord
     const MENSAGEM_CADASTRO = 'Cadastro efetuado';
     const MENSAGEM_LOGIN = 'Login efetuado';
     const MENSAGEM_CONTATO = 'Contato efetuado';
+    const MENSAGEM_ATIVACAO = 'Ativação efetuada';
     /**
      * @inheritdoc
      */

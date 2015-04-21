@@ -5,14 +5,17 @@ namespace frontend\modules\dashboard\controllers;
 use Yii;
 use common\models\Cliente;
 use common\models\TipoCliente;
+use common\models\TipoPessoa;
 use common\models\Endereco;
 use common\models\Status;
 use common\models\Log;
+use common\models\UnidadeFederal;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 use yii\web\Request;
 use yii\web\Response;
+use yii\helpers\ArrayHelper;
 use yii\helpers\EmailHelper;
 use yii\web\Controller;
 use yii\web\Session;
@@ -21,22 +24,32 @@ class CadastroController extends Controller
 {
 	public function actionIndex()
 	{
-		$objSession = new Session;
 
-		$intIdCliente = $objSession->get('INT_ID_CLIENTE');
+		$objModelCliente = new Cliente();
+		$objModelTipoCliente = new TipoCliente();
+		$objModelTipoPessoa = new TipoPessoa();
+		$objModelEndereco = new Endereco();
+		$objModelUnidadeFederal = new UnidadeFederal();
 
-		$objModelCliente = $this->findModel($intIdCliente);
-		if( isset($_POST['Cliente']) ) {
-			$arrDados = $_POST['Cliente'];
-			$arrDados['INT_ID_CLIENTE'] = $intIdCliente;
-		}
+		$objTipoPessoa = $objModelTipoPessoa->find()->all();
+		$arrTipoPessoa = ArrayHelper::map($objTipoPessoa,'INT_ID_TIPO_PESSOA','STR_DESCRICAO');
 
-		$arrEndereco['CLIENTE_INT_ID_CLIENTE'] = $intIdCliente;
+		$objTipoCliente = $objModelTipoCliente->find()->all();
+		$arrTipoCliente = ArrayHelper::map($objTipoCliente,'INT_ID_TIPO_CLIENTE','STR_DESCRICAO');
+
+		$objUnidadeFederal = $objModelUnidadeFederal->find()->all();
+		$arrUnidadeFederal = ArrayHelper::map($objUnidadeFederal,'INT_ID_UNIDADE_FEDERAL','STR_DESCRICAO_UNIDADE_FEDERAL');
+
+		$objModelCliente = $this->findModel(Yii::$app->session->get('INT_ID_CLIENTE'));
+
+		$arrEndereco['CLIENTE_INT_ID_CLIENTE'] = Yii::$app->session->get('INT_ID_CLIENTE');
 		$objModelEndereco = $this->findEndereco($arrEndereco);
 
 		return $this->render('/cliente/form', [
 			'objModelCliente' => $objModelCliente,
 			'objModelEndereco' => $objModelEndereco,
+			'arrUnidadeFederal' => $arrUnidadeFederal,
+			'arrTipoPessoa' => $arrTipoPessoa,
 		]);
 
 	}
@@ -86,6 +99,13 @@ class CadastroController extends Controller
 						// Envia o Email de Ativação 
 						$arrCliente['STR_TIPO_ENVIO'] = 'ativacao';
 						EmailHelper::SendEmail($arrCliente);
+
+						// Gravação de log
+						$arrLog = array();
+						$arrLog['CLIENTE_INT_ID_CLIENTE'] = $arrResult['INT_ID_CLIENTE'];
+						$arrLog['STR_OCORRENCIA'] = Log::MENSAGEM_ATIVACAO;
+
+						$objModelLog->saveLog($arrLog);
 
 						$arrResponse['message'] = 'Ativação realizada com sucesso.';
 					} else {

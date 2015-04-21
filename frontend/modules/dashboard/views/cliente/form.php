@@ -4,29 +4,12 @@ use yii\helpers\Html;
 
 use yii\bootstrap\ActiveForm;
 use yii\i18n\Formatter;
-use common\models\Status;
-use common\models\TipoPessoa;
-use common\models\TipoCliente;
-use common\models\UnidadeFederal;
-use yii\helpers\ArrayHelper;
 use yii\jui\DatePicker;
 
 $hoje = date('d/m/Y');
 
 $dataNascimento = isset($objModelCliente->DAT_DATA_NASCIMENTO) ? $objModelCliente->DAT_DATA_NASCIMENTO : date('Y-m-d');
 $dataFormatada = Yii::$app->formatter->asDate( implode("-",array_reverse(explode("/",$dataNascimento))), 'php:d/m/Y');
-
-$status=Status::find()->all();
-$listStatus=ArrayHelper::map($status,'INT_ID_STATUS','STR_DESCRICAO_STATUS');
-
-$tipoPessoa=TipoPessoa::find()->all();
-$listPessoa=ArrayHelper::map($tipoPessoa,'INT_ID_TIPO_PESSOA','STR_DESCRICAO');
-
-$tipoCliente=TipoCliente::find()->all();
-$listCliente=ArrayHelper::map($tipoCliente,'INT_ID_TIPO_CLIENTE','STR_DESCRICAO');
-
-$estados=UnidadeFederal::find()->all();
-$listEstados=ArrayHelper::map($estados,'INT_ID_UNIDADE_FEDERAL','STR_DESCRICAO_UNIDADE_FEDERAL');
 
 $this->title = 'Informações do Cliente';
 ?>
@@ -35,205 +18,202 @@ $this->title = 'Informações do Cliente';
 		<h3></h3>
 	</div>
 
-	<div class="row">
+	<div class="usuario-form row">
 
-		<div class="usuario-form row">
-
-			<?php $objFormCliente = ActiveForm::begin(['id' => 'cliente-form', 'method' => 'post','layout' => 'default']); ?>
+		<?php $objFormCliente = ActiveForm::begin(['id' => 'cliente-form', 'method' => 'post','layout' => 'default']); ?>
+		<div class="row">	
+			<div class="col-md-4">
+			<?= $objFormCliente->field($objModelCliente, 'TIPO_PESSOA_INT_ID_TIPO_PESSOA', [
+				'template' => '<div class="input-group"><span class="input-group-addon">{label}</span>{input}</div>',
+			])->dropDownList($arrTipoPessoa, ['prompt'=>'Selecione...', 'id'=>'tipo_pessoa', 'size'=>1]);
+			?>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+			<?= $objFormCliente->field($objModelCliente, 'STR_NOME_COMPLETO', [ 
+				'template' => '<div class="input-group"><span class="input-group-addon">{label}</span>{input}</div>',
+			])->textInput(['maxlength' => 200, 'readonly'=>true]) ?>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+			<?php echo $objFormCliente->field($objModelCliente, 'STR_EMAIL', [ 
+				'template' => '<div class="input-group"><span class="input-group-addon">{label}</span>{input}</div> {error}',
+			])->textInput(['maxlength' => 150, 'readonly'=>true]);?>
+			</div>
+		</div>
+		<div class="row fisica">
+			<div class="col-md-4">
+			<?= $objFormCliente->field($objModelCliente, 'DAT_DATA_NASCIMENTO', [ 
+				'template' => '<div class="input-group"><span class="input-group-addon">{label}</span>{input}</div>',
+			])->widget(DatePicker::className(),[ 'language' => 'pt-BR', 'dateFormat' => 'dd/MM/yyyy'])->textInput(['maxlength' => 10, 'value' => $dataFormatada]) ?>
+			</div>
+			<div class="col-md-4">
+			<?= $objFormCliente->field($objModelCliente, 'STR_SEXO', [ 
+				'template' => '<div class="input-group"><span class="input-group-addon">{label}</span>{input}</div>',
+			])->dropDownList( [ 'M'=>'Masculino','F'=>'Feminino'], ['prompt'=>'Selecione', 'id'=>'sexo', 'size'=>1]);
+			?>
+			</div>
+			<div class="col-md-4">
+			<?= $objFormCliente->field($objModelCliente, 'STR_RG', [ 
+				'template' => '<div class="input-group"><span class="input-group-addon">{label}</span>{input}</div>',
+			])->textInput(['maxlength' => 10]) ?>
+			</div>
+		</div>
+		<div class="row">		
+			<div class="col-md-6 fisica">
+			<?= $objFormCliente->field($objModelCliente, 'STR_CPF', [ 
+				'template' => '<div class="input-group"><span class="input-group-addon">{label}</span>{input}</div>',
+			])->textInput(['maxlength' => 11]) ?>
+			</div>
+			<div class="col-md-6 juridica">
+			<?= $objFormCliente->field($objModelCliente, 'STR_CNPJ', [ 
+				'template' => '<div class="input-group"><span class="input-group-addon">{label}</span>{input}</div>',
+			])->textInput(['maxlength' => 14]) ?>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-4">
+			<?= $objFormCliente->field($objModelCliente, 'INT_TELEFONE_DDI', [ 
+				'template' => '<div class="input-group"><span class="input-group-addon">{label}</span>{input}</div>',
+			])->textInput(['maxlength' => 2]) ?>
+			</div>
+			<div class="col-md-4">
+			<?= $objFormCliente->field($objModelCliente, 'INT_TELEFONE_DDD', [ 
+				'template' => '<div class="input-group"><span class="input-group-addon">{label}</span>{input}</div>',
+			])->textInput(['maxlength' => 2]) ?>
+			</div>
+			<div class="col-md-4">
+			<?= $objFormCliente->field($objModelCliente, 'INT_TELEFONE', [ 
+				'template' => '<div class="input-group"><span class="input-group-addon">{label}</span>{input}</div>',
+			])->textInput(['maxlength' => 8]) ?>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-4">
+			<?= $objFormCliente->field($objModelCliente, 'INT_CELULAR_DDI', [ 
+				'template' => '<div class="input-group"><span class="input-group-addon">{label}</span>{input}</div>',
+			])->textInput(['maxlength' => 2]) ?>
+			</div>
+			<div class="col-md-4">
+			<?= $objFormCliente->field($objModelCliente, 'INT_CELULAR_DDD', [ 
+				'template' => '<div class="input-group"><span class="input-group-addon">{label}</span>{input}</div>',
+			])->textInput(['maxlength' => 2]) ?>
+			</div>
+			<div class="col-md-4">
+			<?= $objFormCliente->field($objModelCliente, 'INT_CELULAR', [ 
+				'template' => '<div class="input-group"><span class="input-group-addon">{label}</span>{input}</div>',
+			])->textInput(['maxlength' => 9]) ?>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-4">	
+			<?= $objFormCliente->field($objModelCliente, 'INT_FAX_DDI', [ 
+				'template' => '<div class="input-group"><span class="input-group-addon">{label}</span>{input}</div>',
+			])->textInput(['maxlength' => 2]) ?>
+			</div>
+			<div class="col-md-4">
+			<?= $objFormCliente->field($objModelCliente, 'INT_FAX_DDD', [ 
+				'template' => '<div class="input-group"><span class="input-group-addon">{label}</span>{input}</div>',
+			])->textInput(['maxlength' => 2]) ?>
+			</div>
+			<div class="col-md-4">
+			<?= $objFormCliente->field($objModelCliente, 'INT_FAX', [ 
+				'template' => '<div class="input-group"><span class="input-group-addon">{label}</span>{input}</div>',
+			])->textInput(['maxlength' => 8]) ?>
+			</div>
+		</div>
+		<div class="row juridica">		
 			<div class="col-md-12">	
-				<div class="col-md-4">
-				<?= $objFormCliente->field($objModelCliente, 'TIPO_PESSOA_INT_ID_TIPO_PESSOA', [
-					'template' => '<div class="input-group"><span class="input-group-addon">{label}</span>{input}</div>',
-				])->dropDownList($listPessoa, ['prompt'=>'Selecione...', 'id'=>'tipo_pessoa', 'size'=>1]);
-				?>
-				</div>
+			<?= $objFormCliente->field($objModelCliente, 'STR_RAZAO_SOCIAL', [ 
+				'template' => '<div class="input-group"><span class="input-group-addon">{label}</span>{input}</div>',
+			])->textInput(['maxlength' => 255]) ?>
 			</div>
+		</div>
+		<div class="row juridica">
 			<div class="col-md-12">
-				<div class="col-md-12">
-				<?= $objFormCliente->field($objModelCliente, 'STR_NOME_COMPLETO', [ 
-					'template' => '<div class="input-group"><span class="input-group-addon">{label}</span>{input}</div>',
-				])->textInput(['maxlength' => 200, 'readonly'=>true]) ?>
-				</div>
+			<?= $objFormCliente->field($objModelCliente, 'STR_NOME_FANTASIA', [ 
+				'template' => '<div class="input-group"><span class="input-group-addon">{label}</span>{input}</div>',
+			])->textInput(['maxlength' => 255]) ?>
 			</div>
-			<div class="col-md-12">
-				<div class="col-md-12">
-				<?php echo $objFormCliente->field($objModelCliente, 'STR_EMAIL', [ 
-					'template' => '<div class="input-group"><span class="input-group-addon">{label}</span>{input}</div> {error}',
-				])->textInput(['maxlength' => 150, 'readonly'=>true]);?>
-				</div>
+		</div>
+		<div class="row juridica">
+			<div class="col-md-6">
+			<?= $objFormCliente->field($objModelCliente, 'STR_INSCRICAO_MUNICIPAL', [ 
+				'template' => '<div class="input-group"><span class="input-group-addon">{label}</span>{input}</div>',
+			])->textInput(['maxlength' => 255]) ?>
 			</div>
-			<div class="col-md-12 fisica">
-				<div class="col-md-4">
-				<?= $objFormCliente->field($objModelCliente, 'DAT_DATA_NASCIMENTO', [ 
+			<div class="col-md-6">
+			<?php
+				echo $objFormCliente->field($objModelCliente, 'STR_CATEGORIA_EMPRESA', [
 					'template' => '<div class="input-group"><span class="input-group-addon">{label}</span>{input}</div>',
-				])->widget(DatePicker::className(),[ 'language' => 'pt-BR', 'dateFormat' => 'dd/MM/yyyy'])->textInput(['maxlength' => 10, 'value' => $dataFormatada]) ?>
-				</div>
-				<div class="col-md-4">
-				<?= $objFormCliente->field($objModelCliente, 'STR_SEXO', [ 
+				])->dropDownList(['Matriz'=>'Matriz', 'Filial'=>'Filial'], ['size'=>1]);
+			?>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-4">
+				<?= $objFormCliente->field($objModelEndereco, 'INT_CEP', [ 
 					'template' => '<div class="input-group"><span class="input-group-addon">{label}</span>{input}</div>',
-				])->dropDownList( [ 'M'=>'Masculino','F'=>'Feminino'], ['prompt'=>'Selecione', 'id'=>'sexo', 'size'=>1]);
-				?>
-				</div>
-				<div class="col-md-4">
-				<?= $objFormCliente->field($objModelCliente, 'STR_RG', [ 
+				])->textInput(['maxlength' => 8]) ?>
+			</div>
+			<div class="col-md-4">
+				<?= $objFormCliente->field($objModelEndereco, 'STR_CAIXA_POSTAL', [ 
 					'template' => '<div class="input-group"><span class="input-group-addon">{label}</span>{input}</div>',
 				])->textInput(['maxlength' => 10]) ?>
-				</div>
 			</div>
-			<div class="col-md-12">		
-				<div class="col-md-6 fisica">
-				<?= $objFormCliente->field($objModelCliente, 'STR_CPF', [ 
-					'template' => '<div class="input-group"><span class="input-group-addon">{label}</span>{input}</div>',
-				])->textInput(['maxlength' => 11]) ?>
-				</div>
-				<div class="col-md-6 juridica">
-				<?= $objFormCliente->field($objModelCliente, 'STR_CNPJ', [ 
-					'template' => '<div class="input-group"><span class="input-group-addon">{label}</span>{input}</div>',
-				])->textInput(['maxlength' => 14]) ?>
-				</div>
-			</div>
-			<div class="col-md-12">
-				<div class="col-md-4">
-				<?= $objFormCliente->field($objModelCliente, 'INT_TELEFONE_DDI', [ 
-					'template' => '<div class="input-group"><span class="input-group-addon">{label}</span>{input}</div>',
-				])->textInput(['maxlength' => 2]) ?>
-				</div>
-				<div class="col-md-4">
-				<?= $objFormCliente->field($objModelCliente, 'INT_TELEFONE_DDD', [ 
-					'template' => '<div class="input-group"><span class="input-group-addon">{label}</span>{input}</div>',
-				])->textInput(['maxlength' => 2]) ?>
-				</div>
-				<div class="col-md-4">
-				<?= $objFormCliente->field($objModelCliente, 'INT_TELEFONE', [ 
-					'template' => '<div class="input-group"><span class="input-group-addon">{label}</span>{input}</div>',
-				])->textInput(['maxlength' => 8]) ?>
-				</div>
-			</div>
-			<div class="col-md-12">
-				<div class="col-md-4">
-				<?= $objFormCliente->field($objModelCliente, 'INT_CELULAR_DDI', [ 
-					'template' => '<div class="input-group"><span class="input-group-addon">{label}</span>{input}</div>',
-				])->textInput(['maxlength' => 2]) ?>
-				</div>
-				<div class="col-md-4">
-				<?= $objFormCliente->field($objModelCliente, 'INT_CELULAR_DDD', [ 
-					'template' => '<div class="input-group"><span class="input-group-addon">{label}</span>{input}</div>',
-				])->textInput(['maxlength' => 2]) ?>
-				</div>
-				<div class="col-md-4">
-				<?= $objFormCliente->field($objModelCliente, 'INT_CELULAR', [ 
-					'template' => '<div class="input-group"><span class="input-group-addon">{label}</span>{input}</div>',
-				])->textInput(['maxlength' => 9]) ?>
-				</div>
-			</div>
-			<div class="col-md-12">
-				<div class="col-md-4">	
-				<?= $objFormCliente->field($objModelCliente, 'INT_FAX_DDI', [ 
-					'template' => '<div class="input-group"><span class="input-group-addon">{label}</span>{input}</div>',
-				])->textInput(['maxlength' => 2]) ?>
-				</div>
-				<div class="col-md-4">
-				<?= $objFormCliente->field($objModelCliente, 'INT_FAX_DDD', [ 
-					'template' => '<div class="input-group"><span class="input-group-addon">{label}</span>{input}</div>',
-				])->textInput(['maxlength' => 2]) ?>
-				</div>
-				<div class="col-md-4">
-				<?= $objFormCliente->field($objModelCliente, 'INT_FAX', [ 
-					'template' => '<div class="input-group"><span class="input-group-addon">{label}</span>{input}</div>',
-				])->textInput(['maxlength' => 8]) ?>
-				</div>
-			</div>
-			<div class="col-md-12 juridica">		
-				<div class="col-md-12">	
-				<?= $objFormCliente->field($objModelCliente, 'STR_RAZAO_SOCIAL', [ 
-					'template' => '<div class="input-group"><span class="input-group-addon">{label}</span>{input}</div>',
-				])->textInput(['maxlength' => 255]) ?>
-				</div>
-			</div>
-			<div class="col-md-12 juridica">
-				<div class="col-md-12">
-				<?= $objFormCliente->field($objModelCliente, 'STR_NOME_FANTASIA', [ 
-					'template' => '<div class="input-group"><span class="input-group-addon">{label}</span>{input}</div>',
-				])->textInput(['maxlength' => 255]) ?>
-				</div>
-			</div>
-			<div class="col-md-12 juridica">
-				<div class="col-md-6">
-				<?= $objFormCliente->field($objModelCliente, 'STR_INSCRICAO_MUNICIPAL', [ 
-					'template' => '<div class="input-group"><span class="input-group-addon">{label}</span>{input}</div>',
-				])->textInput(['maxlength' => 255]) ?>
-				</div>
-				<div class="col-md-6">
-				<?php
-					echo $objFormCliente->field($objModelCliente, 'STR_CATEGORIA_EMPRESA', [
-						'template' => '<div class="input-group"><span class="input-group-addon">{label}</span>{input}</div>',
-					])->dropDownList(['Matriz'=>'Matriz', 'Filial'=>'Filial'], ['size'=>1]);
-				?>
-				</div>
-			</div>
-			<div class="col-md-12">
-				<div class="col-md-4">
-					<?= $objFormCliente->field($objModelEndereco, 'INT_CEP', [ 
-						'template' => '<div class="input-group"><span class="input-group-addon">{label}</span>{input}</div>',
-					])->textInput(['maxlength' => 8]) ?>
-				</div>
-				<div class="col-md-4">
-					<?= $objFormCliente->field($objModelEndereco, 'STR_CAIXA_POSTAL', [ 
-						'template' => '<div class="input-group"><span class="input-group-addon">{label}</span>{input}</div>',
-					])->textInput(['maxlength' => 10]) ?>
-				</div>
-			</div>
-			<div class="col-md-12">	
-				<div class="col-md-4">
-					<?php 
-					echo $objFormCliente->field($objModelEndereco, 'UNIDADE_FEDERAL_INT_ID_UNIDADE_FEDERAL', [
-						'template' => '<div class="input-group"><span class="input-group-addon">{label}</span>{input}</div>',
-					])->dropDownList($listEstados, ['prompt'=>'Selecione...', 'id'=>'unidade_federal', 'size'=>1]);
-					?>
-				</div>	
-				<div class="col-md-4">
-					<?= $objFormCliente->field($objModelEndereco, 'STR_MUNICIPIO', [ 
-						'template' => '<div class="input-group"><span class="input-group-addon">{label}</span>{input}</div>',
-					])->textInput(['maxlength' => 150]) ?>
-				</div>
-				<div class="col-md-4">	
-					<?= $objFormCliente->field($objModelEndereco, 'STR_BAIRRO', [ 
-						'template' => '<div class="input-group"><span class="input-group-addon">{label}</span>{input}</div>',
-					])->textInput(['maxlength' => 150]) ?>
-				</div>
-			</div>
-			<div class="col-md-12">	
-				<div class="col-md-12">
-					<?= $objFormCliente->field($objModelEndereco, 'STR_ENDERECO', [ 
-						'template' => '<div class="input-group"><span class="input-group-addon">{label}</span>{input}</div>',
-					])->textInput(['maxlength' => 255]) ?>
-				</div>	
-			</div>
-			<div class="col-md-12">	
-				<div class="col-md-4">	
-					<?= $objFormCliente->field($objModelEndereco, 'STR_NUMERO', [ 
-						'template' => '<div class="input-group"><span class="input-group-addon">{label}</span>{input}</div>',
-					])->textInput(['maxlength' => 10]) ?>
-				</div>
-				<div class="col-md-8">
-					<?= $objFormCliente->field($objModelEndereco, 'STR_COMPLEMENTO', [ 
-						'template' => '<div class="input-group"><span class="input-group-addon">{label}</span>{input}</div>',
-					])->textInput(['maxlength' => 150]) ?>
-				</div>
-			</div>
-			
-			<div class="form-group col-md-11 text-center">
-				<?php echo Html::hiddenInput('Hoje', $hoje , ['id'=>'hoje'] );?>
-				<?php echo $objFormCliente->field($objModelCliente, 'TIPO_CLIENTE_INT_ID_TIPO_CLIENTE')->label(FALSE)->hiddenInput();?>
-				<?php echo $objFormCliente->field($objModelEndereco, 'INT_ID_ENDERECO')->label(FALSE)->hiddenInput();?>
-				<?= Html::button('Gravar', [
-						'class' => 'alterar btn btn-primary submit-button ',
-						'name' => 'alterar-button']) ?>
-			</div>
-
-			<?php ActiveForm::end(); ?>
-
 		</div>
+		<div class="row">	
+			<div class="col-md-4">
+				<?php 
+				echo $objFormCliente->field($objModelEndereco, 'UNIDADE_FEDERAL_INT_ID_UNIDADE_FEDERAL', [
+					'template' => '<div class="input-group"><span class="input-group-addon">{label}</span>{input}</div>',
+				])->dropDownList($arrUnidadeFederal, ['prompt'=>'Selecione...', 'id'=>'unidade_federal', 'size'=>1]);
+				?>
+			</div>	
+			<div class="col-md-4">
+				<?= $objFormCliente->field($objModelEndereco, 'STR_MUNICIPIO', [ 
+					'template' => '<div class="input-group"><span class="input-group-addon">{label}</span>{input}</div>',
+				])->textInput(['maxlength' => 150]) ?>
+			</div>
+			<div class="col-md-4">	
+				<?= $objFormCliente->field($objModelEndereco, 'STR_BAIRRO', [ 
+					'template' => '<div class="input-group"><span class="input-group-addon">{label}</span>{input}</div>',
+				])->textInput(['maxlength' => 150]) ?>
+			</div>
+		</div>
+		<div class="row">	
+			<div class="col-md-12">
+				<?= $objFormCliente->field($objModelEndereco, 'STR_ENDERECO', [ 
+					'template' => '<div class="input-group"><span class="input-group-addon">{label}</span>{input}</div>',
+				])->textInput(['maxlength' => 255]) ?>
+			</div>	
+		</div>
+		<div class="row">	
+			<div class="col-md-4">	
+				<?= $objFormCliente->field($objModelEndereco, 'STR_NUMERO', [ 
+					'template' => '<div class="input-group"><span class="input-group-addon">{label}</span>{input}</div>',
+				])->textInput(['maxlength' => 10]) ?>
+			</div>
+			<div class="col-md-8">
+				<?= $objFormCliente->field($objModelEndereco, 'STR_COMPLEMENTO', [ 
+					'template' => '<div class="input-group"><span class="input-group-addon">{label}</span>{input}</div>',
+				])->textInput(['maxlength' => 150]) ?>
+			</div>
+		</div>
+		
+		<div class="form-group col-md-12 text-center">
+			<?php echo Html::hiddenInput('Hoje', $hoje , ['id'=>'hoje'] );?>
+			<?php echo $objFormCliente->field($objModelCliente, 'TIPO_CLIENTE_INT_ID_TIPO_CLIENTE')->label(FALSE)->hiddenInput();?>
+			<?php echo $objFormCliente->field($objModelEndereco, 'INT_ID_ENDERECO')->label(FALSE)->hiddenInput();?>
+			<?= Html::button('Gravar', [
+					'class' => 'alterar btn btn-primary submit-button ',
+					'name' => 'alterar-button']) ?>
+		</div>
+
+		<?php ActiveForm::end(); ?>
+
 	</div>
 </div>
 <script type="text/javascript">

@@ -32,49 +32,8 @@ class ClienteController extends Controller {
 	 * 
 	 * @throws Exception
 	 */
-	public function actionCadastro() {
-
-		/*
-		try {
-
-			$objModelCliente = new Cliente(['scenario' => 'register']);
-			$objModelLog = new Log();
-
-			if (isset($_POST['Cliente'])) {
-				$arrDados = $_POST['Cliente'];
-
-				if ($arrDados['STR_SENHA'] == $arrDados['STR_SENHA_CONFIRME']) {
-
-					$arrStatusEmail = $objModelCliente->verificaEmail($arrDados['STR_EMAIL']);
-					if (empty($arrStatusEmail)) {
-						// Salva o organizador
-						$intIdCliente = $objModelCliente->saveOrganizador($arrDados);
-
-						// Salva o Log de Cadastro
-						$arrLog = array();
-						$arrLog['CLIENTE_INT_ID_CLIENTE'] = $intIdCliente;
-						$arrLog['STR_OCORRENCIA'] = Log::MENSAGEM_CADASTRO;
-						$objModelLog->saveLog($arrLog);
-
-						// Envia o Email de confirmação 
-						$arrDados['STR_TIPO_ENVIO'] = 'confirmacao';
-						EmailHelper::SendEmail($arrDados);
-
-						Yii::$app->session->setFlash('cadastrado', 'Agradecemos por se cadastrar no Gigantes dos Eventos. Para acessar seu Dashboard insira seu e-mail e senha.');
-						return $this->redirect(['site/index', '#' => 'login']);
-					} else
-						Yii::$app->session->setFlash('error', 'Seu e-mail já cadastrado, por favor, pedimos para que verifique e requisite lembrar de sua senha. Obrigado!');
-				} else
-					Yii::$app->session->setFlash('error', 'Sua senha, está diferente da requisitada. Por favor, pedimos que verifique');
-			} else
-				Yii::$app->session->setFlash('error', '"Os campos não estão preenchidos corretamente, por favor, verifique!');
-
-			return $this->redirect(['site/index', '#' => 'register']);
-			
-		} catch (\Exception $objException) {
-			Yii::$app->session->setFlash('error', $objException->getMessage());
-			return $this->redirect(['site/index', '#' => 'register']);
-		} */
+	public function actionCadastro()
+	{
 
 		Yii::$app->response->format = Response::FORMAT_JSON;
 		$arrResponse = array('message' => '', 'response' => false );
@@ -142,6 +101,7 @@ class ClienteController extends Controller {
 
 			$objModelCliente = new Cliente(['scenario' => 'login']);
 			$objSession = new Session();
+			$objModelLog = new Log();
 
 			if (isset($_POST['Cliente'])) {
 				$arrDados = $_POST['Cliente'];
@@ -160,8 +120,16 @@ class ClienteController extends Controller {
 					$objSession->set( 'LOGADO', true );
 					// Define o tempo de acesso
 					$objSession->set('passwordResetTokenExpire', time() + Yii::$app->params['user.passwordResetTokenExpire']); // 30 minutos
-					$objSession->close();				
+					$objSession->close();
 
+					// Gravação de log
+					$arrLog = array();
+					$arrLog['CLIENTE_INT_ID_CLIENTE'] = $arrEmailSenha['INT_ID_CLIENTE'];
+					$arrLog['STR_OCORRENCIA'] = Log::MENSAGEM_LOGIN;
+
+					$objModelLog->saveLog($arrLog);
+
+					// Redireciona para a view principal DASHBOARD
 					return $this->redirect(['dashboard/']);
 				}
 

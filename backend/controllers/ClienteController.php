@@ -5,6 +5,8 @@ namespace backend\controllers;
 use Yii;
 use common\models\Cliente;
 use common\models\TipoCliente;
+use common\models\TipoPessoa;
+use common\models\Status;
 use common\models\Endereco;
 use common\models\Log;
 use yii\web\Controller;
@@ -14,6 +16,7 @@ use yii\filters\AccessControl;
 use yii\web\Request;
 use yii\web\Response;
 use yii\helpers\EmailHelper;
+use yii\helpers\ArrayHelper;
 
 class ClienteController extends Controller
 {
@@ -156,6 +159,19 @@ class ClienteController extends Controller
 			$objModelEndereco = new Endereco();
 			$objModelLog = new Log();
 
+			$objModelTipoCliente = new TipoCliente();
+			$objModelTipoPessoa = new TipoPessoa();
+			$objModelStatus = new Status();
+
+			$objStatus = $objModelStatus->find()->all();
+			$arrStatus = ArrayHelper::map($objStatus,'INT_ID_STATUS','STR_DESCRICAO_STATUS');
+
+			$objTipoPessoa = $objModelTipoPessoa->find()->all();
+			$arrTipoPessoa = ArrayHelper::map($objTipoPessoa,'INT_ID_TIPO_PESSOA','STR_DESCRICAO');
+
+			$objTipoCliente = $objModelTipoCliente->find()->all();
+			$arrTipoCliente = ArrayHelper::map($objTipoCliente,'INT_ID_TIPO_CLIENTE','STR_DESCRICAO');
+
 			if ($objModelCliente->load(Yii::$app->request->post()) ){
 
 				if( isset($_POST['Cliente']) ){
@@ -198,7 +214,10 @@ class ClienteController extends Controller
 
 			return $this->render('/cliente/create', [
 				'objModelCliente' => $objModelCliente,
-				'endereco' => $objModelEndereco,
+				'objModelEndereco' => $objModelEndereco,
+				'arrTipoCliente' => $arrTipoCliente,
+				'arrTipoPessoa' => $arrTipoPessoa,
+				'arrStatus' => $arrStatus,
 			]);
 			
 			
@@ -230,13 +249,28 @@ class ClienteController extends Controller
 		}
 
 		$objModelEndereco = new Endereco();
+		$objModelTipoCliente = new TipoCliente();
+		$objModelTipoPessoa = new TipoPessoa();
+		$objModelStatus = new Status();
+
+		$objStatus = $objModelStatus->find()->all();
+		$arrStatus = ArrayHelper::map($objStatus,'INT_ID_STATUS','STR_DESCRICAO_STATUS');
+
+		$objTipoPessoa = $objModelTipoPessoa->find()->all();
+		$arrTipoPessoa = ArrayHelper::map($objTipoPessoa,'INT_ID_TIPO_PESSOA','STR_DESCRICAO');
+
+		$objTipoCliente = $objModelTipoCliente->find()->all();
+		$arrTipoCliente = ArrayHelper::map($objTipoCliente,'INT_ID_TIPO_CLIENTE','STR_DESCRICAO');
 
 		if ($objModelCliente->load(Yii::$app->request->post()) && $objModelCliente->saveCliente($arrDados)) {
 			return $this->redirect(['/cliente/'.$arrTipoCliente[$objModelCliente->TIPO_CLIENTE_INT_ID_TIPO_CLIENTE] ]);
 		} else {
 			return $this->render('/cliente/update', [
 				'objModelCliente' => $objModelCliente,
-				'endereco' => $objModelEndereco,
+				'objModelEndereco' => $objModelEndereco,
+				'arrTipoCliente' => $arrTipoCliente,
+				'arrTipoPessoa' => $arrTipoPessoa,
+				'arrStatus' => $arrStatus,
 			]);
 		}
 	}
