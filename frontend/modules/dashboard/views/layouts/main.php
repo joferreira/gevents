@@ -13,13 +13,13 @@ use yii\web\Session;
 AppAsset::register($this);
 // Tratamento de sessão de usuário
 
-if ( Yii::$app->session->get('LOGADO') ) {
+if ( Yii::$app->session->get('GE_LOGADO') ) {
 	// Verifica se o tempo definido é menor que o tempo real
 	// Caso o tempo definido seja menor que o tempo real, será feito o logout e redirecionado para a tela de login
 	if ( Yii::$app->session->get('passwordResetTokenExpire') < time() ) {
 		Yii::$app->response->redirect(array('cliente/logout', 'id' => 302));
 	}
-} elseif( !Yii::$app->session->get('LOGADO') ) {
+} elseif( !Yii::$app->session->get('GE_LOGADO') ) {
 	//return Controller::redirect(['/cliente/logout']);
 	Yii::$app->response->redirect(array('cliente/logout', 'id' => 302));
 }

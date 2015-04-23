@@ -43,6 +43,10 @@ class EventoController extends Controller
 			// Post de dados do formulário
 			if ( isset($_POST['Evento']) ) {
 				//$objModelEvento->attributes = $_POST['Evento'];
+
+				print_r($_POST['Evento']);
+
+				
 				
 				if ( $objModelEvento->load(Yii::$app->request->post()) ) {
 					$objModelEvento->saveEvento($_POST['Evento']);

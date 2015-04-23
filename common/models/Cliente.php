@@ -300,7 +300,7 @@ class Cliente extends ActiveRecord
 			if( empty($arrDados['TIPO_CLIENTE_INT_ID_TIPO_CLIENTE']) )
 				throw new \Exception('Favor selecionar o Tipo Cliente!');
 
-			if( !$session->get('LOGADO') ) {
+			if( !$session->get('GE_LOGADO') ) {
 				if( empty($arrDados['TIPO_PESSOA_INT_ID_TIPO_PESSOA']) )
 					throw new \Exception('Favor selecionar o Tipo Pessoa!');
 			}

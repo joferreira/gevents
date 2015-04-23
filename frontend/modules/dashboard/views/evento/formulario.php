@@ -44,15 +44,41 @@ $this->title = 'Evento';
 				</div>
 			</div>
 			<div class="row">
-				<div class="col-md-4">
+				<div class="col-md-3">
 				<?= $objFormEvento->field($objModelEvento, 'DAT_DATAHORA_INICIO', [ 
 					'template' => '<div class="input-group"><span class="input-group-addon">{label}</span>{input}</div>',
 				])->widget(DatePicker::className(),[ 'language' => 'pt-BR', 'dateFormat' => 'dd/MM/yyyy'])->textInput(['maxlength' => 10, 'value' => $dataFormatadaInicio]) ?>
 				</div>
-				<div class="col-md-4">
+				<div class="col-md-3">
+					<div class="form-group field-evento-tipo_evento_hora_inicio">
+						<div class="input-group">
+							<span class="input-group-addon"><label for="hora_inicio" class="control-label">Hora</label></span>
+							<?= Html::dropDownList( 'hora_inicio', null, ['test'=>1], ['prompt'=>'Selecione...', 'id'=>'hora_inicio', 'class'=>'form-control', 'size'=>1]);
+								//echo $objFormEvento->field( $objModelEvento , 'DAT_HORA_INICIO', [ 
+								//	'template' => '<div class="input-group"><span class="input-group-addon">{label}</span>{input}</div>',
+								//])->dropDownList( ['prompt'=>'Selecione...', 'id'=>'hora_inicio', 'size'=>1]) 
+							?>
+						</div>
+					</div>
+				
+				</div>
+				<div class="col-md-3">
 				<?= $objFormEvento->field($objModelEvento, 'DAT_DATAHORA_FINAL', [ 
 					'template' => '<div class="input-group"><span class="input-group-addon">{label}</span>{input}</div>',
 				])->widget(DatePicker::className(),[ 'language' => 'pt-BR', 'dateFormat' => 'dd/MM/yyyy'])->textInput(['maxlength' => 10, 'value' => $dataFormatadaFinal]) ?>
+				</div>
+				<div class="col-md-3">
+					<div class="form-group field-evento-tipo_evento_hora_final">
+						<div class="input-group">
+							<span class="input-group-addon"><label for="hora_final" class="control-label">Hora</label></span>
+							<?= Html::dropDownList( 'hora_final', null, ['test1'=>1], ['prompt'=>'Selecione...', 'id'=>'hora_final', 'class'=>'form-control', 'size'=>1]);
+								//$objFormEvento->field($objModelEvento, 'DAT_HORA_FINAL', [ 
+								//	'template' => '<div class="input-group"><span class="input-group-addon">{label}</span>{input}</div>',
+								//])->dropDownList( ['prompt'=>'Selecione...', 'id'=>'hora_final', 'size'=>1])
+							?>
+						</div>
+					</div>
+				
 				</div>
 			</div>
 			<div class="clearfix"></div>
@@ -82,55 +108,68 @@ $this->title = 'Evento';
 				</div>
 			</div>
 			<div class="row">
-				<div class="col-md-4">
-					<?= $objFormEvento->field($objModelEnderecoEvento, 'INT_CEP', [ 
-						'template' => '<div class="input-group"><span class="input-group-addon">{label}</span>{input}</div>',
-					])->textInput(['maxlength' => 8]) ?>
-				</div>
-			</div>
-			<div class="row">	
-				<div class="col-md-4">
-					<?php 
-					echo $objFormEvento->field($objModelEnderecoEvento, 'UNIDADE_FEDERAL_INT_ID_UNIDADE_FEDERAL', [
-						'template' => '<div class="input-group"><span class="input-group-addon">{label}</span>{input}</div>',
-					])->dropDownList($arrUnidadeFederal, ['prompt'=>'Selecione...', 'id'=>'unidade_federal', 'size'=>1]);
-					?>
-				</div>	
-				<div class="col-md-4">
-					<?= $objFormEvento->field($objModelEnderecoEvento, 'STR_MUNICIPIO', [ 
-						'template' => '<div class="input-group"><span class="input-group-addon">{label}</span>{input}</div>',
-					])->textInput(['maxlength' => 150]) ?>
-				</div>
-				<div class="col-md-4">	
-					<?= $objFormEvento->field($objModelEnderecoEvento, 'STR_BAIRRO', [ 
-						'template' => '<div class="input-group"><span class="input-group-addon">{label}</span>{input}</div>',
-					])->textInput(['maxlength' => 150]) ?>
-				</div>
-			</div>
-			<div class="row">	
 				<div class="col-md-12">
-					<?= $objFormEvento->field($objModelEnderecoEvento, 'STR_ENDERECO', [ 
-						'template' => '<div class="input-group"><span class="input-group-addon">{label}</span>{input}</div>',
-					])->textInput(['maxlength' => 255]) ?>
-				</div>	
-			</div>
-			<div class="row">	
-				<div class="col-md-4">	
-					<?= $objFormEvento->field($objModelEnderecoEvento, 'STR_NUMERO', [ 
-						'template' => '<div class="input-group"><span class="input-group-addon">{label}</span>{input}</div>',
-					])->textInput(['maxlength' => 10]) ?>
-				</div>
-				<div class="col-md-8">
-					<?= $objFormEvento->field($objModelEnderecoEvento, 'STR_COMPLEMENTO', [ 
-						'template' => '<div class="input-group"><span class="input-group-addon">{label}</span>{input}</div>',
-					])->textInput(['maxlength' => 150]) ?>
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							Local do Evento
+						</div>
+
+						<div class="panel-body">
+							<div class="row">
+								<div class="col-md-4">
+									<?= $objFormEvento->field($objModelEnderecoEvento, 'INT_CEP', [ 
+										'template' => '<div class="input-group"><span class="input-group-addon">{label}</span>{input}</div>',
+									])->textInput(['maxlength' => 8]) ?>
+								</div>
+							</div>
+							<div class="row">	
+								<div class="col-md-4">
+									<?php 
+									echo $objFormEvento->field($objModelEnderecoEvento, 'UNIDADE_FEDERAL_INT_ID_UNIDADE_FEDERAL', [
+										'template' => '<div class="input-group"><span class="input-group-addon">{label}</span>{input}</div>',
+									])->dropDownList($arrUnidadeFederal, ['prompt'=>'Selecione...', 'id'=>'unidade_federal', 'size'=>1]);
+									?>
+								</div>	
+								<div class="col-md-4">
+									<?= $objFormEvento->field($objModelEnderecoEvento, 'STR_MUNICIPIO', [ 
+										'template' => '<div class="input-group"><span class="input-group-addon">{label}</span>{input}</div>',
+									])->textInput(['maxlength' => 150]) ?>
+								</div>
+								<div class="col-md-4">	
+									<?= $objFormEvento->field($objModelEnderecoEvento, 'STR_BAIRRO', [ 
+										'template' => '<div class="input-group"><span class="input-group-addon">{label}</span>{input}</div>',
+									])->textInput(['maxlength' => 150]) ?>
+								</div>
+							</div>
+							<div class="row">	
+								<div class="col-md-12">
+									<?= $objFormEvento->field($objModelEnderecoEvento, 'STR_ENDERECO', [ 
+										'template' => '<div class="input-group"><span class="input-group-addon">{label}</span>{input}</div>',
+									])->textInput(['maxlength' => 255]) ?>
+								</div>	
+							</div>
+							<div class="row">	
+								<div class="col-md-4">	
+									<?= $objFormEvento->field($objModelEnderecoEvento, 'STR_NUMERO', [ 
+										'template' => '<div class="input-group"><span class="input-group-addon">{label}</span>{input}</div>',
+									])->textInput(['maxlength' => 10]) ?>
+								</div>
+								<div class="col-md-8">
+									<?= $objFormEvento->field($objModelEnderecoEvento, 'STR_COMPLEMENTO', [ 
+										'template' => '<div class="input-group"><span class="input-group-addon">{label}</span>{input}</div>',
+									])->textInput(['maxlength' => 150]) ?>
+								</div>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
 			
 			<div class="form-group col-md-12 text-center">
 				<?php echo Html::hiddenInput('Hoje', $hoje , ['id'=>'hoje'] );?>
+				<?php echo $objFormEvento->field($objModelEvento, 'INT_ID_EVENTO')->label(FALSE)->hiddenInput();?>
 				<?php echo $objFormEvento->field($objModelEnderecoEvento, 'INT_ID_ENDERECO_EVENTO')->label(FALSE)->hiddenInput();?>
-				<?= Html::button('Publicar', [
+				<?= Html::submitInput('Publicar', [
 						'class' => 'alterar btn btn-primary submit-button ',
 						'name' => 'alterar-button']) ?>
 			</div>
