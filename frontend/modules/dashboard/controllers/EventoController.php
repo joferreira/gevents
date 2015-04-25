@@ -39,6 +39,18 @@ class EventoController extends Controller
 
 			$objUnidadeFederal = $objModelUnidadeFederal->find()->all();
 			$arrUnidadeFederal = ArrayHelper::map($objUnidadeFederal,'INT_ID_UNIDADE_FEDERAL','STR_DESCRICAO_UNIDADE_FEDERAL');
+
+			for ($hr=0; $hr < 24 ; $hr++) { 
+				$hora = (strlen($hr) == 1) ? '0'.$hr : $hr;
+				$arrHora[$hora] = $hora; 
+			}
+			//*
+			for ($mn=0; $mn < 12 ; $mn++) {
+				$min = $mn * 5;
+				$minuto = (strlen($min) == 1) ? '0'.$min : $min;
+				$arrMinuto[$minuto] = $minuto;
+			}//*/
+			//$arrMinuto[] = 00;
 			
 			// Post de dados do formulário
 			if ( isset($_POST['Evento']) ) {
@@ -58,6 +70,8 @@ class EventoController extends Controller
 				'objModelEnderecoEvento' => $objModelEnderecoEvento,
 				'arrUnidadeFederal' => $arrUnidadeFederal,
 				'arrTipoEvento' => $arrTipoEvento,
+				'arrHora' => $arrHora,
+				'arrMinuto' => $arrMinuto,
 			]);
 
 		} catch (Exception $objException) {

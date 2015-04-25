@@ -28,57 +28,99 @@ $this->title = 'Evento';
 		<div class="form">
 				
 			<?php $objFormEvento = ActiveForm::begin(['id' => 'evento-form', 'method' => 'post','layout' => 'default', 'action' => ['evento/formulario']]); ?>
-			<div class="row">	
-				<div class="col-md-6">
-				<?= $objFormEvento->field($objModelEvento, 'TIPO_EVENTO_INT_ID_TIPO_EVENTO', [
-					'template' => '<div class="input-group"><span class="input-group-addon">{label}</span>{input}</div>',
-				])->dropDownList($arrTipoEvento, ['prompt'=>'Selecione...', 'id'=>'tipo_evento', 'size'=>1]);
-				?>
-				</div>
-			</div>
 			<div class="row">
 				<div class="col-md-12">
-				<?= $objFormEvento->field($objModelEvento, 'STR_NOME', [ 
-					'template' => '<div class="input-group"><span class="input-group-addon">{label}</span>{input}</div>',
-				])->textInput(['maxlength' => 200]) ?>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-md-3">
-				<?= $objFormEvento->field($objModelEvento, 'DAT_DATAHORA_INICIO', [ 
-					'template' => '<div class="input-group"><span class="input-group-addon">{label}</span>{input}</div>',
-				])->widget(DatePicker::className(),[ 'language' => 'pt-BR', 'dateFormat' => 'dd/MM/yyyy'])->textInput(['maxlength' => 10, 'value' => $dataFormatadaInicio]) ?>
-				</div>
-				<div class="col-md-3">
-					<div class="form-group field-evento-tipo_evento_hora_inicio">
-						<div class="input-group">
-							<span class="input-group-addon"><label for="hora_inicio" class="control-label">Hora</label></span>
-							<?= Html::dropDownList( 'hora_inicio', null, ['test'=>1], ['prompt'=>'Selecione...', 'id'=>'hora_inicio', 'class'=>'form-control', 'size'=>1]);
-								//echo $objFormEvento->field( $objModelEvento , 'DAT_HORA_INICIO', [ 
-								//	'template' => '<div class="input-group"><span class="input-group-addon">{label}</span>{input}</div>',
-								//])->dropDownList( ['prompt'=>'Selecione...', 'id'=>'hora_inicio', 'size'=>1]) 
-							?>
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							Informação do Evento
+						</div>
+
+						<div class="panel-body">
+							<div class="row">	
+								<div class="col-md-6">
+								<?= $objFormEvento->field($objModelEvento, 'TIPO_EVENTO_INT_ID_TIPO_EVENTO', [
+									'template' => '<div class="input-group"><span class="input-group-addon">{label}</span>{input}</div>',
+								])->dropDownList($arrTipoEvento, ['prompt'=>'Selecione...', 'id'=>'tipo_evento', 'size'=>1]);
+								?>
+								</div>
+								<div class="col-md-3">
+									<div class="form-group field-evento-tipo_evento_privado_publico">
+										<div class="input-group">
+											<span class="input-group-addon"><label for="privado_publico" class="control-label">Evento é</label></span>
+											<?= Html::dropDownList( 'Evento[privado_publico]', null, ['publico'=>'Público', 'privado'=>'Privado'], ['prompt'=>'Selecione...', 'id'=>'privado_publico', 'class'=>'form-control', 'size'=>1]);
+											?>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-3">
+								<?= $objFormEvento->field($objModelEvento, 'INT_PAGAMENTO_ATIVO', [ 
+									'template' => '<div class="input-group"><span class="input-group-addon">{label}</span>{input}</div>',
+								])->checkbox() ?>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-12">
+								<?= $objFormEvento->field($objModelEvento, 'STR_NOME', [ 
+									'template' => '<div class="input-group"><span class="input-group-addon">{label}</span>{input}</div>',
+								])->textInput(['maxlength' => 200]) ?>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-4">
+								<?= $objFormEvento->field($objModelEvento, 'DAT_DATA_INICIO', [ 
+									'template' => '<div class="input-group"><span class="input-group-addon">{label}</span>{input}</div>',
+								])->widget(DatePicker::className(),[ 'language' => 'pt-BR', 'dateFormat' => 'dd/MM/yyyy'])->textInput(['maxlength' => 10, 'value' => $dataFormatadaInicio]) ?>
+								</div>
+								<div class="col-md-3">
+									<div class="form-group field-evento-tipo_evento_hora_inicio">
+										<div class="input-group">
+											<span class="input-group-addon"><label for="hora_inicio" class="control-label">Hora</label></span>
+											<?= Html::dropDownList( 'Evento[hora_inicio]', null, $arrHora, ['prompt'=>'Selecione...', 'id'=>'hora_inicio', 'class'=>'form-control','size'=>1]);
+												//echo $objFormEvento->field( $objModelEvento , 'DAT_HORA_INICIO', [ 
+												//	'template' => '<div class="input-group"><span class="input-group-addon">{label}</span>{input}</div>',
+												//])->dropDownList( ['prompt'=>'Selecione...', 'id'=>'hora_inicio', 'size'=>1]) 
+											?>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-3">
+									<div class="form-group field-evento-tipo_evento_min_inicio">
+										<div class="input-group">
+											<span class="input-group-addon"><label for="min_inicio" class="control-label">Min</label></span>
+											<?= Html::dropDownList( 'Evento[minuto_inicio]', null, $arrMinuto, ['prompt'=>'Selecione...', 'id'=>'min_inicio', 'class'=>'form-control', 'size'=>1]);
+											?>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-4">
+								<?= $objFormEvento->field($objModelEvento, 'DAT_DATA_FINAL', [ 
+									'template' => '<div class="input-group"><span class="input-group-addon">{label}</span>{input}</div>',
+								])->widget(DatePicker::className(),[ 'language' => 'pt-BR', 'dateFormat' => 'dd/MM/yyyy'])->textInput(['maxlength' => 10, 'value' => $dataFormatadaFinal]) ?>
+								</div>
+								<div class="col-md-3">
+									<div class="form-group field-evento-tipo_evento_hora_final">
+										<div class="input-group">
+											<span class="input-group-addon"><label for="hora_final" class="control-label">Hora</label></span>
+											<?= Html::dropDownList( 'Evento[hora_final]', null, $arrHora, ['prompt'=>'Selecione...', 'id'=>'hora_final', 'class'=>'form-control', 'size'=>1]);
+											?>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-3">
+									<div class="form-group field-evento-tipo_evento_min_final">
+										<div class="input-group">
+											<span class="input-group-addon"><label for="min_final" class="control-label">Min</label></span>
+											<?= Html::dropDownList( 'Evento[minuto_final]', null, $arrMinuto, ['prompt'=>'Selecione...', 'id'=>'min_final', 'class'=>'form-control', 'size'=>1]);
+											?>
+										</div>
+									</div>
+								</div>
+							</div>
+
 						</div>
 					</div>
-				
-				</div>
-				<div class="col-md-3">
-				<?= $objFormEvento->field($objModelEvento, 'DAT_DATAHORA_FINAL', [ 
-					'template' => '<div class="input-group"><span class="input-group-addon">{label}</span>{input}</div>',
-				])->widget(DatePicker::className(),[ 'language' => 'pt-BR', 'dateFormat' => 'dd/MM/yyyy'])->textInput(['maxlength' => 10, 'value' => $dataFormatadaFinal]) ?>
-				</div>
-				<div class="col-md-3">
-					<div class="form-group field-evento-tipo_evento_hora_final">
-						<div class="input-group">
-							<span class="input-group-addon"><label for="hora_final" class="control-label">Hora</label></span>
-							<?= Html::dropDownList( 'hora_final', null, ['test1'=>1], ['prompt'=>'Selecione...', 'id'=>'hora_final', 'class'=>'form-control', 'size'=>1]);
-								//$objFormEvento->field($objModelEvento, 'DAT_HORA_FINAL', [ 
-								//	'template' => '<div class="input-group"><span class="input-group-addon">{label}</span>{input}</div>',
-								//])->dropDownList( ['prompt'=>'Selecione...', 'id'=>'hora_final', 'size'=>1])
-							?>
-						</div>
-					</div>
-				
 				</div>
 			</div>
 			<div class="clearfix"></div>
@@ -91,7 +133,7 @@ $this->title = 'Evento';
 
 						<div class="panel-body">
 							<div>
-							<?php echo $objFormEvento->field($objModelEvento, 'STR_DESCRICAO')->label(FALSE)->textArea();?>
+							<?php echo $objFormEvento->field($objModelEvento, 'STR_DESCRICAO')->label(FALSE)->textArea(['id'=>'textForm']);?>
 							</div>
 
 						</div>
@@ -160,6 +202,16 @@ $this->title = 'Evento';
 									])->textInput(['maxlength' => 150]) ?>
 								</div>
 							</div>
+							<div class="row">
+								<div class="col-md-8">
+									<div class="checkbox">
+										<label>
+											<input name="Endereco[google]" type="checkbox" value="">Gostaria de exibir endereço no Google Maps?
+										</label>
+									</div>
+								</div>
+								
+							</div>
 						</div>
 					</div>
 				</div>
@@ -169,7 +221,7 @@ $this->title = 'Evento';
 				<?php echo Html::hiddenInput('Hoje', $hoje , ['id'=>'hoje'] );?>
 				<?php echo $objFormEvento->field($objModelEvento, 'INT_ID_EVENTO')->label(FALSE)->hiddenInput();?>
 				<?php echo $objFormEvento->field($objModelEnderecoEvento, 'INT_ID_ENDERECO_EVENTO')->label(FALSE)->hiddenInput();?>
-				<?= Html::submitInput('Publicar', [
+				<?= Html::submitInput('Gravar', [
 						'class' => 'alterar btn btn-primary submit-button ',
 						'name' => 'alterar-button']) ?>
 			</div>

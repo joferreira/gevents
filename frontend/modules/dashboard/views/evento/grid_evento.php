@@ -28,7 +28,7 @@ $this->title = 'Eventos';
 					<th width="150px" class="text-center">Término</th>
 					<th width="75px" class="text-center">Pago ?</th>
 					<th width="90px" class="text-center">Publicado ?</th>
-					<th width="75px" class="text-center">Tipo</th>
+					<th width="75px" class="text-center">Ação</th>
 				</tr>
 			</thead>
 			<tbody>

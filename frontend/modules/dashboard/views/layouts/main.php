@@ -48,6 +48,8 @@ if ( Yii::$app->session->get('GE_LOGADO') ) {
 	<script src="/gevents/frontend/web/modules/metisMenu/dist/metisMenu.js"></script>
 	<script src="/gevents/frontend/web/modules/raphael/raphael-min.js"></script>
 	<script src="/gevents/frontend/web/modules/js/sb-admin-2.js"></script>
+	<!--script src="/gevents/frontend/web/modules/tinymce/jquery.tinymce.min.js"></script-->
+	<script src="/gevents/frontend/web/modules/tinymce/tinymce.min.js"></script>
 
 
 </head>
@@ -137,7 +139,21 @@ if ( Yii::$app->session->get('GE_LOGADO') ) {
 				}
 			}
 		} );
-
+		tinymce.init({
+			language : 'pt_BR',
+			selector: "textarea#textForm",
+			theme: "modern",
+			menubar: false,
+			plugins: [
+				"advlist autolink lists link image charmap print preview hr pagebreak",
+				"searchreplace wordcount visualblocks visualchars code fullscreen",
+				"insertdatetime nonbreaking save table contextmenu directionality",
+				"paste textcolor colorpicker textpattern"
+			],
+			toolbar1: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | print preview | copy paste | forecolor backcolor | fullscreen code",
+			image_advtab: true
+		});
+		
 		$(document).ready(function () {
 			$('#wrapper').on('click', '#cliente-form .alterar', saveCliente);
 
