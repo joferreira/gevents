@@ -24,17 +24,34 @@ $this->title = 'Eventos';
 				<tr>
 					<th width="100px" class="text-center">Cód.</th>
 					<th>Evento</th>
-					<th width="150px">Início</th>
-					<th width="150px" class="text-center">Término</th>
-					<th width="75px" class="text-center">Pago ?</th>
+					<th width="135px" class="text-center">Início</th>
+					<th width="135px" class="text-center">Término</th>
+					<th width="50px" class="text-center">Pago ?</th>
 					<th width="90px" class="text-center">Publicado ?</th>
-					<th width="75px" class="text-center">Ação</th>
+					<th width="130px" class="text-center">Ação</th>
 				</tr>
 			</thead>
 			<tbody>
-
+			<?php if (!empty($arrEventos)) {
+			 	foreach ($arrEventos as $key => $arrEvento) { ?>
+				<tr>
+					<td><?= $arrEvento['INT_ID_EVENTO'];?></td>
+					<td><?= $arrEvento['STR_NOME'];?></td>
+					<td class="text-center"><?= date('d/m/Y H:i:s', strtotime($arrEvento['DAT_DATA_INICIO'].$arrEvento['TIM_HORA_INICIO']));?></td>
+					<td class="text-center"><?= date('d/m/Y H:i:s', strtotime($arrEvento['DAT_DATA_FINAL'].$arrEvento['TIM_HORA_FINAL']));?></td>
+					<td class="text-center"><?= $arrEvento['INT_PAGAMENTO_ATIVO'] ? "<strong class='text-success'>Sim</strong>" : "<strong class='text-danger'>Não</strong>" ;?></td>
+					<td class="text-center"><strong><?= $arrEvento['STR_DESCRICAO_STATUS'];?></strong></td>
+					<td>						
+						<?= Html::a('Publicar', ['evento/publicar','id' => $arrEvento['INT_ID_EVENTO']], ['class'=>'btn btn-success']) ?>
+						<?= Html::a('Editar', ['evento/editar','id' =>$arrEvento['INT_ID_EVENTO']], ['class'=>'btn btn-primary']) ?>
+					</td>
+				</tr>
+			<?php } 
+			} ?>
 			</tbody>
 		</table>
+
+
 	</div>
 </div>
 <!-- /GRID CONTATO -->
@@ -46,7 +63,7 @@ $(document).ready(function() {
 			"searching": true,
 			"ordering": true,
 			"columnDefs": [
-				{ "orderable": false, "targets": 4 }
+				{ "orderable": false, "targets": 6 }
 			],
 			"order": [[ 0, "desc" ]]
 		});

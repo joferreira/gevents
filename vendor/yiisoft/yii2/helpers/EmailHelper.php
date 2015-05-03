@@ -74,6 +74,34 @@ class EmailHelper {
 					<p>Gigante dos Eventos | Uma forma diferente de se fazer eventos</p>";
 			}
 
+			// Tratamento de e-mail de criação de evento
+			if ($arrParametros['STR_TIPO_ENVIO'] == 'criacao') {
+				$strSubject = 'Confirmação de cadastro de evento - Gigante dos Eventos';
+
+				$strMensagem = "<p>Prezado (a), ".$arrParametros['STR_NOME_COMPLETO']."</p>
+					<p>Seu evento foi cadastrado com sucesso no Gigante dos Eventos.</p>
+					<p></p>
+					<p>A partir de agora você poderá utilizar todas as ferramentas que o Gigante proporciona a você.</p>
+					<p></p>
+					<p>Não perca mais tempo e comece agora !</p>
+					<p></p>
+					<p>Gigante dos Eventos | Uma forma diferente de se fazer eventos</p>";
+			}
+
+			// Tratamento de e-mail de criação de evento
+			if ($arrParametros['STR_TIPO_ENVIO'] == 'publicacao') {
+				$strSubject = 'Confirmação de publicação de evento - Gigante dos Eventos';
+
+				$strMensagem = "<p>Prezado (a), ".$arrParametros['STR_NOME_COMPLETO']."</p>
+					<p>Seu evento foi publicado com sucesso no Gigante dos Eventos.</p>
+					<p></p>
+					<p>A partir de agora você poderá utilizar todas as ferramentas que o Gigante proporciona a você.</p>
+					<p></p>
+					<p>Não perca mais tempo e comece agora !</p>
+					<p></p>
+					<p>Gigante dos Eventos | Uma forma diferente de se fazer eventos</p>";
+			}
+
 			// Configuração para envio de e-mail Google
 			$objEmail = new \PHPMailer();
 			$objEmail->isSMTP();

@@ -28,6 +28,7 @@ class Status extends ActiveRecord
 	const STATUS_AGUARDANDO = 2;
 	const STATUS_INATIVO = 3;
 	const STATUS_CANCELADO = 4;
+	const STATUS_PUBLICADO = 5;
 
 	/**
 	 * @inheritdoc
