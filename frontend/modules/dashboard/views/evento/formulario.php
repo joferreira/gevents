@@ -64,7 +64,7 @@ $this->title = 'Evento';
 			?>
 			<div class="row">
 				<div class="col-md-12">
-					<div class="panel panel-default">
+					<div class="panel panel-default hidden">
 						<div class="panel-heading">
 							Insira o banner do evento
 						</div>
@@ -98,13 +98,14 @@ $this->title = 'Evento';
 								<div class="col-md-3">
 								<?= $objFormEvento->field($objModelEvento, 'STR_PUBLICACAO', [
 									'template' => '<div class="input-group"><span class="input-group-addon">{label}</span>{input}</div>',
-								])->dropDownList(['PU'=>'Público', 'PR'=>'Privado'], ['prompt'=>'Selecione...', 'id'=>'tipo_evento', 'size'=>1]);
+								])->dropDownList(['PU'=>'Público', 'PR'=>'Privado'], ['prompt'=>'Selecione...', 'id'=>'publicacao', 'size'=>1]);
 								?>
 								</div>
 								<div class="col-md-3">
-								<?= $objFormEvento->field($objModelEvento, 'INT_PAGAMENTO_ATIVO', [ 
+								<?= $objFormEvento->field($objModelEvento, 'INT_PAGAMENTO_ATIVO', [
 									'template' => '<div class="input-group"><span class="input-group-addon">{label}</span>{input}</div>',
-								])->checkbox() ?>
+								])->dropDownList(['1'=>'Sim', '0'=>'Não'], ['prompt'=>'Selecione...', 'id'=>'pagamento_ativo', 'size'=>1]);
+								?>
 								</div>
 							</div>
 							<div class="row">
@@ -189,23 +190,21 @@ $this->title = 'Evento';
 					</div>
 				</div>
 			</div>
-			<div class="row hidden">
-				<div class="col-md-6">
-				<?php
-					//echo $objFormEvento->field($objModelEvento, 'publico', [
-					//	'template' => '<div class="input-group"><span class="input-group-addon">{label}</span>{input}</div>',
-					//])->dropDownList(['Público '=>'Público ', 'Privado'=>'Privado'], ['size'=>1]);
-				?>
-				</div>
-			</div>
 			<div class="row">
 				<div class="col-md-12">
 					<div class="panel panel-default">
 						<div class="panel-heading">
-							Local do Evento
+							Local de Realização
 						</div>
 
 						<div class="panel-body">
+							<div class="row">
+								<div class="col-md-12">
+									<?= $objFormEvento->field($objModelEvento, 'STR_LOCAL_REALIZACAO', [ 
+										'template' => '<div class="input-group"><span class="input-group-addon">{label}</span>{input}</div>',
+									])->textInput(['maxlength' => 255]) ?>
+								</div>
+							</div>
 							<div class="row">
 								<div class="col-md-4">
 									<?= $objFormEvento->field($objModelEnderecoEvento, 'INT_CEP', [ 
@@ -252,14 +251,67 @@ $this->title = 'Evento';
 								</div>
 							</div>
 							<div class="row">
-								<div class="col-md-8">
+								<div class="col-md-8">					
 									<div class="checkbox">
 										<label>
-											<input name="Endereco[google]" type="checkbox" value="">Gostaria de exibir endereço no Google Maps?
+											<input name="MapsGoogle[google]" type="checkbox" value="1">Gostaria de exibir endereço no Google Maps?
 										</label>
 									</div>
 								</div>
 								
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							Contato do evento
+						</div>
+
+						<div class="panel-body">
+							<div class="row">
+								<div class="col-md-12">
+									<?= $objFormEvento->field($objModelEvento, 'STR_EMAIL_CONTATO', [ 
+										'template' => '<div class="input-group"><span class="input-group-addon">{label}</span>{input}</div>',
+									])->textInput(['maxlength' => 150]) ?>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-4">
+								<?= $objFormEvento->field($objModelEvento, 'INT_TELEFONE_DDI', [ 
+									'template' => '<div class="input-group"><span class="input-group-addon">{label}</span>{input}</div>',
+								])->textInput(['maxlength' => 2]) ?>
+								</div>
+								<div class="col-md-4">
+								<?= $objFormEvento->field($objModelEvento, 'INT_TELEFONE_DDD', [ 
+									'template' => '<div class="input-group"><span class="input-group-addon">{label}</span>{input}</div>',
+								])->textInput(['maxlength' => 2]) ?>
+								</div>
+								<div class="col-md-4">
+								<?= $objFormEvento->field($objModelEvento, 'INT_TELEFONE', [ 
+									'template' => '<div class="input-group"><span class="input-group-addon">{label}</span>{input}</div>',
+								])->textInput(['maxlength' => 8]) ?>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-4">	
+								<?= $objFormEvento->field($objModelEvento, 'INT_FAX_DDI', [ 
+									'template' => '<div class="input-group"><span class="input-group-addon">{label}</span>{input}</div>',
+								])->textInput(['maxlength' => 2]) ?>
+								</div>
+								<div class="col-md-4">
+								<?= $objFormEvento->field($objModelEvento, 'INT_FAX_DDD', [ 
+									'template' => '<div class="input-group"><span class="input-group-addon">{label}</span>{input}</div>',
+								])->textInput(['maxlength' => 2]) ?>
+								</div>
+								<div class="col-md-4">
+								<?= $objFormEvento->field($objModelEvento, 'INT_FAX', [ 
+									'template' => '<div class="input-group"><span class="input-group-addon">{label}</span>{input}</div>',
+								])->textInput(['maxlength' => 8]) ?>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -270,7 +322,8 @@ $this->title = 'Evento';
 				<?php echo Html::hiddenInput('Hoje', $hoje , ['id'=>'hoje'] );?>
 				<?php echo $objFormEvento->field($objModelEvento, 'INT_ID_EVENTO')->label(FALSE)->hiddenInput();?>
 				<?php echo $objFormEvento->field($objModelEnderecoEvento, 'INT_ID_ENDERECO_EVENTO')->label(FALSE)->hiddenInput();?>
-				<?= Html::submitInput('Gravar', [
+				<?php echo $objFormEvento->field($objModelMapsGoogle, 'INT_ID_MAPS_GOOGLE')->label(FALSE)->hiddenInput();?>
+				<?= Html::submitInput('Salve seu evento', [
 						'class' => 'alterar btn btn-primary submit-button ',
 						'name' => 'alterar-button']) ?>
 			</div>

@@ -144,6 +144,7 @@ if ( Yii::$app->session->get('GE_LOGADO') ) {
 			selector: "textarea#textForm",
 			theme: "modern",
 			menubar: false,
+			height: 250,
 			plugins: [
 				"advlist autolink lists link image charmap print preview hr pagebreak",
 				"searchreplace wordcount visualblocks visualchars code fullscreen",

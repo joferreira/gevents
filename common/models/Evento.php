@@ -81,12 +81,12 @@ class Evento extends ActiveRecord
 			'TIPO_EVENTO_INT_ID_TIPO_EVENTO' => 'Tipo Evento',
 			'STATUS_INT_ID_STATUS' => 'Status',
 			'STR_NOME' => 'Nome',
-			'STR_DESCRICAO' => 'Descricao',
+			'STR_DESCRICAO' => 'Descrição',
 			'DAT_DATA_INICIO' => 'Data Inicio',
 			'DAT_DATA_FINAL' => 'Data Final',
 			'TIM_HORA_INICIO' => 'Hora Inicio',
 			'TIM_HORA_FINAL' => 'Hora Final',
-			'STR_LOCAL_REALIZACAO' => 'Local Realizacao',
+			'STR_LOCAL_REALIZACAO' => 'Local Realização',
 			'STR_EMAIL_CONTATO' => 'Email Contato',
 			'INT_TELEFONE_DDI' => 'Telefone Ddi',
 			'INT_TELEFONE_DDD' => 'Telefone Ddd',
@@ -94,7 +94,7 @@ class Evento extends ActiveRecord
 			'INT_FAX_DDI' => 'Fax Ddi',
 			'INT_FAX_DDD' => 'Fax Ddd',
 			'INT_FAX' => 'Fax',
-			'INT_PAGAMENTO_ATIVO' => 'Evento é Pago',
+			'INT_PAGAMENTO_ATIVO' => 'Seu evento é pago ?',
 			'STR_PUBLICACAO' => 'Seu evento é',
 		];
 	}
@@ -259,7 +259,7 @@ class Evento extends ActiveRecord
 		}
 	}
 
-		/**
+	/**
 	 * Método para consultar contatos.
 	 * 
 	 * @return boolean

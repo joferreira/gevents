@@ -10,6 +10,7 @@ use common\models\TipoEvento;
 use common\models\UnidadeFederal;
 use common\models\Log;
 use common\models\Staff;
+use common\models\MapsGoogle;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
@@ -45,6 +46,7 @@ class EventoController extends Controller
 			$objModelEnderecoEvento = new EnderecoEvento();
 			$objModelTipoEvento = new TipoEvento();
 			$objModelUnidadeFederal = new UnidadeFederal();
+			$objModelMapsGoogle = new MapsGoogle();
 			$objModelLog = new Log();
 			$objModelStaff = new Staff();
 
@@ -68,10 +70,11 @@ class EventoController extends Controller
 			// Post de dados do formulário
 			if ( isset($_POST['Evento']) ) {
 				
-				$arrEvento =  $_POST['Evento'];
-				$arrEnderecoEvento =  $_POST['EnderecoEvento'];
+				$arrEvento = $_POST['Evento'];
+				$arrEnderecoEvento = $_POST['EnderecoEvento'];
+				$mapsGoogle = $_POST['MapsGoogle'];
 				$intIdCliente = Yii::$app->session->get('INT_ID_CLIENTE');
-				
+		
 				if ( $objModelEvento->load(Yii::$app->request->post()) ) {
 					
 					$arrEvento['STATUS_INT_ID_STATUS'] = Status::STATUS_AGUARDANDO ;
@@ -79,6 +82,13 @@ class EventoController extends Controller
 
 					$arrEnderecoEvento['EVENTO_INT_ID_EVENTO'] = $arrResultEvento['INT_ID_EVENTO'];
 					$arrResultEnderecoEvento = $objModelEnderecoEvento->saveEnderecoEvento($arrEnderecoEvento);
+
+					if( isset($mapsGoogle['google'])){
+						$arrMapsGoogle['ENDERECO_EVENTO_INT_ID_ENDERECO_EVENTO'] = $arrResultEnderecoEvento['INT_ID_ENDERECO_EVENTO'];
+						$arrResultMapsGoogle = $objModelMapsGoogle->insertMapsGoogle($arrMapsGoogle);
+					} elseif ( !empty($mapsGoogle['INT_ID_MAPS_GOOGLE']) ){
+						$arrMapsGoogle['INT_ID_MAPS_GOOGLE'] = $mapsGoogle['INT_ID_MAPS_GOOGLE'];
+					}
 
 					// Gravação de log
 					$arrLog = array();
@@ -117,6 +127,7 @@ class EventoController extends Controller
 				'arrTipoEvento' => $arrTipoEvento,
 				'arrHora' => $arrHora,
 				'arrMinuto' => $arrMinuto,
+				'objModelMapsGoogle' => $objModelMapsGoogle,
 			]);
 
 		} catch (Exception $objException) {

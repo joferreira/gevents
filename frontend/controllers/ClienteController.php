@@ -163,3 +163,7 @@ class ClienteController extends Controller {
 	}
 
 }
+/*
+SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`gevents`.`log`, CONSTRAINT `fk_LOG_EVENTO` FOREIGN KEY (`EVENTO_INT_ID_EVENTO`) REFERENCES `evento` (`INT_ID_EVENTO`) ON DELETE NO ACTION ON UPDATE NO ACTION)\nThe SQL being executed was: INSERT INTO `log` (`CLIENTE_INT_ID_CLIENTE`, `STR_OCORRENCIA`, `EVENTO_INT_ID_EVENTO`, `HOTEVENT_INT_ID_HOTEVENT`) VALUES ('1', 'Cadastro efetuado', '0', '0'
+
+*/
