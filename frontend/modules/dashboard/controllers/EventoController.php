@@ -42,7 +42,7 @@ class EventoController extends Controller
 	public function actionFormulario()
 	{
 		try {
-			$objModelEvento = new Evento();
+			$objModelEvento = new Evento(['scenario' => 'criacao']);
 			$objModelEnderecoEvento = new EnderecoEvento();
 			$objModelTipoEvento = new TipoEvento();
 			$objModelUnidadeFederal = new UnidadeFederal();
@@ -74,7 +74,7 @@ class EventoController extends Controller
 				$arrEnderecoEvento = $_POST['EnderecoEvento'];
 				$mapsGoogle = $_POST['MapsGoogle'];
 				$intIdCliente = Yii::$app->session->get('INT_ID_CLIENTE');
-		
+
 				if ( $objModelEvento->load(Yii::$app->request->post()) ) {
 					
 					$arrEvento['STATUS_INT_ID_STATUS'] = Status::STATUS_AGUARDANDO ;
@@ -83,11 +83,13 @@ class EventoController extends Controller
 					$arrEnderecoEvento['EVENTO_INT_ID_EVENTO'] = $arrResultEvento['INT_ID_EVENTO'];
 					$arrResultEnderecoEvento = $objModelEnderecoEvento->saveEnderecoEvento($arrEnderecoEvento);
 
-					if( isset($mapsGoogle['google'])){
-						$arrMapsGoogle['ENDERECO_EVENTO_INT_ID_ENDERECO_EVENTO'] = $arrResultEnderecoEvento['INT_ID_ENDERECO_EVENTO'];
-						$arrResultMapsGoogle = $objModelMapsGoogle->insertMapsGoogle($arrMapsGoogle);
-					} elseif ( !empty($mapsGoogle['INT_ID_MAPS_GOOGLE']) ){
-						$arrMapsGoogle['INT_ID_MAPS_GOOGLE'] = $mapsGoogle['INT_ID_MAPS_GOOGLE'];
+					if ( !empty($mapsGoogle['INT_ID_MAPS_GOOGLE']) ){
+						if( $mapsGoogle['INT_ID_MAPS_GOOGLE'] == 'S' ){
+							$arrMapsGoogle['ENDERECO_EVENTO_INT_ID_ENDERECO_EVENTO'] = $arrResultEnderecoEvento['INT_ID_ENDERECO_EVENTO'];
+							$arrResultMapsGoogle = $objModelMapsGoogle->insertMapsGoogle($arrMapsGoogle);
+						} else {
+							$objMapsGoogle = $objModelMapsGoogle->findOne(array('ENDERECO_EVENTO_INT_ID_ENDERECO_EVENTO'=>$arrResultEnderecoEvento['INT_ID_ENDERECO_EVENTO']))->delete();
+						}
 					}
 
 					// Gravação de log
@@ -115,9 +117,11 @@ class EventoController extends Controller
 					//$arrLog['HOTEVENT_INT_ID_HOTEVENT'] = $intIdHotevent;
 
 					$objModelLog->saveLog($arrLog);
-					
+
+					return $this->redirect(['/dashboard/evento']);
 
 				}
+			
 			}
 		
 			return $this->render('formulario', [
@@ -139,10 +143,11 @@ class EventoController extends Controller
 	public function actionEditar($id)
 	{
 		try {
-			$objModelEvento =  new Evento();
+			$objModelEvento =  new Evento(['scenario' => 'criacao']);
 			$objModelEnderecoEvento = new EnderecoEvento();
 			$objModelTipoEvento = new TipoEvento();
 			$objModelUnidadeFederal = new UnidadeFederal();
+			$objModelMapsGoogle = new MapsGoogle();
 			$objModelLog = new Log();
 			$objModelStaff = new Staff();
 
@@ -165,6 +170,10 @@ class EventoController extends Controller
 
 			$objEvento = $objModelEvento->findOne($id);
 			$objEnderecoEvento = $objModelEnderecoEvento->findOne(array('EVENTO_INT_ID_EVENTO'=>$objEvento->INT_ID_EVENTO));
+			$objMapsGoogle = $objModelMapsGoogle->findOne(array('ENDERECO_EVENTO_INT_ID_ENDERECO_EVENTO'=>$objEnderecoEvento->INT_ID_ENDERECO_EVENTO));
+
+			if(empty($objMapsGoogle))
+				$objMapsGoogle = $objModelMapsGoogle;
 		
 			return $this->render('formulario', [
 				'objModelEvento' => $objEvento,
@@ -173,6 +182,7 @@ class EventoController extends Controller
 				'arrTipoEvento' => $arrTipoEvento,
 				'arrHora' => $arrHora,
 				'arrMinuto' => $arrMinuto,
+				'objModelMapsGoogle' => $objMapsGoogle,
 			]);
 		
 		} catch (\Exception $objException) {

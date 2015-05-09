@@ -67,8 +67,26 @@ class Evento extends ActiveRecord
 			[['DAT_DATA_INICIO', 'DAT_DATA_FINAL', 'TIM_HORA_INICIO', 'TIM_HORA_FINAL'], 'safe'],
 			[['STR_NOME', 'STR_LOCAL_REALIZACAO'], 'string', 'max' => 255],
 			[['STR_EMAIL_CONTATO'], 'string', 'max' => 150],
-			[['STR_PUBLICACAO'], 'string', 'max' => 1]
+			[['STR_PUBLICACAO'], 'string', 'max' => 2],
+
+			// Regras de validação de criação
+			[['TIPO_EVENTO_INT_ID_TIPO_EVENTO', 'STR_NOME', 'DAT_DATA_INICIO', 'DAT_DATA_FINAL', 'STR_LOCAL_REALIZACAO', 'STR_EMAIL_CONTATO', 'STR_PUBLICACAO', 'INT_PAGAMENTO_ATIVO', 'MINUTO_FINAL'], 'required', 'on' => 'criacao'],
+			[['TIPO_EVENTO_INT_ID_TIPO_EVENTO', 'INT_TELEFONE_DDI', 'INT_TELEFONE_DDD', 'INT_TELEFONE', 'INT_FAX_DDI', 'INT_FAX_DDD', 'INT_FAX', 'INT_PAGAMENTO_ATIVO'], 'integer', 'on' => 'criacao'],
+			[['STR_DESCRICAO'], 'string', 'on' => 'criacao'],
+			[['DAT_DATA_INICIO', 'DAT_DATA_FINAL', 'TIM_HORA_INICIO', 'TIM_HORA_FINAL'], 'safe', 'on' => 'criacao'],
+			[['STR_NOME', 'STR_LOCAL_REALIZACAO'], 'string', 'max' => 255, 'on' => 'criacao'],
+			[['STR_EMAIL_CONTATO'], 'string', 'max' => 150, 'on' => 'criacao'],
+			[['STR_PUBLICACAO'], 'string', 'max' => 2, 'on' => 'criacao'],
+			[['MINUTO_FINAL'], 'integer', 'on' => 'criacao']
 		];
+	}
+
+	public function scenarios()
+	{
+		$scenarios = parent::scenarios();
+		$scenarios['criacao'] = ['TIPO_EVENTO_INT_ID_TIPO_EVENTO', 'STR_NOME', 'DAT_DATA_INICIO', 'DAT_DATA_FINAL', 'STR_LOCAL_REALIZACAO', 'STR_EMAIL_CONTATO', 'STR_PUBLICACAO', 'INT_PAGAMENTO_ATIVO', 'MINUTO_FINAL'];
+		//$scenarios['register'] = ['STR_NOME_COMPLETO', 'STR_EMAIL', 'STR_SENHA','STR_SENHA_CONFIRME'];
+		return $scenarios;	
 	}
 
 	/**
@@ -94,7 +112,7 @@ class Evento extends ActiveRecord
 			'INT_FAX_DDI' => 'Fax Ddi',
 			'INT_FAX_DDD' => 'Fax Ddd',
 			'INT_FAX' => 'Fax',
-			'INT_PAGAMENTO_ATIVO' => 'Seu evento é pago ?',
+			'INT_PAGAMENTO_ATIVO' => 'Seu evento é pago?',
 			'STR_PUBLICACAO' => 'Seu evento é',
 		];
 	}

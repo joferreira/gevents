@@ -40,7 +40,7 @@ class MapsGoogle extends ActiveRecord
 	public function attributeLabels()
 	{
 		return [
-			'INT_ID_MAPS_GOOGLE' => 'Código Maps Google',
+			'INT_ID_MAPS_GOOGLE' => 'Gostaria de exibir endereço no Google Maps?',
 			'ENDERECO_EVENTO_INT_ID_ENDERECO_EVENTO' => 'Código Endereço Evento',
 		];
 	}

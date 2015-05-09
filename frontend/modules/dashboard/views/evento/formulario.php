@@ -92,19 +92,19 @@ $this->title = 'Evento';
 								<div class="col-md-6">
 								<?= $objFormEvento->field($objModelEvento, 'TIPO_EVENTO_INT_ID_TIPO_EVENTO', [
 									'template' => '<div class="input-group"><span class="input-group-addon">{label}</span>{input}</div>',
-								])->dropDownList($arrTipoEvento, ['prompt'=>'Selecione...', 'id'=>'tipo_evento', 'size'=>1]);
+								])->dropDownList($arrTipoEvento, ['prompt'=>'Selecione...', 'size'=>1]);
 								?>
 								</div>
 								<div class="col-md-3">
 								<?= $objFormEvento->field($objModelEvento, 'STR_PUBLICACAO', [
 									'template' => '<div class="input-group"><span class="input-group-addon">{label}</span>{input}</div>',
-								])->dropDownList(['PU'=>'Público', 'PR'=>'Privado'], ['prompt'=>'Selecione...', 'id'=>'publicacao', 'size'=>1]);
+								])->dropDownList(['PU'=>'Público', 'PR'=>'Privado'], ['prompt'=>'Selecione...', 'size'=>1]);
 								?>
 								</div>
 								<div class="col-md-3">
 								<?= $objFormEvento->field($objModelEvento, 'INT_PAGAMENTO_ATIVO', [
 									'template' => '<div class="input-group"><span class="input-group-addon">{label}</span>{input}</div>',
-								])->dropDownList(['1'=>'Sim', '0'=>'Não'], ['prompt'=>'Selecione...', 'id'=>'pagamento_ativo', 'size'=>1]);
+								])->dropDownList(['1'=>'Sim', '0'=>'Não'], ['prompt'=>'Selecione...', 'size'=>1]);
 								?>
 								</div>
 							</div>
@@ -122,7 +122,7 @@ $this->title = 'Evento';
 								])->widget(DatePicker::className(),[ 'language' => 'pt-BR', 'dateFormat' => 'dd/MM/yyyy'])->textInput(['maxlength' => 10, 'value' => $dataFormatadaInicio]) ?>
 								</div>
 								<div class="col-md-3">
-									<div class="form-group field-evento-tipo_evento_hora_inicio">
+									<div class="form-group field-evento-hora_inicio">
 										<div class="input-group">
 											<span class="input-group-addon"><label for="hora_inicio" class="control-label">Hora</label></span>
 											<?= Html::dropDownList( 'Evento[hora_inicio]', $arrHoraInicio[0], $arrHora, ['prompt'=>'Selecione...', 'id'=>'hora_inicio', 'class'=>'form-control','size'=>1]);
@@ -134,7 +134,7 @@ $this->title = 'Evento';
 									</div>
 								</div>
 								<div class="col-md-3">
-									<div class="form-group field-evento-tipo_evento_min_inicio">
+									<div class="form-group field-evento-min_inicio">
 										<div class="input-group">
 											<span class="input-group-addon"><label for="min_inicio" class="control-label">Min</label></span>
 											<?= Html::dropDownList( 'Evento[minuto_inicio]', $arrHoraInicio[1], $arrMinuto, ['prompt'=>'Selecione...', 'id'=>'min_inicio', 'class'=>'form-control', 'size'=>1]);
@@ -150,7 +150,7 @@ $this->title = 'Evento';
 								])->widget(DatePicker::className(),[ 'language' => 'pt-BR', 'dateFormat' => 'dd/MM/yyyy'])->textInput(['maxlength' => 10, 'value' => $dataFormatadaFinal]) ?>
 								</div>
 								<div class="col-md-3">
-									<div class="form-group field-evento-tipo_evento_hora_final">
+									<div class="form-group field-evento-hora_final">
 										<div class="input-group">
 											<span class="input-group-addon"><label for="hora_final" class="control-label">Hora</label></span>
 											<?= Html::dropDownList( 'Evento[hora_final]', $arrHoraFinal[0], $arrHora, ['prompt'=>'Selecione...', 'id'=>'hora_final', 'class'=>'form-control', 'size'=>1]);
@@ -159,10 +159,10 @@ $this->title = 'Evento';
 									</div>
 								</div>
 								<div class="col-md-3">
-									<div class="form-group field-evento-tipo_evento_min_final">
+									<div class="form-group field-evento-min_final">
 										<div class="input-group">
 											<span class="input-group-addon"><label for="min_final" class="control-label">Min</label></span>
-											<?= Html::dropDownList( 'Evento[minuto_final]', $arrHoraFinal[1], $arrMinuto, ['prompt'=>'Selecione...', 'id'=>'min_final', 'class'=>'form-control', 'size'=>1]);
+											<?= Html::dropDownList( 'Evento[minuto_final]', $arrHoraFinal[1], $arrMinuto, ['prompt'=>'Selecione...', 'id'=>'"evento-min_final', 'class'=>'form-control', 'size'=>1]);
 											?>
 										</div>
 									</div>
@@ -217,7 +217,7 @@ $this->title = 'Evento';
 									<?php 
 									echo $objFormEvento->field($objModelEnderecoEvento, 'UNIDADE_FEDERAL_INT_ID_UNIDADE_FEDERAL', [
 										'template' => '<div class="input-group"><span class="input-group-addon">{label}</span>{input}</div>',
-									])->dropDownList($arrUnidadeFederal, ['prompt'=>'Selecione...', 'id'=>'unidade_federal', 'size'=>1]);
+									])->dropDownList($arrUnidadeFederal, ['prompt'=>'Selecione...',  'size'=>1]);
 									?>
 								</div>	
 								<div class="col-md-4">
@@ -253,9 +253,10 @@ $this->title = 'Evento';
 							<div class="row">
 								<div class="col-md-8">					
 									<div class="checkbox">
-										<label>
-											<input name="MapsGoogle[google]" type="checkbox" value="1">Gostaria de exibir endereço no Google Maps?
-										</label>
+										<?= $objFormEvento->field($objModelMapsGoogle, 'INT_ID_MAPS_GOOGLE')->checkbox( ['value'=> empty($objModelMapsGoogle->INT_ID_MAPS_GOOGLE) ? 'S' : $objModelMapsGoogle->INT_ID_MAPS_GOOGLE ])  ?>
+										<!--label>
+											<input name="MapsGoogle[google]" type="checkbox" value="1" >Gostaria de exibir endereço no Google Maps?
+										</label-->
 									</div>
 								</div>
 								
@@ -322,7 +323,7 @@ $this->title = 'Evento';
 				<?php echo Html::hiddenInput('Hoje', $hoje , ['id'=>'hoje'] );?>
 				<?php echo $objFormEvento->field($objModelEvento, 'INT_ID_EVENTO')->label(FALSE)->hiddenInput();?>
 				<?php echo $objFormEvento->field($objModelEnderecoEvento, 'INT_ID_ENDERECO_EVENTO')->label(FALSE)->hiddenInput();?>
-				<?php echo $objFormEvento->field($objModelMapsGoogle, 'INT_ID_MAPS_GOOGLE')->label(FALSE)->hiddenInput();?>
+				<?php // echo $objFormEvento->field($objModelMapsGoogle, 'INT_ID_MAPS_GOOGLE')->label(FALSE)->hiddenInput();?>
 				<?= Html::submitInput('Salve seu evento', [
 						'class' => 'alterar btn btn-primary submit-button ',
 						'name' => 'alterar-button']) ?>
