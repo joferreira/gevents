@@ -261,7 +261,7 @@ use yii\web\Session;
 								<a href="<?= Yii::$app->urlManager->createAbsoluteUrl('dashboard/evento');?>">Meus eventos</a>
 							</li>
 							<li>
-								<a href="<?= Yii::$app->urlManager->createAbsoluteUrl('dashboard/evento/ticket');?>">Meus tickets</a>
+								<a href="<?= Yii::$app->urlManager->createAbsoluteUrl('dashboard/ingresso');?>">Meus tickets</a>
 							</li>
 							<li>
 								<a href="<?= Yii::$app->urlManager->createAbsoluteUrl('dashboard/evento/pagamento'); ?>">Formas de pagamentos</a>

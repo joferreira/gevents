@@ -11,12 +11,12 @@ $hoje = date('d/m/Y');
 $dataInicio = isset($objModelEvento->DAT_DATA_INICIO) ? $objModelEvento->DAT_DATA_INICIO : date('Y-m-d');
 $dataFormatadaInicio = Yii::$app->formatter->asDate( implode("-",array_reverse(explode("/",$dataInicio))), 'php:d/m/Y');
 
-$arrHoraInicio = isset($objModelEvento->TIM_HORA_INICIO) ? explode(":", $objModelEvento->TIM_HORA_INICIO, -1 ) : [0=>'',1=>''];
+$arrHoraInicio = isset($objModelEvento->TIM_HORA_INICIO) ? explode(":", $objModelEvento->TIM_HORA_INICIO, -1 ) : [0=>'08',1=>'00'];
 
 $dataFinal = isset($objModelEvento->DAT_DATA_FINAL) ? $objModelEvento->DAT_DATA_FINAL : date('Y-m-d');
 $dataFormatadaFinal = Yii::$app->formatter->asDate( implode("-",array_reverse(explode("/",$dataFinal))), 'php:d/m/Y');
 
-$arrHoraFinal = isset($objModelEvento->TIM_HORA_FINAL) ? explode(":", $objModelEvento->TIM_HORA_FINAL, -1 ) : [0=>'',1=>''];
+$arrHoraFinal = isset($objModelEvento->TIM_HORA_FINAL) ? explode(":", $objModelEvento->TIM_HORA_FINAL, -1 ) : [0=>'09',1=>'00'];
 
 $this->title = 'Evento';
 ?>
@@ -41,23 +41,19 @@ $this->title = 'Evento';
 
 					if( $strKeyFlash == 'info' )
 						echo '<div class="button-normal alert skin-background-color16 skin-font-color3 skin-background-hover3">'.$strMessagem.'</div>';
-						//echo TbHtml::blockAlert(TbHtml::ALERT_COLOR_INFO, $strMessagem, array('style' => 'width:800px;font-size:25px;'));
 
 					if( $strKeyFlash == 'success' )
 						echo '<div class="button-normal alert skin-background-color17 skin-font-color3 skin-background-hover3">'.$strMessagem.'</div>';
-						//echo TbHtml::blockAlert(TbHtml::ALERT_COLOR_SUCCESS, $strMessagem, array('style' => 'width:800px;font-size:25px;'));
 
 					if( $strKeyFlash == 'warning' )
 						echo '<div class="button-normal alert skin-background-color16 skin-font-color3 skin-background-hover3">'.$strMessagem.'</div>';
-						//echo TbHtml::blockAlert(TbHtml::ALERT_COLOR_WARNING, $strMessagem, array('style' => 'width:800px;font-size:25px;'));
 
 					if( $strKeyFlash == 'error' )
 						echo '<div class="button-normal alert skin-background-color24 skin-font-color3 skin-background-hover3">'.$strMessagem.'</div>';
-						//echo TbHtml::blockAlert(TbHtml::ALERT_COLOR_ERROR, $strMessagem, array('style' => 'width:800px;font-size:25px;'));
 
 					if( $strKeyFlash == 'danger' )
 						echo '<div class="button-normal alert skin-background-color24 skin-font-color3 skin-background-hover3">'.$strMessagem.'</div>';
-						//echo TbHtml::blockAlert(TbHtml::ALERT_COLOR_DANGER, $strMessagem, array('style' => 'width:800px;font-size:25px;'));
+
 				}
 				echo '</div>';
 			}
@@ -162,7 +158,7 @@ $this->title = 'Evento';
 									<div class="form-group field-evento-min_final">
 										<div class="input-group">
 											<span class="input-group-addon"><label for="min_final" class="control-label">Min</label></span>
-											<?= Html::dropDownList( 'Evento[minuto_final]', $arrHoraFinal[1], $arrMinuto, ['prompt'=>'Selecione...', 'id'=>'"evento-min_final', 'class'=>'form-control', 'size'=>1]);
+											<?= Html::dropDownList( 'Evento[minuto_final]', $arrHoraFinal[1], $arrMinuto, ['prompt'=>'Selecione...', 'id'=>'"min_final', 'class'=>'form-control', 'size'=>1]);
 											?>
 										</div>
 									</div>
