@@ -1,13 +1,13 @@
 <?php
 
-namespace frontend\modules\dashboard;
+namespace frontend\modules\hotevent;
 
 use Yii;
 use yii\base\Module;
 
-class Dashboard extends Module
+class Hotevent extends Module
 {
-	public $controllerNamespace = 'frontend\modules\dashboard\controllers';
+	public $controllerNamespace = 'frontend\modules\hotevent\controllers';
 
 	public function init()
 	{
