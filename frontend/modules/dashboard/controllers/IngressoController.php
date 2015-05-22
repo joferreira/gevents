@@ -9,7 +9,7 @@ use common\models\TipoEvento;
 use common\models\Log;
 use common\models\Staff;
 use common\models\Ingresso;
-//use common\models\VoucherPromocional;
+use common\models\VoucherPromocional;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
@@ -43,7 +43,7 @@ class IngressoController extends Controller
 		try { // ['scenario' => 'criacao']
 			$objModelEvento = new Evento();
 			$objModelIngresso = new Ingresso();
-			//$objModelVoucherPromocional = new VoucherPromocional();
+			$objModelVoucherPromocional = new VoucherPromocional();
 			$objModelLog = new Log();
 			$objModelStaff = new Staff();
 
@@ -120,6 +120,7 @@ class IngressoController extends Controller
 		
 			return $this->render('formulario', [
 				'objModelIngresso' => $objModelIngresso,
+				'objModelVoucherPromocional' => $objModelVoucherPromocional,
 				//'objModelEnderecoEvento' => $objModelEnderecoEvento,
 				'arrHora' => $arrHora,
 				'arrMinuto' => $arrMinuto,

@@ -134,6 +134,18 @@ $this->title = 'Ingresso';
 									</div>
 								</div>
 							</div>
+							<div class="row">
+								<div class="col-md-4">
+								<?= $objFormIngresso->field($objModelIngresso, 'INT_QUANTIDADE', [ 
+									'template' => '<div class="input-group"><span class="input-group-addon">{label}</span>{input}</div>',
+								])->textInput(['maxlength' => 11]) ?>
+								</div>
+								<div class="col-md-6">
+								<?= $objFormIngresso->field($objModelIngresso, 'INT_QUANTIDADE_MAXIMA_VENDA_PARTICIPANTE', [ 
+									'template' => '<div class="input-group"><span class="input-group-addon">{label}</span>{input}</div>',
+								])->textInput(['maxlength' => 11]) ?>
+								</div>
+							</div>
 
 						</div>
 					</div>
@@ -149,7 +161,38 @@ $this->title = 'Ingresso';
 
 						<div class="panel-body">
 							<div>
-							<?php echo $objFormIngresso->field($objModelIngresso, 'STR_DESCRICAO')->label(FALSE)->textArea(['id'=>'textForm']);?>
+							<?php echo $objFormIngresso->field($objModelIngresso, 'STR_DESCRICAO')->label(FALSE)->textArea();?>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="clearfix"></div>
+			<div class="row">
+				<div class="col-md-12">
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							Voucher
+						</div>
+
+						<div class="panel-body">
+							<div class="row">
+								<div class="col-md-4">
+									<?= $objFormIngresso->field($objModelVoucherPromocional, "INT_GERADO_AUTOMATICAMENTE")->inline()->radioList( ['1'=>'Sim', '0'=>'Não'] )  ?>
+								</div>
+								<div class="col-md-4">
+									<?= $objFormIngresso->field($objModelVoucherPromocional, 'INT_QUANTIDADE_LIMITE', [ 
+										'template' => '<div class="input-group"><span class="input-group-addon">{label}</span>{input}</div>',
+									])->textInput() ?>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-6">
+									<?= $objFormIngresso->field($objModelVoucherPromocional, 'STR_CODIGO', [ 
+										'template' => '<div class="input-group"><span class="input-group-addon">{label}</span>{input}</div>',
+									])->textInput(['maxlength' => 50]) ?>
+								</div>
 							</div>
 
 						</div>
