@@ -146,6 +146,11 @@ $this->title = 'Ingresso';
 								])->textInput(['maxlength' => 11]) ?>
 								</div>
 							</div>
+							<div class="row">
+								<div class="col-md-4">
+									<?= $objFormIngresso->field($objModelIngresso, "STR_INGRESSO_RESTRITO")->inline()->radioList( ['S'=>'Sim', 'N'=>'Não'] )  ?>
+								</div>
+							</div>
 
 						</div>
 					</div>

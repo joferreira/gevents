@@ -44,12 +44,12 @@ class VoucherPromocional extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'INT_ID_VOUCHER_PROMOCIONAL' => 'Int  Id  Voucher  Promocional',
-            'INGRESSO_INT_ID_INGRESSO' => 'Ingresso  Int  Id  Ingresso',
-            'STR_CODIGO' => 'Str  Codigo',
-            'INT_QUANTIDADE_LIMITE' => 'Int  Quantidade  Limite',
-            'INT_QUANTIDADE_UTILIZADA' => 'Int  Quantidade  Utilizada',
-            'INT_GERADO_AUTOMATICAMENTE' => 'Int  Gerado  Automaticamente',
+            'INT_ID_VOUCHER_PROMOCIONAL' => 'Codigo Voucher Promocional',
+            'INGRESSO_INT_ID_INGRESSO' => 'Codigo Ingresso',
+            'STR_CODIGO' => 'Codigo',
+            'INT_QUANTIDADE_LIMITE' => 'Quantidade Limite',
+            'INT_QUANTIDADE_UTILIZADA' => 'Quantidade Utilizada',
+            'INT_GERADO_AUTOMATICAMENTE' => 'Gerado Automaticamente',
         ];
     }
 
