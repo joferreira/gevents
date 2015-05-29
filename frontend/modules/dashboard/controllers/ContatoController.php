@@ -24,8 +24,8 @@ class ContatoController extends Controller
 	 * 
 	 * @return array Dados para a view da grid de contato
 	 */
-    public function actionIndex()
-    {
+	public function actionIndex()
+	{
 		try {
 			$objModelContato = new Contato();
 			
@@ -36,7 +36,7 @@ class ContatoController extends Controller
 		} catch (Exception $objException) {
 			Yii::$app->session->setFlash('error', $objException->getMessage());
 		}
-    }
+	}
 	
 	public function actionFormulario()
 	{

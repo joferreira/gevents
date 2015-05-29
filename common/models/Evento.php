@@ -278,7 +278,7 @@ class Evento extends ActiveRecord
 	}
 
 	/**
-	 * Método para consultar contatos.
+	 * Método para consultar eventos.
 	 * 
 	 * @return boolean
 	 * @throws Exception

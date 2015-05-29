@@ -65,25 +65,17 @@ class IngressoController extends Controller
 			if ( isset($_POST['Ingresso']) ) {
 				
 				$arrIngresso = $_POST['Ingresso'];
-				//$mapsGoogle = $_POST['MapsGoogle'];
+				//$arrVoucherPromocional = $_POST['VoucherPromocional'];
 				$intIdCliente = Yii::$app->session->get('INT_ID_CLIENTE');
 
 				if ( $objModelIngresso->load(Yii::$app->request->post()) ) {
 					
-					//$arrEvento['STATUS_INT_ID_STATUS'] = Status::STATUS_AGUARDANDO ;
 					$arrResultIngresso = $objModelIngresso->saveIngresso($arrIngresso);
 
-					//$arrEnderecoEvento['EVENTO_INT_ID_EVENTO'] = $arrResultIngresso['INT_ID_EVENTO'];
-					//$arrResultEnderecoEvento = $objModelEnderecoEvento->saveEnderecoEvento($arrEnderecoEvento);
-					/*
-					if ( !empty($mapsGoogle['INT_ID_MAPS_GOOGLE']) ){
-						if( $mapsGoogle['INT_ID_MAPS_GOOGLE'] == 'S' ){
-							$arrMapsGoogle['ENDERECO_EVENTO_INT_ID_ENDERECO_EVENTO'] = $arrResultEnderecoEvento['INT_ID_ENDERECO_EVENTO'];
-							$arrResultMapsGoogle = $objModelMapsGoogle->insertMapsGoogle($arrMapsGoogle);
-						} else {
-							$objMapsGoogle = $objModelMapsGoogle->findOne(array('ENDERECO_EVENTO_INT_ID_ENDERECO_EVENTO'=>$arrResultEnderecoEvento['INT_ID_ENDERECO_EVENTO']))->delete();
-						}
-					}*/
+					if(!empty($arrVoucherPromocional)){
+						$arrVoucherPromocional['INGRESSO_INT_ID_INGRESSO'] = $arrResultIngresso['INT_ID_INGRESSO'];
+						$arrResultVoucherPromocional = $objModelVoucherPromocional->saveVoucherPromocional($arrVoucherPromocional);
+					}
 
 					// Gravação de log
 					$arrLog = array();

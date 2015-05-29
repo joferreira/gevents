@@ -80,7 +80,7 @@ $this->title = 'Ingresso';
 								?>
 								</div>
 								<div class="col-md-3">
-								<?= $objFormIngresso->field($objModelIngresso, 'INT_PAGAMENTO_ATIVO', [
+								<?= $objFormIngresso->field($objModelIngresso, 'INT_PAGAMENTO_ATIVO', [0
 									'template' => '<div class="input-group"><span class="input-group-addon">{label}</span>{input}</div>',
 								])->dropDownList(['1'=>'Sim', '0'=>'Não'], ['prompt'=>'Selecione...', 'size'=>1]);
 								*/?>
@@ -148,7 +148,24 @@ $this->title = 'Ingresso';
 							</div>
 							<div class="row">
 								<div class="col-md-4">
-									<?= $objFormIngresso->field($objModelIngresso, "STR_INGRESSO_RESTRITO")->inline()->radioList( ['S'=>'Sim', 'N'=>'Não'] )  ?>
+									<div class="form-group field-ingresso-int_valor">
+										<div class="input-group"><span class="input-group-addon"><label for="ingresso-int_valor" class="control-label">Valor R$</label></span>
+											<input type="text" maxlength="11" name="Ingresso[INT_VALOR]" class="form-control" id="ingresso-int_VALOR">
+										</div>
+									</div>
+								</div>
+								<!--div class="col-md-4">
+									<?/* = $objFormIngresso->field($objModelIngresso, 'INT_VALOR', [ 
+									'template' => '<div class="input-group"><span class="input-group-addon">{label}</span>{input}</div>',
+								])->textInput(['maxlength' => 11]); , ['itemOptions' => ['class' =>'radio-inline']] */?> 
+								</div-->
+								<div class="col-md-4">
+									<?= $objFormIngresso->field($objModelIngresso, "STR_INGRESSO_RESTRITO")->inline()->radioList( ['S'=>'Sim', 'N'=>'Não'], ['unselect'=>'S'] ); ?>
+									<?//= Html::activeRadioList($objModelIngresso, 'STR_INGRESSO_RESTRITO', ['S'=>'Sim', 'N'=>'Não']);
+									//$objFormIngresso->field($objModelIngresso, 'STR_INGRESSO_RESTRITO')->inline()->radioList( ['S'=>'Sim', 'N'=>'Não'], ['checked'=>true] ); ?>
+								</div>
+								<div class="col-md-4">
+									<?= $objFormIngresso->field($objModelIngresso, "STR_TAXA_SERVICO")->inline()->radioList( ['S'=>'Participante', 'N'=>'Organizador'] )  ?>
 								</div>
 							</div>
 
@@ -174,7 +191,7 @@ $this->title = 'Ingresso';
 				</div>
 			</div>
 			<div class="clearfix"></div>
-			<div class="row">
+			<!--div class="row">
 				<div class="col-md-12">
 					<div class="panel panel-default">
 						<div class="panel-heading">
@@ -203,7 +220,7 @@ $this->title = 'Ingresso';
 						</div>
 					</div>
 				</div>
-			</div>
+			</div-->
 			
 			<div class="form-group col-md-12 text-center">
 				<?php echo Html::hiddenInput('Hoje', $hoje , ['id'=>'hoje'] );?>
