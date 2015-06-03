@@ -25,10 +25,10 @@ class IngressoController extends Controller
 	public function actionIndex()
 	{
 		try {
-			$objModelIngresso = new Evento();
+			$objModelIngresso = new Ingresso();
 			
 			$arrStaffEvento['CLIENTE_INT_ID_CLIENTE'] = Yii::$app->session->get('INT_ID_CLIENTE');
-			$arrIngressos = 0; //$objModelIngresso->consultar($arrStaffEvento);
+			$arrIngressos = $objModelIngresso->consultar($arrStaffEvento);
 			
 			return $this->render('grid_ingresso', ['arrIngressos' => $arrIngressos]);
 		} catch (\Exception $objException) {
@@ -71,15 +71,16 @@ class IngressoController extends Controller
 				if ( $objModelIngresso->load(Yii::$app->request->post()) ) {
 					
 					$arrResultIngresso = $objModelIngresso->saveIngresso($arrIngresso);
-
+					/*
 					if(!empty($arrVoucherPromocional)){
 						$arrVoucherPromocional['INGRESSO_INT_ID_INGRESSO'] = $arrResultIngresso['INT_ID_INGRESSO'];
 						$arrResultVoucherPromocional = $objModelVoucherPromocional->saveVoucherPromocional($arrVoucherPromocional);
 					}
+					*/
 
 					// Gravação de log
 					$arrLog = array();
-					if( empty($arrEvento['INT_ID_EVENTO']) ){
+					if( empty($arrEvento['INT_ID_INGRESSO']) ){
 						$arrLog['STR_OCORRENCIA'] = Log::MENSAGEM_INGRESSO_CADASTRADO;
 						/*
 						$arrStaff['CLIENTE_INT_ID_CLIENTE'] = $intIdCliente;
@@ -100,7 +101,7 @@ class IngressoController extends Controller
 					}
 
 					$arrLog['CLIENTE_INT_ID_CLIENTE'] = $intIdCliente;
-					$arrLog['EVENTO_INT_ID_EVENTO'] = $arrIngresso['INT_ID_EVENTO'];
+					$arrLog['EVENTO_INT_ID_EVENTO'] = $arrIngresso['EVENTO_INT_ID_EVENTO'];
 
 					$objModelLog->saveLog($arrLog);
 

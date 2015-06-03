@@ -19,7 +19,7 @@ $this->title = 'Ingressos';
 		</div>
 	</div>
 	<div class="row">
-		<table id="grid_evento" class="table table-striped table-hover">
+		<table id="grid_ingresso" class="table table-striped table-hover">
 			<thead>  
 				<tr>
 					<th>Descrição</th>
@@ -29,22 +29,23 @@ $this->title = 'Ingressos';
 					<th width="130px" class="text-center">Qtd. Participantes</th>
 					<th width="90px" class="text-center">Restrito ?</th>
 					<th width="130px" class="text-center">Taxa de serviço</th>
-					<th width="130px" class="text-center">Ação</th>
+					<th width="90px" class="text-center">Ação</th>
 				</tr>
 			</thead>
 			<tbody>
 			<?php if (!empty($arrIngressos)) {
 			 	foreach ($arrIngressos as $key => $arrIngresso) { ?>
 				<tr>
-					<td><?= $arrIngresso['INT_ID_EVENTO'];?></td>
-					<td><?= $arrIngresso['STR_NOME'];?></td>
-					<td class="text-center"><?= date('d/m/Y H:i:s', strtotime($arrIngresso['DAT_DATA_INICIO'].$arrIngresso['TIM_HORA_INICIO']));?></td>
-					<td class="text-center"><?= date('d/m/Y H:i:s', strtotime($arrIngresso['DAT_DATA_FINAL'].$arrIngresso['TIM_HORA_FINAL']));?></td>
-					<td class="text-center"><?= $arrIngresso['INT_PAGAMENTO_ATIVO'] ? "<strong class='text-success'>Sim</strong>" : "<strong class='text-danger'>Não</strong>" ;?></td>
-					<td class="text-center"><strong><?= $arrIngresso['STR_DESCRICAO_STATUS'];?></strong></td>
-					<td>						
-						<?= Html::a('Publicar', ['evento/publicar','id' => $arrIngresso['INT_ID_EVENTO']], ['class'=>'btn btn-success']) ?>
-						<?= Html::a('Editar', ['evento/editar','id' =>$arrIngresso['INT_ID_EVENTO']], ['class'=>'btn btn-primary']) ?>
+					<td><?= $arrIngresso['STR_DESCRICAO'];?></td>
+					<td class="text-right"><?= $arrIngresso['INT_QUANTIDADE'];?></td>
+					<td class="text-center"><?= date('d/m/Y H:i:s', strtotime($arrIngresso['DAT_DATA_INICIO_VENDA'].$arrIngresso['TIM_HORA_INICIO_VENDA']));?></td>
+					<td class="text-center"><?= date('d/m/Y H:i:s', strtotime($arrIngresso['DAT_DATA_FINAL_VENDA'].$arrIngresso['TIM_HORA_FINAL_VENDA']));?></td>
+					<td class="text-right"><?= $arrIngresso['INT_QUANTIDADE_MAXIMA_VENDA_PARTICIPANTE'];?></td>
+					<td class="text-center"><?= $arrIngresso['STR_INGRESSO_RESTRITO'] == 'S' ? "<strong class='text-success'>Sim</strong>" : "<strong class='text-danger'>Não</strong>" ;?></td>
+					<td class="text-center"><?= $arrIngresso['STR_TAXA_SERVICO'] == 'S' ? "<strong class='text-success'>Participante</strong>" : "<strong class='text-danger'>Organizador</strong>" ;?></td>
+					<td class="text-center">						
+						<?//= Html::a('Publicar', ['evento/publicar','id' => $arrIngresso['INT_ID_INGRESSO']], ['class'=>'btn btn-success']) ?>
+						<?= Html::a('Editar', ['ingresso/editar','id' =>$arrIngresso['INT_ID_INGRESSO']], ['class'=>'btn btn-primary']) ?>
 					</td>
 				</tr>
 			<?php } 
@@ -60,7 +61,7 @@ $this->title = 'Ingressos';
 <script>
 $(document).ready(function() {
 		
-		$('#grid_evento').DataTable({
+		$('#grid_ingresso').DataTable({
 			"searching": true,
 			"ordering": true,
 			"columnDefs": [

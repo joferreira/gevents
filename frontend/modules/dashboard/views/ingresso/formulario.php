@@ -147,20 +147,20 @@ $this->title = 'Ingresso';
 								</div>
 							</div>
 							<div class="row">
-								<div class="col-md-4">
+								<!--div class="col-md-4">
 									<div class="form-group field-ingresso-int_valor">
 										<div class="input-group"><span class="input-group-addon"><label for="ingresso-int_valor" class="control-label">Valor R$</label></span>
-											<input type="text" maxlength="11" name="Ingresso[INT_VALOR]" class="form-control" id="ingresso-int_VALOR">
+											<input type="text" maxlength="11" name="INT_VALOR" class="form-control" id="ingresso-int_VALOR">
 										</div>
 									</div>
-								</div>
-								<!--div class="col-md-4">
-									<?/* = $objFormIngresso->field($objModelIngresso, 'INT_VALOR', [ 
-									'template' => '<div class="input-group"><span class="input-group-addon">{label}</span>{input}</div>',
-								])->textInput(['maxlength' => 11]); , ['itemOptions' => ['class' =>'radio-inline']] */?> 
 								</div-->
 								<div class="col-md-4">
-									<?= $objFormIngresso->field($objModelIngresso, "STR_INGRESSO_RESTRITO")->inline()->radioList( ['S'=>'Sim', 'N'=>'Não'], ['unselect'=>'S'] ); ?>
+									<?= $objFormIngresso->field($objModelIngresso, 'DEC_VALOR', [ 
+									'template' => '<div class="input-group"><span class="input-group-addon">{label}</span>{input}</div>',
+								])->textInput(['maxlength' => 11]); /*, ['itemOptions' => ['class' =>'radio-inline']] */?> 
+								</div>
+								<div class="col-md-4">
+									<?= $objFormIngresso->field($objModelIngresso, "STR_INGRESSO_RESTRITO")->inline()->radioList( ['S'=>'Sim', 'N'=>'Não'], ['unselect'=>'N'] ); ?>
 									<?//= Html::activeRadioList($objModelIngresso, 'STR_INGRESSO_RESTRITO', ['S'=>'Sim', 'N'=>'Não']);
 									//$objFormIngresso->field($objModelIngresso, 'STR_INGRESSO_RESTRITO')->inline()->radioList( ['S'=>'Sim', 'N'=>'Não'], ['checked'=>true] ); ?>
 								</div>
