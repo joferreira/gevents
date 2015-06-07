@@ -67,19 +67,22 @@ AppAsset::register($this);
 
 	<!-- Preloader -->
 	<div id="preloader">
-	    <div id="status">
-	        <div class="spinner"></div>
-	    </div>
+		<div id="status">
+			<div class="spinner"></div>
+		</div>
 	</div>
 
 	<?php $this->beginBody() ?>
 	<div class="wrap">
-		<div id="wrapper">
+		<!-- Wrap all content -->
+		<div id="wrapper" class="wrapper">
+
 		<?= Breadcrumbs::widget([ 'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [], ]) ?>
 		<?php
 			echo $content;
 		?>
 		</div>
+		<!-- /Wrap all content -->
 	</div>
 	<div class="text-center" style="left:20%; position:absolute; top:45%; width:60%; z-index:9999;">
 		<?php if (Yii::$app->session->hasFlash('success')):
@@ -172,42 +175,42 @@ AppAsset::register($this);
 			image_advtab: true
 		});
 		*/
-		$(document).ready(function () {
-			//$('#wrapper').on('click', '#cliente-form .alterar', saveCliente);
+			jQuery(document).ready(function () {
+				//$('#wrapper').on('click', '#cliente-form .alterar', saveCliente);
+				theme.init();
+				theme.initMainSlider();
+				theme.initCountDown();
+				theme.initPartnerSlider2();
+				theme.initImageCarousel();
+				theme.initTestimonials();
+				theme.initGoogleMap();
+			});
+			jQuery(window).load(function () {
+				theme.initAnimation();
+			});
 
-			theme.init();
-			theme.initMainSlider();
-			theme.initCountDown();
-			theme.initPartnerSlider();
-			theme.initTestimonials();
-			theme.initGoogleMap();
-		});
-		
-		jQuery(window).load(function () {
-			theme.initAnimation();
-		});
+			jQuery(window).load(function () { jQuery('body').scrollspy({offset: 100, target: '.navigation'}); });
+			jQuery(window).load(function () { jQuery('body').scrollspy('refresh'); });
+			jQuery(window).resize(function () { jQuery('body').scrollspy('refresh'); });
 
-		jQuery(window).load(function () { jQuery('body').scrollspy({offset: 100, target: '.navigation'}); });
-		jQuery(window).load(function () { jQuery('body').scrollspy('refresh'); });
-		jQuery(window).resize(function () { jQuery('body').scrollspy('refresh'); });
+			jQuery(document).ready(function () { theme.onResize(); });
+			jQuery(window).load(function(){ theme.onResize(); });
+			jQuery(window).resize(function(){ theme.onResize(); });
 
-		jQuery(document).ready(function () { theme.onResize(); });
-		jQuery(window).load(function(){ theme.onResize(); });
-		jQuery(window).resize(function(){ theme.onResize(); });
-
-		jQuery(window).load(function() {
-			if (location.hash != '') {
-				var hash = '#' + window.location.hash.substr(1);
-				if (hash.length) {
-					jQuery('html,body').delay(0).animate({
-						scrollTop: jQuery(hash).offset().top - 44 + 'px'
-					}, {
-						duration: 1200,
-						easing: "easeInOutExpo"
-					});
+			jQuery(window).load(function() {
+				if (location.hash != '') {
+					var hash = '#' + window.location.hash.substr(1);
+					if (hash.length) {
+						jQuery('html,body').delay(0).animate({
+							scrollTop: jQuery(hash).offset().top - 44 + 'px'
+						}, {
+							duration: 1200,
+							easing: "easeInOutExpo"
+						});
+					}
 				}
-			}
-		});
+			});
+
 /*
 		function message(message, alert_class, timeout){
 			$("#messageBox")
