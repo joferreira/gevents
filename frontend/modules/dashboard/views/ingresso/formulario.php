@@ -5,6 +5,7 @@ use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
 use yii\bootstrap\Alert;
 use yii\jui\DatePicker;
+use yii\widgets\MaskedInput;
 
 $hoje = date('d/m/Y');
 
@@ -17,6 +18,8 @@ $dataFinal = isset($objModelIngresso->DAT_DATA_FINAL_VENDA) ? $objModelIngresso-
 $dataFormatadaFinal = Yii::$app->formatter->asDate( implode("-",array_reverse(explode("/",$dataFinal))), 'php:d/m/Y');
 
 $arrHoraFinal = isset($objModelIngresso->TIM_HORA_FINAL_VENDA) ? explode(":", $objModelIngresso->TIM_HORA_FINAL_VENDA, -1 ) : [0=>'09',1=>'00'];
+
+$valorFormatado = number_format($objModelIngresso->DEC_VALOR, 2, ',', '.');
 
 $this->title = 'Ingresso';
 ?>
@@ -147,25 +150,52 @@ $this->title = 'Ingresso';
 								</div>
 							</div>
 							<div class="row">
-								<!--div class="col-md-4">
-									<div class="form-group field-ingresso-int_valor">
-										<div class="input-group"><span class="input-group-addon"><label for="ingresso-int_valor" class="control-label">Valor R$</label></span>
-											<input type="text" maxlength="11" name="INT_VALOR" class="form-control" id="ingresso-int_VALOR">
-										</div>
-									</div>
-								</div-->
 								<div class="col-md-4">
 									<?= $objFormIngresso->field($objModelIngresso, 'DEC_VALOR', [ 
 									'template' => '<div class="input-group"><span class="input-group-addon">{label}</span>{input}</div>',
-								])->textInput(['maxlength' => 11]); /*, ['itemOptions' => ['class' =>'radio-inline']] */?> 
+								])->textInput(['value'=>$valorFormatado, 'maxlength' => 11, 'class'=>'money form-control']); /*, ['itemOptions' => ['class' =>'radio-inline']] */?> 
 								</div>
 								<div class="col-md-4">
-									<?= $objFormIngresso->field($objModelIngresso, "STR_INGRESSO_RESTRITO")->inline()->radioList( ['S'=>'Sim', 'N'=>'Não'], ['unselect'=>'N'] ); ?>
-									<?//= Html::activeRadioList($objModelIngresso, 'STR_INGRESSO_RESTRITO', ['S'=>'Sim', 'N'=>'Não']);
-									//$objFormIngresso->field($objModelIngresso, 'STR_INGRESSO_RESTRITO')->inline()->radioList( ['S'=>'Sim', 'N'=>'Não'], ['checked'=>true] ); ?>
+									<? $checked = (isset($objModelIngresso->STR_INGRESSO_RESTRITO)) ? $objModelIngresso->STR_INGRESSO_RESTRITO :'N';?>
+									<div class="form-group field-ingresso-str_ingresso_restrito">
+										<label for="ingresso-str_ingresso_restrito" class="control-label"><?= Html::activeLabel($objModelIngresso, "STR_INGRESSO_RESTRITO"); ?></label>
+										<div>
+											<input type="hidden" value="" name="Ingresso[STR_INGRESSO_RESTRITO]">
+											<div id="ingresso-str_ingresso_restrito">
+												<label class="radio-inline"><input type="radio" <?= ($checked == 'S') ? 'checked=""' : '';?> value="S" name="Ingresso[STR_INGRESSO_RESTRITO]">Sim</label>
+												<label class="radio-inline"><input type="radio" <?= ($checked == 'N') ? 'checked=""' : '';?> value="N" name="Ingresso[STR_INGRESSO_RESTRITO]">Não</label>
+											</div>
+											<p class="help-block help-block-error"></p>
+										</div>										
+									</div>
+									<?/*= $objFormIngresso->field($objModelIngresso, "STR_INGRESSO_RESTRITO")->inline()->radioList( ['S'=>'Sim', 'N'=>'Não'], ['unselect'=>'N'] );
+									echo $objFormIngresso->field($objModelIngresso, "STR_INGRESSO_RESTRITO")->inline()->radioList( ['S'=>'Sim', 'N'=>'Não'], [
+											'item' => function ($index, $label, $name, $checked, $value) {
+												return '<label class="radio-inline">' . Html::radio($name, $checked , ['value'  => $value ]) . $label . $checked . $index .'</label>';
+											}
+									]) */ ?>
 								</div>
 								<div class="col-md-4">
-									<?= $objFormIngresso->field($objModelIngresso, "STR_TAXA_SERVICO")->inline()->radioList( ['S'=>'Participante', 'N'=>'Organizador'] )  ?>
+									<? $checkedTaxa = (isset($objModelIngresso->STR_TAXA_SERVICO)) ? $objModelIngresso->STR_TAXA_SERVICO :'S';?>
+									<div class="form-group field-ingresso-str_taxa_servico">
+										<label for="ingresso-str_taxa_servico" class="control-label"><?= Html::activeLabel($objModelIngresso, "STR_TAXA_SERVICO");?></label>
+										<div>
+											<input type="hidden" value="N" name="Ingresso[STR_TAXA_SERVICO]">
+											<div id="ingresso-str_taxa_servico">
+												<label class="radio-inline"><input type="radio" <?= ($checkedTaxa == 'S') ? 'checked=""' : '';?> value="S" name="Ingresso[STR_TAXA_SERVICO]"> Participante</label>
+												<label class="radio-inline"><input type="radio" <?= ($checkedTaxa == 'N') ? 'checked=""' : '';?> value="N" name="Ingresso[STR_TAXA_SERVICO]"> Organizador</label>
+											</div>
+												<p class="help-block help-block-error"></p>
+										</div>
+									</div>
+									<?//= $objFormIngresso->field($objModelIngresso, "STR_TAXA_SERVICO")->inline()->radioList( ['S'=>'Participante', 'N'=>'Organizador'], ['unselect'=>'N'] )
+									/*echo $objFormIngresso->field($objModelIngresso, "STR_INGRESSO_RESTRITO")->inline()->radioList( ['S'=>'Sim', 'N'=>'Não'], [
+											'item' => function ($index, $label, $name, $checked, $value) {
+												$checked = empty($checked) ? true : '';
+												return '<label class="radio-inline">' . Html::radio($name, $checked, ['value'  => $value]) . $label . '</label>';
+											}
+									])*/
+									?>
 								</div>
 							</div>
 

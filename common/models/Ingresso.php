@@ -47,7 +47,7 @@ class Ingresso extends ActiveRecord
 			[['EVENTO_INT_ID_EVENTO', 'INT_QUANTIDADE', 'INT_QUANTIDADE_MAXIMA_VENDA_PARTICIPANTE'], 'integer'],
 			[['DAT_DATA_INICIO_VENDA', 'TIM_HORA_INICIO_VENDA', 'DAT_DATA_FINAL_VENDA', 'TIM_HORA_FINAL_VENDA'], 'safe'],
 			[['STR_DESCRICAO'], 'string', 'max' => 150],
-			[['DEC_VALOR'], 'number', 'numberPattern' => '/^\s*[-+]?[0-9]*[.,]?[0-9]+([eE][-+]?[0-9]+)?\s*$/'],
+			[['DEC_VALOR'], 'string'],//'number', 'numberPattern' => '/^\s*[-+]?[0-9]*[.,]?[0-9]+([eE][-+]?[0-9]+)?\s*$/'],
 			[['STR_INGRESSO_RESTRITO', 'STR_TAXA_SERVICO'], 'string', 'max' => 1]
 		];
 	}
@@ -105,6 +105,8 @@ class Ingresso extends ActiveRecord
 
 			$arrDados['TIM_HORA_INICIO_VENDA'] = $arrDados['hora_inicio'].':'.$arrDados['minuto_inicio'].':00';
 			$arrDados['TIM_HORA_FINAL_VENDA'] = $arrDados['hora_final'].':'.$arrDados['minuto_final'].':00';
+
+			$arrDados['DEC_VALOR'] = str_replace(',', '.', str_replace('.', '', $arrDados['DEC_VALOR'] ));
 
 			unset($arrDados['hora_inicio']);
 			unset($arrDados['minuto_inicio']);

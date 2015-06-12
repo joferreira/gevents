@@ -129,19 +129,14 @@ class IngressoController extends Controller
 	public function actionEditar($id)
 	{
 		try {
-			$objModelEvento =  new Evento(['scenario' => 'criacao']);
-			$objModelEnderecoEvento = new EnderecoEvento();
-			$objModelTipoEvento = new TipoEvento();
-			$objModelUnidadeFederal = new UnidadeFederal();
-			$objModelMapsGoogle = new MapsGoogle();
+			$objModelEvento = new Evento();
+			$objModelIngresso = new Ingresso();
+			$objModelVoucherPromocional = new VoucherPromocional();
 			$objModelLog = new Log();
 			$objModelStaff = new Staff();
 
-			$objTipoEvento = $objModelTipoEvento->find()->all();
-			$arrTipoEvento = ArrayHelper::map($objTipoEvento,'INT_ID_TIPO_EVENTO','STR_DESCRICAO');
-
-			$objUnidadeFederal = $objModelUnidadeFederal->find()->all();
-			$arrUnidadeFederal = ArrayHelper::map($objUnidadeFederal,'INT_ID_UNIDADE_FEDERAL','STR_DESCRICAO_UNIDADE_FEDERAL');
+			$objEvento = $objModelEvento->find()->all();
+			$arrEvento = ArrayHelper::map($objEvento,'INT_ID_EVENTO','STR_NOME');
 
 			for ($hr=0; $hr < 24 ; $hr++) { 
 				$hora = (strlen($hr) == 1) ? '0'.$hr : $hr;
@@ -154,21 +149,16 @@ class IngressoController extends Controller
 				$arrMinuto[$minuto] = $minuto;
 			}
 
-			$objEvento = $objModelEvento->findOne($id);
-			$objEnderecoEvento = $objModelEnderecoEvento->findOne(array('EVENTO_INT_ID_EVENTO'=>$objEvento->INT_ID_EVENTO));
-			$objMapsGoogle = $objModelMapsGoogle->findOne(array('ENDERECO_EVENTO_INT_ID_ENDERECO_EVENTO'=>$objEnderecoEvento->INT_ID_ENDERECO_EVENTO));
+			//$objEvento = $objModelEvento->findOne($id);
+			$objIngresso = $objModelIngresso->findOne($id);
 
-			if(empty($objMapsGoogle))
-				$objMapsGoogle = $objModelMapsGoogle;
-		
 			return $this->render('formulario', [
-				'objModelEvento' => $objEvento,
-				'objModelEnderecoEvento' => $objEnderecoEvento,
-				'arrUnidadeFederal' => $arrUnidadeFederal,
-				'arrTipoEvento' => $arrTipoEvento,
+				'objModelIngresso' => $objIngresso,
+				'objModelVoucherPromocional' => $objModelVoucherPromocional,
+				//'objModelEnderecoEvento' => $objModelEnderecoEvento,
 				'arrHora' => $arrHora,
 				'arrMinuto' => $arrMinuto,
-				'objModelMapsGoogle' => $objMapsGoogle,
+				'arrEvento' => $arrEvento,
 			]);
 		
 		} catch (\Exception $objException) {

@@ -50,6 +50,7 @@ if ( Yii::$app->session->get('GE_LOGADO') ) {
 	<script src="/gevents/frontend/web/modules/js/sb-admin-2.js"></script>
 	<!--script src="/gevents/frontend/web/modules/tinymce/jquery.tinymce.min.js"></script-->
 	<script src="/gevents/frontend/web/modules/tinymce/tinymce.min.js"></script>
+	<script src="/gevents/frontend/web/js/jquery.maskMoney.js"></script>
 
 
 </head>
@@ -157,6 +158,7 @@ if ( Yii::$app->session->get('GE_LOGADO') ) {
 		
 		$(document).ready(function () {
 			$('#wrapper').on('click', '#cliente-form .alterar', saveCliente);
+			$(".money").maskMoney({allowNegative: true, thousands:'.', decimal:',', affixesStay: false});
 
 		});
 
