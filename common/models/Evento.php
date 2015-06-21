@@ -308,4 +308,34 @@ class Evento extends ActiveRecord
 			echo $objException;
 		}
 	}
+
+	/**
+	 * Método para buscar eventos para exibir na home.
+	 * 
+	 * @return boolean
+	 * @throws Exception
+	 */
+	public function getEventos($arrDados = array()) {
+		try {
+			
+			$objQuery = new Query();
+
+			$objQuery->select('EV.INT_ID_EVENTO, EV.STATUS_INT_ID_STATUS, EV.STR_NOME, EV.STR_PUBLICACAO, EV.INT_PAGAMENTO_ATIVO, EV.DAT_DATA_INICIO, EV.DAT_DATA_FINAL, EV.TIM_HORA_INICIO, EV.TIM_HORA_FINAL, SF.STR_GERENTE, SF.INT_ID_STAFF, TE.STR_DESCRICAO, ST.STR_DESCRICAO_STATUS')
+					->from($this->tableName() . ' EV ')
+					->join('INNER JOIN', 'STAFF SF', 'SF.EVENTO_INT_ID_EVENTO = EV.INT_ID_EVENTO')
+					->join('INNER JOIN', 'TIPO_EVENTO TE', 'TE.INT_ID_TIPO_EVENTO = EV.TIPO_EVENTO_INT_ID_TIPO_EVENTO')
+					->join('INNER JOIN', 'STATUS ST', 'ST.INT_ID_STATUS = EV.STATUS_INT_ID_STATUS')
+					->where($arrDados);
+			
+			$objCommand = $objQuery->createCommand();
+			$arrResult = $objCommand->queryAll();
+			
+			if ($arrResult)
+				return $arrResult;
+			else
+				return FALSE;
+		} catch (\Exception $objException) {
+			echo $objException;
+		}
+	}
 }

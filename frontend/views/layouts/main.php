@@ -68,39 +68,6 @@ AppAsset::register($this);
 		</div>
 	</div>
 	<div class="wrapper">
-		<?php /*
-			NavBar::begin([
-				'brandLabel' => 'Test Company',
-				'brandUrl' => Yii::$app->homeUrl,
-				'options' => [
-					'class' => 'navigation closed clearfix',
-				],
-			]);
-			$menuItems = [
-				['label' => 'Home', 'url' => '#home' ],
-				['label' => 'About', 'url' => '#about' ],
-				['label' => 'Schedule', 'url' => '#schedule' ],
-				['label' => 'Sponsors', 'url' => '#sponsors' ],
-				['label' => 'Speakers', 'url' => '#speakers' ],
-				['label' => 'Price', 'url' => '#price' ],
-				['label' => 'Location', 'url' => '#location' ],
-			];
-			if (Yii::$app->user->isGuest) {
-				$menuItems[] = ['label' => 'Signup', 'url' => ['/site/signup']];
-				$menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];
-			} else {
-				$menuItems[] = [
-					'label' => 'Logout (' . Yii::$app->user->identity->username . ')',
-					'url' => ['/site/logout'],
-					'linkOptions' => ['data-method' => 'post']
-				];
-			}
-			echo Nav::widget([
-				'options' => ['class' => 'navbar-nav navbar-right'],
-				'items' => $menuItems,
-			]);
-			NavBar::end(); */            
-		?>
 		<?php echo $this->render('header'); ?>
 
 		<div id="content" class="content-area" >

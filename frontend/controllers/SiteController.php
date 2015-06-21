@@ -3,6 +3,7 @@ namespace frontend\controllers;
 
 use Yii;
 use common\models\Cliente;
+use common\models\Evento;
 use frontend\models\ContactForm;
 use frontend\models\CadastroForm;
 use yii\base\InvalidParamException;
@@ -73,11 +74,15 @@ class SiteController extends Controller
 			$objModelCliente = new Cliente(['scenario' => 'register']);
 			$objModelLogin = new Cliente(['scenario' => 'login']);
 			$objModelContato = new ContactForm();
+			$objModelEvento = new Evento;
+
+			$objEvento = $objModelEvento->getEventos(array('STR_PUBLICACAO'=>'PU'));
 
 			return $this->render('index', [
 				'contato' => $objModelContato,
 				'cadastro' => $objModelCliente,
 				'login' => $objModelLogin,
+				'eventos' => $objEvento,
 			]);
 			
 			

@@ -244,7 +244,7 @@ var theme = function () {
             $('.event-carousel .owl-carousel').owlCarousel({
                 autoplay: false,
                 loop: false,
-                margin: 25,
+                margin: 15,
                 dots: true,
                 nav: true,
                 navText: [

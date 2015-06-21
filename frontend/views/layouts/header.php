@@ -21,9 +21,9 @@
 				<!--a href="#" class="menu-toggle btn"><i class="fa fa-bars"></i></a-->
 				<ul class="sf-menu nav">
 					<li><a href="#home">Home</a></li>
-					<li><a href="#about">Sobre</a></li>					
+					<li><a href="#about">Sobre</a></li>
 					<li><a href="#login">Login</a></li>
-					<li><a href="#register">Cadastre-se</a></li>					
+					<li><a href="#register">Cadastre-se</a></li>
 					<li><a href="#price">Planos</a></li>
 					<li><a href="#faq">FAQS</a></li>
 					<li><a href="#contact">Contato</a></li>
