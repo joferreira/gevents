@@ -114,6 +114,11 @@ class Evento extends ActiveRecord
 			'INT_FAX' => 'Fax',
 			'INT_PAGAMENTO_ATIVO' => 'Seu evento é pago?',
 			'STR_PUBLICACAO' => 'Seu evento é',
+			'DAT_DATA_DESTAQUE_INICIO' => 'Data de destaque início',
+			'DAT_DATA_DESTAQUE_FINAL' => 'Data de destaque final',
+			'TIM_HORA_DESTAQUE_INICIO' => 'Hora destaque início',
+			'TIM_HORA_DESTAQUE_FINAL' => 'Hora destaque final',
+			'INT_QUANTIDADE_DIAS_DESTAQUE' => 'Quantidade dias destaque',			
 		];
 	}
 
@@ -237,6 +242,19 @@ class Evento extends ActiveRecord
 
 			$arrDados['TIM_HORA_INICIO'] = $arrDados['hora_inicio'].':'.$arrDados['minuto_inicio'].':00';
 			$arrDados['TIM_HORA_FINAL'] = $arrDados['hora_final'].':'.$arrDados['minuto_final'].':00';
+
+			if( !empty($arrDados['DAT_DATA_DESTAQUE_INICIO']) && !empty($arrDados['DAT_DATA_DESTAQUE_FINAL']) ){
+				$arrDados['DAT_DATA_DESTAQUE_INICIO'] = implode("-",array_reverse(explode("/",$arrDados['DAT_DATA_DESTAQUE_INICIO'])));
+				$arrDados['DAT_DATA_DESTAQUE_FINAL'] = implode("-",array_reverse(explode("/",$arrDados['DAT_DATA_DESTAQUE_FINAL'])));
+				$arrDados['TIM_HORA_DESTAQUE_INICIO'] = $arrDados['hora_destaque_inicio'].':'.$arrDados['minuto_destaque_inicio'].':00';
+				$arrDados['TIM_HORA_DESTAQUE_FINAL'] = $arrDados['hora_destaque_final'].':'.$arrDados['minuto_destaque_final'].':00';
+
+				$arrDados['INT_QUANTIDADE_DIAS_DESTAQUE'];
+				unset($arrDados['hora_destaque_inicio']);
+				unset($arrDados['minuto_destaque_inicio']);
+				unset($arrDados['hora_destaque_final']);
+				unset($arrDados['minuto_destaque_final']);
+			}
 
 			unset($arrDados['hora_inicio']);
 			unset($arrDados['minuto_inicio']);

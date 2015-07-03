@@ -18,6 +18,16 @@ $dataFormatadaFinal = Yii::$app->formatter->asDate( implode("-",array_reverse(ex
 
 $arrHoraFinal = isset($objModelEvento->TIM_HORA_FINAL) ? explode(":", $objModelEvento->TIM_HORA_FINAL, -1 ) : [0=>'09',1=>'00'];
 
+$dataInicioDestaque = isset($objModelEvento->DAT_DATA_DESTAQUE_INICIO) ? $objModelEvento->DAT_DATA_DESTAQUE_INICIO : '';
+$dataFormatadaInicioDestaque = empty($dataInicioDestaque) ? '' : Yii::$app->formatter->asDate( implode("-",array_reverse(explode("/",$dataInicioDestaque))), 'php:d/m/Y');
+
+$arrHoraInicioDestaque = isset($objModelEvento->TIM_HORA_DESTAQUE_INICIO) ? explode(":", $objModelEvento->TIM_HORA_DESTAQUE_INICIO, -1 ) : [0=>'08',1=>'00'];
+
+$dataFinalDestaque = isset($objModelEvento->DAT_DATA_DESTAQUE_FINAL) ? $objModelEvento->DAT_DATA_DESTAQUE_FINAL : '';
+$dataFormatadaFinalDestaque = empty($dataFinalDestaque)? '' : Yii::$app->formatter->asDate( implode("-",array_reverse(explode("/",$dataFinalDestaque))), 'php:d/m/Y');
+
+$arrHoraFinalDestaque = isset($objModelEvento->TIM_HORA_DESTAQUE_FINAL) ? explode(":", $objModelEvento->TIM_HORA_DESTAQUE_FINAL, -1 ) : [0=>'09',1=>'00'];
+
 $this->title = 'Evento';
 ?>
 
@@ -162,6 +172,76 @@ $this->title = 'Evento';
 											?>
 										</div>
 									</div>
+								</div>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="clearfix"></div>
+			<div class="row">
+				<div class="col-md-12">
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							Destaque
+						</div>
+						<div class="panel-body">
+							<div class="row">
+								<div class="col-md-4">
+								<?= $objFormEvento->field($objModelEvento, 'DAT_DATA_DESTAQUE_INICIO', [ 
+									'template' => '<div class="input-group"><span class="input-group-addon">{label}</span>{input}</div>',
+								])->widget(DatePicker::className(),[ 'language' => 'pt-BR', 'dateFormat' => 'dd/MM/yyyy'])->textInput(['maxlength' => 10, 'value' => $dataFormatadaInicioDestaque]) ?>
+								</div>
+								<div class="col-md-3">
+									<div class="form-group field-evento-hora_destaque_inicio">
+										<div class="input-group">
+											<span class="input-group-addon"><label for="hora_destaque_inicio" class="control-label">Hora</label></span>
+											<?= Html::dropDownList( 'Evento[hora_destaque_inicio]', $arrHoraInicioDestaque[0], $arrHora, ['prompt'=>'Selecione...', 'id'=>'hora_inicio', 'class'=>'form-control','size'=>1]);
+											?>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-3">
+									<div class="form-group field-evento-min_destaque_inicio">
+										<div class="input-group">
+											<span class="input-group-addon"><label for="min_destaque_inicio" class="control-label">Min</label></span>
+											<?= Html::dropDownList( 'Evento[minuto_destaque_inicio]', $arrHoraInicioDestaque[1], $arrMinuto, ['prompt'=>'Selecione...', 'id'=>'min_inicio', 'class'=>'form-control', 'size'=>1]);
+											?>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-4">
+								<?= $objFormEvento->field($objModelEvento, 'DAT_DATA_DESTAQUE_FINAL', [ 
+									'template' => '<div class="input-group"><span class="input-group-addon">{label}</span>{input}</div>',
+								])->widget(DatePicker::className(),[ 'language' => 'pt-BR', 'dateFormat' => 'dd/MM/yyyy'])->textInput(['maxlength' => 10, 'value' => $dataFormatadaFinalDestaque]) ?>
+								</div>
+								<div class="col-md-3">
+									<div class="form-group field-evento-hora_destaque_final">
+										<div class="input-group">
+											<span class="input-group-addon"><label for="hora_destaque_final" class="control-label">Hora</label></span>
+											<?= Html::dropDownList( 'Evento[hora_destaque_final]', $arrHoraFinalDestaque[0], $arrHora, ['prompt'=>'Selecione...', 'id'=>'hora_final', 'class'=>'form-control', 'size'=>1]);
+											?>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-3">
+									<div class="form-group field-evento-min_destaque_final">
+										<div class="input-group">
+											<span class="input-group-addon"><label for="min_destaque_final" class="control-label">Min</label></span>
+											<?= Html::dropDownList( 'Evento[minuto_destaque_final]', $arrHoraFinalDestaque[1], $arrMinuto, ['prompt'=>'Selecione...', 'id'=>'"min_final', 'class'=>'form-control', 'size'=>1]);
+											?>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-3">
+								<?= $objFormEvento->field($objModelEvento, 'INT_QUANTIDADE_DIAS_DESTAQUE', [ 
+									'template' => '<div class="input-group"><span class="input-group-addon">{label}</span>{input}</div>',
+								])->textInput(['maxlength' => 11]) ?>
 								</div>
 							</div>
 
