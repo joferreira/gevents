@@ -184,7 +184,7 @@ $this->title = 'Evento';
 				<div class="col-md-12">
 					<div class="panel panel-default">
 						<div class="panel-heading">
-							Destaque
+							Destaque <a href="javascript:void(0);" class="" title="Informações sobre o destaque" data-toggle="popover" data-placement="right" data-content="O seu evento pode ficar em destaque no hosso site por um período pré determinado e por esse serviço será cobrado uma taxa."><span class="text-danger fa fa-question-circle"></span></a>
 						</div>
 						<div class="panel-body">
 							<div class="row">
@@ -241,7 +241,7 @@ $this->title = 'Evento';
 								<div class="col-md-3">
 								<?= $objFormEvento->field($objModelEvento, 'INT_QUANTIDADE_DIAS_DESTAQUE', [ 
 									'template' => '<div class="input-group"><span class="input-group-addon">{label}</span>{input}</div>',
-								])->textInput(['maxlength' => 11]) ?>
+								])->textInput(['maxlength' => 11, 'readonly'=>"readonly"]) ?>
 								</div>
 							</div>
 

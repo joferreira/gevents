@@ -76,13 +76,15 @@ class SiteController extends Controller
 			$objModelContato = new ContactForm();
 			$objModelEvento = new Evento;
 
-			$objEvento = $objModelEvento->getEventos(array('STR_PUBLICACAO'=>'PU'));
+			$objEventosDestaques = $objModelEvento->getEventos(array('STR_PUBLICACAO'=>'PU','STATUS_INT_ID_STATUS'=>1));
+			$objEventos = $objModelEvento->getEventos(array('STR_PUBLICACAO'=>'PU'));
 
 			return $this->render('index', [
 				'contato' => $objModelContato,
 				'cadastro' => $objModelCliente,
 				'login' => $objModelLogin,
-				'eventos' => $objEvento,
+				'destaques' => $objEventosDestaques,
+				'eventos' => $objEventos,
 			]);
 			
 			

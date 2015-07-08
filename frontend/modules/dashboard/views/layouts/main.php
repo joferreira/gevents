@@ -105,6 +105,7 @@ if ( Yii::$app->session->get('GE_LOGADO') ) {
 		<p class="pull-right"><?= Yii::powered() ?></p>
 		</div>
 		<a id="url_save_cliente" class="hidden" href="index.php?r=dashboard/cadastro/save"></a>
+		<a id="url_diferenca_dias" class="hidden" href="index.php?r=dashboard/evento/diferenca"></a>dashboard/evento/formulario
 	</footer>
 	
 
@@ -157,9 +158,11 @@ if ( Yii::$app->session->get('GE_LOGADO') ) {
 		});
 		
 		$(document).ready(function () {
+			$('[data-toggle="popover"]').popover();
 			$('#wrapper').on('click', '#cliente-form .alterar', saveCliente);
 			$(".money").maskMoney({allowNegative: true, thousands:'.', decimal:',', affixesStay: false});
-
+			$('#wrapper').on('change', '#evento-form #evento-dat_data_destaque_inicio', diferencaDias);
+			$('#wrapper').on('change', ' #evento-form #evento-dat_data_destaque_final', diferencaDias);
 		});
 
 		function message(message, alert_class, timeout){
@@ -212,6 +215,31 @@ if ( Yii::$app->session->get('GE_LOGADO') ) {
 			}
 
 			return false;
+		}
+
+		function diferencaDias(evt){
+			evt.preventDefault;
+			var url = $('#url_diferenca_dias').attr('href');
+			var dataInicial = $('#evento-dat_data_destaque_inicio');
+			var dataFinal = $('#evento-dat_data_destaque_final');
+			var dias = $('#evento-int_quantidade_dias_destaque');
+
+			if(dataInicial.val() != '' && dataFinal.val() != ''){
+				var arrDados = { DESTAQUE_INICIO : dataInicial.val(), DESTAQUE_FINAL: dataFinal.val() };
+
+				$.post( url, arrDados, function( data ){
+					if (data.response) {
+						console.log(data);
+						dias.val(data.message);
+					} else {
+						var messageError = data.message ;
+						dataInicial.val('');
+						dataFinal.val('');
+						dias.val('');
+						message(messageError, 'alert-danger');
+					}
+				});
+			}
 		}
 
 	</script>

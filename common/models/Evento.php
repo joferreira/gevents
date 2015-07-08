@@ -250,11 +250,12 @@ class Evento extends ActiveRecord
 				$arrDados['TIM_HORA_DESTAQUE_FINAL'] = $arrDados['hora_destaque_final'].':'.$arrDados['minuto_destaque_final'].':00';
 
 				$arrDados['INT_QUANTIDADE_DIAS_DESTAQUE'];
-				unset($arrDados['hora_destaque_inicio']);
-				unset($arrDados['minuto_destaque_inicio']);
-				unset($arrDados['hora_destaque_final']);
-				unset($arrDados['minuto_destaque_final']);
-			}
+			} 
+
+			unset($arrDados['hora_destaque_inicio']);
+			unset($arrDados['minuto_destaque_inicio']);
+			unset($arrDados['hora_destaque_final']);
+			unset($arrDados['minuto_destaque_final']);
 
 			unset($arrDados['hora_inicio']);
 			unset($arrDados['minuto_inicio']);
@@ -338,11 +339,13 @@ class Evento extends ActiveRecord
 			
 			$objQuery = new Query();
 
-			$objQuery->select('EV.INT_ID_EVENTO, EV.STATUS_INT_ID_STATUS, EV.STR_NOME, EV.STR_PUBLICACAO, EV.INT_PAGAMENTO_ATIVO, EV.DAT_DATA_INICIO, EV.DAT_DATA_FINAL, EV.TIM_HORA_INICIO, EV.TIM_HORA_FINAL, SF.STR_GERENTE, SF.INT_ID_STAFF, TE.STR_DESCRICAO, ST.STR_DESCRICAO_STATUS')
+			$objQuery->select('EV.INT_ID_EVENTO, EV.STATUS_INT_ID_STATUS, EV.STR_NOME, EV.STR_PUBLICACAO, EV.INT_PAGAMENTO_ATIVO, EV.DAT_DATA_INICIO, EV.DAT_DATA_FINAL, EV.TIM_HORA_INICIO, EV.TIM_HORA_FINAL, SF.STR_GERENTE, SF.INT_ID_STAFF, TE.STR_DESCRICAO, ST.STR_DESCRICAO_STATUS, EE.STR_ENDERECO, EE.STR_NUMERO, EE.STR_BAIRRO, EE.STR_MUNICIPIO, UF.STR_SIGLA_UNIDADE_FEDERAL')
 					->from($this->tableName() . ' EV ')
 					->join('INNER JOIN', 'STAFF SF', 'SF.EVENTO_INT_ID_EVENTO = EV.INT_ID_EVENTO')
 					->join('INNER JOIN', 'TIPO_EVENTO TE', 'TE.INT_ID_TIPO_EVENTO = EV.TIPO_EVENTO_INT_ID_TIPO_EVENTO')
 					->join('INNER JOIN', 'STATUS ST', 'ST.INT_ID_STATUS = EV.STATUS_INT_ID_STATUS')
+					->join('INNER JOIN', 'ENDERECO_EVENTO EE', 'EE.EVENTO_INT_ID_EVENTO = EV.INT_ID_EVENTO')
+					->join('INNER JOIN', 'UNIDADE_FEDERAL UF', 'UF.INT_ID_UNIDADE_FEDERAL = EE.UNIDADE_FEDERAL_INT_ID_UNIDADE_FEDERAL')
 					->where($arrDados);
 			
 			$objCommand = $objQuery->createCommand();

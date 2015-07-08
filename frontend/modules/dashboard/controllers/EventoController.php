@@ -290,5 +290,48 @@ class EventoController extends Controller
 
 */
 	}
+
+	public function actionDiferenca(){
+		Yii::$app->response->format = Response::FORMAT_JSON;
+		$arrResponse = array('message' => '', 'response' => false );
+
+		try {
+			$arrDados = Yii::$app->request->post();
+
+			// Define os valores a serem usados
+			$data_inicial = implode("-",array_reverse(explode("/",$arrDados['DESTAQUE_INICIO'])));
+			$data_final = implode("-",array_reverse(explode("/",$arrDados['DESTAQUE_FINAL'])));
+
+			// Usa a função strtotime() e pega o timestamp das duas datas:
+			$time_inicial = strtotime($data_inicial);
+			$time_final = strtotime($data_final);
+
+			if ($time_final <= $time_inicial ) {
+				$arrResponse['message'] = "Data de destaque início é maior que a data de destaque final, favor verificar.";
+			} else {
+
+				// Calcula a diferença de segundos entre as duas datas:
+				$diferenca = $time_final - $time_inicial; // 19522800 segundos
+
+				// Calcula a diferença de dias
+				$dias = (int)floor( $diferenca / (60 * 60 * 24)); // 225 dias
+
+				// Exibe uma mensagem de resultado:
+				//"A diferença entre as datas ".$time_inicial." e ".$time_final." é de <strong>".$dias."</strong> dias";
+				$arrResponse['message'] = $dias;
+				$arrResponse['response'] = true;
+			}
+
+			return $arrResponse;
+
+		} catch (\Exception $objExcessao) {
+
+			$arrResponse = [
+				'message' => $objExcessao->getMessage(),
+				'response' => false,
+			];
+			return $arrResponse;
+		}
+	}
 	
 }
