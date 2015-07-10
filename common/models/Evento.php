@@ -336,17 +336,28 @@ class Evento extends ActiveRecord
 	 */
 	public function getEventos($arrDados = array()) {
 		try {
-			
 			$objQuery = new Query();
+			$hoje = date('Y-m-d');
 
-			$objQuery->select('EV.INT_ID_EVENTO, EV.STATUS_INT_ID_STATUS, EV.STR_NOME, EV.STR_PUBLICACAO, EV.INT_PAGAMENTO_ATIVO, EV.DAT_DATA_INICIO, EV.DAT_DATA_FINAL, EV.TIM_HORA_INICIO, EV.TIM_HORA_FINAL, SF.STR_GERENTE, SF.INT_ID_STAFF, TE.STR_DESCRICAO, ST.STR_DESCRICAO_STATUS, EE.STR_ENDERECO, EE.STR_NUMERO, EE.STR_BAIRRO, EE.STR_MUNICIPIO, UF.STR_SIGLA_UNIDADE_FEDERAL')
+			$objQuery->select('EV.INT_ID_EVENTO, EV.STATUS_INT_ID_STATUS, EV.STR_NOME, EV.STR_PUBLICACAO, EV.INT_PAGAMENTO_ATIVO, EV.DAT_DATA_INICIO, EV.DAT_DATA_FINAL, EV.TIM_HORA_INICIO, EV.TIM_HORA_FINAL, EV.DAT_DATA_DESTAQUE_INICIO, EV.DAT_DATA_DESTAQUE_FINAL, SF.STR_GERENTE, SF.INT_ID_STAFF, TE.STR_DESCRICAO, ST.STR_DESCRICAO_STATUS, EE.STR_ENDERECO, EE.STR_NUMERO, EE.STR_BAIRRO, EE.STR_MUNICIPIO, UF.STR_SIGLA_UNIDADE_FEDERAL')
 					->from($this->tableName() . ' EV ')
 					->join('INNER JOIN', 'STAFF SF', 'SF.EVENTO_INT_ID_EVENTO = EV.INT_ID_EVENTO')
 					->join('INNER JOIN', 'TIPO_EVENTO TE', 'TE.INT_ID_TIPO_EVENTO = EV.TIPO_EVENTO_INT_ID_TIPO_EVENTO')
 					->join('INNER JOIN', 'STATUS ST', 'ST.INT_ID_STATUS = EV.STATUS_INT_ID_STATUS')
 					->join('INNER JOIN', 'ENDERECO_EVENTO EE', 'EE.EVENTO_INT_ID_EVENTO = EV.INT_ID_EVENTO')
-					->join('INNER JOIN', 'UNIDADE_FEDERAL UF', 'UF.INT_ID_UNIDADE_FEDERAL = EE.UNIDADE_FEDERAL_INT_ID_UNIDADE_FEDERAL')
-					->where($arrDados);
+					->join('INNER JOIN', 'UNIDADE_FEDERAL UF', 'UF.INT_ID_UNIDADE_FEDERAL = EE.UNIDADE_FEDERAL_INT_ID_UNIDADE_FEDERAL');
+
+			
+			if(!empty($arrDados['destaque'])){
+				unset($arrDados['destaque']);
+				$objQuery->where($arrDados)
+					->where("DAT_DATA_DESTAQUE_INICIO <= '".$hoje."'")
+					->where("DAT_DATA_DESTAQUE_FINAL >= '".$hoje."'")
+					;
+			} else {
+				unset($arrDados['destaque']);
+				$objQuery->where($arrDados);
+			}
 			
 			$objCommand = $objQuery->createCommand();
 			$arrResult = $objCommand->queryAll();
