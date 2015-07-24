@@ -42,7 +42,7 @@ $this->title = 'Eventos';
 					<td class="text-center"><?= $arrEvento['INT_PAGAMENTO_ATIVO'] ? "<strong class='text-success'>Sim</strong>" : "<strong class='text-danger'>Não</strong>" ;?></td>
 					<td class="text-center"><strong><?= $arrEvento['STR_DESCRICAO_STATUS'];?></strong></td>
 					<td>						
-						<?= Html::a('Publicar', ['evento/publicar','id' => $arrEvento['INT_ID_EVENTO']], ['class'=>'btn btn-success']) ?>
+						<?= Html::a('Publicar', NULL , ['class'=>'btn btn-success publicar', 'data-idevento'=>$arrEvento['INT_ID_EVENTO']]) ?>
 						<?= Html::a('Editar', ['evento/editar','id' =>$arrEvento['INT_ID_EVENTO']], ['class'=>'btn btn-primary']) ?>
 					</td>
 				</tr>

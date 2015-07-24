@@ -77,6 +77,9 @@ class Evento extends ActiveRecord
 			[['STR_NOME', 'STR_LOCAL_REALIZACAO'], 'string', 'max' => 255, 'on' => 'criacao'],
 			[['STR_EMAIL_CONTATO'], 'string', 'max' => 150, 'on' => 'criacao'],
 			[['STR_PUBLICACAO'], 'string', 'max' => 2, 'on' => 'criacao'],
+			[['MINUTO_FINAL'], 'integer', 'on' => 'criacao'],
+			// Regra para publicar
+			[['STATUS_INT_ID_STATUS'], 'integer', 'on' => 'criacao'],
 			[['MINUTO_FINAL'], 'integer', 'on' => 'criacao']
 		];
 	}
@@ -85,7 +88,7 @@ class Evento extends ActiveRecord
 	{
 		$scenarios = parent::scenarios();
 		$scenarios['criacao'] = ['TIPO_EVENTO_INT_ID_TIPO_EVENTO', 'STR_NOME', 'DAT_DATA_INICIO', 'DAT_DATA_FINAL', 'STR_LOCAL_REALIZACAO', 'STR_EMAIL_CONTATO', 'STR_PUBLICACAO', 'INT_PAGAMENTO_ATIVO', 'MINUTO_FINAL'];
-		//$scenarios['register'] = ['STR_NOME_COMPLETO', 'STR_EMAIL', 'STR_SENHA','STR_SENHA_CONFIRME'];
+		$scenarios['publicar'] = ['INT_ID_EVENTO', 'STATUS_INT_ID_STATUS'];
 		return $scenarios;	
 	}
 
@@ -237,11 +240,13 @@ class Evento extends ActiveRecord
 			
 			$objTransaction = Yii::$app->db->beginTransaction();
 
-			$arrDados['DAT_DATA_INICIO'] = implode("-",array_reverse(explode("/",$arrDados['DAT_DATA_INICIO'])));
-			$arrDados['DAT_DATA_FINAL'] = implode("-",array_reverse(explode("/",$arrDados['DAT_DATA_FINAL'])));
+			if(!empty($arrDados['DAT_DATA_INICIO']) && !empty($arrDados['DAT_DATA_FINAL'])){
+				$arrDados['DAT_DATA_INICIO'] = implode("-",array_reverse(explode("/",$arrDados['DAT_DATA_INICIO'])));
+				$arrDados['DAT_DATA_FINAL'] = implode("-",array_reverse(explode("/",$arrDados['DAT_DATA_FINAL'])));
 
-			$arrDados['TIM_HORA_INICIO'] = $arrDados['hora_inicio'].':'.$arrDados['minuto_inicio'].':00';
-			$arrDados['TIM_HORA_FINAL'] = $arrDados['hora_final'].':'.$arrDados['minuto_final'].':00';
+				$arrDados['TIM_HORA_INICIO'] = $arrDados['hora_inicio'].':'.$arrDados['minuto_inicio'].':00';
+				$arrDados['TIM_HORA_FINAL'] = $arrDados['hora_final'].':'.$arrDados['minuto_final'].':00';
+			}
 
 			if( !empty($arrDados['DAT_DATA_DESTAQUE_INICIO']) && !empty($arrDados['DAT_DATA_DESTAQUE_FINAL']) ){
 				$arrDados['DAT_DATA_DESTAQUE_INICIO'] = implode("-",array_reverse(explode("/",$arrDados['DAT_DATA_DESTAQUE_INICIO'])));
@@ -358,6 +363,39 @@ class Evento extends ActiveRecord
 				unset($arrDados['destaque']);
 				$objQuery->where($arrDados);
 			}
+			
+			$objCommand = $objQuery->createCommand();
+			$arrResult = $objCommand->queryAll();
+			
+			if ($arrResult)
+				return $arrResult;
+			else
+				return FALSE;
+		} catch (\Exception $objException) {
+			echo $objException;
+		}
+	}
+
+	/**
+	 * Método para verificar o evento para publicar.
+	 * 
+	 * @return boolean
+	 * @throws Exception
+	 */
+	public function getEventoPublicar($arrDados = array()){
+		try {
+			if ( empty($arrDados['INT_ID_EVENTO']) )
+				Yii::$app->session->setFlash('error', 'Parâmetros necessários!');
+			
+			$objQuery = new Query();
+
+			$objQuery->select('EV.INT_ID_EVENTO, EV.STATUS_INT_ID_STATUS, EV.STR_NOME, EV.STR_PUBLICACAO, EV.INT_PAGAMENTO_ATIVO, EV.DAT_DATA_INICIO, EV.DAT_DATA_FINAL, EV.TIM_HORA_INICIO, EV.TIM_HORA_FINAL, EV.DAT_DATA_DESTAQUE_INICIO, EV.DAT_DATA_DESTAQUE_FINAL, I.INT_ID_INGRESSO')
+					->from($this->tableName() . ' EV ')
+					->join('INNER JOIN', 'INGRESSO I', 'I.EVENTO_INT_ID_EVENTO = EV.INT_ID_EVENTO')
+					->where(['I.STATUS_INT_ID_STATUS'=>Status::STATUS_ATIVO]);
+
+			$objQuery->where($arrDados);
+
 			
 			$objCommand = $objQuery->createCommand();
 			$arrResult = $objCommand->queryAll();

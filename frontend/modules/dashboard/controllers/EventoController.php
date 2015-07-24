@@ -189,8 +189,45 @@ class EventoController extends Controller
 			Yii::$app->session->setFlash('error', $objException->getMessage());
 		}
 	}
+	// Publicar o Evento
+	public function actionPublicar(){
+		Yii::$app->response->format = Response::FORMAT_JSON;
+		$objModelEvento = new Evento();
+		$arrResponse = array('message' => '', 'response' => false );
 
-	public function actionPublicar()
+		try {
+			$arrEvento = Yii::$app->request->post();
+
+			if (empty($arrEvento['INT_ID_EVENTO'])) {
+				$arrResponse['message'] = "Não foi possível publicar o evento.";
+			} else {
+				$arrEventos['INT_ID_EVENTO'] = $arrEvento['INT_ID_EVENTO'];
+				$arrPublicar = $objModelEvento->getEventoPublicar($arrEventos);
+
+				if(empty($arrPublicar))
+					$arrResponse['message'] = 'Evento não tem ingresso cadastrado!';
+				else {
+					$arrEvento['STATUS_INT_ID_STATUS'] = Status::STATUS_ATIVO ;
+					$arrResultEvento = $objModelEvento->saveEvento($arrEvento);
+
+					$arrResponse['message'] = 'Evento Publicado com sucesso!';
+					$arrResponse['response'] = true;
+				}
+			}
+
+			return $arrResponse;
+
+		} catch (\Exception $objExcessao) {
+
+			$arrResponse = [
+				'message' => $objExcessao->getMessage(),
+				'response' => false,
+			];
+			return $arrResponse;
+		}
+	}
+
+	public function actionPublicarOLd()
 	{
 		try{
 

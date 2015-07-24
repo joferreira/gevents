@@ -7,6 +7,7 @@ $arrMes = array('01'=>'Jan','02'=>'Fev','03'=>'Mar','04'=>'Abr','05'=>'Mai','06'
 	<div class="owl-carousel">
 		<? foreach ($objEventosDestaques as $key => $evento) { 
 			$arrData = explode('-', $evento['DAT_DATA_INICIO']);
+			//$arrData = explode('-', $evento['DAT_DATA_FINAL']);
 			$arrHora = explode(':', $evento['TIM_HORA_INICIO']);
 			?>
 		<div class="row-event-media" >

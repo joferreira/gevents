@@ -105,7 +105,8 @@ if ( Yii::$app->session->get('GE_LOGADO') ) {
 		<p class="pull-right"><?= Yii::powered() ?></p>
 		</div>
 		<a id="url_save_cliente" class="hidden" href="index.php?r=dashboard/cadastro/save"></a>
-		<a id="url_diferenca_dias" class="hidden" href="index.php?r=dashboard/evento/diferenca"></a>dashboard/evento/formulario
+		<a id="url_diferenca_dias" class="hidden" href="index.php?r=dashboard/evento/diferenca"></a>
+		<a id="url_publicar_evento" class="hidden" href="index.php?r=dashboard/evento/publicar"></a>
 	</footer>
 	
 
@@ -141,6 +142,7 @@ if ( Yii::$app->session->get('GE_LOGADO') ) {
 				}
 			}
 		} );
+
 		tinymce.init({
 			language : 'pt_BR',
 			selector: "textarea#textForm",
@@ -163,6 +165,7 @@ if ( Yii::$app->session->get('GE_LOGADO') ) {
 			$(".money").maskMoney({allowNegative: true, thousands:'.', decimal:',', affixesStay: false});
 			$('#wrapper').on('change', '#evento-form #evento-dat_data_destaque_inicio', diferencaDias);
 			$('#wrapper').on('change', ' #evento-form #evento-dat_data_destaque_final', diferencaDias);
+			$('#wrapper').on('click', '#grid_evento .publicar', publicarEvento);
 		});
 
 		function message(message, alert_class, timeout){
@@ -240,6 +243,25 @@ if ( Yii::$app->session->get('GE_LOGADO') ) {
 					}
 				});
 			}
+		}
+
+		function publicarEvento(evt){
+			evt.preventDefault;
+			var url = $('#url_publicar_evento').attr('href');
+			var id_evento = $(evt.currentTarget).data('idevento');
+			var arrDados = {INT_ID_EVENTO: id_evento};
+
+			$.post( url , arrDados,  function( data ) {
+				if (data.response) {
+					message(data.message, 'alert-success');
+					location.reload(true);
+				} else {
+					message(data.message, 'alert-danger');
+				}
+				
+			});
+
+			return false;
 		}
 
 	</script>
