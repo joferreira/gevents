@@ -249,7 +249,8 @@ if ( Yii::$app->session->get('GE_LOGADO') ) {
 			evt.preventDefault;
 			var url = $('#url_publicar_evento').attr('href');
 			var id_evento = $(evt.currentTarget).data('idevento');
-			var arrDados = {INT_ID_EVENTO: id_evento};
+			var status = $(evt.currentTarget).data('status');
+			var arrDados = {INT_ID_EVENTO: id_evento, STATUS: status};
 
 			$.post( url , arrDados,  function( data ) {
 				if (data.response) {

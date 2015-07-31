@@ -193,7 +193,9 @@ class EventoController extends Controller
 	public function actionPublicar(){
 		Yii::$app->response->format = Response::FORMAT_JSON;
 		$objModelEvento = new Evento();
+		$objModelLog = new Log();		
 		$arrResponse = array('message' => '', 'response' => false );
+		$intIdCliente = Yii::$app->session->get('INT_ID_CLIENTE');
 
 		try {
 			$arrEvento = Yii::$app->request->post();
@@ -207,11 +209,23 @@ class EventoController extends Controller
 				if(empty($arrPublicar))
 					$arrResponse['message'] = 'Evento não tem ingresso cadastrado!';
 				else {
-					$arrEvento['STATUS_INT_ID_STATUS'] = Status::STATUS_ATIVO ;
-					$arrResultEvento = $objModelEvento->saveEvento($arrEvento);
+					if($arrEvento['STATUS'] == 'STATUS_AGUARDANDO'){
+						$arrEventos['STATUS_INT_ID_STATUS'] = Status::STATUS_ATIVO ;
+						$arrResponse['message'] = 'Evento Publicado com sucesso!';
+						$arrLog['STR_OCORRENCIA'] = Log::MENSAGEM_EVENTO_PUBLICADO;
+					}elseif($arrEvento['STATUS'] == 'STATUS_ATIVO'){
+						$arrEventos['STATUS_INT_ID_STATUS'] = Status::STATUS_AGUARDANDO ;
+						$arrResponse['message'] = 'Evento Despublicado com sucesso!';
+						$arrLog['STR_OCORRENCIA'] = Log::MENSAGEM_EVENTO_DESPUBLICADO;
+					}
+					$arrResultEvento = $objModelEvento->saveEvento($arrEventos);
 
-					$arrResponse['message'] = 'Evento Publicado com sucesso!';
 					$arrResponse['response'] = true;
+
+					$arrLog['CLIENTE_INT_ID_CLIENTE'] = $intIdCliente;
+					$arrLog['EVENTO_INT_ID_EVENTO'] = $arrResultEvento['INT_ID_EVENTO'];
+					$objModelLog->saveLog($arrLog);
+
 				}
 			}
 

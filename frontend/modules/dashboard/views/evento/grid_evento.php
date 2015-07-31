@@ -5,6 +5,7 @@ use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\bootstrap\ActiveForm;
 use yii\bootstrap\Alert;
+use common\models\Status;
 
 $this->title = 'Eventos';
 ?>
@@ -28,7 +29,7 @@ $this->title = 'Eventos';
 					<th width="135px" class="text-center">Término</th>
 					<th width="50px" class="text-center">Pago ?</th>
 					<th width="90px" class="text-center">Publicado ?</th>
-					<th width="130px" class="text-center">Ação</th>
+					<th width="150px" class="text-center">Ação</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -41,8 +42,13 @@ $this->title = 'Eventos';
 					<td class="text-center"><?= date('d/m/Y H:i:s', strtotime($arrEvento['DAT_DATA_FINAL'].$arrEvento['TIM_HORA_FINAL']));?></td>
 					<td class="text-center"><?= $arrEvento['INT_PAGAMENTO_ATIVO'] ? "<strong class='text-success'>Sim</strong>" : "<strong class='text-danger'>Não</strong>" ;?></td>
 					<td class="text-center"><strong><?= $arrEvento['STR_DESCRICAO_STATUS'];?></strong></td>
-					<td>						
-						<?= Html::a('Publicar', NULL , ['class'=>'btn btn-success publicar', 'data-idevento'=>$arrEvento['INT_ID_EVENTO']]) ?>
+					<td class="text-center">						
+					<? 
+						if( $arrEvento['STATUS_INT_ID_STATUS'] == Status::STATUS_AGUARDANDO )
+							echo Html::a('Publicar', NULL , ['class'=>'btn btn-success publicar', 'data-idevento'=>$arrEvento['INT_ID_EVENTO'], 'data-status'=>'STATUS_AGUARDANDO']);
+						if( $arrEvento['STATUS_INT_ID_STATUS'] == Status::STATUS_ATIVO )
+							echo Html::a('Despublicar', NULL , ['class'=>'btn btn-danger publicar', 'data-idevento'=>$arrEvento['INT_ID_EVENTO'], 'data-status'=>'STATUS_ATIVO'] );
+					?>
 						<?= Html::a('Editar', ['evento/editar','id' =>$arrEvento['INT_ID_EVENTO']], ['class'=>'btn btn-primary']) ?>
 					</td>
 				</tr>

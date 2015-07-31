@@ -27,6 +27,7 @@ class Log extends ActiveRecord
 	const MENSAGEM_EVENTO_CADASTRADO = 'Evento cadastrado';
 	const MENSAGEM_EVENTO_ALTERADO = 'Evento alterado';
 	const MENSAGEM_EVENTO_PUBLICADO = 'Evento publicado';
+	const MENSAGEM_EVENTO_DESPUBLICADO = 'Evento despublicado';
 	const MENSAGEM_INGRESSO_CADASTRADO = 'Ingresso cadastrado';
 	const MENSAGEM_INGRESSO_ALTERADO = 'Ingresso alterado';
 	/**
