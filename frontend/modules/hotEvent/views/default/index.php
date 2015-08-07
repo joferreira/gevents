@@ -1,96 +1,18 @@
-<!-- HEADER -->
-<header class="header fixed">
-
-	<!-- Top Line -->
-	<div class="top-line">
-		<div class="container">
-			<ul class="user-menu">
-				<li><a href="register.html"><i class="fa fa-file"></i> Register Now</a></li>
-				<li><a href="#"><i class="fa fa-user"></i> Login</a></li>
-			</ul>
-			<div class="hot-line"><span><i class="fa fa-calendar"></i> <strong>Latest Event:</strong></span>  Standart Event Name Here  "15 October at 20:00 - 22:00 on Manhattan / New York"</div>
-		</div>
-	</div>
-	<!-- /Top Line -->
-
-	<div class="container">
-		<div class="header-wrapper clearfix">
-
-		<!-- Logo -->
-		<div class="logo">
-			<a href="index.html" class="scroll-to">
-				<span class="fa-stack">
-					<i class="fa logo-hex fa-stack-2x"></i>
-					<i class="fa logo-fa fa-map-marker fa-stack-1x"></i>
-				</span>
-				im Event
-			</a>
-		</div>
-		<!-- /Logo -->
-
-		<!-- Navigation -->
-		<div id="mobile-menu"></div>
-		<nav class="navigation closed clearfix">
-			<a href="#" class="menu-toggle btn"><i class="fa fa-bars"></i></a>
-			<ul class="sf-menu nav">
-				<li>
-					<a href="index.html">Home</a>
-					<ul>
-						<li><a href="index.html">Home</a></li>
-						<li><a href="index-2.html">Home 2</a></li>
-					</ul>
-				</li>
-				<li class="active">
-					<a href="event-list.html">Events</a>
-					<ul>
-						<li><a href="event-list.html">Event List</a></li>
-						<li><a href="event-grid.html">Event Grid</a></li>
-						<li><a href="event-single.html">Single Event</a></li>
-					</ul>
-				</li>
-				<li>
-					<a href="blog.html">Pages</a>
-					<ul>
-						<li><a href="blog.html">Blog</a></li>
-						<li><a href="blog-single.html">Blog Single</a></li>
-						<li><a href="coming-soon-1.html">Coming Soon 1</a></li>
-						<li><a href="coming-soon-2.html">Coming Soon 2</a></li>
-						<li><a href="coming-soon-3.html">Coming Soon 3</a></li>
-						<li><a href="error-page.html">404</a></li>
-					</ul>
-				</li>
-				<li><a href="contact-us.html">Contact Us</a></li>
-				<li class="header-search-wrapper">
-					<form action="#" class="header-search-form">
-						<input type="text" class="form-control header-search" placeholder="Search"/>
-						<input type="submit" hidden="hidden"/>
-					</form>
-				</li>
-				<li><a href="#" class="btn-search-toggle"><i class="fa fa-search"></i></a></li>
-				<li><a href="#" class="btn btn-theme btn-submit-event">SUBMIT EVENT <i class="fa fa-plus-circle"></i></a></li>
-			</ul>
-		</nav>
-		<!-- /Navigation -->
-
-		</div>
-	</div>
-</header>
-<!-- /HEADER -->
+<?= $this->render('/layouts/header'); ?>
 
 <!-- Content area -->
 <div class="content-area">
 
 	<section class="page-section image breadcrumbs overlay">
 		<div class="container">
-			<h1>EVENT DETAIL PAGE</h1>
-			<ul class="breadcrumb">
+			<h1><strong>Titulo do Evento</strong></h1>
+			<!--ul class="breadcrumb">
 				<li><a href="#">Home</a></li>
 				<li><a href="#">Events</a></li>
 				<li class="active">Event Detail Page</li>
-			</ul>
+			</ul-->
 		</div>
 	</section>
-
 
 	<!-- PAGE -->
 	<section class="page-section with-sidebar sidebar-right first-section">
@@ -107,13 +29,14 @@
 
 				<h1 class="section-title">
 					<span class="icon-inner"><span class="fa-stack"><i class="fa rhex fa-stack-2x"></i><i class="fa fa-star fa-stack-1x"></i></span></span>
-					<span class="title-inner">What's about event <small>/ whats going on there come and learn</small></span>
+					<span class="title-inner">Sobre o evento <small>/ o que acontece lá</small></span>
 				</h1>
 				<p>Praesent ac sem in neque venenatis tristique. Morbi et ligula velit. Nullam a augue vel mi porta vestibulum non ac elit. Vivamus convallis tortor et fermentum semper.</p>
 				<p>In hac habitasse platea dictumst. Curabitur eget dui id metus pulvinar suscipit. Quisque vitae ligula laoreet, scelerisque leo quis, facilisis metus. Sed pellentesque, urna sed varius consectetur, eros augue fringilla magna, id sem magna vel diam. Nulla sed hendrerit nunc.</p>
 				<p class="btn-row">
-					<a href="#" class="btn btn-theme btn-theme-xl scroll-to">Register <i class="fa fa-arrow-circle-right"></i></a><!--
-				--><a href="#" class="btn btn-theme btn-theme-xl btn-theme-transparent">Watch video</a>
+					<a href="#" class="btn btn-theme btn-theme-xl scroll-to">Participe <i class="fa fa-arrow-circle-right"></i></a>
+					<a href="#" class="btn btn-theme btn-theme-xl btn-theme-transparent">Veja as fotos</a>
+					<a href="#" class="btn btn-theme btn-theme-xl btn-theme-transparent">Assista aos vídeos</a>
 				</p>
 
 				<!-- -->
@@ -2060,7 +1983,7 @@
 
 				<h1 class="section-title clearfix">
 					<span class="icon-inner"><span class="fa-stack"><i class="fa rhex fa-stack-2x"></i><i class="fa fa-user fa-stack-1x"></i></span></span>
-					<span class="title-inner">Event Price list <small> / perfect price for event</small></span>
+					<span class="title-inner">Ingressos <small> / o ingresso perfeito para você</small></span>
 				</h1>
 				<div class="row price-tables">
 					<div class="col-xsp-6 col-sm-6 col-md-6 col-lg-4">
@@ -2076,10 +1999,8 @@
 							<div class="price-table-rows">
 								<div class="price-table-row"><i class="fa fa-check-circle-o"></i> Lorem ipsum dolor sit amet</div>
 								<div class="price-table-row odd"><i class="fa fa-check-circle-o"></i> Consectetur adipiscing elit</div>
-								<div class="price-table-row"><i class="fa fa-check-circle-o"></i> Sed vitae diam metus</div>
-								<div class="price-table-row odd"><i class="fa fa-check-circle-o"></i> Donec cursus magna</div>
 								<div class="price-table-row-bottom">
-									<a class="btn btn-theme scroll-to" href="#">Register</a>
+									<a class="btn btn-theme scroll-to" href="#">Adquira</a>
 								</div>
 							</div>
 						</div>
@@ -2097,10 +2018,8 @@
 							<div class="price-table-rows">
 								<div class="price-table-row"><i class="fa fa-check-circle-o"></i> Lorem ipsum dolor sit amet</div>
 								<div class="price-table-row odd"><i class="fa fa-check-circle-o"></i> Consectetur adipiscing elit</div>
-								<div class="price-table-row"><i class="fa fa-check-circle-o"></i> Sed vitae diam metus</div>
-								<div class="price-table-row odd"><i class="fa fa-check-circle-o"></i> Donec cursus magna</div>
 								<div class="price-table-row-bottom">
-									<a class="btn btn-theme scroll-to" href="#">Register</a>
+									<a class="btn btn-theme scroll-to" href="#">Adquira</a>
 								</div>
 							</div>
 						</div>
@@ -2118,10 +2037,8 @@
 							<div class="price-table-rows">
 								<div class="price-table-row"><i class="fa fa-check-circle-o"></i> Lorem ipsum dolor sit amet</div>
 								<div class="price-table-row odd"><i class="fa fa-check-circle-o"></i> Consectetur adipiscing elit</div>
-								<div class="price-table-row"><i class="fa fa-check-circle-o"></i> Sed vitae diam metus</div>
-								<div class="price-table-row odd"><i class="fa fa-check-circle-o"></i> Donec cursus magna</div>
 								<div class="price-table-row-bottom">
-									<a class="btn btn-theme scroll-to" href="#">Register</a>
+									<a class="btn btn-theme scroll-to" href="#">Adquira</a>
 								</div>
 							</div>
 						</div>
@@ -2469,14 +2386,17 @@
 
 			<!-- Sidebar -->
 			<aside id="sidebar" class="sidebar col-sm-4 col-md-3">
-
+<!--
+- Nome do local em vermelho
+- Inserir os endereços como já está apresentado
+-->
 				<div class="widget google-map-widget">
 					<!-- Google map -->
 					<div class="google-map">
 						<div id="map-canvas"></div>
 					</div>
 					<!-- /Google map -->
-					<a href="#" class="link"><i class="fa fa-map-marker"></i> Go to LOCATION</a>
+					<a href="#" class="link"><i class="fa fa-map-marker"></i> Localização</a>
 				</div>
 
 				<div class="widget">
@@ -2484,9 +2404,7 @@
 						<div class="panel panel-default">
 							<div class="panel-heading" role="tab" id="headingOne">
 								<h4 class="panel-title">
-									<a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-										When & Where
-									</a>
+									<a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">Quando e Onde</a>
 								</h4>
 							</div>
 							<div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
@@ -2498,16 +2416,14 @@
 										<li>Thursday, January 8, 2015</li>
 										<li>from 6:30 PM to 8:30 PM (EST)</li>
 									</ul>
-									<a href="#"><i class="fa fa-calendar"></i> Add to My Calendar</a>
+									<a href="#"><i class="fa fa-calendar"></i> Adicione para Meu Calendário</a>
 								</div>
 							</div>
 						</div>
 						<div class="panel panel-default">
 							<div class="panel-heading" role="tab" id="headingTwo">
 								<h4 class="panel-title">
-									<a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-										Organizer
-									</a>
+									<a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">Organizador</a>
 								</h4>
 							</div>
 							<div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
