@@ -1,8 +1,0 @@
-[13-Jan-2015 13:45:29 America/Sao_Paulo] PHP Fatal error:  Call to undefined function yii\web\mb_strlen() in C:\Apache24\htdocs\advanced\vendor\yiisoft\yii2\web\ErrorHandler.php on line 370
-[13-Jan-2015 13:45:30 America/Sao_Paulo] PHP Fatal error:  Call to undefined function yii\helpers\mb_strlen() in C:\Apache24\htdocs\advanced\vendor\yiisoft\yii2\helpers\BaseStringHelper.php on line 31
-[13-Jan-2015 13:46:07 America/Sao_Paulo] PHP Fatal error:  Call to undefined function yii\helpers\mb_strlen() in C:\Apache24\htdocs\advanced\vendor\yiisoft\yii2\helpers\BaseStringHelper.php on line 31
-[20-Feb-2015 15:27:06 America/Sao_Paulo] PHP Parse error:  syntax error, unexpected 'define' (T_STRING), expecting function (T_FUNCTION) in C:\Apache24\htdocs\gevents\common\models\Cliente.php on line 51
-[20-Feb-2015 15:51:08 America/Sao_Paulo] PHP Fatal error:  Class 'common\models\Status' not found in C:\Apache24\htdocs\gevents\common\models\Cliente.php on line 241
-[03-Mar-2015 11:40:26 America/Sao_Paulo] PHP Fatal error:  Class 'frontend\controllers\Url' not found in C:\Apache24\htdocs\gevents\frontend\controllers\ClienteController.php on line 48
-[04-Mar-2015 09:27:36 America/Sao_Paulo] PHP Fatal error:  Cannot use yii\web\Controller as Controller because the name is already in use in C:\Apache24\htdocs\gevents\frontend\controllers\ClienteController.php on line 12
-[06-Mar-2015 15:02:06 America/Sao_Paulo] PHP Fatal error:  Class 'ActiveForm' not found in C:\Apache24\htdocs\gevents\frontend\views\layouts\slider.php on line 62
